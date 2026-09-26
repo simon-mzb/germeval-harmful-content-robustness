@@ -1,0 +1,21 @@
+# Python and tooling
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# GWDG credentials (see .env.example)
+.env
+
+# GermEval data: downloaded from the organisers, never redistributed (data/README.md)
+data/codabench/
+
+# Outputs a re-run writes but this repository does not ship (README, "Results")
+logs/
+results/component_store/
+results/e2/.checkpoints/
+results/e3_judge/
+results/e5_sample/
+results/*_predictions.npz

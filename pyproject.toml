@@ -1,0 +1,71 @@
+[project]
+name = "germeval-robustness"
+version = "0.1.0"
+description = "Modular pipeline for German harmful content detection — GermEval 2025/2026 robustness study"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "seaborn>=0.13",
+    "scikit-learn>=1.4",
+    "jupyter>=1.0",
+    "ipykernel>=6.29",
+    "tqdm>=4.66",
+    # E1 baseline reproduction
+    "sentence-transformers>=3.0",   # C2A: SentenceBERT embeddings
+    "textblob-de>=0.4",             # C2A: German polarity
+    "textblob<0.17.0",              # textblob-de compat: translate removed in 0.17
+    "spacy>=3.7",                   # C2A: lemmatisation (de_core_news_md)
+    "xgboost>=2.0",                 # classical components
+    "lightgbm>=4.0",                # classical components
+    "scipy>=1.12",                  # harness: bootstrap CI
+    "openai>=1.0",                  # GWDG ChatAI API (LLM judge)
+    "de-core-news-md",              # C2A: German spaCy model, pinned via [tool.uv.sources]
+    "torch==2.12.1",                # encoder and LLM components; version pinned, see below
+    "peft>=0.18",
+    "transformers>=5.0",
+]
+
+# The spaCy model is not on PyPI; without the source entry below it would have
+# to be installed by hand (`spacy download`) and would stay outside uv.lock.
+#
+# torch is a direct dependency only so that its build can be pinned: it would
+# otherwise arrive transitively through sentence-transformers, where
+# [tool.uv.sources] cannot reach it. The VERSION is pinned exactly (a floor
+# would silently move to a newer release); only the device build differs per
+# platform:
+#   - Linux:   cu126. The GPU runs used an NVIDIA A40 whose host driver reports
+#              CUDA 12.8; the default PyPI wheel is a CUDA 13 build and does not
+#              load there, and there is no 2.12.1 wheel on the cu128 index.
+#   - Windows: cu130, the variant that carries 2.12.1 for cp313/win_amd64.
+#   - macOS:   the PyPI wheel (CPU/MPS); there are no CUDA wheels for macOS.
+# uv.lock therefore carries three torch entries of the same version.
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+de-core-news-md = { url = "https://github.com/explosion/spacy-models/releases/download/de_core_news_md-3.8.0/de_core_news_md-3.8.0-py3-none-any.whl" }
+torch = [
+    { index = "pytorch-cu130", marker = "sys_platform == 'win32'" },
+    { index = "pytorch-cu126", marker = "sys_platform == 'linux'" },
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[dependency-groups]
+dev = [
+    "nbstripout>=0.7",
+]
