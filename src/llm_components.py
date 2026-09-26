@@ -254,7 +254,7 @@ def _chunk_size(width: int, vocab: int, budget: int | None = None) -> int:
     """How many sequences of the given padded WIDTH fit the logit budget.
 
     Pulled out of `_score_batch` so a probe measuring this arithmetic against
-    real prompts (`fewshot_chunking_probe.py`) calls the one formula that
+    real prompts calls the one formula that
     actually runs, instead of a second copy of it.
 
     `budget` defaults to the CURRENT module-level `LOGIT_BUDGET_BYTES`, read at
@@ -416,8 +416,7 @@ def _param_counts(model) -> dict[str, int]:
     # ["gate_proj", "up_proj"] -- the MLP instead of attention -- leaves every
     # count-based check green, because `num_hidden_layers x len(target_modules)`
     # predicts the same number for any equinumerous target list. So the
-    # SUFFIXES that were actually adapted are recorded, and that is what
-    # llm_smoke's criterion 2 compares.
+    # SUFFIXES that were actually adapted are recorded in every artefact.
     suffixes = sorted({n.rsplit(".lora_A", 1)[0].split(".")[-1] for n in names})
     return {"trainable_params": int(trainable), "total_params": int(total),
             "adapted_modules": len(names),
@@ -887,7 +886,7 @@ def _usage() -> str:
         "",
         "Not a CLI: the runner drives it.",
         "    python -m src.e2_runner --subtask dbo --component llm_llammlein",
-        "    python -m src.llm_smoke --component llm_llammlein --n 120",
+        "    python -m src.e2_runner --arm llm            (all subtasks, both LLM components)",
         "",
         "Declared protocol, read from configs/e2_matrix.yaml at import:",
     ]

@@ -183,8 +183,7 @@ class C2ABaseline:
                     "same process: env_pin imports torch and lightgbm, and a "
                     "second OpenMP runtime segfaults the interpreter. "
                     "Move the env_pin() call AFTER every model run -- note that a "
-                    "dict literal evaluates its values top to bottom, which is "
-                    "how proxy_2026 broke this.")
+                    "dict literal evaluates its values top to bottom.")
             from sentence_transformers import SentenceTransformer
             self._sbert = SentenceTransformer(self.sbert_model)
         return self._sbert

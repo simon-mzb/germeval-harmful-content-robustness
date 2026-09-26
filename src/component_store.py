@@ -58,12 +58,10 @@ _FAMILY_PROTOCOL = {
 def parse_run_key(key: str) -> dict[str, Any]:
     """Split a store key into cell, component, variant (None for E2) and seed.
 
-    ⚠️ WHY THIS EXISTS (2026-09-13, before the first E4 entry reached the laptop).
-    Two E2 readers selected runs by SUFFIX -- `significance.compare_store` kept
-    every key ending in `__seed42`, `combination_headroom` globbed
-    `*__seed42.npz` -- and an E4 key (`encoder_1b__e4a-none__seed42`) ends the
-    same way. The first fetched E4 cell would have been paired against E2 and
-    voted into the headroom ceiling, silently. Readers ask this function
+    ⚠️ WHY THIS EXISTS. Selecting runs by SUFFIX (keep every key ending in
+    `__seed42`) is wrong once E4 entries exist: an E4 key
+    (`encoder_1b__e4a-none__seed42`) ends the same way and would be paired
+    against E2 silently. Readers ask this function
     instead of pattern-matching the name.
     """
     cell, _, stem = key.partition("/")
