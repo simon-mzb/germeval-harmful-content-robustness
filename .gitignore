@@ -10,7 +10,7 @@ __pycache__/
 .env
 
 # GermEval data: downloaded from the organisers, never redistributed (data/README.md)
-data/codabench/
+data/codabench
 
 # Outputs a re-run writes but this repository does not ship (README, "Results")
 logs/
