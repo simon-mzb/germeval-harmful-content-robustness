@@ -1,0 +1,318 @@
+{
+  "experiment": "E4c",
+  "package": "B10",
+  "git_commit": "6b03e443d5b7152ff560a18bfc47835f77940543",
+  "subtask": "dbo",
+  "component": "llm_qwen_fewshot",
+  "meta": {
+    "config_id": "9b878aa38b4e",
+    "e4": {
+      "experiment": "E4C",
+      "condition": "none",
+      "fixed_params": null
+    },
+    "family": "llm_fewshot",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "train_edition": "2025",
+    "eval_edition": "2026",
+    "n_train": 7210,
+    "n_eval": 8826,
+    "eval_pool_sha256": "971e2ce3f57995796e9530389edbdca0295298f1ab2781c39ab2fe92e296f1ab",
+    "label_mapping": null,
+    "classes": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "bootstrap_n": 1000,
+    "env_pin": {
+      "python": "3.13.8",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1+cu126",
+      "cuda_available": true,
+      "cuda_device": "NVIDIA A40",
+      "mps_available": false,
+      "torch_auto_device": "cuda",
+      "platform": "Linux/x86_64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-14T22:15:39+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.37935176786060976,
+    "weighted_f1": 0.761313456276355,
+    "per_class": {
+      "agitation": {
+        "f1": 0.10763454317897372,
+        "support": 82,
+        "tier": "ci_gated",
+        "ci_lower": 0.07751406367801426,
+        "ci_upper": 0.1362483725482496
+      },
+      "criticism": {
+        "f1": 0.44614512471655327,
+        "support": 1024,
+        "tier": "interpret",
+        "ci_lower": 0.42555434060707853,
+        "ci_upper": 0.46541469542351194
+      },
+      "nothing": {
+        "f1": 0.8110850306655562,
+        "support": 7708,
+        "tier": "interpret",
+        "ci_lower": 0.8036493159112913,
+        "ci_upper": 0.8188784379233164
+      },
+      "subversive": {
+        "f1": 0.15254237288135594,
+        "support": 12,
+        "tier": "report_only",
+        "ci_lower": 0.06953548866592348,
+        "ci_upper": 0.24677910584990229
+      }
+    },
+    "labels": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "confusion_matrix": [
+      [
+        43,
+        17,
+        15,
+        7
+      ],
+      [
+        86,
+        787,
+        128,
+        23
+      ],
+      [
+        587,
+        1698,
+        5356,
+        67
+      ],
+      [
+        1,
+        2,
+        0,
+        9
+      ]
+    ],
+    "n_samples": 8826,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.08949370242577032,
+      "brier": 0.42702842642960903,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.26666666666666666,
+          "n": 1,
+          "mean_confidence": 0.26210341594523956,
+          "accuracy": 1.0
+        },
+        {
+          "bin_lower": 0.26666666666666666,
+          "bin_upper": 0.3333333333333333,
+          "n": 138,
+          "mean_confidence": 0.3122407094503638,
+          "accuracy": 0.34782608695652173
+        },
+        {
+          "bin_lower": 0.3333333333333333,
+          "bin_upper": 0.4,
+          "n": 501,
+          "mean_confidence": 0.37158422989030576,
+          "accuracy": 0.4031936127744511
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.4666666666666667,
+          "n": 1047,
+          "mean_confidence": 0.43756145689776615,
+          "accuracy": 0.47277936962750716
+        },
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 1413,
+          "mean_confidence": 0.49996444586656064,
+          "accuracy": 0.5548478414720452
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 1374,
+          "mean_confidence": 0.5663204490359215,
+          "accuracy": 0.653566229985444
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 1207,
+          "mean_confidence": 0.6327451676139234,
+          "accuracy": 0.7597348798674399
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 1023,
+          "mean_confidence": 0.6990023371163315,
+          "accuracy": 0.8435972629521017
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 876,
+          "mean_confidence": 0.7660230023637741,
+          "accuracy": 0.9018264840182648
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 640,
+          "mean_confidence": 0.8305872792109644,
+          "accuracy": 0.9421875
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 599,
+          "mean_confidence": 0.9097474112127149,
+          "accuracy": 0.9799666110183639
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 7,
+          "mean_confidence": 0.937020182304689,
+          "accuracy": 1.0
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 8826
+    },
+    "macro_f1_ci_lower": 0.3545451487312791,
+    "macro_f1_ci_upper": 0.40337267516828684,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "source_class_detection": null,
+  "fit_record": {
+    "component": "llm_qwen_fewshot",
+    "model_id": "Qwen/Qwen2.5-14B-Instruct",
+    "subtask": "dbo",
+    "training": "none",
+    "selected_params": null,
+    "selected_epoch": null,
+    "selection_grid": [],
+    "example_selection": "none",
+    "n_examples": 12,
+    "example_class_counts": {
+      "agitation": 1,
+      "criticism": 3,
+      "nothing": 8,
+      "subversive": 0
+    },
+    "example_ids": [
+      "882774198427671",
+      "962196003818823",
+      "1394029922830671872",
+      "960899887281768",
+      "1080315078673581",
+      "1111546278883794",
+      "1011273692244387",
+      "1013807478657675",
+      "1095972140441208",
+      "1052446134793809",
+      "855042401200851",
+      "1035160236522399"
+    ],
+    "example_source": "the fit part of this fold's training portion only",
+    "rare_class_definitions_in_prompt": false,
+    "prompt_skeleton_tokens": 885,
+    "temperature": {
+      "temperature": 1.4851662414922608,
+      "nll_before": 0.9875440386643108,
+      "nll_after": 0.939496079129764,
+      "n_calibration_items": 721,
+      "fitted": true
+    },
+    "n_fit": 5768,
+    "n_unused_selection": 721,
+    "n_calibrate": 721,
+    "inner_split_stratified": true,
+    "selection_slice_note": "kept and left unused: nothing is selected for this component, and an identical calibration slice is what makes its ECE comparable with the other three families' (llm_fewshot module docstring)",
+    "classes_present_in_examples": [
+      "agitation",
+      "criticism",
+      "nothing"
+    ],
+    "device": "cuda",
+    "precision": "bf16",
+    "max_prompt_tokens": 2048,
+    "tokenisation": {
+      "slice": "calibrate",
+      "n_items": 721,
+      "text_truncated": 1,
+      "text_truncated_share": 0.0014,
+      "text_token_budget": 1160,
+      "template_overhead_tokens": 885,
+      "prompt_tokens_max": 2045,
+      "prompt_tokens_mean": 924.5
+    },
+    "verbalisers": {
+      "agitation": "Hetze",
+      "criticism": "Kritik",
+      "nothing": "Nichts",
+      "subversive": "Subversion"
+    },
+    "verbaliser_token_lengths": [
+      2,
+      3,
+      2,
+      2
+    ],
+    "probability_interface": "verbaliser_sequence_score",
+    "trainable_params": 0,
+    "adapted_modules": 0,
+    "runtime_seconds": 1120.1118488311768,
+    "started_utc": "2026-09-14T18:34:19+00:00",
+    "finished_utc": "2026-09-14T18:52:59+00:00",
+    "tokenisation_predict": {
+      "slice": "validation",
+      "n_items": 8826,
+      "text_truncated": 6,
+      "text_truncated_share": 0.0007,
+      "text_token_budget": 1160,
+      "template_overhead_tokens": 885,
+      "prompt_tokens_max": 2045,
+      "prompt_tokens_mean": 923.5
+    }
+  },
+  "adapter": {
+    "path": "results/component_store/models/e4c/dbo_llm_qwen_fewshot",
+    "sha256": {
+      "config.json": "83cd574a406a94ea55026f1de5129365090b8d9da3801d067b9e9be2c1ba2a17",
+      "e4c_calibration.json": "797a4bc22060cf86724ad2c2657e288385d1b9c091f973c18457c7ba28efc4e2",
+      "generation_config.json": "d2cb4681e3fb111d75f0aec7f3367c78d3a936888e5bdc497e45dbd2e757660f",
+      "model.safetensors": "858a718e530631fe329ebec29075cf7a4f5bb23190f0a2441e488724f4d02f61"
+    }
+  },
+  "component_store_key": "dbo_2026/llm_qwen_fewshot__e4c__seed42",
+  "fit_seconds": 1120.1215188503265,
+  "score_seconds": 11994.473157167435
+}

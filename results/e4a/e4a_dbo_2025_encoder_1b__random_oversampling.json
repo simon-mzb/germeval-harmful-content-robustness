@@ -1,0 +1,853 @@
+{
+  "experiment": "E4a",
+  "package": "B8",
+  "git_commit": "1e8aa8f6c1b22cb3d5608b33f8b72040c69a351c",
+  "subtask": "dbo",
+  "edition": "2025",
+  "component": "encoder_1b",
+  "meta": {
+    "design_lock": "notes/e2_design_lock.md",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "primary_metric": "macro_f1",
+    "aggregation": "pooled_out_of_fold",
+    "imbalance_condition": "random_oversampling",
+    "data_rules": {
+      "within_edition_dedup": true,
+      "drop_train_test_overlap": false,
+      "note": "the overlap rule protects evaluation on the official test set, which E2 does not use; leaving it off keeps the pool identical to the E1 baseline pool and preserves thin-class instances"
+    },
+    "pool_n": 7210,
+    "classes": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "n_splits": 3,
+    "config_id": "adfa216e1acc",
+    "seeds": [
+      42
+    ],
+    "primary_seed": 42,
+    "family": "encoder",
+    "model_id": "LSX-UniWue/ModernGBERT_1B",
+    "inner_split": {
+      "fit": 0.8,
+      "select": 0.1,
+      "calibrate": 0.1
+    },
+    "grid": [
+      {
+        "lora_r": 8,
+        "lr": 0.0002
+      }
+    ],
+    "tied": {
+      "lora_alpha": "2 * lora_r"
+    },
+    "fixed_hyperparameters": {
+      "effective_batch_size": 32,
+      "per_device_batch_size": 16,
+      "eval_batch_size": 64,
+      "warmup_ratio": 0.1,
+      "weight_decay": 0.01,
+      "max_grad_norm": 1.0,
+      "lora_dropout": 0.05,
+      "lora_target_modules": [
+        "attn.Wqkv",
+        "attn.Wo"
+      ],
+      "adam_betas": [
+        0.9,
+        0.999
+      ],
+      "adam_eps": 1e-08
+    },
+    "max_seq_len": 256,
+    "max_epochs": 8,
+    "grid_deviation": "no search: the configuration frozen in results/e4_fixed_configurations.json under e4_protocol.e4a.configuration",
+    "seed_semantics": "the partition is fixed at the primary seed; the seed varies training, and replicates run on one fold only (D3)",
+    "e4": {
+      "experiment": "E4A",
+      "condition": "random_oversampling",
+      "fixed_params": {
+        "lora_r": 8,
+        "lr": 0.0002
+      }
+    },
+    "replicate_seeds_skipped": "E4 has no D3 replicates (D5)",
+    "bootstrap_n": 1000,
+    "ci_level": 0.95,
+    "env_pin": {
+      "python": "3.13.8",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1+cu126",
+      "cuda_available": true,
+      "cuda_device": "NVIDIA A40",
+      "mps_available": false,
+      "torch_auto_device": "cuda",
+      "platform": "Linux/x86_64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-13T15:12:43+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.5404623119218661,
+    "weighted_f1": 0.853101017702007,
+    "per_class": {
+      "agitation": {
+        "f1": 0.39198218262806234,
+        "support": 224,
+        "tier": "interpret",
+        "ci_lower": 0.33723258690103414,
+        "ci_upper": 0.4496169318791346
+      },
+      "criticism": {
+        "f1": 0.5466735430634347,
+        "support": 803,
+        "tier": "interpret",
+        "ci_lower": 0.5191885215841536,
+        "ci_upper": 0.5739062626067251
+      },
+      "nothing": {
+        "f1": 0.9155012143036596,
+        "support": 6123,
+        "tier": "interpret",
+        "ci_lower": 0.9104488695555826,
+        "ci_upper": 0.920698849747771
+      },
+      "subversive": {
+        "f1": 0.3076923076923077,
+        "support": 60,
+        "tier": "ci_gated",
+        "ci_lower": 0.17497282608695652,
+        "ci_upper": 0.42592592592592593
+      }
+    },
+    "labels": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "confusion_matrix": [
+      [
+        88,
+        53,
+        80,
+        3
+      ],
+      [
+        21,
+        530,
+        250,
+        2
+      ],
+      [
+        113,
+        532,
+        5466,
+        12
+      ],
+      [
+        3,
+        21,
+        22,
+        14
+      ]
+    ],
+    "n_samples": 7210,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.019893492739307725,
+      "brier": 0.23541042744850227,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.26666666666666666,
+          "bin_upper": 0.3333333333333333,
+          "n": 2,
+          "mean_confidence": 0.3195121546733519,
+          "accuracy": 0.5
+        },
+        {
+          "bin_lower": 0.3333333333333333,
+          "bin_upper": 0.4,
+          "n": 33,
+          "mean_confidence": 0.3768366994598201,
+          "accuracy": 0.45454545454545453
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.4666666666666667,
+          "n": 78,
+          "mean_confidence": 0.4358416559236636,
+          "accuracy": 0.41025641025641024
+        },
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 380,
+          "mean_confidence": 0.5057773792616667,
+          "accuracy": 0.618421052631579
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 434,
+          "mean_confidence": 0.5618308137416974,
+          "accuracy": 0.6474654377880185
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 397,
+          "mean_confidence": 0.6338241215845865,
+          "accuracy": 0.6095717884130982
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 439,
+          "mean_confidence": 0.7008212969110896,
+          "accuracy": 0.6674259681093394
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 592,
+          "mean_confidence": 0.7694599627216909,
+          "accuracy": 0.7888513513513513
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 714,
+          "mean_confidence": 0.8343051363962992,
+          "accuracy": 0.8445378151260504
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 1190,
+          "mean_confidence": 0.90269026217645,
+          "accuracy": 0.9008403361344538
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 2951,
+          "mean_confidence": 0.9726415025003008,
+          "accuracy": 0.96814639105388
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 7210
+    },
+    "macro_f1_ci_lower": 0.5027422340888579,
+    "macro_f1_ci_upper": 0.5757962494719818,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "repeats": [
+    {
+      "seed": 42,
+      "pooled_macro_f1": 0.5404623119218661,
+      "pooled_weighted_f1": 0.853101017702007,
+      "per_fold_macro_f1": [
+        0.5474848244062002,
+        0.58069480119136,
+        0.5054627220909681
+      ],
+      "fold_sd_macro_f1": 0.037701956993482236,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "agitation": 0.39198218262806234,
+        "criticism": 0.5466735430634347,
+        "nothing": 0.9155012143036596,
+        "subversive": 0.3076923076923077
+      },
+      "ece": 0.019893492739307725,
+      "brier": 0.23541042744850227,
+      "selected_params_per_fold": [
+        {
+          "lora_r": 8,
+          "lr": 0.0002
+        },
+        {
+          "lora_r": 8,
+          "lr": 0.0002
+        },
+        {
+          "lora_r": 8,
+          "lr": 0.0002
+        }
+      ],
+      "temperature_per_fold": [
+        1.8598333533754592,
+        4.807771234164593,
+        2.7728737363063365
+      ],
+      "folds_detail": [
+        {
+          "component": "encoder_1b",
+          "grid_overridden": true,
+          "model_id": "LSX-UniWue/ModernGBERT_1B",
+          "selected_params": {
+            "lora_r": 8,
+            "lr": 0.0002
+          },
+          "selection_macro_f1": 0.5397561841673028,
+          "selected_epoch": 1,
+          "fit_diagnosis": {
+            "flags": [
+              "collapsed_early"
+            ],
+            "notes": [
+              "peaked at epoch 1 then fell (0.5398 -> 0.5219): overfits within one pass. lr or lora_r is too high."
+            ],
+            "epoch_scores": [
+              0.5397561841673028,
+              0.5008138913884804,
+              0.521883970271067
+            ],
+            "selected_epoch": 1,
+            "max_epochs": 8,
+            "ok": false
+          },
+          "selection_grid": [
+            {
+              "params": {
+                "lora_r": 8,
+                "lr": 0.0002
+              },
+              "selection_macro_f1": 0.5397561841673028,
+              "best_epoch": 1,
+              "epoch_trace": [
+                {
+                  "epoch": 1,
+                  "selection_macro_f1": 0.5397561841673028,
+                  "train_loss": 0.718822,
+                  "grad_norm": 17.2283,
+                  "pred_class_counts": [
+                    11,
+                    68,
+                    398,
+                    4
+                  ],
+                  "lr": 0.000194431,
+                  "seconds": 235.8
+                },
+                {
+                  "epoch": 2,
+                  "selection_macro_f1": 0.5008138913884804,
+                  "train_loss": 0.062913,
+                  "grad_norm": 4.8757,
+                  "pred_class_counts": [
+                    8,
+                    31,
+                    440,
+                    2
+                  ],
+                  "lr": 0.000166655,
+                  "seconds": 236.5
+                },
+                {
+                  "epoch": 3,
+                  "selection_macro_f1": 0.521883970271067,
+                  "train_loss": 0.006614,
+                  "grad_norm": 0.725,
+                  "pred_class_counts": [
+                    7,
+                    45,
+                    428,
+                    1
+                  ],
+                  "lr": 0.000138879,
+                  "seconds": 235.6
+                }
+              ],
+              "stopping": {
+                "epochs_run": 3,
+                "peak_gpu_gb": 13.68,
+                "peak_gpu_reserved_gb": 19.44,
+                "stopped_early": true,
+                "patience": 2,
+                "ceiling": 8,
+                "ceiling_bound": false
+              }
+            }
+          ],
+          "temperature": {
+            "temperature": 1.8598333533754592,
+            "nll_before": 0.43732206196727785,
+            "nll_after": 0.3517165224077725,
+            "n_calibration_items": 481,
+            "fitted": true
+          },
+          "imbalance_condition": "random_oversampling",
+          "class_weights": null,
+          "focal_gamma": null,
+          "n_fit": 3844,
+          "n_fit_trained": 13060,
+          "n_select": 481,
+          "n_calibrate": 481,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "device": "cuda",
+          "precision": "bf16",
+          "max_seq_len": 256,
+          "max_epochs": 8,
+          "patience": 2,
+          "stopping": {
+            "epochs_run": 3,
+            "peak_gpu_gb": 13.68,
+            "peak_gpu_reserved_gb": 19.44,
+            "stopped_early": true,
+            "patience": 2,
+            "ceiling": 8,
+            "ceiling_bound": false
+          },
+          "epochs_run_per_cell": [
+            3
+          ],
+          "effective_batch_size": 32,
+          "per_device_batch_size": 16,
+          "gradient_accumulation_steps": 2,
+          "lora": {
+            "r": 8,
+            "alpha": 16,
+            "dropout": 0.05,
+            "target_modules": [
+              "attn.Wqkv",
+              "attn.Wo"
+            ]
+          },
+          "tokenisation": {
+            "truncation_rate": 0.007804370447450572,
+            "token_len_mean": 35.01925078043705,
+            "token_len_p95": 103.84999999999991,
+            "token_len_max": 1405
+          },
+          "runtime_seconds": 715.3687372207642,
+          "started_utc": "2026-09-13T14:19:35+00:00",
+          "finished_utc": "2026-09-13T14:31:30+00:00",
+          "trainable_params": 2760708,
+          "total_params": 1069158408,
+          "adapted_modules": 56,
+          "fold": 0
+        },
+        {
+          "component": "encoder_1b",
+          "grid_overridden": true,
+          "model_id": "LSX-UniWue/ModernGBERT_1B",
+          "selected_params": {
+            "lora_r": 8,
+            "lr": 0.0002
+          },
+          "selection_macro_f1": 0.5845258060803368,
+          "selected_epoch": 4,
+          "fit_diagnosis": {
+            "flags": [],
+            "notes": [],
+            "epoch_scores": [
+              0.5105423700484707,
+              0.5168846411804159,
+              0.5705270049947979,
+              0.5845258060803368,
+              0.5617908407382092,
+              0.5636558235455954
+            ],
+            "selected_epoch": 4,
+            "max_epochs": 8,
+            "ok": true
+          },
+          "selection_grid": [
+            {
+              "params": {
+                "lora_r": 8,
+                "lr": 0.0002
+              },
+              "selection_macro_f1": 0.5845258060803368,
+              "best_epoch": 4,
+              "epoch_trace": [
+                {
+                  "epoch": 1,
+                  "selection_macro_f1": 0.5105423700484707,
+                  "train_loss": 0.692327,
+                  "grad_norm": 16.867,
+                  "pred_class_counts": [
+                    45,
+                    71,
+                    363,
+                    2
+                  ],
+                  "lr": 0.000194431,
+                  "seconds": 265.2
+                },
+                {
+                  "epoch": 2,
+                  "selection_macro_f1": 0.5168846411804159,
+                  "train_loss": 0.074285,
+                  "grad_norm": 5.0855,
+                  "pred_class_counts": [
+                    5,
+                    31,
+                    443,
+                    2
+                  ],
+                  "lr": 0.000166655,
+                  "seconds": 262.3
+                },
+                {
+                  "epoch": 3,
+                  "selection_macro_f1": 0.5705270049947979,
+                  "train_loss": 0.014789,
+                  "grad_norm": 1.3574,
+                  "pred_class_counts": [
+                    11,
+                    39,
+                    430,
+                    1
+                  ],
+                  "lr": 0.000138879,
+                  "seconds": 264.5
+                },
+                {
+                  "epoch": 4,
+                  "selection_macro_f1": 0.5845258060803368,
+                  "train_loss": 0.008716,
+                  "grad_norm": 0.5446,
+                  "pred_class_counts": [
+                    9,
+                    44,
+                    427,
+                    1
+                  ],
+                  "lr": 0.000111104,
+                  "seconds": 262.8
+                },
+                {
+                  "epoch": 5,
+                  "selection_macro_f1": 0.5617908407382092,
+                  "train_loss": 0.006632,
+                  "grad_norm": 0.284,
+                  "pred_class_counts": [
+                    7,
+                    42,
+                    431,
+                    1
+                  ],
+                  "lr": 8.3328e-05,
+                  "seconds": 265.1
+                },
+                {
+                  "epoch": 6,
+                  "selection_macro_f1": 0.5636558235455954,
+                  "train_loss": 0.006226,
+                  "grad_norm": 0.2691,
+                  "pred_class_counts": [
+                    7,
+                    44,
+                    429,
+                    1
+                  ],
+                  "lr": 5.5552e-05,
+                  "seconds": 263.7
+                }
+              ],
+              "stopping": {
+                "epochs_run": 6,
+                "peak_gpu_gb": 17.66,
+                "peak_gpu_reserved_gb": 20.2,
+                "stopped_early": true,
+                "patience": 2,
+                "ceiling": 8,
+                "ceiling_bound": false
+              }
+            }
+          ],
+          "temperature": {
+            "temperature": 4.807771234164593,
+            "nll_before": 1.0125568256062425,
+            "nll_after": 0.35955178070546034,
+            "n_calibration_items": 481,
+            "fitted": true
+          },
+          "imbalance_condition": "random_oversampling",
+          "class_weights": null,
+          "focal_gamma": null,
+          "n_fit": 3845,
+          "n_fit_trained": 13060,
+          "n_select": 481,
+          "n_calibrate": 481,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "device": "cuda",
+          "precision": "bf16",
+          "max_seq_len": 256,
+          "max_epochs": 8,
+          "patience": 2,
+          "stopping": {
+            "epochs_run": 6,
+            "peak_gpu_gb": 17.66,
+            "peak_gpu_reserved_gb": 20.2,
+            "stopped_early": true,
+            "patience": 2,
+            "ceiling": 8,
+            "ceiling_bound": false
+          },
+          "epochs_run_per_cell": [
+            6
+          ],
+          "effective_batch_size": 32,
+          "per_device_batch_size": 16,
+          "gradient_accumulation_steps": 2,
+          "lora": {
+            "r": 8,
+            "alpha": 16,
+            "dropout": 0.05,
+            "target_modules": [
+              "attn.Wqkv",
+              "attn.Wo"
+            ]
+          },
+          "tokenisation": {
+            "truncation_rate": 0.008322496749024707,
+            "token_len_mean": 35.363068920676206,
+            "token_len_p95": 100.0,
+            "token_len_max": 1714
+          },
+          "runtime_seconds": 1590.8602685928345,
+          "started_utc": "2026-09-13T14:31:53+00:00",
+          "finished_utc": "2026-09-13T14:58:24+00:00",
+          "trainable_params": 2760708,
+          "total_params": 1069158408,
+          "adapted_modules": 56,
+          "fold": 1
+        },
+        {
+          "component": "encoder_1b",
+          "grid_overridden": true,
+          "model_id": "LSX-UniWue/ModernGBERT_1B",
+          "selected_params": {
+            "lora_r": 8,
+            "lr": 0.0002
+          },
+          "selection_macro_f1": 0.6242372763644927,
+          "selected_epoch": 1,
+          "fit_diagnosis": {
+            "flags": [
+              "collapsed_early"
+            ],
+            "notes": [
+              "peaked at epoch 1 then fell (0.6242 -> 0.4654): overfits within one pass. lr or lora_r is too high."
+            ],
+            "epoch_scores": [
+              0.6242372763644927,
+              0.6216686020165402,
+              0.4653703448873395
+            ],
+            "selected_epoch": 1,
+            "max_epochs": 8,
+            "ok": false
+          },
+          "selection_grid": [
+            {
+              "params": {
+                "lora_r": 8,
+                "lr": 0.0002
+              },
+              "selection_macro_f1": 0.6242372763644927,
+              "best_epoch": 1,
+              "epoch_trace": [
+                {
+                  "epoch": 1,
+                  "selection_macro_f1": 0.6242372763644927,
+                  "train_loss": 0.693378,
+                  "grad_norm": 16.9954,
+                  "pred_class_counts": [
+                    28,
+                    121,
+                    330,
+                    2
+                  ],
+                  "lr": 0.000194431,
+                  "seconds": 265.7
+                },
+                {
+                  "epoch": 2,
+                  "selection_macro_f1": 0.6216686020165402,
+                  "train_loss": 0.073059,
+                  "grad_norm": 5.1616,
+                  "pred_class_counts": [
+                    11,
+                    44,
+                    423,
+                    3
+                  ],
+                  "lr": 0.000166655,
+                  "seconds": 263.3
+                },
+                {
+                  "epoch": 3,
+                  "selection_macro_f1": 0.4653703448873395,
+                  "train_loss": 0.016331,
+                  "grad_norm": 1.3094,
+                  "pred_class_counts": [
+                    12,
+                    33,
+                    436,
+                    0
+                  ],
+                  "lr": 0.000138879,
+                  "seconds": 265.0
+                }
+              ],
+              "stopping": {
+                "epochs_run": 3,
+                "peak_gpu_gb": 17.66,
+                "peak_gpu_reserved_gb": 20.2,
+                "stopped_early": true,
+                "patience": 2,
+                "ceiling": 8,
+                "ceiling_bound": false
+              }
+            }
+          ],
+          "temperature": {
+            "temperature": 2.7728737363063365,
+            "nll_before": 0.9405100722235853,
+            "nll_after": 0.6088286119414255,
+            "n_calibration_items": 481,
+            "fitted": true
+          },
+          "imbalance_condition": "random_oversampling",
+          "class_weights": null,
+          "focal_gamma": null,
+          "n_fit": 3845,
+          "n_fit_trained": 13060,
+          "n_select": 481,
+          "n_calibrate": 481,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "device": "cuda",
+          "precision": "bf16",
+          "max_seq_len": 256,
+          "max_epochs": 8,
+          "patience": 2,
+          "stopping": {
+            "epochs_run": 3,
+            "peak_gpu_gb": 17.66,
+            "peak_gpu_reserved_gb": 20.2,
+            "stopped_early": true,
+            "patience": 2,
+            "ceiling": 8,
+            "ceiling_bound": false
+          },
+          "epochs_run_per_cell": [
+            3
+          ],
+          "effective_batch_size": 32,
+          "per_device_batch_size": 16,
+          "gradient_accumulation_steps": 2,
+          "lora": {
+            "r": 8,
+            "alpha": 16,
+            "dropout": 0.05,
+            "target_modules": [
+              "attn.Wqkv",
+              "attn.Wo"
+            ]
+          },
+          "tokenisation": {
+            "truncation_rate": 0.008062418725617686,
+            "token_len_mean": 35.51573472041613,
+            "token_len_p95": 98.79999999999973,
+            "token_len_max": 1714
+          },
+          "runtime_seconds": 801.6968832015991,
+          "started_utc": "2026-09-13T14:58:47+00:00",
+          "finished_utc": "2026-09-13T15:12:09+00:00",
+          "trainable_params": 2760708,
+          "total_params": 1069158408,
+          "adapted_modules": 56,
+          "fold": 2
+        }
+      ],
+      "component_store_key": "dbo_2025/encoder_1b__e4a-random_oversampling__seed42",
+      "runtime_seconds": 3188.265686273575,
+      "fold_runtime_seconds_sum": 3107.9258890151978,
+      "resumed_folds": []
+    }
+  ],
+  "seed_replicates": [],
+  "dispersion": {
+    "mean_pooled_macro_f1": 0.5404623119218661,
+    "seed_sd_macro_f1": 0.0,
+    "fold_sd_macro_f1_primary": 0.037701956993482236,
+    "per_seed_pooled_macro_f1": [
+      0.5404623119218661
+    ],
+    "replicate_fold_macro_f1": [],
+    "replicate_sd_macro_f1": 0.0
+  },
+  "runtime_seconds": 3188.876955986023,
+  "resumed": false,
+  "selection_diagnosis": {
+    "flags": [
+      "single_cell_grid"
+    ],
+    "notes": [
+      "the grid has no axis with more than one value -- nothing was selected, so no edge check is possible."
+    ],
+    "axes": {},
+    "n_distinct_winners": 1,
+    "n_fits": 3,
+    "margin": null,
+    "ok": true
+  },
+  "stopping_evidence": {
+    "n_fits": 3,
+    "ceiling": 8,
+    "patience": 2,
+    "n_stopped_early": 3,
+    "n_ceiling_bound": 0,
+    "best_epoch_counts": {
+      "1": 2,
+      "4": 1
+    },
+    "mean_epochs_run": 4.0,
+    "overrun_ratio": 2.0,
+    "mean_tail_gap": 0.06586970930271008,
+    "rising_at_stop": 2,
+    "rising_at_stop_share": 0.6666666666666666,
+    "near_miss_within_1pct": 0,
+    "verdict": "2 of 3 early stops happened while the trace was climbing again -- patience is too tight to trust the epoch choice"
+  }
+}

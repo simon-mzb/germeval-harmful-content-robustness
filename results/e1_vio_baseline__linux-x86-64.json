@@ -1,0 +1,103 @@
+{
+  "subtask": "vio",
+  "baseline": "VIO-Qwen2.5-32B-Ollama",
+  "edition": "2025",
+  "eval_set": "own_stratified_holdout_80_20",
+  "holdout_frac": 0.2,
+  "seed": 42,
+  "organizer_target_macro_f1": 68.97,
+  "organizer_eval_set": "official_test_gold_unavailable",
+  "delta_pp_vs_organizer": 2.0225245173286908,
+  "macro_f1": 0.7099252451732869,
+  "weighted_f1": 0.8922691357146638,
+  "per_class_f1": {
+    "False": 0.9235359940320775,
+    "True": 0.4963144963144963
+  },
+  "per_class_support": {
+    "False": 1431,
+    "True": 113
+  },
+  "zero_support_classes": [],
+  "report": "              precision    recall  f1-score   support\n\n       False       0.99      0.87      0.92      1431\n        True       0.34      0.89      0.50       113\n\n    accuracy                           0.87      1544\n   macro avg       0.67      0.88      0.71      1544\nweighted avg       0.94      0.87      0.89      1544\n",
+  "confusion_matrix": [
+    [
+      1238,
+      193
+    ],
+    [
+      12,
+      101
+    ]
+  ],
+  "labels": [
+    "False",
+    "True"
+  ],
+  "n_samples": 1544,
+  "macro_f1_ci_lower": 0.677305789087593,
+  "macro_f1_ci_upper": 0.7415063996777919,
+  "ci_level": 0.95,
+  "env_pin": {
+    "python": "3.13.8",
+    "requires_python_floor": ">=3.12",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.17.1",
+    "numpy": "2.4.6",
+    "xgboost": "3.3.0",
+    "lightgbm": "4.6.0",
+    "torch": "2.12.1+cu126",
+    "cuda_available": true,
+    "cuda_device": "NVIDIA A40",
+    "mps_available": false,
+    "torch_auto_device": "cuda",
+    "platform": "Linux/x86_64",
+    "nltk_punkt_tab": true
+  },
+  "data_rules_id": "7e9082557061",
+  "produced_by": "src/e1_machine_baseline.py",
+  "protocol_source": "src/e1_platform_check.run + baselines.VIOBaselineOllama (mirrors data/codabench/GermEval2025/baseline/vio/vio_baseline.Rmd)",
+  "anchor": "THESIS_LOG Next Steps #15 / roadmap B14 (E1b)",
+  "created": "2026-09-14T15:10:27+00:00",
+  "model_info": {
+    "n_items": 1544,
+    "n_fallback_to_false": 0,
+    "n_items_retried": 0,
+    "n_requests": 1544,
+    "max_trials": 10,
+    "seed_option": true
+  },
+  "calls_log": "e1_vio_ollama_calls__linux-x86-64.jsonl",
+  "deviations": [
+    "evaluated on our own stratified 80/20 holdout of the deduplicated 2025 train pool, as the c2a and dbo reproductions are, not on the official test set",
+    "options.seed = 123 + trial index added so the run is repeatable and a retry still resamples; the notebook's top-level seed field is not read by Ollama",
+    "served model is the Ollama library tag qwen2.5:32b (quantisation under `serving`); the organisers' quantisation is not stated",
+    "Python urllib client instead of R httr; the body is built field for field from the notebook, str_escape on prompt and modelfile included, prompts read from the Rmd itself",
+    "items unparsed after ten trials are set to false, as the organisers did after their manual re-attempt"
+  ],
+  "serving": {
+    "ollama_version": "0.34.0",
+    "model": "qwen2.5:32b",
+    "served": true,
+    "digest": "9f13ba1299afea09d9a956fc6a85becc99115a6d596fae201a5487a03bdc4368",
+    "size_bytes": 19851349669,
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "32.8B",
+      "quantization_level": "Q4_K_M"
+    },
+    "default_parameters": null
+  },
+  "request_semantics_probe": {
+    "prompt_eval_count_as_sent": 465,
+    "prompt_eval_count_with_system_field": 591,
+    "system_prompt_reaches_model_as_sent": false,
+    "same_seed_same_response": true,
+    "note": "the system field adds the system prompt's tokens; if the body as sent evaluates FEWER tokens, its modelfile field was ignored"
+  }
+}

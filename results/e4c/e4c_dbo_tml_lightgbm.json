@@ -1,0 +1,247 @@
+{
+  "experiment": "E4c",
+  "package": "B10",
+  "git_commit": "be114154dcf1e188f31c26130f5b5abf51936d7d",
+  "subtask": "dbo",
+  "component": "tml_lightgbm",
+  "meta": {
+    "config_id": "66e18a80698c",
+    "e4": {
+      "experiment": "E4C",
+      "condition": "none",
+      "fixed_params": {
+        "learning_rate": 0.1,
+        "num_leaves": 31
+      }
+    },
+    "family": "tml",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "train_edition": "2025",
+    "eval_edition": "2026",
+    "n_train": 7210,
+    "n_eval": 8826,
+    "eval_pool_sha256": "971e2ce3f57995796e9530389edbdca0295298f1ab2781c39ab2fe92e296f1ab",
+    "label_mapping": null,
+    "classes": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "bootstrap_n": 1000,
+    "env_pin": {
+      "python": "3.13.15",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1",
+      "cuda_available": false,
+      "cuda_device": null,
+      "mps_available": true,
+      "torch_auto_device": "mps",
+      "platform": "Darwin/arm64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-14T14:17:07+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.3589279392809925,
+    "weighted_f1": 0.8754883579582735,
+    "per_class": {
+      "agitation": {
+        "f1": 0.06741573033707865,
+        "support": 82,
+        "tier": "ci_gated",
+        "ci_lower": 0.0,
+        "ci_upper": 0.14816784869976357
+      },
+      "criticism": {
+        "f1": 0.4226950354609929,
+        "support": 1024,
+        "tier": "interpret",
+        "ci_lower": 0.39184268026219954,
+        "ci_upper": 0.4563942608363899
+      },
+      "nothing": {
+        "f1": 0.9456009913258984,
+        "support": 7708,
+        "tier": "interpret",
+        "ci_lower": 0.9420320280651218,
+        "ci_upper": 0.9494040588317301
+      },
+      "subversive": {
+        "f1": 0.0,
+        "support": 12,
+        "tier": "report_only",
+        "ci_lower": 0.0,
+        "ci_upper": 0.0
+      }
+    },
+    "labels": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "confusion_matrix": [
+      [
+        3,
+        9,
+        70,
+        0
+      ],
+      [
+        2,
+        298,
+        723,
+        1
+      ],
+      [
+        2,
+        75,
+        7631,
+        0
+      ],
+      [
+        0,
+        4,
+        8,
+        0
+      ]
+    ],
+    "n_samples": 8826,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.017247050301741545,
+      "brier": 0.15646476101330653,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.3333333333333333,
+          "bin_upper": 0.4,
+          "n": 3,
+          "mean_confidence": 0.38676737516660004,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.4666666666666667,
+          "n": 20,
+          "mean_confidence": 0.4429647558632932,
+          "accuracy": 0.35
+        },
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 200,
+          "mean_confidence": 0.5075488281855185,
+          "accuracy": 0.55
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 210,
+          "mean_confidence": 0.5652721507760422,
+          "accuracy": 0.5666666666666667
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 234,
+          "mean_confidence": 0.633087202591152,
+          "accuracy": 0.6752136752136753
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 258,
+          "mean_confidence": 0.7010808203209352,
+          "accuracy": 0.6356589147286822
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 383,
+          "mean_confidence": 0.7703051309945692,
+          "accuracy": 0.7362924281984334
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 698,
+          "mean_confidence": 0.8383739768212438,
+          "accuracy": 0.7865329512893983
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 1661,
+          "mean_confidence": 0.9055164946222986,
+          "accuracy": 0.9030704394942806
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 5159,
+          "mean_confidence": 0.9653558547247103,
+          "accuracy": 0.9771273502616786
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 8826
+    },
+    "macro_f1_ci_lower": 0.3407509037025277,
+    "macro_f1_ci_upper": 0.38068202134256296,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "source_class_detection": null,
+  "fit_record": {
+    "component": "tml_lightgbm",
+    "selected_params": {
+      "learning_rate": 0.1,
+      "num_leaves": 31
+    },
+    "selection_macro_f1": 0.36888642626347545,
+    "selection_grid": [
+      {
+        "params": {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        },
+        "selection_macro_f1": 0.36888642626347545,
+        "best_iteration": 19
+      }
+    ],
+    "temperature": {
+      "temperature": 0.9752892192953153,
+      "nll_before": 0.3373504990873952,
+      "nll_after": 0.33717879888835195,
+      "n_calibration_items": 721,
+      "fitted": true
+    },
+    "platt_fallback_classes": [],
+    "grid_overridden": true,
+    "imbalance_condition": "none",
+    "n_fit": 5768,
+    "n_fit_trained": 5768,
+    "n_select": 721,
+    "n_calibrate": 721,
+    "n_features": 73350,
+    "classes_present_in_fit": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "inner_split_stratified": true
+  },
+  "adapter": null,
+  "component_store_key": "dbo_2026/tml_lightgbm__e4c__seed42",
+  "fit_seconds": 8.668976068496704,
+  "score_seconds": 1.0843019485473633
+}

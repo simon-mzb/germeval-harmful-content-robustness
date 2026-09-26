@@ -1,0 +1,32 @@
+{
+  "subtask": "vio",
+  "edition": "2025",
+  "component": "encoder_1b",
+  "seed": 42,
+  "n_splits": 3,
+  "aggregation": "pooled_out_of_fold",
+  "uncalibrated": false,
+  "pooled_macro_f1": 0.8174343553217742,
+  "matrix_version": "1.12",
+  "config_id": "dabeeaceac4d",
+  "data_rules_id": "7e9082557061",
+  "created": "2026-09-13T16:17:16+00:00",
+  "experiment": "E4a",
+  "e4": {
+    "experiment": "E4A",
+    "condition": "focal_loss",
+    "fixed_params": {
+      "lora_r": 16,
+      "lr": 0.0002
+    }
+  },
+  "key": "vio_2025/encoder_1b__e4a-focal_loss__seed42",
+  "n_items": 7720,
+  "n_classes": 2,
+  "classes": [
+    "False",
+    "True"
+  ],
+  "npz": "encoder_1b__e4a-focal_loss__seed42.npz",
+  "machine": "Linux/x86_64"
+}

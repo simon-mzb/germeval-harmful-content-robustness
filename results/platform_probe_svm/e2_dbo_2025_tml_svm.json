@@ -1,0 +1,1318 @@
+{
+  "experiment": "E2",
+  "package": "B3",
+  "git_commit": "3e9cb8f9d269809a26cc809938c088515d9bc9d1",
+  "subtask": "dbo",
+  "edition": "2025",
+  "component": "tml_svm",
+  "meta": {
+    "design_lock": "notes/e2_design_lock.md",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "primary_metric": "macro_f1",
+    "aggregation": "pooled_out_of_fold",
+    "imbalance_condition": "none (D4 reference condition; E4a varies this)",
+    "data_rules": {
+      "within_edition_dedup": true,
+      "drop_train_test_overlap": false,
+      "note": "the overlap rule protects evaluation on the official test set, which E2 does not use; leaving it off keeps the pool identical to the E1 baseline pool and preserves thin-class instances"
+    },
+    "pool_n": 7210,
+    "classes": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "n_splits": 5,
+    "config_id": "acbf778cf50a",
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "primary_seed": 42,
+    "family": "tml",
+    "feature_spec": {
+      "word_ngram_range": [
+        1,
+        2
+      ],
+      "char_ngram_range": [
+        3,
+        5
+      ],
+      "char_analyzer": "char_wb",
+      "lowercase": true,
+      "min_df": 2,
+      "sublinear_tf": true
+    },
+    "inner_split": {
+      "fit": 0.8,
+      "select": 0.1,
+      "calibrate": 0.1
+    },
+    "grid": [
+      {
+        "C": 0.1
+      },
+      {
+        "C": 1.0
+      },
+      {
+        "C": 10.0
+      },
+      {
+        "C": 30.0
+      }
+    ],
+    "grid_deviation": "n_estimators replaced by early stopping on the selection slice (cap 1000, patience 30); see THESIS_LOG session B3",
+    "seed_semantics": "the seed varies the CV partition",
+    "bootstrap_n": 1000,
+    "ci_level": 0.95,
+    "env_pin": {
+      "python": "3.13.8",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1+cu126",
+      "cuda_available": true,
+      "cuda_device": "NVIDIA A40",
+      "mps_available": false,
+      "torch_auto_device": "cuda",
+      "platform": "Linux/x86_64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-21T17:52:19+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.4615686207161518,
+    "weighted_f1": 0.8422527992867681,
+    "per_class": {
+      "agitation": {
+        "f1": 0.13584905660377358,
+        "support": 224,
+        "tier": "interpret",
+        "ci_lower": 0.0833254716981132,
+        "ci_upper": 0.19260403260403258
+      },
+      "criticism": {
+        "f1": 0.39451114922813035,
+        "support": 803,
+        "tier": "interpret",
+        "ci_lower": 0.3607841816918328,
+        "ci_upper": 0.4307931316434996
+      },
+      "nothing": {
+        "f1": 0.9312988924173186,
+        "support": 6123,
+        "tier": "interpret",
+        "ci_lower": 0.9268575450827232,
+        "ci_upper": 0.9359518203004945
+      },
+      "subversive": {
+        "f1": 0.38461538461538464,
+        "support": 60,
+        "tier": "ci_gated",
+        "ci_lower": 0.24096385542168675,
+        "ci_upper": 0.5287356321839081
+      }
+    },
+    "labels": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "confusion_matrix": [
+      [
+        18,
+        29,
+        177,
+        0
+      ],
+      [
+        2,
+        230,
+        570,
+        1
+      ],
+      [
+        18,
+        91,
+        6012,
+        2
+      ],
+      [
+        3,
+        13,
+        29,
+        15
+      ]
+    ],
+    "n_samples": 7210,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.014432771888872424,
+      "brier": 0.1992061681356171,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.26666666666666666,
+          "bin_upper": 0.3333333333333333,
+          "n": 1,
+          "mean_confidence": 0.315406911813276,
+          "accuracy": 1.0
+        },
+        {
+          "bin_lower": 0.3333333333333333,
+          "bin_upper": 0.4,
+          "n": 4,
+          "mean_confidence": 0.38024662223399797,
+          "accuracy": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.4666666666666667,
+          "n": 28,
+          "mean_confidence": 0.4413429887458859,
+          "accuracy": 0.32142857142857145
+        },
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 152,
+          "mean_confidence": 0.5050115460041361,
+          "accuracy": 0.4473684210526316
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 184,
+          "mean_confidence": 0.5668718154306182,
+          "accuracy": 0.5597826086956522
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 266,
+          "mean_confidence": 0.6339982761139987,
+          "accuracy": 0.6015037593984962
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 299,
+          "mean_confidence": 0.7011776091743804,
+          "accuracy": 0.5886287625418061
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 444,
+          "mean_confidence": 0.7685886773548819,
+          "accuracy": 0.7635135135135135
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 774,
+          "mean_confidence": 0.8368588049298182,
+          "accuracy": 0.8126614987080103
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 1763,
+          "mean_confidence": 0.905553258572917,
+          "accuracy": 0.9058423142370958
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 3295,
+          "mean_confidence": 0.961564918501292,
+          "accuracy": 0.9690440060698027
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 7210
+    },
+    "macro_f1_ci_lower": 0.4210249926647744,
+    "macro_f1_ci_upper": 0.5014498069676082,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "repeats": [
+    {
+      "seed": 42,
+      "pooled_macro_f1": 0.4615686207161518,
+      "pooled_weighted_f1": 0.8422527992867681,
+      "per_fold_macro_f1": [
+        0.49349473010881584,
+        0.3451029221369862,
+        0.5203395003555722,
+        0.46531550268809807,
+        0.46731013457104
+      ],
+      "fold_sd_macro_f1": 0.06714079624745355,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "agitation": 0.13584905660377358,
+        "criticism": 0.39451114922813035,
+        "nothing": 0.9312988924173186,
+        "subversive": 0.38461538461538464
+      },
+      "ece": 0.014432771888872424,
+      "brier": 0.1992061681356171,
+      "selected_params_per_fold": [
+        {
+          "C": 10.0
+        },
+        {
+          "C": 1.0
+        },
+        {
+          "C": 10.0
+        },
+        {
+          "C": 30.0
+        },
+        {
+          "C": 1.0
+        }
+      ],
+      "temperature_per_fold": [
+        0.9886331149299891,
+        0.9934415000972585,
+        0.9737406149641011,
+        0.9867897437069936,
+        0.9782574340582552
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 10.0
+          },
+          "selection_macro_f1": 0.5515851838944009,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.3954260534971762
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.5315397656172927
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.5515851838944009
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.5296805453871531
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9886331149299891,
+            "nll_before": 0.3890499485801932,
+            "nll_after": 0.38900785489892103,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 62162,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 1.0
+          },
+          "selection_macro_f1": 0.40883272409506577,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.321026881115735
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.40883272409506577
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.40375494071146245
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.3975104104525623
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9934415000972585,
+            "nll_before": 0.37609183911025007,
+            "nll_after": 0.37607930452487237,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63185,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 10.0
+          },
+          "selection_macro_f1": 0.38055842878851726,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.32924305865570624
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.37767420751291714
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.38055842878851726
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.3791909879508305
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9737406149641011,
+            "nll_before": 0.3624780391530003,
+            "nll_after": 0.36227518898395716,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63934,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 30.0
+          },
+          "selection_macro_f1": 0.5146899715806552,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.43415933782320776
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.5104098236393957
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.5071101132004865
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.5146899715806552
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9867897437069936,
+            "nll_before": 0.3747064896660607,
+            "nll_after": 0.3746522062457004,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 62998,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 3
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 1.0
+          },
+          "selection_macro_f1": 0.44938870909744694,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.30995019784418065
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.44938870909744694
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.43757646339168077
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.4401228938683342
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9782574340582552,
+            "nll_before": 0.40941370492296725,
+            "nll_after": 0.40925396698423394,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 64693,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 4
+        }
+      ],
+      "component_store_key": "dbo_2025/tml_svm__seed42",
+      "runtime_seconds": 42.56802010536194,
+      "fold_runtime_seconds_sum": null,
+      "resumed_folds": []
+    },
+    {
+      "seed": 43,
+      "pooled_macro_f1": 0.4834317167049054,
+      "pooled_weighted_f1": 0.8478499205703987,
+      "per_fold_macro_f1": [
+        0.44545968986374795,
+        0.5020409281505659,
+        0.40359598682502307,
+        0.4878814660522045,
+        0.5531068367171903
+      ],
+      "fold_sd_macro_f1": 0.05681242406310094,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "agitation": 0.1685823754789272,
+        "criticism": 0.42276422764227645,
+        "nothing": 0.9327417094815507,
+        "subversive": 0.40963855421686746
+      },
+      "ece": 0.015447816650936594,
+      "brier": 0.19834347738720237,
+      "selected_params_per_fold": [
+        {
+          "C": 1.0
+        },
+        {
+          "C": 10.0
+        },
+        {
+          "C": 1.0
+        },
+        {
+          "C": 1.0
+        },
+        {
+          "C": 10.0
+        }
+      ],
+      "temperature_per_fold": [
+        0.9768780680270304,
+        0.978931008816966,
+        0.9838544332613894,
+        0.9818567261048887,
+        0.9880804258511751
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 1.0
+          },
+          "selection_macro_f1": 0.38596327419856835,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.29633975831419157
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.38596327419856835
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.3776237363943511
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.37525804404230195
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9768780680270304,
+            "nll_before": 0.3542402723108024,
+            "nll_after": 0.3540940606339439,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 64470,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 10.0
+          },
+          "selection_macro_f1": 0.4585189112760693,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.30903307219096693
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.4566062030497953
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.4585189112760693
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.4585189112760693
+            }
+          ],
+          "temperature": {
+            "temperature": 0.978931008816966,
+            "nll_before": 0.37377159039923297,
+            "nll_after": 0.3736358128741439,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 64413,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 1.0
+          },
+          "selection_macro_f1": 0.6018487172055852,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.32497354497354497
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.6018487172055852
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.524465811965812
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.5232286652741198
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9838544332613894,
+            "nll_before": 0.39477610715181716,
+            "nll_after": 0.39469221899727613,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63584,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 1.0
+          },
+          "selection_macro_f1": 0.4961070351158673,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.3247820899763839
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.4961070351158673
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.4899960556635646
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.47776359199168433
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9818567261048887,
+            "nll_before": 0.3676309381229984,
+            "nll_after": 0.36753534392175075,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63168,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 3
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 10.0
+          },
+          "selection_macro_f1": 0.5009449743963018,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.3907142857142857
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.42781039356381817
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.5009449743963018
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.5004533323117394
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9880804258511751,
+            "nll_before": 0.3873729395539976,
+            "nll_after": 0.38732780410889384,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 62704,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 4
+        }
+      ],
+      "component_store_key": "dbo_2025/tml_svm__seed43",
+      "runtime_seconds": 30.361416816711426,
+      "fold_runtime_seconds_sum": null,
+      "resumed_folds": []
+    },
+    {
+      "seed": 44,
+      "pooled_macro_f1": 0.4772234315163542,
+      "pooled_weighted_f1": 0.8448594043134655,
+      "per_fold_macro_f1": [
+        0.4415602396037911,
+        0.4773398468814233,
+        0.5237883220029199,
+        0.49054399548089833,
+        0.4486655556766851
+      ],
+      "fold_sd_macro_f1": 0.03327760210155675,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "agitation": 0.16117216117216118,
+        "criticism": 0.4116666666666667,
+        "nothing": 0.9309916070873485,
+        "subversive": 0.4050632911392405
+      },
+      "ece": 0.014050982048608631,
+      "brier": 0.19950770286282862,
+      "selected_params_per_fold": [
+        {
+          "C": 10.0
+        },
+        {
+          "C": 1.0
+        },
+        {
+          "C": 10.0
+        },
+        {
+          "C": 1.0
+        },
+        {
+          "C": 30.0
+        }
+      ],
+      "temperature_per_fold": [
+        0.9862325445119432,
+        0.9905281493490822,
+        0.9708958470645543,
+        0.9768980777270374,
+        0.982826920925423
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 10.0
+          },
+          "selection_macro_f1": 0.4835972850678733,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.321346227744332
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.4567858552371931
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.4835972850678733
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.4804305283757338
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9862325445119432,
+            "nll_before": 0.35125172420653084,
+            "nll_after": 0.35119658200958204,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63895,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 1.0
+          },
+          "selection_macro_f1": 0.49594500307589684,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.28439393939393937
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.49594500307589684
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.4912285974772825
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.488831843262223
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9905281493490822,
+            "nll_before": 0.3787825045801802,
+            "nll_after": 0.37875573894733383,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63974,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 10.0
+          },
+          "selection_macro_f1": 0.5059590497120122,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.34196269833283016
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.48671800176224955
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.5059590497120122
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.502468072894246
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9708958470645543,
+            "nll_before": 0.38871864142422274,
+            "nll_after": 0.3884607514590436,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63047,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 1.0
+          },
+          "selection_macro_f1": 0.5073807839372042,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.3323109486619173
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.5073807839372042
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.49450424005218524
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.4985493979529609
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9768980777270374,
+            "nll_before": 0.3755478568107937,
+            "nll_after": 0.3753867484787615,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63002,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 3
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 30.0
+          },
+          "selection_macro_f1": 0.5536890645586298,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 0.1
+              },
+              "selection_macro_f1": 0.31921672981663285
+            },
+            {
+              "params": {
+                "C": 1.0
+              },
+              "selection_macro_f1": 0.47447401994337696
+            },
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.549915698367703
+            },
+            {
+              "params": {
+                "C": 30.0
+              },
+              "selection_macro_f1": 0.5536890645586298
+            }
+          ],
+          "temperature": {
+            "temperature": 0.982826920925423,
+            "nll_before": 0.4160656635151598,
+            "nll_after": 0.4159659240259973,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": false,
+          "imbalance_condition": "none",
+          "n_fit": 4614,
+          "n_fit_trained": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 64449,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 4
+        }
+      ],
+      "component_store_key": "dbo_2025/tml_svm__seed44",
+      "runtime_seconds": 29.999481201171875,
+      "fold_runtime_seconds_sum": null,
+      "resumed_folds": []
+    }
+  ],
+  "seed_replicates": [],
+  "dispersion": {
+    "mean_pooled_macro_f1": 0.4740745896458038,
+    "seed_sd_macro_f1": 0.011266549844458256,
+    "fold_sd_macro_f1_primary": 0.06714079624745355,
+    "per_seed_pooled_macro_f1": [
+      0.4615686207161518,
+      0.4834317167049054,
+      0.4772234315163542
+    ],
+    "replicate_fold_macro_f1": [],
+    "replicate_sd_macro_f1": 0.0
+  },
+  "runtime_seconds": 115.83772611618042,
+  "resumed": false,
+  "selection_diagnosis": {
+    "flags": [
+      "selection_noise"
+    ],
+    "notes": [
+      "3 different configurations won across 5 fits, and the median winner-to-runner-up margin on the selection slice is 0.0051 -- below the 0.0671 fold-to-fold spread of the final scores. The grid is separating configurations the evaluation cannot, so selected_params_per_fold must be reported as UNRESOLVED rather than as a finding about the model."
+    ],
+    "axes": {
+      "C": {
+        "values": [
+          0.1,
+          1.0,
+          10.0,
+          30.0
+        ],
+        "selected_counts": {
+          "0.1": 0,
+          "1.0": 2,
+          "10.0": 2,
+          "30.0": 1
+        },
+        "n_fits": 5,
+        "share_at_lower_edge": 0.0,
+        "share_at_upper_edge": 0.2
+      }
+    },
+    "n_distinct_winners": 3,
+    "n_fits": 5,
+    "margin": {
+      "median": 0.005077783383603318,
+      "mean": 0.00800732113375412,
+      "min": 0.0013674408376867508,
+      "n_fits": 5,
+      "fold_sd": 0.06714079624745355
+    },
+    "ok": false
+  },
+  "stopping_evidence": null
+}

@@ -1,0 +1,243 @@
+{
+  "experiment": "E4c",
+  "package": "B10",
+  "git_commit": "be114154dcf1e188f31c26130f5b5abf51936d7d",
+  "subtask": "dbo",
+  "component": "tml_svm",
+  "meta": {
+    "config_id": "761d76ddd40d",
+    "e4": {
+      "experiment": "E4C",
+      "condition": "none",
+      "fixed_params": {
+        "C": 10.0
+      }
+    },
+    "family": "tml",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "train_edition": "2025",
+    "eval_edition": "2026",
+    "n_train": 7210,
+    "n_eval": 8826,
+    "eval_pool_sha256": "971e2ce3f57995796e9530389edbdca0295298f1ab2781c39ab2fe92e296f1ab",
+    "label_mapping": null,
+    "classes": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "bootstrap_n": 1000,
+    "env_pin": {
+      "python": "3.13.15",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1",
+      "cuda_available": false,
+      "cuda_device": null,
+      "mps_available": true,
+      "torch_auto_device": "mps",
+      "platform": "Darwin/arm64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-14T14:11:44+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.3887544165310686,
+    "weighted_f1": 0.8721810028191521,
+    "per_class": {
+      "agitation": {
+        "f1": 0.20408163265306123,
+        "support": 82,
+        "tier": "ci_gated",
+        "ci_lower": 0.10415990259740261,
+        "ci_upper": 0.3191489361702128
+      },
+      "criticism": {
+        "f1": 0.4087193460490463,
+        "support": 1024,
+        "tier": "interpret",
+        "ci_lower": 0.376373523170452,
+        "ci_upper": 0.4390912857780328
+      },
+      "nothing": {
+        "f1": 0.9422166874221669,
+        "support": 7708,
+        "tier": "interpret",
+        "ci_lower": 0.9385006991642263,
+        "ci_upper": 0.945956061007572
+      },
+      "subversive": {
+        "f1": 0.0,
+        "support": 12,
+        "tier": "report_only",
+        "ci_lower": 0.0,
+        "ci_upper": 0.0
+      }
+    },
+    "labels": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "confusion_matrix": [
+      [
+        10,
+        11,
+        61,
+        0
+      ],
+      [
+        2,
+        300,
+        717,
+        5
+      ],
+      [
+        4,
+        129,
+        7566,
+        9
+      ],
+      [
+        0,
+        4,
+        8,
+        0
+      ]
+    ],
+    "n_samples": 8826,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.007926188184879222,
+      "brier": 0.168327335432087,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.3333333333333333,
+          "bin_upper": 0.4,
+          "n": 12,
+          "mean_confidence": 0.38174082846024165,
+          "accuracy": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.4666666666666667,
+          "n": 28,
+          "mean_confidence": 0.44250507765783104,
+          "accuracy": 0.32142857142857145
+        },
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 153,
+          "mean_confidence": 0.506206130890371,
+          "accuracy": 0.49019607843137253
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 200,
+          "mean_confidence": 0.5682259932328497,
+          "accuracy": 0.565
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 273,
+          "mean_confidence": 0.634711760046134,
+          "accuracy": 0.63003663003663
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 293,
+          "mean_confidence": 0.7001509541884811,
+          "accuracy": 0.6791808873720137
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 470,
+          "mean_confidence": 0.7690107269732945,
+          "accuracy": 0.7553191489361702
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 834,
+          "mean_confidence": 0.8370455264449999,
+          "accuracy": 0.8501199040767387
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 1928,
+          "mean_confidence": 0.9061121966104185,
+          "accuracy": 0.904045643153527
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 4635,
+          "mean_confidence": 0.9637223645363582,
+          "accuracy": 0.9706580366774542
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 8826
+    },
+    "macro_f1_ci_lower": 0.3618316887440541,
+    "macro_f1_ci_upper": 0.41866811213540883,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "source_class_detection": null,
+  "fit_record": {
+    "component": "tml_svm",
+    "selected_params": {
+      "C": 10.0
+    },
+    "selection_macro_f1": 0.4678785036026989,
+    "selection_grid": [
+      {
+        "params": {
+          "C": 10.0
+        },
+        "selection_macro_f1": 0.4678785036026989
+      }
+    ],
+    "temperature": {
+      "temperature": 0.9653118167088139,
+      "nll_before": 0.3592897484660809,
+      "nll_after": 0.35893208163251333,
+      "n_calibration_items": 721,
+      "fitted": true
+    },
+    "platt_fallback_classes": [],
+    "grid_overridden": true,
+    "imbalance_condition": "none",
+    "n_fit": 5768,
+    "n_fit_trained": 5768,
+    "n_select": 721,
+    "n_calibrate": 721,
+    "n_features": 73350,
+    "classes_present_in_fit": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "inner_split_stratified": true
+  },
+  "adapter": null,
+  "component_store_key": "dbo_2026/tml_svm__e4c__seed42",
+  "fit_seconds": 2.4276039600372314,
+  "score_seconds": 0.8046770095825195
+}

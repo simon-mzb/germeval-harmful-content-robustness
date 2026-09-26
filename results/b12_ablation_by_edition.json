@@ -1,0 +1,1287 @@
+{
+ "experiment": "B12 significance, one Holm family per experiment (primary)",
+ "created": "2026-09-15T13:25:59+00:00",
+ "anchor": "THESIS_LOG NS 123 h24 (Simon, 2026-09-15); NS 124 l",
+ "source": "b12_ablation.json",
+ "source_created": "2026-09-15T12:30:11+00:00",
+ "source_family_m": 36,
+ "rule": "the family follows the claim (the experiment, or for B12 the parent experiment), not the edition or the subtask; Holm on the paired bootstrap p-value is primary, BY beside it",
+ "disclosure": "the source artefact was corrected as one family of m = 36 before this rule was decided; it stays unchanged. `verdicts_differing_from_original` is reported, not argued",
+ "families": {
+  "b12_2025": {
+   "m": 18,
+   "survive_holm": 4,
+   "survive_by": 4,
+   "rows": [
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.2156,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.21152242941072535,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "encoder_1b",
+     "edition": "2025",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": -0.31,
+     "contribution_ci_pp": [
+      -0.82,
+      0.18
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0228,
+      "holm_bootstrap": 0.228,
+      "by_bootstrap": 0.1593769283657519,
+      "p_mcnemar": 0.20311483634312788,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.5472,
+      "by_bootstrap": 0.26357524528684917,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "encoder_1b",
+     "edition": "2025",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 1.29,
+     "contribution_ci_pp": [
+      0.19,
+      2.44
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0016,
+      "holm_bootstrap": 0.024,
+      "by_bootstrap": 0.02516477816301346,
+      "p_mcnemar": 0.005297127212273984,
+      "holm_mcnemar": 0.07945690818410976,
+      "by_mcnemar": 0.08331314449883544,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.048,
+      "by_bootstrap": 0.034350658533624456,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "strategy": "cascade",
+     "dropped": "llm_llammlein",
+     "edition": "2025",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 2.23,
+     "contribution_ci_pp": [
+      0.93,
+      3.55
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0018000000000000002,
+      "by_bootstrap": 0.0031455972703766824,
+      "p_mcnemar": 2.417563881119019e-07,
+      "holm_mcnemar": 3.86810220979043e-06,
+      "by_mcnemar": 5.069788230272829e-06,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.0036000000000000003,
+      "by_bootstrap": 0.00300568262169214,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "strategy": "soft_voting",
+     "dropped": "llm_llammlein",
+     "edition": "2025",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 3.99,
+     "contribution_ci_pp": [
+      2.8,
+      5.18
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.5474,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.34375,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "tml_svm",
+     "edition": "2025",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.07,
+     "contribution_ci_pp": [
+      -0.18,
+      0.31
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0058,
+      "holm_bootstrap": 0.0812,
+      "by_bootstrap": 0.07297785667273902,
+      "p_mcnemar": 0.9290127047257105,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.1624,
+      "by_bootstrap": 0.0968497733656356,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "tml_svm",
+     "edition": "2025",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": -1.37,
+     "contribution_ci_pp": [
+      -2.4,
+      -0.37
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.161,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.13351404344487733,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.9332920235936886,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "encoder_1b",
+     "edition": "2025",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": -1.69,
+     "contribution_ci_pp": [
+      -4.21,
+      0.7
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.6326,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.01677045612638196,
+      "holm_mcnemar": 0.23478638576934743,
+      "by_mcnemar": 0.17758184183218712,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "encoder_1b",
+     "edition": "2025",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.51,
+     "contribution_ci_pp": [
+      -1.84,
+      2.58
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.7436,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.4134207244474465,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "llm_llammlein",
+     "edition": "2025",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": -0.58,
+     "contribution_ci_pp": [
+      -4.23,
+      3.13
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0078,
+      "holm_bootstrap": 0.10139999999999999,
+      "by_bootstrap": 0.08178552902979373,
+      "p_mcnemar": 1.0107264310878073e-08,
+      "holm_mcnemar": 1.819307575958053e-07,
+      "by_mcnemar": 6.358676605454745e-07,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.21059999999999998,
+      "by_bootstrap": 0.11722162224599346,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "llm_llammlein",
+     "edition": "2025",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 3.35,
+     "contribution_ci_pp": [
+      0.96,
+      5.67
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.907,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.34375,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "tml_svm",
+     "edition": "2025",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": -0.02,
+     "contribution_ci_pp": [
+      -0.41,
+      0.34
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.4528,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.03347136813457756,
+      "holm_mcnemar": 0.36818504948035313,
+      "by_mcnemar": 0.2632186105997506,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "tml_svm",
+     "edition": "2025",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": -1.13,
+     "contribution_ci_pp": [
+      -4.14,
+      1.86
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.8564,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.5853789284609614,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "encoder_1b",
+     "edition": "2025",
+     "subtask": "vio",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.1,
+     "contribution_ci_pp": [
+      -0.84,
+      1.05
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0106,
+      "holm_bootstrap": 0.1272,
+      "by_bootstrap": 0.09436791811130046,
+      "p_mcnemar": 0.0169362279943982,
+      "holm_mcnemar": 0.23478638576934743,
+      "by_mcnemar": 0.17758184183218712,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.2756,
+      "by_bootstrap": 0.14481925359062128,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "encoder_1b",
+     "edition": "2025",
+     "subtask": "vio",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 1.67,
+     "contribution_ci_pp": [
+      0.36,
+      2.98
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.012,
+      "holm_bootstrap": 0.132,
+      "by_bootstrap": 0.09436791811130046,
+      "p_mcnemar": 0.02791461028247153,
+      "holm_mcnemar": 0.3349753233896584,
+      "by_mcnemar": 0.2508803483090609,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.3,
+      "by_bootstrap": 0.15028413108460698,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "llm_llammlein",
+     "edition": "2025",
+     "subtask": "vio",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 1.72,
+     "contribution_ci_pp": [
+      0.38,
+      3.06
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0018000000000000002,
+      "by_bootstrap": 0.0031455972703766824,
+      "p_mcnemar": 2.0251783525101575e-07,
+      "holm_mcnemar": 3.442803199267268e-06,
+      "by_mcnemar": 5.069788230272829e-06,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.0036000000000000003,
+      "by_bootstrap": 0.00300568262169214,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "strategy": "soft_voting",
+     "dropped": "llm_llammlein",
+     "edition": "2025",
+     "subtask": "vio",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 4.23,
+     "contribution_ci_pp": [
+      2.89,
+      5.67
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 1.0,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "tml_svm",
+     "edition": "2025",
+     "subtask": "vio",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.0,
+     "contribution_ci_pp": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2025",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0002,
+      "holm_bootstrap": 0.0032,
+      "by_bootstrap": 0.004194129693835576,
+      "p_mcnemar": 0.17058693287143742,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.006200000000000001,
+      "by_bootstrap": 0.005009471036153567,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "strategy": "soft_voting",
+     "dropped": "tml_svm",
+     "edition": "2025",
+     "subtask": "vio",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": -1.96,
+     "contribution_ci_pp": [
+      -3.07,
+      -0.91
+     ]
+    }
+   ]
+  },
+  "b12_2026": {
+   "m": 18,
+   "survive_holm": 3,
+   "survive_by": 3,
+   "rows": [
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.2776,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.5,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "encoder_1b",
+     "edition": "2026",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.1,
+     "contribution_ci_pp": [
+      0.0,
+      0.25
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.6886,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.7768140041554821,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "encoder_1b",
+     "edition": "2026",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.19,
+     "contribution_ci_pp": [
+      -0.74,
+      1.11
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0702,
+      "holm_bootstrap": 0.9126,
+      "by_bootstrap": 0.6327144223843385,
+      "p_mcnemar": 0.09404480188572646,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.7395676802621426,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 0.6612501767722708,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "llm_llammlein",
+     "edition": "2026",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 1.35,
+     "contribution_ci_pp": [
+      -0.1,
+      2.78
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0018000000000000002,
+      "by_bootstrap": 0.002097064846917788,
+      "p_mcnemar": 3.616398045538034e-06,
+      "holm_mcnemar": 6.147876677414657e-05,
+      "by_mcnemar": 0.00011375731820640007,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.0036000000000000003,
+      "by_bootstrap": 0.00300568262169214,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "strategy": "soft_voting",
+     "dropped": "llm_llammlein",
+     "edition": "2026",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 4.57,
+     "contribution_ci_pp": [
+      3.24,
+      5.93
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.7884,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "tml_svm",
+     "edition": "2026",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.05,
+     "contribution_ci_pp": [
+      -0.1,
+      0.24
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0018000000000000002,
+      "by_bootstrap": 0.002097064846917788,
+      "p_mcnemar": 0.20682737249566782,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.0036000000000000003,
+      "by_bootstrap": 0.00300568262169214,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "strategy": "soft_voting",
+     "dropped": "tml_svm",
+     "edition": "2026",
+     "subtask": "c2a",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": -1.94,
+     "contribution_ci_pp": [
+      -2.9,
+      -1.02
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.149,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.10589896882369348,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.7402566828167013,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "encoder_1b",
+     "edition": "2026",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": -2.04,
+     "contribution_ci_pp": [
+      -5.57,
+      0.46
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.418,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.019930297799056442,
+      "holm_mcnemar": 0.2955140477939071,
+      "by_mcnemar": 0.25077076141802535,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "encoder_1b",
+     "edition": "2026",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": -2.4,
+     "contribution_ci_pp": [
+      -8.09,
+      1.92
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.033,
+      "holm_bootstrap": 0.462,
+      "by_bootstrap": 0.4152188396897221,
+      "p_mcnemar": 0.1793904419231374,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.759,
+      "by_bootstrap": 0.3542411661280022,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "llm_llammlein",
+     "edition": "2026",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 5.72,
+     "contribution_ci_pp": [
+      0.33,
+      11.43
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0704,
+      "holm_bootstrap": 0.9126,
+      "by_bootstrap": 0.6327144223843385,
+      "p_mcnemar": 5.749126690808033e-07,
+      "holm_mcnemar": 1.034842804345446e-05,
+      "by_mcnemar": 3.616887445131095e-05,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 0.6612501767722708,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "llm_llammlein",
+     "edition": "2026",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 3.79,
+     "contribution_ci_pp": [
+      -0.19,
+      9.37
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 1.0,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "tml_svm",
+     "edition": "2026",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.0,
+     "contribution_ci_pp": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.74,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.05091778449688351,
+      "holm_mcnemar": 0.6110134139626021,
+      "by_mcnemar": 0.45761955407721405,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "tml_svm",
+     "edition": "2026",
+     "subtask": "dbo",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": -1.04,
+     "contribution_ci_pp": [
+      -5.89,
+      2.49
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.4766,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.5958830905651775,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "encoder_1b",
+     "edition": "2026",
+     "subtask": "vio",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.33,
+     "contribution_ci_pp": [
+      -0.56,
+      1.23
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_encoder_1b",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.6338,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.648503379652976,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "encoder_1b",
+     "edition": "2026",
+     "subtask": "vio",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.46,
+     "contribution_ci_pp": [
+      -1.47,
+      2.45
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0034,
+      "holm_bootstrap": 0.051,
+      "by_bootstrap": 0.0534751535964036,
+      "p_mcnemar": 0.03854470526539266,
+      "holm_mcnemar": 0.5010811684501045,
+      "by_mcnemar": 0.4041537322343096,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.0986,
+      "by_bootstrap": 0.06387075571095797,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "llm_llammlein",
+     "edition": "2026",
+     "subtask": "vio",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 2.77,
+     "contribution_ci_pp": [
+      1.08,
+      4.52
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_llm_llammlein",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0018000000000000002,
+      "by_bootstrap": 0.002097064846917788,
+      "p_mcnemar": 0.007194001885687246,
+      "holm_mcnemar": 0.11510403017099594,
+      "by_mcnemar": 0.15086288463135006,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 0.0036000000000000003,
+      "by_bootstrap": 0.00300568262169214,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "strategy": "soft_voting",
+     "dropped": "llm_llammlein",
+     "edition": "2026",
+     "subtask": "vio",
+     "decided_by_paired_ci": "distinguishable",
+     "contribution_pp": 3.51,
+     "contribution_ci_pp": [
+      1.73,
+      5.41
+     ]
+    },
+    {
+     "reference": "cascade/full",
+     "treatment": "cascade/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 1.0,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "cascade",
+     "dropped": "tml_svm",
+     "edition": "2026",
+     "subtask": "vio",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": 0.0,
+     "contribution_ci_pp": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "reference": "soft_voting/full",
+     "treatment": "soft_voting/without_tml_svm",
+     "multiplicity": {
+      "family": "b12_2026",
+      "m": 18,
+      "alpha": 0.05,
+      "p_bootstrap": 0.3116,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.019700936519593808,
+      "holm_mcnemar": 0.2955140477939071,
+      "by_mcnemar": 0.25077076141802535,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 36,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "strategy": "soft_voting",
+     "dropped": "tml_svm",
+     "edition": "2026",
+     "subtask": "vio",
+     "decided_by_paired_ci": "indistinguishable",
+     "contribution_pp": -0.88,
+     "contribution_ci_pp": [
+      -2.57,
+      0.78
+     ]
+    }
+   ]
+  }
+ },
+ "verdicts_differing_from_original": []
+}

@@ -1,0 +1,606 @@
+{
+ "experiment": "E5 irreducible items (Section 4.5 rework, THESIS_LOG NS 124 k-o)",
+ "created": "2026-09-24T19:54:06+00:00",
+ "git_commit": "d465b82623c7976a3efe6612f04096baa8f0c09d",
+ "seed": 42,
+ "edition": "2025",
+ "definitions": {
+  "irreducible": "items no component classifies correctly (all six, primary seed)",
+  "injected": "short id or 19-digit 2021 Twitter id (data_profile._is_injected, E60); marks provenance, not label quality",
+  "auroc": "probability that a correct prediction has higher confidence than a wrong one (ties half), defined on the stored calibrated pooled out-of-fold probabilities (what the cascade routes on); no invariance to temperature scaling is claimed -- temperatures are fitted per fold",
+  "ci": "95 % Wilson score interval",
+  "judge_on_set": "the 2025 judge's stored label (results/e3_judge, no calls), applied by e3_combination.assemble_judge including its fallback to the soft vote; recovery counted where the resulting prediction equals the gold label"
+ },
+ "cells": {
+  "c2a": {
+   "n_items": 6773,
+   "classes": [
+    "False",
+    "True"
+   ],
+   "size_per_class": {
+    "False": {
+     "support": 6114,
+     "n_irreducible": 0,
+     "share_of_class": 0.0,
+     "ci_95": [
+      0.0,
+      0.0006279338778565302
+     ]
+    },
+    "True": {
+     "support": 659,
+     "n_irreducible": 79,
+     "share_of_class": 0.11987860394537178,
+     "ci_95": [
+      0.09725546771163318,
+      0.14690784370394486
+     ]
+    }
+   },
+   "construction": {
+    "n_irreducible": 79,
+    "binary_subtask": true,
+    "cascade_recovers": 0,
+    "soft_voting_primary_recovers": 0,
+    "soft_voting_all_six_recovers": 0,
+    "all_six_vote_picks_a_class_no_component_predicted": 0,
+    "primary_set_unanimous_on_set": 79,
+    "judge_invoked_on_set": 0,
+    "bound_note": "cascade: wrong by construction on every item all components get wrong; binary subtasks: soft voting wrong by construction (every true-class probability < 0.5) and the judge never invoked (primary set unanimous); measured: soft voting on multi-class subtasks, the judge on `judge_invoked_on_set` items",
+    "judge_model": "mistral-medium-3.5-128b",
+    "judge_recovers": 0,
+    "judge_fallback_on_set": 0,
+    "judge_rows_missing_on_set": 0,
+    "judge_invoked_on_set_by_class": {
+     "False": 0,
+     "True": 0
+    },
+    "judge_recovers_by_class": {
+     "False": 0,
+     "True": 0
+    },
+    "judge_recovered_naming_unproposed_class": 0,
+    "judge_on_disagreement": {
+     "reference": "llm_llammlein",
+     "n_disagreement": 707,
+     "judge_named_unproposed_class": 0,
+     "turned_reference_right_to_wrong": 92,
+     "turned_reference_wrong_to_right": 93
+    }
+   },
+   "consensus_by_k_wrong": {
+    "0": {
+     "n_items": 5266,
+     "mean_conf_wrong_components": null,
+     "mean_conf_right_components": 0.9430604494531813
+    },
+    "1": {
+     "n_items": 682,
+     "mean_conf_wrong_components": 0.6670432928021003,
+     "mean_conf_right_components": 0.9112651404222785
+    },
+    "2": {
+     "n_items": 209,
+     "mean_conf_wrong_components": 0.7283154435134961,
+     "mean_conf_right_components": 0.8398325451110539
+    },
+    "3": {
+     "n_items": 291,
+     "mean_conf_wrong_components": 0.8023223108169276,
+     "mean_conf_right_components": 0.8524808329951449
+    },
+    "4": {
+     "n_items": 143,
+     "mean_conf_wrong_components": 0.8071258118102601,
+     "mean_conf_right_components": 0.7820233223321554
+    },
+    "5": {
+     "n_items": 103,
+     "mean_conf_wrong_components": 0.8274617362948298,
+     "mean_conf_right_components": 0.7327454934999781
+    },
+    "6": {
+     "n_items": 79,
+     "mean_conf_wrong_components": 0.8678104114180376,
+     "mean_conf_right_components": null
+    }
+   },
+   "injected_cohort": {
+    "False": {
+     "injected_n": 0,
+     "injected_irreducible": 0,
+     "injected_rate": null,
+     "injected_ci_95": null,
+     "other_n": 6114,
+     "other_irreducible": 0,
+     "other_rate": 0.0,
+     "other_ci_95": [
+      0.0,
+      0.0006279338778565302
+     ]
+    },
+    "True": {
+     "injected_n": 0,
+     "injected_irreducible": 0,
+     "injected_rate": null,
+     "injected_ci_95": null,
+     "other_n": 659,
+     "other_irreducible": 79,
+     "other_rate": 0.11987860394537178,
+     "other_ci_95": [
+      0.09725546771163318,
+      0.14690784370394486
+     ]
+    }
+   },
+   "auroc_confidence_error_detection": {
+    "encoder_1b": 0.8546135320237827,
+    "llm_llammlein": 0.888654291128183,
+    "llm_qwen_fewshot": 0.8609118756350397,
+    "tml_lightgbm": 0.8036813406666053,
+    "tml_svm": 0.8047776580806294,
+    "tml_xgboost": 0.8004919334583251
+   },
+   "cascade_fitted": {
+    "stage_order": [
+     "tml_svm",
+     "encoder_1b",
+     "llm_llammlein"
+    ],
+    "thresholds_per_fold": [
+     {
+      "fold": 0,
+      "t1": 0.99,
+      "t2": 0.98
+     },
+     {
+      "fold": 1,
+      "t1": 0.99,
+      "t2": 0.89
+     },
+     {
+      "fold": 2,
+      "t1": 0.99,
+      "t2": 0.98
+     },
+     {
+      "fold": 3,
+      "t1": 0.99,
+      "t2": 0.9
+     },
+     {
+      "fold": 4,
+      "t1": 0.98,
+      "t2": 1.0
+     }
+    ],
+    "share_beyond_first_stage": 0.8852797873911118,
+    "share_to_last_stage": 0.3795954525321128
+   },
+   "machines": {
+    "encoder_1b": "Linux/x86_64",
+    "llm_llammlein": "Linux/x86_64",
+    "llm_qwen_fewshot": "Linux/x86_64",
+    "tml_lightgbm": "Darwin/arm64",
+    "tml_svm": "Darwin/arm64",
+    "tml_xgboost": "Darwin/arm64"
+   }
+  },
+  "dbo": {
+   "n_items": 7210,
+   "classes": [
+    "agitation",
+    "criticism",
+    "nothing",
+    "subversive"
+   ],
+   "size_per_class": {
+    "agitation": {
+     "support": 224,
+     "n_irreducible": 73,
+     "share_of_class": 0.32589285714285715,
+     "ci_95": [
+      0.26789636153861623,
+      0.38976053693822027
+     ]
+    },
+    "criticism": {
+     "support": 803,
+     "n_irreducible": 165,
+     "share_of_class": 0.2054794520547945,
+     "ci_95": [
+      0.1789661235550824,
+      0.23479737103914772
+     ]
+    },
+    "nothing": {
+     "support": 6123,
+     "n_irreducible": 13,
+     "share_of_class": 0.0021231422505307855,
+     "ci_95": [
+      0.0012412225041023744,
+      0.0036294110046862322
+     ]
+    },
+    "subversive": {
+     "support": 60,
+     "n_irreducible": 27,
+     "share_of_class": 0.45,
+     "ci_95": [
+      0.33093453853760824,
+      0.575082854510185
+     ]
+    }
+   },
+   "construction": {
+    "n_irreducible": 278,
+    "binary_subtask": false,
+    "cascade_recovers": 0,
+    "soft_voting_primary_recovers": 0,
+    "soft_voting_all_six_recovers": 0,
+    "all_six_vote_picks_a_class_no_component_predicted": 0,
+    "primary_set_unanimous_on_set": 228,
+    "judge_invoked_on_set": 50,
+    "bound_note": "cascade: wrong by construction on every item all components get wrong; binary subtasks: soft voting wrong by construction (every true-class probability < 0.5) and the judge never invoked (primary set unanimous); measured: soft voting on multi-class subtasks, the judge on `judge_invoked_on_set` items",
+    "judge_model": "mistral-medium-3.5-128b",
+    "judge_recovers": 17,
+    "judge_fallback_on_set": 0,
+    "judge_rows_missing_on_set": 0,
+    "judge_invoked_on_set_by_class": {
+     "agitation": 26,
+     "criticism": 11,
+     "nothing": 3,
+     "subversive": 10
+    },
+    "judge_recovers_by_class": {
+     "agitation": 12,
+     "criticism": 3,
+     "nothing": 0,
+     "subversive": 2
+    },
+    "judge_recovered_naming_unproposed_class": 17,
+    "judge_on_disagreement": {
+     "reference": "llm_llammlein",
+     "n_disagreement": 985,
+     "judge_named_unproposed_class": 369,
+     "turned_reference_right_to_wrong": 308,
+     "turned_reference_wrong_to_right": 98
+    }
+   },
+   "consensus_by_k_wrong": {
+    "0": {
+     "n_items": 4492,
+     "mean_conf_wrong_components": null,
+     "mean_conf_right_components": 0.9001474060155794
+    },
+    "1": {
+     "n_items": 1457,
+     "mean_conf_wrong_components": 0.5492927926242883,
+     "mean_conf_right_components": 0.8570670048136702
+    },
+    "2": {
+     "n_items": 314,
+     "mean_conf_wrong_components": 0.6025288217006974,
+     "mean_conf_right_components": 0.7328245622479612
+    },
+    "3": {
+     "n_items": 198,
+     "mean_conf_wrong_components": 0.6644686363662533,
+     "mean_conf_right_components": 0.6845759112224836
+    },
+    "4": {
+     "n_items": 221,
+     "mean_conf_wrong_components": 0.6834811772224051,
+     "mean_conf_right_components": 0.6609715535495077
+    },
+    "5": {
+     "n_items": 250,
+     "mean_conf_wrong_components": 0.7257742405891419,
+     "mean_conf_right_components": 0.6128151482343673
+    },
+    "6": {
+     "n_items": 278,
+     "mean_conf_wrong_components": 0.7610727580938693,
+     "mean_conf_right_components": null
+    }
+   },
+   "injected_cohort": {
+    "agitation": {
+     "injected_n": 186,
+     "injected_irreducible": 51,
+     "injected_rate": 0.27419354838709675,
+     "injected_ci_95": [
+      0.2151387286790624,
+      0.34238712445323327
+     ],
+     "other_n": 38,
+     "other_irreducible": 22,
+     "other_rate": 0.5789473684210527,
+     "other_ci_95": [
+      0.42192070613127325,
+      0.7214772518818047
+     ]
+    },
+    "criticism": {
+     "injected_n": 45,
+     "injected_irreducible": 9,
+     "injected_rate": 0.2,
+     "injected_ci_95": [
+      0.10896004402509006,
+      0.3382325131392944
+     ],
+     "other_n": 758,
+     "other_irreducible": 156,
+     "other_rate": 0.20580474934036938,
+     "other_ci_95": [
+      0.17854112938466274,
+      0.23603533900456672
+     ]
+    },
+    "nothing": {
+     "injected_n": 445,
+     "injected_irreducible": 7,
+     "injected_rate": 0.015730337078651686,
+     "injected_ci_95": [
+      0.00764011291793951,
+      0.03211021325503555
+     ],
+     "other_n": 5678,
+     "other_irreducible": 6,
+     "other_rate": 0.0010567101091933778,
+     "other_ci_95": [
+      0.000484380267196779,
+      0.0023037298413285975
+     ]
+    },
+    "subversive": {
+     "injected_n": 39,
+     "injected_irreducible": 20,
+     "injected_rate": 0.5128205128205128,
+     "injected_ci_95": [
+      0.3619910864569657,
+      0.661350712168669
+     ],
+     "other_n": 21,
+     "other_irreducible": 7,
+     "other_rate": 0.3333333333333333,
+     "other_ci_95": [
+      0.17194536432683688,
+      0.5462692434278971
+     ]
+    }
+   },
+   "auroc_confidence_error_detection": {
+    "encoder_1b": 0.8367890476324211,
+    "llm_llammlein": 0.8565225333200875,
+    "llm_qwen_fewshot": 0.773087008466603,
+    "tml_lightgbm": 0.8260044725904925,
+    "tml_svm": 0.8090113130366235,
+    "tml_xgboost": 0.8235885609620295
+   },
+   "cascade_fitted": {
+    "stage_order": [
+     "tml_svm",
+     "encoder_1b",
+     "llm_llammlein"
+    ],
+    "thresholds_per_fold": [
+     {
+      "fold": 0,
+      "t1": 0.99,
+      "t2": 0.81
+     },
+     {
+      "fold": 1,
+      "t1": 0.99,
+      "t2": 0.81
+     },
+     {
+      "fold": 2,
+      "t1": 0.99,
+      "t2": 0.81
+     },
+     {
+      "fold": 3,
+      "t1": 0.97,
+      "t2": 0.81
+     },
+     {
+      "fold": 4,
+      "t1": 0.92,
+      "t2": 0.3
+     }
+    ],
+    "share_beyond_first_stage": 0.8743411927877948,
+    "share_to_last_stage": 0.1535367545076283
+   },
+   "machines": {
+    "encoder_1b": "Linux/x86_64",
+    "llm_llammlein": "Linux/x86_64",
+    "llm_qwen_fewshot": "Linux/x86_64",
+    "tml_lightgbm": "Darwin/arm64",
+    "tml_svm": "Darwin/arm64",
+    "tml_xgboost": "Darwin/arm64"
+   }
+  },
+  "vio": {
+   "n_items": 7720,
+   "classes": [
+    "False",
+    "True"
+   ],
+   "size_per_class": {
+    "False": {
+     "support": 7156,
+     "n_irreducible": 0,
+     "share_of_class": 0.0,
+     "ci_95": [
+      0.0,
+      0.0005365481828536542
+     ]
+    },
+    "True": {
+     "support": 564,
+     "n_irreducible": 85,
+     "share_of_class": 0.15070921985815602,
+     "ci_95": [
+      0.12355090418233033,
+      0.18259362626418857
+     ]
+    }
+   },
+   "construction": {
+    "n_irreducible": 85,
+    "binary_subtask": true,
+    "cascade_recovers": 0,
+    "soft_voting_primary_recovers": 0,
+    "soft_voting_all_six_recovers": 0,
+    "all_six_vote_picks_a_class_no_component_predicted": 0,
+    "primary_set_unanimous_on_set": 85,
+    "judge_invoked_on_set": 0,
+    "bound_note": "cascade: wrong by construction on every item all components get wrong; binary subtasks: soft voting wrong by construction (every true-class probability < 0.5) and the judge never invoked (primary set unanimous); measured: soft voting on multi-class subtasks, the judge on `judge_invoked_on_set` items",
+    "judge_model": "mistral-medium-3.5-128b",
+    "judge_recovers": 0,
+    "judge_fallback_on_set": 0,
+    "judge_rows_missing_on_set": 0,
+    "judge_invoked_on_set_by_class": {
+     "False": 0,
+     "True": 0
+    },
+    "judge_recovers_by_class": {
+     "False": 0,
+     "True": 0
+    },
+    "judge_recovered_naming_unproposed_class": 0,
+    "judge_on_disagreement": {
+     "reference": "llm_llammlein",
+     "n_disagreement": 569,
+     "judge_named_unproposed_class": 0,
+     "turned_reference_right_to_wrong": 50,
+     "turned_reference_wrong_to_right": 75
+    }
+   },
+   "consensus_by_k_wrong": {
+    "0": {
+     "n_items": 6687,
+     "mean_conf_wrong_components": null,
+     "mean_conf_right_components": 0.9572521115646578
+    },
+    "1": {
+     "n_items": 405,
+     "mean_conf_wrong_components": 0.6724494067239173,
+     "mean_conf_right_components": 0.9040527676947323
+    },
+    "2": {
+     "n_items": 130,
+     "mean_conf_wrong_components": 0.7510031947722802,
+     "mean_conf_right_components": 0.855986943267859
+    },
+    "3": {
+     "n_items": 217,
+     "mean_conf_wrong_components": 0.8310818439621347,
+     "mean_conf_right_components": 0.8880748256194061
+    },
+    "4": {
+     "n_items": 115,
+     "mean_conf_wrong_components": 0.8419292943633121,
+     "mean_conf_right_components": 0.8245054675185162
+    },
+    "5": {
+     "n_items": 81,
+     "mean_conf_wrong_components": 0.8586358710571572,
+     "mean_conf_right_components": 0.7661287843445201
+    },
+    "6": {
+     "n_items": 85,
+     "mean_conf_wrong_components": 0.8901787795272528,
+     "mean_conf_right_components": null
+    }
+   },
+   "injected_cohort": {
+    "False": {
+     "injected_n": 0,
+     "injected_irreducible": 0,
+     "injected_rate": null,
+     "injected_ci_95": null,
+     "other_n": 7156,
+     "other_irreducible": 0,
+     "other_rate": 0.0,
+     "other_ci_95": [
+      0.0,
+      0.0005365481828536542
+     ]
+    },
+    "True": {
+     "injected_n": 119,
+     "injected_irreducible": 6,
+     "injected_rate": 0.05042016806722689,
+     "injected_ci_95": [
+      0.023310004458561698,
+      0.10564956624061513
+     ],
+     "other_n": 445,
+     "other_irreducible": 79,
+     "other_rate": 0.17752808988764046,
+     "other_ci_95": [
+      0.14482936833285306,
+      0.21574683494242272
+     ]
+    }
+   },
+   "auroc_confidence_error_detection": {
+    "encoder_1b": 0.8608199551710485,
+    "llm_llammlein": 0.8686910395723062,
+    "llm_qwen_fewshot": 0.9022235764515122,
+    "tml_lightgbm": 0.7870924598128352,
+    "tml_svm": 0.7884875731494042,
+    "tml_xgboost": 0.7698015646378049
+   },
+   "cascade_fitted": {
+    "stage_order": [
+     "tml_svm",
+     "encoder_1b",
+     "llm_llammlein"
+    ],
+    "thresholds_per_fold": [
+     {
+      "fold": 0,
+      "t1": 1.0,
+      "t2": 0.83
+     },
+     {
+      "fold": 1,
+      "t1": 1.0,
+      "t2": 0.94
+     },
+     {
+      "fold": 2,
+      "t1": 1.0,
+      "t2": 0.86
+     },
+     {
+      "fold": 3,
+      "t1": 1.0,
+      "t2": 0.94
+     },
+     {
+      "fold": 4,
+      "t1": 1.0,
+      "t2": 0.8
+     }
+    ],
+    "share_beyond_first_stage": 1.0,
+    "share_to_last_stage": 0.11178756476683938
+   },
+   "machines": {
+    "encoder_1b": "Linux/x86_64",
+    "llm_llammlein": "Linux/x86_64",
+    "llm_qwen_fewshot": "Linux/x86_64",
+    "tml_lightgbm": "Darwin/arm64",
+    "tml_svm": "Darwin/arm64",
+    "tml_xgboost": "Darwin/arm64"
+   }
+  }
+ }
+}

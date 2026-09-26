@@ -1,0 +1,62 @@
+{
+  "subtask": "c2a",
+  "baseline": "C2A-GradBoost-SentenceBERT",
+  "edition": "2025",
+  "eval_set": "own_stratified_holdout_80_20",
+  "holdout_frac": 0.2,
+  "seed": 42,
+  "organizer_target_macro_f1": 59.13,
+  "organizer_eval_set": "official_test_gold_unavailable",
+  "delta_pp_vs_organizer": -1.7299545241493988,
+  "macro_f1": 0.574000454758506,
+  "weighted_f1": 0.7729659841128216,
+  "per_class_f1": {
+    "False": 0.8211116300794021,
+    "True": 0.3268892794376098
+  },
+  "per_class_support": {
+    "False": 1223,
+    "True": 132
+  },
+  "zero_support_classes": [],
+  "report": "              precision    recall  f1-score   support\n\n       False       0.96      0.72      0.82      1223\n        True       0.21      0.70      0.33       132\n\n    accuracy                           0.72      1355\n   macro avg       0.59      0.71      0.57      1355\nweighted avg       0.88      0.72      0.77      1355\n",
+  "confusion_matrix": [
+    [
+      879,
+      344
+    ],
+    [
+      39,
+      93
+    ]
+  ],
+  "labels": [
+    "False",
+    "True"
+  ],
+  "n_samples": 1355,
+  "macro_f1_ci_lower": 0.5448047293695667,
+  "macro_f1_ci_upper": 0.6023596239127031,
+  "ci_level": 0.95,
+  "env_pin": {
+    "python": "3.13.8",
+    "requires_python_floor": ">=3.12",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.17.1",
+    "numpy": "2.4.6",
+    "xgboost": "3.3.0",
+    "lightgbm": "4.6.0",
+    "torch": "2.12.1+cu126",
+    "cuda_available": true,
+    "cuda_device": "NVIDIA A40",
+    "mps_available": false,
+    "torch_auto_device": "cuda",
+    "platform": "Linux/x86_64",
+    "nltk_punkt_tab": true
+  },
+  "data_rules_id": "7e9082557061",
+  "produced_by": "src/e1_machine_baseline.py",
+  "protocol_source": "src/e1_platform_check.run (mirrors notebooks/01_baseline_repro.ipynb)",
+  "anchor": "THESIS_LOG Next Steps #67: E1 references are keyed by machine",
+  "created": "2026-08-27T16:10:31+00:00"
+}

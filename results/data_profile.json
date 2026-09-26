@@ -1,0 +1,2034 @@
+{
+  "_schema": "data_profile/v1",
+  "_created": "2026-09-24T19:52:15+00:00",
+  "_note": "Measurement layer for Section 3.1. Figures live in src/data_figures.py.",
+  "inventory": {
+    "splits": [
+      {
+        "subtask": "c2a",
+        "edition": "2025",
+        "split": "test",
+        "file": "c2a/c2a_test.csv",
+        "bytes": 520155,
+        "sha256": "1002421f4284d47df3b232b0bd395fbaffe284427a4cee8307c9531f9cd0e77e",
+        "sha256_short": "1002421f4284d47d",
+        "n": 2982,
+        "labelled": false,
+        "label_space": []
+      },
+      {
+        "subtask": "c2a",
+        "edition": "2025",
+        "split": "train",
+        "file": "c2a/c2a_train.csv",
+        "bytes": 1260633,
+        "sha256": "0281cdd49a8141ab73c46f42ada839f927396faf3cc27ce92a7a2bae001495f9",
+        "sha256_short": "0281cdd49a8141ab",
+        "n": 6840,
+        "labelled": true,
+        "label_space": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "subtask": "c2a",
+        "edition": "2025",
+        "split": "trial",
+        "file": "c2a/c2a_trial.csv",
+        "bytes": 186394,
+        "sha256": "f25ce4c0123855c939b399a06a988d4819fc2e4f5ad1b2b594aa430377bc3fd5",
+        "sha256_short": "f25ce4c0123855c9",
+        "n": 1051,
+        "labelled": true,
+        "label_space": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2025",
+        "split": "test",
+        "file": "dbo/dbo_test.csv",
+        "bytes": 524273,
+        "sha256": "335a270dfa61730f4bb9a850fb3c7a24b9ef4cd7b10552deca971600a9e0a471",
+        "sha256_short": "335a270dfa61730f",
+        "n": 3194,
+        "labelled": false,
+        "label_space": []
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2025",
+        "split": "train",
+        "file": "dbo/dbo_train.csv",
+        "bytes": 1325716,
+        "sha256": "8bc02be84280b19fbf86bc0a4b5859e6730fdf2b5b9c8e502220b007f9dbdaeb",
+        "sha256_short": "8bc02be84280b19f",
+        "n": 7454,
+        "labelled": true,
+        "label_space": [
+          "agitation",
+          "criticism",
+          "nothing",
+          "subversive"
+        ]
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2025",
+        "split": "trial",
+        "file": "dbo/dbo_trial.csv",
+        "bytes": 183804,
+        "sha256": "f4ea2db265441b2b09de71eb1e4dab78189ce95835593f308cd7574b6879dce5",
+        "sha256_short": "f4ea2db265441b2b",
+        "n": 1053,
+        "labelled": true,
+        "label_space": [
+          "agitation",
+          "criticism",
+          "nothing",
+          "subversive"
+        ]
+      },
+      {
+        "subtask": "vio",
+        "edition": "2025",
+        "split": "test",
+        "file": "vio/vio_test.csv",
+        "bytes": 607166,
+        "sha256": "77d58bb74a02e093c5514775b2b0b7797e23321b6433648bbbe26e1bf76355c9",
+        "sha256_short": "77d58bb74a02e093",
+        "n": 3335,
+        "labelled": false,
+        "label_space": []
+      },
+      {
+        "subtask": "vio",
+        "edition": "2025",
+        "split": "train",
+        "file": "vio/vio_train.csv",
+        "bytes": 1457588,
+        "sha256": "3b7b9a0732ecaea67791b316398f7ed00f203506f7ed62f8acd62e34b2f9a75e",
+        "sha256_short": "3b7b9a0732ecaea6",
+        "n": 7783,
+        "labelled": true,
+        "label_space": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "subtask": "vio",
+        "edition": "2025",
+        "split": "trial",
+        "file": "vio/vio_trial.csv",
+        "bytes": 195630,
+        "sha256": "f15508a52d7cbf0640f09cddc6815bdfa710b4166e71f8cdf9a5c80010794596",
+        "sha256_short": "f15508a52d7cbf06",
+        "n": 1051,
+        "labelled": true,
+        "label_space": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "subtask": "c2a",
+        "edition": "2026",
+        "split": "test",
+        "file": "c2a/c2a_test_26.csv",
+        "bytes": 520155,
+        "sha256": "1002421f4284d47df3b232b0bd395fbaffe284427a4cee8307c9531f9cd0e77e",
+        "sha256_short": "1002421f4284d47d",
+        "n": 2982,
+        "labelled": false,
+        "label_space": []
+      },
+      {
+        "subtask": "c2a",
+        "edition": "2026",
+        "split": "train",
+        "file": "c2a/c2a_train_26.csv",
+        "bytes": 3026492,
+        "sha256": "2c0cd0e88a3147f5b3a37a25beb26a730ba9ef2073314c61b7c17afe2abfe289",
+        "sha256_short": "2c0cd0e88a3147f5",
+        "n": 15829,
+        "labelled": true,
+        "label_space": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "subtask": "c2a",
+        "edition": "2026",
+        "split": "trial",
+        "file": "c2a/c2a_trial.csv",
+        "bytes": 189713,
+        "sha256": "e37a37b0f688ecf2e1964b61fc577c42c21970a16a830582a122ac47dfcff64e",
+        "sha256_short": "e37a37b0f688ecf2",
+        "n": 999,
+        "labelled": true,
+        "label_space": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2026",
+        "split": "test",
+        "file": "dbo/dbo_test_26.csv",
+        "bytes": 520415,
+        "sha256": "e9d76cc19a7055ac37f4e944d0ad085a35b13420d5db370400ab0139f1a613ae",
+        "sha256_short": "e9d76cc19a7055ac",
+        "n": 3165,
+        "labelled": false,
+        "label_space": []
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2026",
+        "split": "train",
+        "file": "dbo/dbo_train_26.csv",
+        "bytes": 2854808,
+        "sha256": "5b961cf593c5d699a7256d5e973d470418064318379d1f8ed7762e2585352790",
+        "sha256_short": "5b961cf593c5d699",
+        "n": 15853,
+        "labelled": true,
+        "label_space": [
+          "agitation",
+          "criticism",
+          "nothing",
+          "subversive"
+        ]
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2026",
+        "split": "trial",
+        "file": "dbo/dbo_trial.csv",
+        "bytes": 167385,
+        "sha256": "0bae256ded3a17674fa452ff70a80fea750e55ab7aad34bbb3ee2b36adaad6e7",
+        "sha256_short": "0bae256ded3a1767",
+        "n": 999,
+        "labelled": true,
+        "label_space": [
+          "agitation",
+          "criticism",
+          "nothing",
+          "subversive"
+        ]
+      },
+      {
+        "subtask": "def",
+        "edition": "2026",
+        "split": "test",
+        "file": "def/def_test.csv",
+        "bytes": 148626,
+        "sha256": "6b061892e7ec98bff765cb0c54317e1e34bc0f608ef06dfb0ae8471dae9fd151",
+        "sha256_short": "6b061892e7ec98bf",
+        "n": 577,
+        "labelled": false,
+        "label_space": []
+      },
+      {
+        "subtask": "def",
+        "edition": "2026",
+        "split": "train",
+        "file": "def/def_train.csv",
+        "bytes": 819608,
+        "sha256": "52b2bd6a79da6f2f1efea97ff567f35b20feb79e87c29f0c2f593662120b6ba0",
+        "sha256_short": "52b2bd6a79da6f2f",
+        "n": 3263,
+        "labelled": true,
+        "label_space": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "subtask": "def",
+        "edition": "2026",
+        "split": "trial",
+        "file": "def/def_trial.csv",
+        "bytes": 26280,
+        "sha256": "66898f79d3306f6f7855a1de46cd856b8a266158d626e243d4c8662a6c1d5df7",
+        "sha256_short": "66898f79d3306f6f",
+        "n": 99,
+        "labelled": true,
+        "label_space": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "subtask": "vio",
+        "edition": "2026",
+        "split": "test",
+        "file": "vio/vio_test_26.csv",
+        "bytes": 745213,
+        "sha256": "15bdbbdda5022477e8fb1de7faf80887fc2cc8aff1a0f37bfee20eb04ee1b234",
+        "sha256_short": "15bdbbdda5022477",
+        "n": 4108,
+        "labelled": false,
+        "label_space": []
+      },
+      {
+        "subtask": "vio",
+        "edition": "2026",
+        "split": "train",
+        "file": "vio/vio_train_26.csv",
+        "bytes": 3176542,
+        "sha256": "628d14a4b30a81af306e3f2101886250eac4826a3097354f3a3bf9e5e0ecfc67",
+        "sha256_short": "628d14a4b30a81af",
+        "n": 16431,
+        "labelled": true,
+        "label_space": [
+          "call2violence",
+          "glorification",
+          "nothing",
+          "other",
+          "propensity",
+          "support"
+        ]
+      },
+      {
+        "subtask": "vio",
+        "edition": "2026",
+        "split": "trial",
+        "file": "vio/vio_trial.csv",
+        "bytes": 198620,
+        "sha256": "c42f3a8c3586d9618f3720f2c9a5d09e80f4d19b04ec6b468f114235e5c367e9",
+        "sha256_short": "c42f3a8c3586d961",
+        "n": 998,
+        "labelled": true,
+        "label_space": [
+          "call2violence",
+          "nothing",
+          "other",
+          "support"
+        ]
+      }
+    ],
+    "test_set_identity": {
+      "c2a": {
+        "sha_2025": "1002421f4284d47d",
+        "sha_2026": "1002421f4284d47d",
+        "byte_identical": true,
+        "bytes_2025": 520155,
+        "bytes_2026": 520155
+      },
+      "dbo": {
+        "sha_2025": "335a270dfa61730f",
+        "sha_2026": "e9d76cc19a7055ac",
+        "byte_identical": false,
+        "bytes_2025": 524273,
+        "bytes_2026": 520415
+      },
+      "vio": {
+        "sha_2025": "77d58bb74a02e093",
+        "sha_2026": "15bdbbdda5022477",
+        "byte_identical": false,
+        "bytes_2025": 607166,
+        "bytes_2026": 745213
+      },
+      "_organiser_claim": "The 2026 task pages state the test sets of ST1 and ST2 are identical to 2025. Measured: ST1 is byte-identical, ST2 is not."
+    }
+  },
+  "label_distributions": {
+    "c2a": {
+      "2025": {
+        "n": 6840,
+        "n_classes": 2,
+        "counts": {
+          "False": 6177,
+          "True": 663
+        },
+        "share_pct": {
+          "False": 90.307,
+          "True": 9.693
+        },
+        "majority_class": "False",
+        "minority_class": "True",
+        "imbalance_ratio": 9.3,
+        "minority_n": 663
+      },
+      "2026": {
+        "n": 15829,
+        "n_classes": 2,
+        "counts": {
+          "False": 14395,
+          "True": 1434
+        },
+        "share_pct": {
+          "False": 90.941,
+          "True": 9.059
+        },
+        "majority_class": "False",
+        "minority_class": "True",
+        "imbalance_ratio": 10.0,
+        "minority_n": 1434
+      }
+    },
+    "dbo": {
+      "2025": {
+        "n": 7454,
+        "n_classes": 4,
+        "counts": {
+          "nothing": 6277,
+          "criticism": 804,
+          "agitation": 313,
+          "subversive": 60
+        },
+        "share_pct": {
+          "nothing": 84.21,
+          "criticism": 10.786,
+          "agitation": 4.199,
+          "subversive": 0.805
+        },
+        "majority_class": "nothing",
+        "minority_class": "subversive",
+        "imbalance_ratio": 104.6,
+        "minority_n": 60
+      },
+      "2026": {
+        "n": 15853,
+        "n_classes": 4,
+        "counts": {
+          "nothing": 13818,
+          "criticism": 1839,
+          "agitation": 143,
+          "subversive": 53
+        },
+        "share_pct": {
+          "nothing": 87.163,
+          "criticism": 11.6,
+          "agitation": 0.902,
+          "subversive": 0.334
+        },
+        "majority_class": "nothing",
+        "minority_class": "subversive",
+        "imbalance_ratio": 260.7,
+        "minority_n": 53
+      }
+    },
+    "vio": {
+      "2025": {
+        "n": 7783,
+        "n_classes": 2,
+        "counts": {
+          "False": 7219,
+          "True": 564
+        },
+        "share_pct": {
+          "False": 92.753,
+          "True": 7.247
+        },
+        "majority_class": "False",
+        "minority_class": "True",
+        "imbalance_ratio": 12.8,
+        "minority_n": 564
+      },
+      "2026": {
+        "n": 16431,
+        "n_classes": 6,
+        "counts": {
+          "nothing": 15901,
+          "call2violence": 197,
+          "other": 130,
+          "support": 102,
+          "propensity": 74,
+          "glorification": 27
+        },
+        "share_pct": {
+          "nothing": 96.774,
+          "call2violence": 1.199,
+          "other": 0.791,
+          "support": 0.621,
+          "propensity": 0.45,
+          "glorification": 0.164
+        },
+        "majority_class": "nothing",
+        "minority_class": "glorification",
+        "imbalance_ratio": 588.9,
+        "minority_n": 27
+      }
+    }
+  },
+  "length_profile": {
+    "overall": {
+      "c2a": {
+        "2025": {
+          "n": 6840,
+          "char": {
+            "mean": 158.4,
+            "median": 88.0,
+            "p25": 43.0,
+            "p75": 180.0,
+            "p95": 507.0499999999993,
+            "p99": 1121.0,
+            "max": 10000
+          },
+          "word": {
+            "mean": 23.8,
+            "median": 13.0,
+            "p25": 7.0,
+            "p75": 27.0,
+            "p95": 76.0,
+            "p99": 165.60999999999967,
+            "max": 1311
+          }
+        },
+        "2026": {
+          "n": 15829,
+          "char": {
+            "mean": 165.4,
+            "median": 93.0,
+            "p25": 47.0,
+            "p75": 184.0,
+            "p95": 518.0,
+            "p99": 1177.7199999999993,
+            "max": 10000
+          },
+          "word": {
+            "mean": 24.8,
+            "median": 14.0,
+            "p25": 7.0,
+            "p75": 28.0,
+            "p95": 77.0,
+            "p99": 171.0,
+            "max": 1311
+          }
+        }
+      },
+      "dbo": {
+        "2025": {
+          "n": 7454,
+          "char": {
+            "mean": 150.2,
+            "median": 84.0,
+            "p25": 43.0,
+            "p75": 170.0,
+            "p95": 449.34999999999945,
+            "p99": 1038.9400000000005,
+            "max": 7624
+          },
+          "word": {
+            "mean": 22.3,
+            "median": 12.0,
+            "p25": 6.0,
+            "p75": 26.0,
+            "p95": 67.0,
+            "p99": 158.0,
+            "max": 1091
+          }
+        },
+        "2026": {
+          "n": 15853,
+          "char": {
+            "mean": 152.2,
+            "median": 88.0,
+            "p25": 45.0,
+            "p75": 170.0,
+            "p95": 462.0,
+            "p99": 1010.4799999999996,
+            "max": 7624
+          },
+          "word": {
+            "mean": 22.5,
+            "median": 13.0,
+            "p25": 6.0,
+            "p75": 26.0,
+            "p95": 69.0,
+            "p99": 152.0,
+            "max": 1091
+          }
+        }
+      },
+      "vio": {
+        "2025": {
+          "n": 7783,
+          "char": {
+            "mean": 161.5,
+            "median": 89.0,
+            "p25": 45.0,
+            "p75": 180.0,
+            "p95": 519.8999999999996,
+            "p99": 1156.3600000000006,
+            "max": 10000
+          },
+          "word": {
+            "mean": 24.1,
+            "median": 13.0,
+            "p25": 7.0,
+            "p75": 27.0,
+            "p95": 77.0,
+            "p99": 168.1800000000003,
+            "max": 1311
+          }
+        },
+        "2026": {
+          "n": 16431,
+          "char": {
+            "mean": 165.4,
+            "median": 94.0,
+            "p25": 48.0,
+            "p75": 182.0,
+            "p95": 522.5,
+            "p99": 1152.5000000000036,
+            "max": 10778
+          },
+          "word": {
+            "mean": 24.5,
+            "median": 14.0,
+            "p25": 7.0,
+            "p75": 28.0,
+            "p95": 78.0,
+            "p99": 169.0,
+            "max": 1325
+          }
+        }
+      }
+    },
+    "by_class": {
+      "c2a": {
+        "2025": {
+          "False": {
+            "n": 6177,
+            "char_median": 84.0,
+            "word_median": 13.0
+          },
+          "True": {
+            "n": 663,
+            "char_median": 133.0,
+            "word_median": 20.0
+          }
+        },
+        "2026": {
+          "False": {
+            "n": 14395,
+            "char_median": 90.0,
+            "word_median": 13.0
+          },
+          "True": {
+            "n": 1434,
+            "char_median": 141.0,
+            "word_median": 21.0
+          }
+        }
+      },
+      "dbo": {
+        "2025": {
+          "agitation": {
+            "n": 313,
+            "char_median": 145.0,
+            "word_median": 21.0
+          },
+          "criticism": {
+            "n": 804,
+            "char_median": 206.0,
+            "word_median": 31.0
+          },
+          "nothing": {
+            "n": 6277,
+            "char_median": 73.0,
+            "word_median": 11.0
+          },
+          "subversive": {
+            "n": 60,
+            "char_median": 157.5,
+            "word_median": 25.5
+          }
+        },
+        "2026": {
+          "agitation": {
+            "n": 143,
+            "char_median": 135.0,
+            "word_median": 20.0
+          },
+          "criticism": {
+            "n": 1839,
+            "char_median": 207.0,
+            "word_median": 31.0
+          },
+          "nothing": {
+            "n": 13818,
+            "char_median": 78.0,
+            "word_median": 11.0
+          },
+          "subversive": {
+            "n": 53,
+            "char_median": 162.0,
+            "word_median": 27.0
+          }
+        }
+      },
+      "vio": {
+        "2025": {
+          "False": {
+            "n": 7219,
+            "char_median": 88.0,
+            "word_median": 13.0
+          },
+          "True": {
+            "n": 564,
+            "char_median": 109.5,
+            "word_median": 17.0
+          }
+        },
+        "2026": {
+          "call2violence": {
+            "n": 197,
+            "char_median": 88.0,
+            "word_median": 13.0
+          },
+          "glorification": {
+            "n": 27,
+            "char_median": 177.0,
+            "word_median": 27.0
+          },
+          "nothing": {
+            "n": 15901,
+            "char_median": 93.0,
+            "word_median": 14.0
+          },
+          "other": {
+            "n": 130,
+            "char_median": 185.5,
+            "word_median": 26.0
+          },
+          "propensity": {
+            "n": 74,
+            "char_median": 129.0,
+            "word_median": 22.5
+          },
+          "support": {
+            "n": 102,
+            "char_median": 113.5,
+            "word_median": 18.0
+          }
+        }
+      }
+    },
+    "histogram_bins": [
+      5.0,
+      5.93,
+      7.04,
+      8.35,
+      9.91,
+      11.76,
+      13.95,
+      16.55,
+      19.64,
+      23.31,
+      27.65,
+      32.81,
+      38.93,
+      46.19,
+      54.81,
+      65.03,
+      77.16,
+      91.55,
+      108.63,
+      128.89,
+      152.93,
+      181.45,
+      215.3,
+      255.46,
+      303.11,
+      359.64,
+      426.72,
+      506.32,
+      600.76,
+      712.81,
+      845.77,
+      1003.52,
+      1190.7,
+      1412.8,
+      1676.32,
+      1988.99,
+      2359.98,
+      2800.17,
+      3322.46,
+      3942.18,
+      4677.48,
+      5549.94,
+      6585.13,
+      7813.41,
+      9270.79,
+      11000.0
+    ],
+    "histogram_counts": {
+      "c2a": {
+        "2025": [
+          0,
+          41,
+          20,
+          23,
+          82,
+          76,
+          143,
+          133,
+          180,
+          169,
+          258,
+          286,
+          378,
+          370,
+          450,
+          419,
+          420,
+          457,
+          440,
+          383,
+          349,
+          342,
+          275,
+          236,
+          197,
+          183,
+          112,
+          99,
+          68,
+          53,
+          36,
+          30,
+          23,
+          10,
+          6,
+          5,
+          5,
+          3,
+          1,
+          0,
+          0,
+          1,
+          2,
+          0,
+          1
+        ],
+        "2026": [
+          0,
+          53,
+          43,
+          34,
+          143,
+          152,
+          263,
+          270,
+          410,
+          423,
+          561,
+          642,
+          863,
+          790,
+          1059,
+          1029,
+          980,
+          1070,
+          1084,
+          978,
+          896,
+          795,
+          641,
+          579,
+          456,
+          445,
+          285,
+          220,
+          178,
+          128,
+          92,
+          54,
+          52,
+          32,
+          18,
+          19,
+          10,
+          9,
+          3,
+          0,
+          4,
+          3,
+          3,
+          0,
+          1
+        ]
+      },
+      "dbo": {
+        "2025": [
+          0,
+          46,
+          23,
+          25,
+          87,
+          66,
+          163,
+          120,
+          200,
+          199,
+          294,
+          310,
+          444,
+          424,
+          534,
+          474,
+          471,
+          515,
+          451,
+          435,
+          357,
+          360,
+          301,
+          350,
+          196,
+          123,
+          104,
+          84,
+          67,
+          34,
+          32,
+          28,
+          17,
+          8,
+          10,
+          6,
+          3,
+          3,
+          3,
+          0,
+          0,
+          2,
+          4,
+          0,
+          0
+        ],
+        "2026": [
+          0,
+          60,
+          46,
+          38,
+          151,
+          141,
+          295,
+          260,
+          420,
+          461,
+          598,
+          661,
+          940,
+          846,
+          1116,
+          1055,
+          1018,
+          1089,
+          1077,
+          1004,
+          879,
+          734,
+          599,
+          610,
+          426,
+          335,
+          269,
+          174,
+          157,
+          95,
+          69,
+          47,
+          37,
+          22,
+          15,
+          13,
+          7,
+          7,
+          4,
+          0,
+          4,
+          3,
+          5,
+          0,
+          0
+        ]
+      },
+      "vio": {
+        "2025": [
+          0,
+          44,
+          19,
+          21,
+          86,
+          71,
+          143,
+          146,
+          200,
+          191,
+          271,
+          320,
+          445,
+          433,
+          507,
+          481,
+          487,
+          544,
+          501,
+          435,
+          433,
+          379,
+          302,
+          288,
+          225,
+          185,
+          139,
+          105,
+          101,
+          50,
+          43,
+          42,
+          26,
+          12,
+          9,
+          7,
+          3,
+          3,
+          2,
+          1,
+          0,
+          1,
+          2,
+          0,
+          1
+        ],
+        "2026": [
+          0,
+          66,
+          41,
+          36,
+          144,
+          149,
+          294,
+          276,
+          412,
+          408,
+          573,
+          631,
+          916,
+          832,
+          1093,
+          1064,
+          1030,
+          1153,
+          1170,
+          1003,
+          953,
+          766,
+          674,
+          592,
+          460,
+          434,
+          327,
+          235,
+          201,
+          127,
+          96,
+          59,
+          52,
+          35,
+          19,
+          17,
+          5,
+          9,
+          2,
+          2,
+          2,
+          3,
+          4,
+          0,
+          2
+        ]
+      }
+    }
+  },
+  "provenance": {
+    "_definition": "injected (= the marked items) = numeric id < 1e12 (short ids) or >= 1e18 (19-digit Twitter ids, all dated 2021); corpus ids have 15-16 digits",
+    "by_split": {
+      "c2a": {
+        "2025_train": {
+          "n": 6840,
+          "injected_n": 0,
+          "injected_pct": 0.0
+        },
+        "2025_test": {
+          "n": 2982,
+          "injected_n": 0,
+          "injected_pct": 0.0
+        },
+        "2026_train": {
+          "n": 15829,
+          "injected_n": 0,
+          "injected_pct": 0.0
+        },
+        "2026_test": {
+          "n": 2982,
+          "injected_n": 0,
+          "injected_pct": 0.0
+        }
+      },
+      "dbo": {
+        "2025_train": {
+          "n": 7454,
+          "injected_n": 894,
+          "injected_pct": 11.994,
+          "id_range": [
+            1001,
+            1406868527118753792
+          ]
+        },
+        "2025_test": {
+          "n": 3194,
+          "injected_n": 447,
+          "injected_pct": 13.995,
+          "id_range": [
+            1007,
+            1406584567197224960
+          ]
+        },
+        "2026_train": {
+          "n": 15853,
+          "injected_n": 610,
+          "injected_pct": 3.848,
+          "id_range": [
+            1001,
+            1406676631620669440
+          ]
+        },
+        "2026_test": {
+          "n": 3165,
+          "injected_n": 393,
+          "injected_pct": 12.417,
+          "id_range": [
+            1007,
+            1406584567197224960
+          ]
+        }
+      },
+      "vio": {
+        "2025_train": {
+          "n": 7783,
+          "injected_n": 119,
+          "injected_pct": 1.529,
+          "id_range": [
+            2001,
+            2185
+          ]
+        },
+        "2025_test": {
+          "n": 3335,
+          "injected_n": 66,
+          "injected_pct": 1.979,
+          "id_range": [
+            2003,
+            2184
+          ]
+        },
+        "2026_train": {
+          "n": 16431,
+          "injected_n": 116,
+          "injected_pct": 0.706,
+          "id_range": [
+            1002,
+            1389551449168916480
+          ]
+        },
+        "2026_test": {
+          "n": 4108,
+          "injected_n": 33,
+          "injected_pct": 0.803,
+          "id_range": [
+            1001,
+            1386969173666979840
+          ]
+        }
+      }
+    },
+    "per_class": {
+      "c2a": {
+        "2025": {
+          "False": {
+            "n": 6177,
+            "injected_n": 0,
+            "injected_pct_of_class": 0.0
+          },
+          "True": {
+            "n": 663,
+            "injected_n": 0,
+            "injected_pct_of_class": 0.0
+          }
+        },
+        "2026": {
+          "False": {
+            "n": 14395,
+            "injected_n": 0,
+            "injected_pct_of_class": 0.0
+          },
+          "True": {
+            "n": 1434,
+            "injected_n": 0,
+            "injected_pct_of_class": 0.0
+          }
+        }
+      },
+      "dbo": {
+        "2025": {
+          "agitation": {
+            "n": 313,
+            "injected_n": 275,
+            "injected_pct_of_class": 87.9
+          },
+          "criticism": {
+            "n": 804,
+            "injected_n": 45,
+            "injected_pct_of_class": 5.6
+          },
+          "nothing": {
+            "n": 6277,
+            "injected_n": 535,
+            "injected_pct_of_class": 8.5
+          },
+          "subversive": {
+            "n": 60,
+            "injected_n": 39,
+            "injected_pct_of_class": 65.0
+          }
+        },
+        "2026": {
+          "agitation": {
+            "n": 143,
+            "injected_n": 72,
+            "injected_pct_of_class": 50.3
+          },
+          "criticism": {
+            "n": 1839,
+            "injected_n": 58,
+            "injected_pct_of_class": 3.2
+          },
+          "nothing": {
+            "n": 13818,
+            "injected_n": 460,
+            "injected_pct_of_class": 3.3
+          },
+          "subversive": {
+            "n": 53,
+            "injected_n": 20,
+            "injected_pct_of_class": 37.7
+          }
+        }
+      },
+      "vio": {
+        "2025": {
+          "False": {
+            "n": 7219,
+            "injected_n": 0,
+            "injected_pct_of_class": 0.0
+          },
+          "True": {
+            "n": 564,
+            "injected_n": 119,
+            "injected_pct_of_class": 21.1
+          }
+        },
+        "2026": {
+          "call2violence": {
+            "n": 197,
+            "injected_n": 47,
+            "injected_pct_of_class": 23.9
+          },
+          "glorification": {
+            "n": 27,
+            "injected_n": 10,
+            "injected_pct_of_class": 37.0
+          },
+          "nothing": {
+            "n": 15901,
+            "injected_n": 0,
+            "injected_pct_of_class": 0.0
+          },
+          "other": {
+            "n": 130,
+            "injected_n": 10,
+            "injected_pct_of_class": 7.7
+          },
+          "propensity": {
+            "n": 74,
+            "injected_n": 29,
+            "injected_pct_of_class": 39.2
+          },
+          "support": {
+            "n": 102,
+            "injected_n": 20,
+            "injected_pct_of_class": 19.6
+          }
+        }
+      }
+    },
+    "text_profile": {
+      "c2a": {
+        "2025": {
+          "corpus": {
+            "n": 6840,
+            "char_median": 88.0,
+            "word_median": 13.0,
+            "pct_url": 5.307,
+            "pct_placeholder": 0.629
+          }
+        },
+        "2026": {
+          "corpus": {
+            "n": 15829,
+            "char_median": 93.0,
+            "word_median": 14.0,
+            "pct_url": 6.052,
+            "pct_placeholder": 0.967
+          }
+        }
+      },
+      "dbo": {
+        "2025": {
+          "injected": {
+            "n": 894,
+            "char_median": 138.0,
+            "word_median": 19.5,
+            "pct_url": 7.83,
+            "pct_placeholder": 0.0
+          },
+          "corpus": {
+            "n": 6560,
+            "char_median": 79.0,
+            "word_median": 12.0,
+            "pct_url": 7.393,
+            "pct_placeholder": 0.595
+          }
+        },
+        "2026": {
+          "injected": {
+            "n": 610,
+            "char_median": 166.0,
+            "word_median": 24.0,
+            "pct_url": 8.852,
+            "pct_placeholder": 0.0
+          },
+          "corpus": {
+            "n": 15243,
+            "char_median": 85.0,
+            "word_median": 12.0,
+            "pct_url": 8.489,
+            "pct_placeholder": 1.01
+          }
+        }
+      },
+      "vio": {
+        "2025": {
+          "injected": {
+            "n": 119,
+            "char_median": 102.0,
+            "word_median": 15.0,
+            "pct_url": 1.681,
+            "pct_placeholder": 0.0
+          },
+          "corpus": {
+            "n": 7664,
+            "char_median": 89.0,
+            "word_median": 13.0,
+            "pct_url": 7.385,
+            "pct_placeholder": 0.652
+          }
+        },
+        "2026": {
+          "injected": {
+            "n": 116,
+            "char_median": 108.0,
+            "word_median": 17.0,
+            "pct_url": 0.862,
+            "pct_placeholder": 0.0
+          },
+          "corpus": {
+            "n": 16315,
+            "char_median": 94.0,
+            "word_median": 14.0,
+            "pct_url": 8.342,
+            "pct_placeholder": 0.895
+          }
+        }
+      }
+    },
+    "persistence": {
+      "c2a": {
+        "injected_texts_2025": 0,
+        "injected_texts_2026": 0,
+        "kept": 0,
+        "dropped": 0,
+        "added": 0
+      },
+      "dbo": {
+        "injected_texts_2025": 802,
+        "injected_texts_2026": 610,
+        "kept": 610,
+        "dropped": 192,
+        "added": 0
+      },
+      "vio": {
+        "injected_texts_2025": 119,
+        "injected_texts_2026": 116,
+        "kept": 75,
+        "dropped": 44,
+        "added": 41
+      }
+    }
+  },
+  "duplication": {
+    "within_split": [
+      {
+        "subtask": "c2a",
+        "edition": "2025",
+        "split": "train",
+        "n": 6840,
+        "exact_duplicate_rows": 57,
+        "exact_duplicate_pct": 0.833,
+        "normalised_duplicate_rows": 66,
+        "normalised_duplicate_pct": 0.965,
+        "distinct_texts": 6783
+      },
+      {
+        "subtask": "c2a",
+        "edition": "2026",
+        "split": "train",
+        "n": 15829,
+        "exact_duplicate_rows": 0,
+        "exact_duplicate_pct": 0.0,
+        "normalised_duplicate_rows": 10,
+        "normalised_duplicate_pct": 0.063,
+        "distinct_texts": 15829
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2025",
+        "split": "train",
+        "n": 7454,
+        "exact_duplicate_rows": 148,
+        "exact_duplicate_pct": 1.986,
+        "normalised_duplicate_rows": 156,
+        "normalised_duplicate_pct": 2.093,
+        "distinct_texts": 7306
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2026",
+        "split": "train",
+        "n": 15853,
+        "exact_duplicate_rows": 0,
+        "exact_duplicate_pct": 0.0,
+        "normalised_duplicate_rows": 6,
+        "normalised_duplicate_pct": 0.038,
+        "distinct_texts": 15853
+      },
+      {
+        "subtask": "vio",
+        "edition": "2025",
+        "split": "train",
+        "n": 7783,
+        "exact_duplicate_rows": 56,
+        "exact_duplicate_pct": 0.72,
+        "normalised_duplicate_rows": 63,
+        "normalised_duplicate_pct": 0.809,
+        "distinct_texts": 7727
+      },
+      {
+        "subtask": "vio",
+        "edition": "2026",
+        "split": "train",
+        "n": 16431,
+        "exact_duplicate_rows": 0,
+        "exact_duplicate_pct": 0.0,
+        "normalised_duplicate_rows": 11,
+        "normalised_duplicate_pct": 0.067,
+        "distinct_texts": 16431
+      }
+    ],
+    "train_test": [
+      {
+        "subtask": "c2a",
+        "edition": "2025",
+        "n_other": 2982,
+        "exact_overlap_n": 24,
+        "exact_overlap_pct_of_other": 0.805,
+        "normalised_overlap_n": 28,
+        "normalised_overlap_pct_of_other": 0.939
+      },
+      {
+        "subtask": "c2a",
+        "edition": "2026",
+        "n_other": 2982,
+        "exact_overlap_n": 0,
+        "exact_overlap_pct_of_other": 0.0,
+        "normalised_overlap_n": 8,
+        "normalised_overlap_pct_of_other": 0.268
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2025",
+        "n_other": 3194,
+        "exact_overlap_n": 120,
+        "exact_overlap_pct_of_other": 3.757,
+        "normalised_overlap_n": 124,
+        "normalised_overlap_pct_of_other": 3.882
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2026",
+        "n_other": 3165,
+        "exact_overlap_n": 0,
+        "exact_overlap_pct_of_other": 0.0,
+        "normalised_overlap_n": 11,
+        "normalised_overlap_pct_of_other": 0.348
+      },
+      {
+        "subtask": "vio",
+        "edition": "2025",
+        "n_other": 3335,
+        "exact_overlap_n": 35,
+        "exact_overlap_pct_of_other": 1.049,
+        "normalised_overlap_n": 38,
+        "normalised_overlap_pct_of_other": 1.139
+      },
+      {
+        "subtask": "vio",
+        "edition": "2026",
+        "n_other": 4108,
+        "exact_overlap_n": 0,
+        "exact_overlap_pct_of_other": 0.0,
+        "normalised_overlap_n": 4,
+        "normalised_overlap_pct_of_other": 0.097
+      }
+    ],
+    "train_trial": [
+      {
+        "subtask": "c2a",
+        "edition": "2025",
+        "n_other": 1051,
+        "exact_overlap_n": 1049,
+        "exact_overlap_pct_of_other": 99.81,
+        "normalised_overlap_n": 1048,
+        "normalised_overlap_pct_of_other": 99.715
+      },
+      {
+        "subtask": "c2a",
+        "edition": "2026",
+        "n_other": 999,
+        "exact_overlap_n": 991,
+        "exact_overlap_pct_of_other": 99.199,
+        "normalised_overlap_n": 992,
+        "normalised_overlap_pct_of_other": 99.299
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2025",
+        "n_other": 1053,
+        "exact_overlap_n": 1049,
+        "exact_overlap_pct_of_other": 99.62,
+        "normalised_overlap_n": 1049,
+        "normalised_overlap_pct_of_other": 99.62
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2026",
+        "n_other": 999,
+        "exact_overlap_n": 954,
+        "exact_overlap_pct_of_other": 95.495,
+        "normalised_overlap_n": 954,
+        "normalised_overlap_pct_of_other": 95.495
+      },
+      {
+        "subtask": "vio",
+        "edition": "2025",
+        "n_other": 1051,
+        "exact_overlap_n": 1050,
+        "exact_overlap_pct_of_other": 99.905,
+        "normalised_overlap_n": 1050,
+        "normalised_overlap_pct_of_other": 99.905
+      },
+      {
+        "subtask": "vio",
+        "edition": "2026",
+        "n_other": 998,
+        "exact_overlap_n": 988,
+        "exact_overlap_pct_of_other": 98.998,
+        "normalised_overlap_n": 989,
+        "normalised_overlap_pct_of_other": 99.098
+      }
+    ],
+    "label_conflicts": [
+      {
+        "subtask": "c2a",
+        "edition": "2025",
+        "exact_duplicated_texts": 33,
+        "exact_conflicting_labels": 1,
+        "exact_conflict_pct_of_duplicated": 3.03,
+        "normalised_duplicated_texts": 39,
+        "normalised_conflicting_labels": 1,
+        "normalised_conflict_pct_of_duplicated": 2.564
+      },
+      {
+        "subtask": "c2a",
+        "edition": "2026",
+        "exact_duplicated_texts": 0,
+        "exact_conflicting_labels": 0,
+        "exact_conflict_pct_of_duplicated": 0.0,
+        "normalised_duplicated_texts": 10,
+        "normalised_conflicting_labels": 0,
+        "normalised_conflict_pct_of_duplicated": 0.0
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2025",
+        "exact_duplicated_texts": 123,
+        "exact_conflicting_labels": 87,
+        "exact_conflict_pct_of_duplicated": 70.732,
+        "normalised_duplicated_texts": 128,
+        "normalised_conflicting_labels": 88,
+        "normalised_conflict_pct_of_duplicated": 68.75
+      },
+      {
+        "subtask": "dbo",
+        "edition": "2026",
+        "exact_duplicated_texts": 0,
+        "exact_conflicting_labels": 0,
+        "exact_conflict_pct_of_duplicated": 0.0,
+        "normalised_duplicated_texts": 6,
+        "normalised_conflicting_labels": 0,
+        "normalised_conflict_pct_of_duplicated": 0.0
+      },
+      {
+        "subtask": "vio",
+        "edition": "2025",
+        "exact_duplicated_texts": 38,
+        "exact_conflicting_labels": 0,
+        "exact_conflict_pct_of_duplicated": 0.0,
+        "normalised_duplicated_texts": 43,
+        "normalised_conflicting_labels": 0,
+        "normalised_conflict_pct_of_duplicated": 0.0
+      },
+      {
+        "subtask": "vio",
+        "edition": "2026",
+        "exact_duplicated_texts": 0,
+        "exact_conflicting_labels": 0,
+        "exact_conflict_pct_of_duplicated": 0.0,
+        "normalised_duplicated_texts": 11,
+        "normalised_conflicting_labels": 0,
+        "normalised_conflict_pct_of_duplicated": 0.0
+      }
+    ]
+  },
+  "label_contradictions": {
+    "c2a_2025": {
+      "contradicting_texts": 1,
+      "rows_involved": 2,
+      "in_injected_cohort_texts": 0,
+      "label_pairs": {
+        "False | True": 1
+      },
+      "share_of_class_affected_pct": {
+        "False": 0.016,
+        "True": 0.151
+      },
+      "dedup_keeps": {
+        "True": 1
+      },
+      "resolution_against_other_edition": {
+        "edition_used": "2026",
+        "resolvable_texts": 0,
+        "kept_label_agrees": 0,
+        "kept_label_disagrees": 0,
+        "agreement_pct": 0.0
+      }
+    },
+    "c2a_2026": {
+      "contradicting_texts": 0
+    },
+    "dbo_2025": {
+      "contradicting_texts": 87,
+      "rows_involved": 174,
+      "in_injected_cohort_texts": 86,
+      "label_pairs": {
+        "agitation | nothing": 86,
+        "criticism | nothing": 1
+      },
+      "share_of_class_affected_pct": {
+        "nothing": 1.386,
+        "criticism": 0.124,
+        "agitation": 27.476,
+        "subversive": 0.0
+      },
+      "dedup_keeps": {
+        "nothing": 50,
+        "agitation": 37
+      },
+      "resolution_against_other_edition": {
+        "edition_used": "2026",
+        "resolvable_texts": 55,
+        "kept_label_agrees": 0,
+        "kept_label_disagrees": 55,
+        "agreement_pct": 0.0
+      }
+    },
+    "dbo_2026": {
+      "contradicting_texts": 0
+    },
+    "vio_2025": {
+      "contradicting_texts": 0
+    },
+    "vio_2026": {
+      "contradicting_texts": 0
+    },
+    "_consequence": "harness.py deduplicates with keep='first' on the normalised text. For the DBO 2025 contradictions that rule keeps the label the organisers later revised in every resolvable case, so 49 items enter training as 'nothing' that the 2026 edition calls 'agitation'. Resolving them from the 2026 labels would import later-edition information into a 2025 training set and is therefore not available to Dimension 3. The decision is recorded in THESIS_LOG Next Steps, not taken here."
+  },
+  "cross_edition": {
+    "overlap": [
+      {
+        "subtask": "c2a",
+        "distinct_2025": 6783,
+        "distinct_2026": 15829,
+        "overlap_n": 6756,
+        "pct_of_2025_kept": 99.602,
+        "pct_of_2026_carried": 42.681,
+        "normalised_overlap_n": 6751,
+        "test2025_in_train2026_n": 0,
+        "test2025_in_train2026_pct": 0.0,
+        "test2025_in_train2026_normalised_pct": 0.27
+      },
+      {
+        "subtask": "dbo",
+        "distinct_2025": 7306,
+        "distinct_2026": 15853,
+        "overlap_n": 7080,
+        "pct_of_2025_kept": 96.907,
+        "pct_of_2026_carried": 44.66,
+        "normalised_overlap_n": 7077,
+        "test2025_in_train2026_n": 0,
+        "test2025_in_train2026_pct": 0.0,
+        "test2025_in_train2026_normalised_pct": 0.348
+      },
+      {
+        "subtask": "vio",
+        "distinct_2025": 7727,
+        "distinct_2026": 16431,
+        "overlap_n": 5947,
+        "pct_of_2025_kept": 76.964,
+        "pct_of_2026_carried": 36.194,
+        "normalised_overlap_n": 5944,
+        "test2025_in_train2026_n": 2549,
+        "test2025_in_train2026_pct": 76.939,
+        "test2025_in_train2026_normalised_pct": 76.909
+      }
+    ],
+    "growth": [
+      {
+        "subtask": "c2a",
+        "n_2025": 6840,
+        "n_2026": 15829,
+        "growth_pct": 131.4,
+        "label_space_2025": [
+          "False",
+          "True"
+        ],
+        "label_space_2026": [
+          "False",
+          "True"
+        ],
+        "label_space_changed": false
+      },
+      {
+        "subtask": "dbo",
+        "n_2025": 7454,
+        "n_2026": 15853,
+        "growth_pct": 112.7,
+        "label_space_2025": [
+          "agitation",
+          "criticism",
+          "nothing",
+          "subversive"
+        ],
+        "label_space_2026": [
+          "agitation",
+          "criticism",
+          "nothing",
+          "subversive"
+        ],
+        "label_space_changed": false
+      },
+      {
+        "subtask": "vio",
+        "n_2025": 7783,
+        "n_2026": 16431,
+        "growth_pct": 111.1,
+        "label_space_2025": [
+          "False",
+          "True"
+        ],
+        "label_space_2026": [
+          "call2violence",
+          "glorification",
+          "nothing",
+          "other",
+          "propensity",
+          "support"
+        ],
+        "label_space_changed": true
+      }
+    ],
+    "reannotation": {
+      "c2a": {
+        "comparable": true,
+        "shared_texts": 6756,
+        "label_changed_n": 0,
+        "label_changed_pct": 0.0,
+        "per_source_class": {
+          "False": {
+            "shared_n": 6096,
+            "changed_n": 0,
+            "changed_pct": 0.0
+          },
+          "True": {
+            "shared_n": 660,
+            "changed_n": 0,
+            "changed_pct": 0.0
+          }
+        },
+        "transitions": {}
+      },
+      "dbo": {
+        "comparable": true,
+        "shared_texts": 7080,
+        "label_changed_n": 189,
+        "label_changed_pct": 2.669,
+        "per_source_class": {
+          "agitation": {
+            "shared_n": 145,
+            "changed_n": 91,
+            "changed_pct": 62.759
+          },
+          "criticism": {
+            "shared_n": 800,
+            "changed_n": 18,
+            "changed_pct": 2.25
+          },
+          "nothing": {
+            "shared_n": 6088,
+            "changed_n": 70,
+            "changed_pct": 1.15
+          },
+          "subversive": {
+            "shared_n": 47,
+            "changed_n": 10,
+            "changed_pct": 21.277
+          }
+        },
+        "transitions": {
+          "agitation": {
+            "agitation": 0,
+            "criticism": 18,
+            "nothing": 73,
+            "subversive": 0
+          },
+          "criticism": {
+            "agitation": 1,
+            "criticism": 0,
+            "nothing": 16,
+            "subversive": 1
+          },
+          "nothing": {
+            "agitation": 54,
+            "criticism": 13,
+            "nothing": 0,
+            "subversive": 3
+          },
+          "subversive": {
+            "agitation": 1,
+            "criticism": 2,
+            "nothing": 7,
+            "subversive": 0
+          }
+        }
+      },
+      "vio": {
+        "comparable": false,
+        "reason": "label space changed between editions; a label change cannot be separated from the redesign"
+      }
+    }
+  },
+  "cross_subtask": {
+    "2025": {
+      "per_subtask_distinct": {
+        "c2a": 6783,
+        "dbo": 7306,
+        "vio": 7727
+      },
+      "pairwise": {
+        "c2a|dbo": {
+          "overlap_n": 3689,
+          "pct_of_c2a": 54.386,
+          "pct_of_dbo": 50.493
+        },
+        "c2a|vio": {
+          "overlap_n": 4562,
+          "pct_of_c2a": 67.256,
+          "pct_of_vio": 59.04
+        },
+        "dbo|vio": {
+          "overlap_n": 4194,
+          "pct_of_dbo": 57.405,
+          "pct_of_vio": 54.277
+        }
+      },
+      "in_all_three": 2499,
+      "union_distinct_texts": 11870,
+      "sum_of_splits": 21816,
+      "redundancy_factor": 1.84
+    },
+    "2026": {
+      "per_subtask_distinct": {
+        "c2a": 15829,
+        "dbo": 15853,
+        "vio": 16431
+      },
+      "pairwise": {
+        "c2a|dbo": {
+          "overlap_n": 11182,
+          "pct_of_c2a": 70.642,
+          "pct_of_dbo": 70.536
+        },
+        "c2a|vio": {
+          "overlap_n": 11805,
+          "pct_of_c2a": 74.578,
+          "pct_of_vio": 71.846
+        },
+        "dbo|vio": {
+          "overlap_n": 11265,
+          "pct_of_dbo": 71.059,
+          "pct_of_vio": 68.559
+        }
+      },
+      "in_all_three": 8508,
+      "union_distinct_texts": 22369,
+      "sum_of_splits": 48113,
+      "redundancy_factor": 2.15
+    }
+  },
+  "surface_features": {
+    "c2a": {
+      "2025": {
+        "n": 6840,
+        "url_pct": 5.307,
+        "user_mention_pct": 0.0,
+        "hashtag_pct": 0.775,
+        "anonymisation_placeholder_pct": 0.629,
+        "digit_run_pct": 8.085,
+        "newline_pct": 8.216,
+        "uppercase_run_pct": 8.114,
+        "placeholder_breakdown_pct": {
+          "[@PRE]": 0.015,
+          "[@POL]": 0.015,
+          "[@GRP]": 0.015,
+          "[@IND]": 0.599
+        }
+      },
+      "2026": {
+        "n": 15829,
+        "url_pct": 6.046,
+        "user_mention_pct": 0.0,
+        "hashtag_pct": 0.739,
+        "anonymisation_placeholder_pct": 0.967,
+        "digit_run_pct": 9.426,
+        "newline_pct": 8.819,
+        "uppercase_run_pct": 8.377,
+        "placeholder_breakdown_pct": {
+          "[@PRE]": 0.013,
+          "[@POL]": 0.019,
+          "[@GRP]": 0.025,
+          "[@IND]": 0.916
+        }
+      }
+    },
+    "dbo": {
+      "2025": {
+        "n": 7454,
+        "url_pct": 7.446,
+        "user_mention_pct": 5.433,
+        "hashtag_pct": 3.716,
+        "anonymisation_placeholder_pct": 0.523,
+        "digit_run_pct": 8.975,
+        "newline_pct": 6.761,
+        "uppercase_run_pct": 7.955,
+        "placeholder_breakdown_pct": {
+          "[@PRE]": 0.0,
+          "[@POL]": 0.0,
+          "[@GRP]": 0.013,
+          "[@IND]": 0.51
+        }
+      },
+      "2026": {
+        "n": 15853,
+        "url_pct": 8.497,
+        "user_mention_pct": 2.145,
+        "hashtag_pct": 1.621,
+        "anonymisation_placeholder_pct": 0.971,
+        "digit_run_pct": 10.295,
+        "newline_pct": 8.15,
+        "uppercase_run_pct": 8.08,
+        "placeholder_breakdown_pct": {
+          "[@PRE]": 0.006,
+          "[@POL]": 0.006,
+          "[@GRP]": 0.032,
+          "[@IND]": 0.927
+        }
+      }
+    },
+    "vio": {
+      "2025": {
+        "n": 7783,
+        "url_pct": 7.298,
+        "user_mention_pct": 0.154,
+        "hashtag_pct": 0.964,
+        "anonymisation_placeholder_pct": 0.642,
+        "digit_run_pct": 8.827,
+        "newline_pct": 8.596,
+        "uppercase_run_pct": 8.596,
+        "placeholder_breakdown_pct": {
+          "[@PRE]": 0.026,
+          "[@POL]": 0.013,
+          "[@GRP]": 0.039,
+          "[@IND]": 0.591
+        }
+      },
+      "2026": {
+        "n": 16431,
+        "url_pct": 8.283,
+        "user_mention_pct": 0.097,
+        "hashtag_pct": 0.834,
+        "anonymisation_placeholder_pct": 0.889,
+        "digit_run_pct": 10.34,
+        "newline_pct": 8.867,
+        "uppercase_run_pct": 8.569,
+        "placeholder_breakdown_pct": {
+          "[@PRE]": 0.018,
+          "[@POL]": 0.012,
+          "[@GRP]": 0.043,
+          "[@IND]": 0.828
+        }
+      }
+    }
+  }
+}

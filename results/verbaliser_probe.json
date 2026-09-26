@@ -1,0 +1,1642 @@
+{
+  "experiment": "E2 LLM arm pre-flight",
+  "label": "verbaliser tokenisation under the two LLM components' tokenisers",
+  "created": "2026-08-16",
+  "question": "Can a label's probability be read off a single token, as 3.2's wording implies and D7 consumes?",
+  "verdict": "No for every multi-class subtask on at least one tokeniser. First-token distinctness holds everywhere and is not the relevant property; the relevant property is whether the first token is specific to its label, and it is not. The arm therefore scores full label sequences with length normalisation instead of reading a single token. See llm_protocol in configs/e2_matrix.yaml and THESIS_LOG #54.",
+  "anchor": "THESIS_LOG Next Steps #45, #54",
+  "models": {
+    "llammlein_7b": {
+      "hf_id": "LSX-UniWue/LLaMmlein_7B",
+      "vocab_size": 32000,
+      "sets": {
+        "c2a_raw": {
+          "words": {
+            "True": "True",
+            "False": "False"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 3,
+            "labels_with_generic_first_piece": [
+              "True",
+              "False"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 2,
+            "labels_with_generic_first_piece": [
+              "True",
+              "False"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "True": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 31941,
+                "first_piece": "T",
+                "pieces": [
+                  "T",
+                  "ru",
+                  "e"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 13554,
+                "first_piece": "▁Tru",
+                "pieces": [
+                  "▁Tru",
+                  "e"
+                ]
+              }
+            },
+            "False": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 31934,
+                "first_piece": "F",
+                "pieces": [
+                  "F",
+                  "al",
+                  "se"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 8675,
+                "first_piece": "▁Fal",
+                "pieces": [
+                  "▁Fal",
+                  "se"
+                ]
+              }
+            }
+          }
+        },
+        "c2a_de": {
+          "words": {
+            "True": "Ja",
+            "False": "Nein"
+          },
+          "bare": {
+            "all_single_token": true,
+            "first_token_distinct": true,
+            "max_tokens": 1,
+            "labels_with_generic_first_piece": [],
+            "first_token_reading_sound": true
+          },
+          "space": {
+            "all_single_token": true,
+            "first_token_distinct": true,
+            "max_tokens": 1,
+            "labels_with_generic_first_piece": [],
+            "first_token_reading_sound": true
+          },
+          "detail": {
+            "True": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 25438,
+                "first_piece": "Ja",
+                "pieces": [
+                  "Ja"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 5824,
+                "first_piece": "▁Ja",
+                "pieces": [
+                  "▁Ja"
+                ]
+              }
+            },
+            "False": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 30851,
+                "first_piece": "Nein",
+                "pieces": [
+                  "Nein"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 10293,
+                "first_piece": "▁Nein",
+                "pieces": [
+                  "▁Nein"
+                ]
+              }
+            }
+          }
+        },
+        "dbo_raw": {
+          "words": {
+            "agitation": "agitation",
+            "criticism": "criticism",
+            "nothing": "nothing",
+            "subversive": "subversive"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 4,
+            "labels_with_generic_first_piece": [
+              "agitation",
+              "criticism",
+              "nothing",
+              "subversive"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 4,
+            "labels_with_generic_first_piece": [
+              "agitation",
+              "criticism",
+              "nothing",
+              "subversive"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "agitation": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 166,
+                "first_piece": "ag",
+                "pieces": [
+                  "ag",
+                  "itation"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 6738,
+                "first_piece": "▁ag",
+                "pieces": [
+                  "▁ag",
+                  "itation"
+                ]
+              }
+            },
+            "criticism": {
+              "bare": {
+                "n_tokens": 4,
+                "first_id": 31909,
+                "first_piece": "c",
+                "pieces": [
+                  "c",
+                  "rit",
+                  "ic",
+                  "ism"
+                ]
+              },
+              "space": {
+                "n_tokens": 4,
+                "first_id": 815,
+                "first_piece": "▁c",
+                "pieces": [
+                  "▁c",
+                  "rit",
+                  "ic",
+                  "ism"
+                ]
+              }
+            },
+            "nothing": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 31897,
+                "first_piece": "n",
+                "pieces": [
+                  "n",
+                  "oth",
+                  "ing"
+                ]
+              },
+              "space": {
+                "n_tokens": 3,
+                "first_id": 58,
+                "first_piece": "▁n",
+                "pieces": [
+                  "▁n",
+                  "oth",
+                  "ing"
+                ]
+              }
+            },
+            "subversive": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 26437,
+                "first_piece": "sub",
+                "pieces": [
+                  "sub",
+                  "vers",
+                  "ive"
+                ]
+              },
+              "space": {
+                "n_tokens": 3,
+                "first_id": 8381,
+                "first_piece": "▁sub",
+                "pieces": [
+                  "▁sub",
+                  "vers",
+                  "ive"
+                ]
+              }
+            }
+          }
+        },
+        "dbo_de": {
+          "words": {
+            "agitation": "Hetze",
+            "criticism": "Kritik",
+            "nothing": "Nichts",
+            "subversive": "Subversion"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 3,
+            "labels_with_generic_first_piece": [
+              "agitation",
+              "criticism",
+              "nothing",
+              "subversive"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 2,
+            "labels_with_generic_first_piece": [
+              "agitation",
+              "subversive"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "agitation": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 31942,
+                "first_piece": "H",
+                "pieces": [
+                  "H",
+                  "etze"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 80,
+                "first_piece": "▁H",
+                "pieces": [
+                  "▁H",
+                  "etze"
+                ]
+              }
+            },
+            "criticism": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 25618,
+                "first_piece": "Krit",
+                "pieces": [
+                  "Krit",
+                  "ik"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 5439,
+                "first_piece": "▁Kritik",
+                "pieces": [
+                  "▁Kritik"
+                ]
+              }
+            },
+            "nothing": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 31944,
+                "first_piece": "N",
+                "pieces": [
+                  "N",
+                  "ichts"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 14210,
+                "first_piece": "▁Nichts",
+                "pieces": [
+                  "▁Nichts"
+                ]
+              }
+            },
+            "subversive": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 31920,
+                "first_piece": "S",
+                "pieces": [
+                  "S",
+                  "ub",
+                  "version"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 6927,
+                "first_piece": "▁Sub",
+                "pieces": [
+                  "▁Sub",
+                  "version"
+                ]
+              }
+            }
+          }
+        },
+        "vio25_raw": {
+          "words": {
+            "True": "True",
+            "False": "False"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 3,
+            "labels_with_generic_first_piece": [
+              "True",
+              "False"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 2,
+            "labels_with_generic_first_piece": [
+              "True",
+              "False"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "True": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 31941,
+                "first_piece": "T",
+                "pieces": [
+                  "T",
+                  "ru",
+                  "e"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 13554,
+                "first_piece": "▁Tru",
+                "pieces": [
+                  "▁Tru",
+                  "e"
+                ]
+              }
+            },
+            "False": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 31934,
+                "first_piece": "F",
+                "pieces": [
+                  "F",
+                  "al",
+                  "se"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 8675,
+                "first_piece": "▁Fal",
+                "pieces": [
+                  "▁Fal",
+                  "se"
+                ]
+              }
+            }
+          }
+        },
+        "vio25_de": {
+          "words": {
+            "True": "Ja",
+            "False": "Nein"
+          },
+          "bare": {
+            "all_single_token": true,
+            "first_token_distinct": true,
+            "max_tokens": 1,
+            "labels_with_generic_first_piece": [],
+            "first_token_reading_sound": true
+          },
+          "space": {
+            "all_single_token": true,
+            "first_token_distinct": true,
+            "max_tokens": 1,
+            "labels_with_generic_first_piece": [],
+            "first_token_reading_sound": true
+          },
+          "detail": {
+            "True": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 25438,
+                "first_piece": "Ja",
+                "pieces": [
+                  "Ja"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 5824,
+                "first_piece": "▁Ja",
+                "pieces": [
+                  "▁Ja"
+                ]
+              }
+            },
+            "False": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 30851,
+                "first_piece": "Nein",
+                "pieces": [
+                  "Nein"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 10293,
+                "first_piece": "▁Nein",
+                "pieces": [
+                  "▁Nein"
+                ]
+              }
+            }
+          }
+        },
+        "vio26_raw": {
+          "words": {
+            "call2violence": "call2violence",
+            "glorification": "glorification",
+            "nothing": "nothing",
+            "other": "other",
+            "propensity": "propensity",
+            "support": "support"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 6,
+            "labels_with_generic_first_piece": [
+              "call2violence",
+              "glorification",
+              "nothing",
+              "propensity"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 6,
+            "labels_with_generic_first_piece": [
+              "call2violence",
+              "glorification",
+              "nothing",
+              "other",
+              "propensity",
+              "support"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "call2violence": {
+              "bare": {
+                "n_tokens": 6,
+                "first_id": 31909,
+                "first_piece": "c",
+                "pieces": [
+                  "c",
+                  "all",
+                  "2",
+                  "vi",
+                  "olen",
+                  "ce"
+                ]
+              },
+              "space": {
+                "n_tokens": 6,
+                "first_id": 815,
+                "first_piece": "▁c",
+                "pieces": [
+                  "▁c",
+                  "all",
+                  "2",
+                  "vi",
+                  "olen",
+                  "ce"
+                ]
+              }
+            },
+            "glorification": {
+              "bare": {
+                "n_tokens": 4,
+                "first_id": 964,
+                "first_piece": "gl",
+                "pieces": [
+                  "gl",
+                  "or",
+                  "if",
+                  "ication"
+                ]
+              },
+              "space": {
+                "n_tokens": 4,
+                "first_id": 2647,
+                "first_piece": "▁gl",
+                "pieces": [
+                  "▁gl",
+                  "or",
+                  "if",
+                  "ication"
+                ]
+              }
+            },
+            "nothing": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 31897,
+                "first_piece": "n",
+                "pieces": [
+                  "n",
+                  "oth",
+                  "ing"
+                ]
+              },
+              "space": {
+                "n_tokens": 3,
+                "first_id": 58,
+                "first_piece": "▁n",
+                "pieces": [
+                  "▁n",
+                  "oth",
+                  "ing"
+                ]
+              }
+            },
+            "other": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 19885,
+                "first_piece": "other",
+                "pieces": [
+                  "other"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 129,
+                "first_piece": "▁o",
+                "pieces": [
+                  "▁o",
+                  "ther"
+                ]
+              }
+            },
+            "propensity": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 27211,
+                "first_piece": "prop",
+                "pieces": [
+                  "prop",
+                  "ens",
+                  "ity"
+                ]
+              },
+              "space": {
+                "n_tokens": 3,
+                "first_id": 17402,
+                "first_piece": "▁prop",
+                "pieces": [
+                  "▁prop",
+                  "ens",
+                  "ity"
+                ]
+              }
+            },
+            "support": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 24695,
+                "first_piece": "support",
+                "pieces": [
+                  "support"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 20,
+                "first_piece": "▁s",
+                "pieces": [
+                  "▁s",
+                  "upport"
+                ]
+              }
+            }
+          }
+        },
+        "vio26_de": {
+          "words": {
+            "call2violence": "Gewaltaufruf",
+            "glorification": "Verherrlichung",
+            "nothing": "Nichts",
+            "other": "Sonstiges",
+            "propensity": "Gewaltbereitschaft",
+            "support": "Unterstützung"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": false,
+            "max_tokens": 4,
+            "labels_with_generic_first_piece": [
+              "call2violence",
+              "glorification",
+              "nothing",
+              "other",
+              "propensity"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": false,
+            "max_tokens": 3,
+            "labels_with_generic_first_piece": [
+              "glorification"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "call2violence": {
+              "bare": {
+                "n_tokens": 4,
+                "first_id": 6591,
+                "first_piece": "Ge",
+                "pieces": [
+                  "Ge",
+                  "walt",
+                  "auf",
+                  "ruf"
+                ]
+              },
+              "space": {
+                "n_tokens": 3,
+                "first_id": 3578,
+                "first_piece": "▁Gewalt",
+                "pieces": [
+                  "▁Gewalt",
+                  "auf",
+                  "ruf"
+                ]
+              }
+            },
+            "glorification": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 1526,
+                "first_piece": "Ver",
+                "pieces": [
+                  "Ver",
+                  "herr",
+                  "lichung"
+                ]
+              },
+              "space": {
+                "n_tokens": 3,
+                "first_id": 116,
+                "first_piece": "▁Ver",
+                "pieces": [
+                  "▁Ver",
+                  "herr",
+                  "lichung"
+                ]
+              }
+            },
+            "nothing": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 31944,
+                "first_piece": "N",
+                "pieces": [
+                  "N",
+                  "ichts"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 14210,
+                "first_piece": "▁Nichts",
+                "pieces": [
+                  "▁Nichts"
+                ]
+              }
+            },
+            "other": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 23599,
+                "first_piece": "Son",
+                "pieces": [
+                  "Son",
+                  "st",
+                  "iges"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 30773,
+                "first_piece": "▁Sonstiges",
+                "pieces": [
+                  "▁Sonstiges"
+                ]
+              }
+            },
+            "propensity": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 6591,
+                "first_piece": "Ge",
+                "pieces": [
+                  "Ge",
+                  "walt",
+                  "bereitschaft"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 3578,
+                "first_piece": "▁Gewalt",
+                "pieces": [
+                  "▁Gewalt",
+                  "bereitschaft"
+                ]
+              }
+            },
+            "support": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 9939,
+                "first_piece": "Unter",
+                "pieces": [
+                  "Unter",
+                  "stützung"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 2343,
+                "first_piece": "▁Unterstützung",
+                "pieces": [
+                  "▁Unterstützung"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "qwen25_14b": {
+      "hf_id": "Qwen/Qwen2.5-14B-Instruct",
+      "vocab_size": 151643,
+      "sets": {
+        "c2a_raw": {
+          "words": {
+            "True": "True",
+            "False": "False"
+          },
+          "bare": {
+            "all_single_token": true,
+            "first_token_distinct": true,
+            "max_tokens": 1,
+            "labels_with_generic_first_piece": [],
+            "first_token_reading_sound": true
+          },
+          "space": {
+            "all_single_token": true,
+            "first_token_distinct": true,
+            "max_tokens": 1,
+            "labels_with_generic_first_piece": [],
+            "first_token_reading_sound": true
+          },
+          "detail": {
+            "True": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 2514,
+                "first_piece": "True",
+                "pieces": [
+                  "True"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 3007,
+                "first_piece": "ĠTrue",
+                "pieces": [
+                  "ĠTrue"
+                ]
+              }
+            },
+            "False": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 4049,
+                "first_piece": "False",
+                "pieces": [
+                  "False"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 3557,
+                "first_piece": "ĠFalse",
+                "pieces": [
+                  "ĠFalse"
+                ]
+              }
+            }
+          }
+        },
+        "c2a_de": {
+          "words": {
+            "True": "Ja",
+            "False": "Nein"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 2,
+            "labels_with_generic_first_piece": [
+              "False"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 2,
+            "labels_with_generic_first_piece": [
+              "False"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "True": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 52445,
+                "first_piece": "Ja",
+                "pieces": [
+                  "Ja"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 22871,
+                "first_piece": "ĠJa",
+                "pieces": [
+                  "ĠJa"
+                ]
+              }
+            },
+            "False": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 8813,
+                "first_piece": "Ne",
+                "pieces": [
+                  "Ne",
+                  "in"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 4182,
+                "first_piece": "ĠNe",
+                "pieces": [
+                  "ĠNe",
+                  "in"
+                ]
+              }
+            }
+          }
+        },
+        "dbo_raw": {
+          "words": {
+            "agitation": "agitation",
+            "criticism": "criticism",
+            "nothing": "nothing",
+            "subversive": "subversive"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 3,
+            "labels_with_generic_first_piece": [
+              "agitation",
+              "criticism",
+              "subversive"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 3,
+            "labels_with_generic_first_piece": [
+              "subversive"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "agitation": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 351,
+                "first_piece": "ag",
+                "pieces": [
+                  "ag",
+                  "itation"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 90217,
+                "first_piece": "Ġagitation",
+                "pieces": [
+                  "Ġagitation"
+                ]
+              }
+            },
+            "criticism": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 36996,
+                "first_piece": "crit",
+                "pieces": [
+                  "crit",
+                  "icism"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 18817,
+                "first_piece": "Ġcriticism",
+                "pieces": [
+                  "Ġcriticism"
+                ]
+              }
+            },
+            "nothing": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 41212,
+                "first_piece": "nothing",
+                "pieces": [
+                  "nothing"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 4302,
+                "first_piece": "Ġnothing",
+                "pieces": [
+                  "Ġnothing"
+                ]
+              }
+            },
+            "subversive": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 1966,
+                "first_piece": "sub",
+                "pieces": [
+                  "sub",
+                  "vers",
+                  "ive"
+                ]
+              },
+              "space": {
+                "n_tokens": 3,
+                "first_id": 1186,
+                "first_piece": "Ġsub",
+                "pieces": [
+                  "Ġsub",
+                  "vers",
+                  "ive"
+                ]
+              }
+            }
+          }
+        },
+        "dbo_de": {
+          "words": {
+            "agitation": "Hetze",
+            "criticism": "Kritik",
+            "nothing": "Nichts",
+            "subversive": "Subversion"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 3,
+            "labels_with_generic_first_piece": [
+              "agitation",
+              "criticism",
+              "nothing",
+              "subversive"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 3,
+            "labels_with_generic_first_piece": [
+              "agitation",
+              "criticism",
+              "subversive"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "agitation": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 62694,
+                "first_piece": "Het",
+                "pieces": [
+                  "Het",
+                  "ze"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 33166,
+                "first_piece": "ĠHet",
+                "pieces": [
+                  "ĠHet",
+                  "ze"
+                ]
+              }
+            },
+            "criticism": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 42,
+                "first_piece": "K",
+                "pieces": [
+                  "K",
+                  "rit",
+                  "ik"
+                ]
+              },
+              "space": {
+                "n_tokens": 3,
+                "first_id": 730,
+                "first_piece": "ĠK",
+                "pieces": [
+                  "ĠK",
+                  "rit",
+                  "ik"
+                ]
+              }
+            },
+            "nothing": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 45,
+                "first_piece": "N",
+                "pieces": [
+                  "N",
+                  "icht",
+                  "s"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 86417,
+                "first_piece": "ĠNicht",
+                "pieces": [
+                  "ĠNicht",
+                  "s"
+                ]
+              }
+            },
+            "subversive": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 3136,
+                "first_piece": "Sub",
+                "pieces": [
+                  "Sub",
+                  "version"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 3719,
+                "first_piece": "ĠSub",
+                "pieces": [
+                  "ĠSub",
+                  "version"
+                ]
+              }
+            }
+          }
+        },
+        "vio25_raw": {
+          "words": {
+            "True": "True",
+            "False": "False"
+          },
+          "bare": {
+            "all_single_token": true,
+            "first_token_distinct": true,
+            "max_tokens": 1,
+            "labels_with_generic_first_piece": [],
+            "first_token_reading_sound": true
+          },
+          "space": {
+            "all_single_token": true,
+            "first_token_distinct": true,
+            "max_tokens": 1,
+            "labels_with_generic_first_piece": [],
+            "first_token_reading_sound": true
+          },
+          "detail": {
+            "True": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 2514,
+                "first_piece": "True",
+                "pieces": [
+                  "True"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 3007,
+                "first_piece": "ĠTrue",
+                "pieces": [
+                  "ĠTrue"
+                ]
+              }
+            },
+            "False": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 4049,
+                "first_piece": "False",
+                "pieces": [
+                  "False"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 3557,
+                "first_piece": "ĠFalse",
+                "pieces": [
+                  "ĠFalse"
+                ]
+              }
+            }
+          }
+        },
+        "vio25_de": {
+          "words": {
+            "True": "Ja",
+            "False": "Nein"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 2,
+            "labels_with_generic_first_piece": [
+              "False"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 2,
+            "labels_with_generic_first_piece": [
+              "False"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "True": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 52445,
+                "first_piece": "Ja",
+                "pieces": [
+                  "Ja"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 22871,
+                "first_piece": "ĠJa",
+                "pieces": [
+                  "ĠJa"
+                ]
+              }
+            },
+            "False": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 8813,
+                "first_piece": "Ne",
+                "pieces": [
+                  "Ne",
+                  "in"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 4182,
+                "first_piece": "ĠNe",
+                "pieces": [
+                  "ĠNe",
+                  "in"
+                ]
+              }
+            }
+          }
+        },
+        "vio26_raw": {
+          "words": {
+            "call2violence": "call2violence",
+            "glorification": "glorification",
+            "nothing": "nothing",
+            "other": "other",
+            "propensity": "propensity",
+            "support": "support"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 4,
+            "labels_with_generic_first_piece": [
+              "call2violence",
+              "glorification",
+              "propensity"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": true,
+            "max_tokens": 4,
+            "labels_with_generic_first_piece": [
+              "call2violence",
+              "glorification"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "call2violence": {
+              "bare": {
+                "n_tokens": 4,
+                "first_id": 6659,
+                "first_piece": "call",
+                "pieces": [
+                  "call",
+                  "2",
+                  "viol",
+                  "ence"
+                ]
+              },
+              "space": {
+                "n_tokens": 4,
+                "first_id": 1618,
+                "first_piece": "Ġcall",
+                "pieces": [
+                  "Ġcall",
+                  "2",
+                  "viol",
+                  "ence"
+                ]
+              }
+            },
+            "glorification": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 6072,
+                "first_piece": "gl",
+                "pieces": [
+                  "gl",
+                  "or",
+                  "ification"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 57035,
+                "first_piece": "Ġglor",
+                "pieces": [
+                  "Ġglor",
+                  "ification"
+                ]
+              }
+            },
+            "nothing": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 41212,
+                "first_piece": "nothing",
+                "pieces": [
+                  "nothing"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 4302,
+                "first_piece": "Ġnothing",
+                "pieces": [
+                  "Ġnothing"
+                ]
+              }
+            },
+            "other": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 1575,
+                "first_piece": "other",
+                "pieces": [
+                  "other"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 1008,
+                "first_piece": "Ġother",
+                "pieces": [
+                  "Ġother"
+                ]
+              }
+            },
+            "propensity": {
+              "bare": {
+                "n_tokens": 2,
+                "first_id": 2674,
+                "first_piece": "prop",
+                "pieces": [
+                  "prop",
+                  "ensity"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 94223,
+                "first_piece": "Ġpropensity",
+                "pieces": [
+                  "Ġpropensity"
+                ]
+              }
+            },
+            "support": {
+              "bare": {
+                "n_tokens": 1,
+                "first_id": 23362,
+                "first_piece": "support",
+                "pieces": [
+                  "support"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 1824,
+                "first_piece": "Ġsupport",
+                "pieces": [
+                  "Ġsupport"
+                ]
+              }
+            }
+          }
+        },
+        "vio26_de": {
+          "words": {
+            "call2violence": "Gewaltaufruf",
+            "glorification": "Verherrlichung",
+            "nothing": "Nichts",
+            "other": "Sonstiges",
+            "propensity": "Gewaltbereitschaft",
+            "support": "Unterstützung"
+          },
+          "bare": {
+            "all_single_token": false,
+            "first_token_distinct": false,
+            "max_tokens": 6,
+            "labels_with_generic_first_piece": [
+              "call2violence",
+              "glorification",
+              "nothing",
+              "other",
+              "propensity",
+              "support"
+            ],
+            "first_token_reading_sound": false
+          },
+          "space": {
+            "all_single_token": false,
+            "first_token_distinct": false,
+            "max_tokens": 5,
+            "labels_with_generic_first_piece": [
+              "call2violence",
+              "glorification",
+              "other",
+              "propensity"
+            ],
+            "first_token_reading_sound": false
+          },
+          "detail": {
+            "call2violence": {
+              "bare": {
+                "n_tokens": 6,
+                "first_id": 38,
+                "first_piece": "G",
+                "pieces": [
+                  "G",
+                  "ew",
+                  "al",
+                  "tau",
+                  "fr",
+                  "uf"
+                ]
+              },
+              "space": {
+                "n_tokens": 5,
+                "first_id": 42678,
+                "first_piece": "ĠGew",
+                "pieces": [
+                  "ĠGew",
+                  "al",
+                  "tau",
+                  "fr",
+                  "uf"
+                ]
+              }
+            },
+            "glorification": {
+              "bare": {
+                "n_tokens": 5,
+                "first_id": 10141,
+                "first_piece": "Ver",
+                "pieces": [
+                  "Ver",
+                  "h",
+                  "err",
+                  "lich",
+                  "ung"
+                ]
+              },
+              "space": {
+                "n_tokens": 5,
+                "first_id": 6250,
+                "first_piece": "ĠVer",
+                "pieces": [
+                  "ĠVer",
+                  "h",
+                  "err",
+                  "lich",
+                  "ung"
+                ]
+              }
+            },
+            "nothing": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 45,
+                "first_piece": "N",
+                "pieces": [
+                  "N",
+                  "icht",
+                  "s"
+                ]
+              },
+              "space": {
+                "n_tokens": 2,
+                "first_id": 86417,
+                "first_piece": "ĠNicht",
+                "pieces": [
+                  "ĠNicht",
+                  "s"
+                ]
+              }
+            },
+            "other": {
+              "bare": {
+                "n_tokens": 3,
+                "first_id": 45614,
+                "first_piece": "Son",
+                "pieces": [
+                  "Son",
+                  "st",
+                  "iges"
+                ]
+              },
+              "space": {
+                "n_tokens": 3,
+                "first_id": 11840,
+                "first_piece": "ĠSon",
+                "pieces": [
+                  "ĠSon",
+                  "st",
+                  "iges"
+                ]
+              }
+            },
+            "propensity": {
+              "bare": {
+                "n_tokens": 6,
+                "first_id": 38,
+                "first_piece": "G",
+                "pieces": [
+                  "G",
+                  "ew",
+                  "alt",
+                  "bere",
+                  "its",
+                  "chaft"
+                ]
+              },
+              "space": {
+                "n_tokens": 5,
+                "first_id": 42678,
+                "first_piece": "ĠGew",
+                "pieces": [
+                  "ĠGew",
+                  "alt",
+                  "bere",
+                  "its",
+                  "chaft"
+                ]
+              }
+            },
+            "support": {
+              "bare": {
+                "n_tokens": 4,
+                "first_id": 20250,
+                "first_piece": "Unt",
+                "pieces": [
+                  "Unt",
+                  "er",
+                  "stÃ¼t",
+                  "zung"
+                ]
+              },
+              "space": {
+                "n_tokens": 1,
+                "first_id": 141786,
+                "first_piece": "ĠUnterstÃ¼tzung",
+                "pieces": [
+                  "ĠUnterstÃ¼tzung"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

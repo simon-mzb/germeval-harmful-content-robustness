@@ -1,0 +1,192 @@
+{
+  "experiment": "E5 manual label inspection, Section 4.5",
+  "created": "2026-09-20T15:05:26+00:00",
+  "pre_registration": "THESIS_LOG NS 124 (z14) point 8, (z16) point 3",
+  "interval_note": "per-file intervals are uncorrected 95 % Wilson intervals (the finite-population form is unchecked at an original); the difference interval is Newcombe's hybrid score",
+  "files_seen_in_directory": [
+    "dbo_sample_set_a.coded_backup.csv",
+    "dbo_sample_set_a.csv",
+    "dbo_sample_set_b.coded_backup.csv",
+    "dbo_sample_set_b.csv"
+  ],
+  "inputs": {
+    "set_a": {
+      "file": "dbo_sample_set_a.csv",
+      "format": "numbers-export(pad=5)",
+      "sha256": "8d29a4fb4706debb27ab8a11eb0ab1adb18851abac24adf14932af5b422f6338",
+      "rows": 92,
+      "backup_identical": true,
+      "normalised_copy": "normalised_dbo_sample_set_a.csv",
+      "normalised_sha256": "268be860b3bb13d2296dfa17513fa07b9d7da3e7b49553ecb1f5b6ef29760306",
+      "rows_whose_text_differs_from_the_corpus": []
+    },
+    "set_b": {
+      "file": "dbo_sample_set_b.csv",
+      "format": "numbers-export(pad=3)",
+      "sha256": "292991ecf6a097553954948fe4da7211f982fd85300eb0f073c4eb614b635271",
+      "rows": 92,
+      "backup_identical": true,
+      "normalised_copy": "normalised_dbo_sample_set_b.csv",
+      "normalised_sha256": "b37ae9df0aa0aa1b924788092b1e8ef25cac33b0bc450a84d1ad2e7243041df0",
+      "rows_whose_text_differs_from_the_corpus": []
+    }
+  },
+  "files": {
+    "set_a": {
+      "n_items": 72,
+      "agree": 37,
+      "agreement": 0.5138888888888888,
+      "agreement_wilson95": [
+        0.40069555910198956,
+        0.625675192569916
+      ],
+      "contested": 35,
+      "contested_share": 0.4861111111111111,
+      "contested_wilson95": [
+        0.3743248074300839,
+        0.5993044408980104
+      ],
+      "unclear_in_first_occurrences": 0,
+      "confusion_assigned_by_gold": {
+        "agitation": {
+          "agitation": 2,
+          "criticism": 0,
+          "nothing": 0,
+          "subversive": 0
+        },
+        "criticism": {
+          "agitation": 9,
+          "criticism": 32,
+          "nothing": 2,
+          "subversive": 5
+        },
+        "nothing": {
+          "agitation": 3,
+          "criticism": 11,
+          "nothing": 1,
+          "subversive": 0
+        },
+        "subversive": {
+          "agitation": 5,
+          "criticism": 0,
+          "nothing": 0,
+          "subversive": 2
+        },
+        "unclear": {
+          "agitation": 0,
+          "criticism": 0,
+          "nothing": 0,
+          "subversive": 0
+        }
+      },
+      "stability_pairs": 20,
+      "stability_identical": 19,
+      "stability": 0.95,
+      "stability_wilson95": [
+        0.7638641064874331,
+        0.9911187805671268
+      ],
+      "rows_coded": 92,
+      "stratum": "CTL"
+    },
+    "set_b": {
+      "n_items": 72,
+      "agree": 18,
+      "agreement": 0.25,
+      "agreement_wilson95": [
+        0.16438921125325756,
+        0.36093725865244064
+      ],
+      "contested": 54,
+      "contested_share": 0.75,
+      "contested_wilson95": [
+        0.6390627413475594,
+        0.8356107887467423
+      ],
+      "unclear_in_first_occurrences": 0,
+      "confusion_assigned_by_gold": {
+        "agitation": {
+          "agitation": 1,
+          "criticism": 1,
+          "nothing": 0,
+          "subversive": 0
+        },
+        "criticism": {
+          "agitation": 7,
+          "criticism": 16,
+          "nothing": 2,
+          "subversive": 6
+        },
+        "nothing": {
+          "agitation": 8,
+          "criticism": 26,
+          "nothing": 0,
+          "subversive": 0
+        },
+        "subversive": {
+          "agitation": 3,
+          "criticism": 0,
+          "nothing": 1,
+          "subversive": 1
+        },
+        "unclear": {
+          "agitation": 0,
+          "criticism": 0,
+          "nothing": 0,
+          "subversive": 0
+        }
+      },
+      "stability_pairs": 20,
+      "stability_identical": 19,
+      "stability": 0.95,
+      "stability_wilson95": [
+        0.7638641064874331,
+        0.9911187805671268
+      ],
+      "rows_coded": 92,
+      "stratum": "IRR"
+    }
+  },
+  "group_comparison": {
+    "quantity": "contested share of the irreducible items (IRR) minus contested share of the control items (CTL)",
+    "difference": 0.2638888888888889,
+    "difference_newcombe95": [
+      0.10539660117253263,
+      0.40469153389425155
+    ],
+    "difference_wald95": [
+      0.1111382319246132,
+      0.4166395458531646
+    ],
+    "design_worst_case_wald_half_width": 0.16333333333333333,
+    "detectable_difference_80pct_power_at_observed_control_rate": 0.22692393484458406,
+    "detectable_difference_80pct_power_at_control_rate": {
+      "0.2": 0.21357457363555088,
+      "0.3": 0.2281158720442496,
+      "0.4": 0.2314476410400496,
+      "0.5": 0.22559288408799089
+    },
+    "detectable_difference_as_stated_in_the_pre_registration_z16": {
+      "0.2": 0.215,
+      "0.3": 0.23,
+      "0.4": 0.235,
+      "0.5": 0.23
+    },
+    "these_are_two_different_quantities": "the interval half-width says how precisely the difference is estimated; the detectable difference says what a test at 80 % power could have found. Neither is the other."
+  },
+  "control_k_wrong_distribution": {
+    "1": 9,
+    "2": 15,
+    "3": 9,
+    "4": 18,
+    "5": 21
+  },
+  "control_k_wrong_mean": 3.375,
+  "limitations_carried": [
+    "the coder is the author of the thesis, not an independent annotator",
+    "set_a was always the second file coded and therefore carries more practice and more fatigue than set_b; this cannot be corrected, only named",
+    "the control group is closer in difficulty than an all-correct group but does not hold it equal (control_k_wrong_distribution)",
+    "single-coder stability is not inter-rater reliability (McDonald, Schoenebeck & Forte 2019)",
+    "no per-class statement is supported at these sample sizes, least of all `nothing` at n = 3"
+  ]
+}

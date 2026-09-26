@@ -1,0 +1,9 @@
+{
+  "subtask": "vio",
+  "baseline": "VIO-Qwen2.5-32B-Ollama-R",
+  "edition": "2025",
+  "reproduction": "option_c_not_reproduced",
+  "reported_macro_f1": 68.97,
+  "source": "felser2025",
+  "note": "VIO baseline not reproduced: organizer used Qwen2.5-32B/Ollama/R. Reference figure 68.97 from felser2025. Approximate Python reimplementation (GWDG Qwen3 API) planned as E1b."
+}

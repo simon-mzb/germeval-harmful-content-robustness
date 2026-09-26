@@ -1,0 +1,65 @@
+{
+  "gate": "D6a",
+  "model_requested": "mistral-medium-3.5-128b",
+  "model_reported": "mistral-medium-3.5-128b",
+  "created": "2026-08-11T01:17:09+00:00",
+  "endpoint": "GWDG ChatAI / SAIA (OpenAI-compatible)",
+  "criterion_2_logprobs": {
+    "criterion": "2 - token log-probabilities available",
+    "passed": true,
+    "n_tokens_with_logprobs": 2,
+    "top_alternatives_on_first_token": 5,
+    "first_token": "TRUE",
+    "error": null,
+    "consequence_if_failed": "the judge returns a label only; narrow the calibration claim in 3.2 to the components and record the deviation in 3.3"
+  },
+  "criterion_1_parseable": {
+    "criterion": "1 - output restricted to the label set",
+    "passed": true,
+    "n_clean": 3,
+    "n_calls": 3,
+    "calls": [
+      {
+        "raw_output": "TRUE",
+        "parseable": true,
+        "latency_s": 0.3972830420000264,
+        "error": null
+      },
+      {
+        "raw_output": "FALSE",
+        "parseable": true,
+        "latency_s": 0.16754750000018248,
+        "error": null
+      },
+      {
+        "raw_output": "TRUE",
+        "parseable": true,
+        "latency_s": 0.17929112499996336,
+        "error": null
+      }
+    ]
+  },
+  "criterion_3_limits": {
+    "n_requested": 12,
+    "n_succeeded": 12,
+    "n_errors": 0,
+    "throttled_within_burst": false,
+    "elapsed_s": 1.9593024999999216,
+    "achieved_requests_per_minute": 367.4777120939869,
+    "latency_mean_s": 0.16321098258333677,
+    "latency_min_s": 0.12709629200003292,
+    "latency_max_s": 0.1788898329998574,
+    "note": "sequential burst, not a saturation test; the per-day quota is taken from headers or service documentation, not probed",
+    "criterion": "3 - measured throughput and latency",
+    "passed": true
+  },
+  "all_passed": true,
+  "decision": "go",
+  "decision_note": "GO (Simon, 2026-09-02), with mistral-medium-3.5-128b as the judge backend. G1.5's second half asks whether a judge call returns parseable, calibratable output; all three D6a criteria pass on this model -- 3/3 outputs inside the label set, token log-probabilities available with 5 top alternatives on the first token (so confidences are real, which D6 requires), and 12/12 calls at 367.5 req/min with no throttling. gemma-4-31b-it also passes all three and is the fallback, but at 14.5 req/min under burst it is ~25x slower. openai-gpt-oss-120b is NOT selected: it fails criterion 1 (harmony channels return empty content). That is a property of one model, not of the judge mechanism, which is why it does not touch this verdict.\n\nRecorded 2026-09-02 because the decision field had said TODO since 2026-08-11 while THESIS_LOG recorded D6a as 'DONE, all three criteria met (#43)'. The log claimed a judgement that was never written down -- the #63/#64/#71 drift pattern. Per-day quota is still taken from the service documentation rather than probed.",
+  "note": "Credentials are read from .env and are neither printed nor stored here. Per-day quota is not probed by exhaustion; take it from the service documentation. Three candidates were tested (D6 requires a different model family than the LLM component, so the Qwen ids are excluded); the per-model records are kept beside this file as gwdg_smoke_<model>.json. openai-gpt-oss-120b FAILED criterion 1: it emits the harmony channel format (first token <|channel|>) and spent the whole 8-token budget on its reasoning channel, returning empty content, so a reasoning model does not fit a constrained single-label call. gemma-4-31b-it passed all three but is queue-bound under sustained load (14.5 req/min in the burst against 367.5 for mistral, despite comparable single-call latency).",
+  "candidates_tested": {
+    "openai-gpt-oss-120b": "FAIL criterion 1 (harmony channels, empty content)",
+    "mistral-medium-3.5-128b": "PASS all three; 367.5 req/min; 3/3 labels correct",
+    "gemma-4-31b-it": "PASS all three; 14.5 req/min under burst; 3/3 labels correct"
+  }
+}

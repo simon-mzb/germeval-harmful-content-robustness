@@ -1,0 +1,442 @@
+{
+  "experiment": "E4a",
+  "package": "B8",
+  "git_commit": "be114154dcf1e188f31c26130f5b5abf51936d7d",
+  "subtask": "dbo",
+  "edition": "2025",
+  "component": "tml_lightgbm",
+  "meta": {
+    "design_lock": "notes/e2_design_lock.md",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "primary_metric": "macro_f1",
+    "aggregation": "pooled_out_of_fold",
+    "imbalance_condition": "class_weighting",
+    "data_rules": {
+      "within_edition_dedup": true,
+      "drop_train_test_overlap": false,
+      "note": "the overlap rule protects evaluation on the official test set, which E2 does not use; leaving it off keeps the pool identical to the E1 baseline pool and preserves thin-class instances"
+    },
+    "pool_n": 7210,
+    "classes": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "n_splits": 3,
+    "config_id": "f5b57f8c0c5a",
+    "seeds": [
+      42
+    ],
+    "primary_seed": 42,
+    "family": "tml",
+    "feature_spec": {
+      "word_ngram_range": [
+        1,
+        2
+      ],
+      "char_ngram_range": [
+        3,
+        5
+      ],
+      "char_analyzer": "char_wb",
+      "lowercase": true,
+      "min_df": 2,
+      "sublinear_tf": true
+    },
+    "inner_split": {
+      "fit": 0.8,
+      "select": 0.1,
+      "calibrate": 0.1
+    },
+    "grid": [
+      {
+        "learning_rate": 0.1,
+        "num_leaves": 31
+      }
+    ],
+    "grid_deviation": "no search: the configuration frozen in results/e4_fixed_configurations.json under e4_protocol.e4a.configuration",
+    "seed_semantics": "the seed varies the CV partition",
+    "e4": {
+      "experiment": "E4A",
+      "condition": "class_weighting",
+      "fixed_params": {
+        "learning_rate": 0.1,
+        "num_leaves": 31
+      }
+    },
+    "replicate_seeds_skipped": "E4 has no D3 replicates (D5)",
+    "bootstrap_n": 1000,
+    "ci_level": 0.95,
+    "env_pin": {
+      "python": "3.13.15",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1",
+      "cuda_available": false,
+      "cuda_device": null,
+      "mps_available": true,
+      "torch_auto_device": "mps",
+      "platform": "Darwin/arm64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-14T12:28:28+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.4933921472590972,
+    "weighted_f1": 0.8511797401024438,
+    "per_class": {
+      "agitation": {
+        "f1": 0.2006269592476489,
+        "support": 224,
+        "tier": "interpret",
+        "ci_lower": 0.14329105473965287,
+        "ci_upper": 0.25444634982851544
+      },
+      "criticism": {
+        "f1": 0.4884020618556701,
+        "support": 803,
+        "tier": "interpret",
+        "ci_lower": 0.460136839641888,
+        "ci_upper": 0.5199326078872439
+      },
+      "nothing": {
+        "f1": 0.9273967107902126,
+        "support": 6123,
+        "tier": "interpret",
+        "ci_lower": 0.9226672251783771,
+        "ci_upper": 0.9322814689852436
+      },
+      "subversive": {
+        "f1": 0.35714285714285715,
+        "support": 60,
+        "tier": "ci_gated",
+        "ci_lower": 0.22534330985915493,
+        "ci_upper": 0.4827775672603259
+      }
+    },
+    "labels": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "confusion_matrix": [
+      [
+        32,
+        58,
+        134,
+        0
+      ],
+      [
+        14,
+        379,
+        407,
+        3
+      ],
+      [
+        47,
+        290,
+        5780,
+        6
+      ],
+      [
+        2,
+        22,
+        21,
+        15
+      ]
+    ],
+    "n_samples": 7210,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.013655176742465308,
+      "brier": 0.21497851764818326,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.3333333333333333,
+          "bin_upper": 0.4,
+          "n": 19,
+          "mean_confidence": 0.3718957826758499,
+          "accuracy": 0.3684210526315789
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.4666666666666667,
+          "n": 79,
+          "mean_confidence": 0.4380599247712089,
+          "accuracy": 0.4430379746835443
+        },
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 225,
+          "mean_confidence": 0.5033134651081556,
+          "accuracy": 0.48
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 306,
+          "mean_confidence": 0.566274012352782,
+          "accuracy": 0.5490196078431373
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 362,
+          "mean_confidence": 0.6347147007309383,
+          "accuracy": 0.6988950276243094
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 532,
+          "mean_confidence": 0.7018767760913147,
+          "accuracy": 0.7537593984962406
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 522,
+          "mean_confidence": 0.7692760193838059,
+          "accuracy": 0.7662835249042146
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 750,
+          "mean_confidence": 0.8357273093355225,
+          "accuracy": 0.848
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 1585,
+          "mean_confidence": 0.9060450101206629,
+          "accuracy": 0.9217665615141956
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 2830,
+          "mean_confidence": 0.9668024492792587,
+          "accuracy": 0.9671378091872792
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 7210
+    },
+    "macro_f1_ci_lower": 0.4562578439373016,
+    "macro_f1_ci_upper": 0.5296358512910934,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "repeats": [
+    {
+      "seed": 42,
+      "pooled_macro_f1": 0.4933921472590972,
+      "pooled_weighted_f1": 0.8511797401024438,
+      "per_fold_macro_f1": [
+        0.4631706571586338,
+        0.5117838269599029,
+        0.5057796766840781
+      ],
+      "fold_sd_macro_f1": 0.02650414635354689,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "agitation": 0.2006269592476489,
+        "criticism": 0.4884020618556701,
+        "nothing": 0.9273967107902126,
+        "subversive": 0.35714285714285715
+      },
+      "ece": 0.013655176742465308,
+      "brier": 0.21497851764818326,
+      "selected_params_per_fold": [
+        {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        },
+        {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        },
+        {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        }
+      ],
+      "temperature_per_fold": [
+        0.9225778050930229,
+        1.2141238083240158,
+        1.1786058381657598
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_lightgbm",
+          "selected_params": {
+            "learning_rate": 0.1,
+            "num_leaves": 31
+          },
+          "selection_macro_f1": 0.36473097409045774,
+          "selection_grid": [
+            {
+              "params": {
+                "learning_rate": 0.1,
+                "num_leaves": 31
+              },
+              "selection_macro_f1": 0.36473097409045774,
+              "best_iteration": 43
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9225778050930229,
+            "nll_before": 0.3875130800246979,
+            "nll_after": 0.38566762202480265,
+            "n_calibration_items": 481,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "class_weighting",
+          "n_fit": 3844,
+          "n_fit_trained": 3844,
+          "n_select": 481,
+          "n_calibrate": 481,
+          "n_features": 55400,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_lightgbm",
+          "selected_params": {
+            "learning_rate": 0.1,
+            "num_leaves": 31
+          },
+          "selection_macro_f1": 0.49745583578576436,
+          "selection_grid": [
+            {
+              "params": {
+                "learning_rate": 0.1,
+                "num_leaves": 31
+              },
+              "selection_macro_f1": 0.49745583578576436,
+              "best_iteration": 57
+            }
+          ],
+          "temperature": {
+            "temperature": 1.2141238083240158,
+            "nll_before": 0.455763236269191,
+            "nll_after": 0.4440858955372567,
+            "n_calibration_items": 481,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "class_weighting",
+          "n_fit": 3845,
+          "n_fit_trained": 3845,
+          "n_select": 481,
+          "n_calibrate": 481,
+          "n_features": 55712,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_lightgbm",
+          "selected_params": {
+            "learning_rate": 0.1,
+            "num_leaves": 31
+          },
+          "selection_macro_f1": 0.6203489335917179,
+          "selection_grid": [
+            {
+              "params": {
+                "learning_rate": 0.1,
+                "num_leaves": 31
+              },
+              "selection_macro_f1": 0.6203489335917179,
+              "best_iteration": 53
+            }
+          ],
+          "temperature": {
+            "temperature": 1.1786058381657598,
+            "nll_before": 0.4505044158801561,
+            "nll_after": 0.44265011112369246,
+            "n_calibration_items": 481,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "class_weighting",
+          "n_fit": 3845,
+          "n_fit_trained": 3845,
+          "n_select": 481,
+          "n_calibrate": 481,
+          "n_features": 56378,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        }
+      ],
+      "component_store_key": "dbo_2025/tml_lightgbm__e4a-class_weighting__seed42",
+      "runtime_seconds": 65.5511679649353,
+      "fold_runtime_seconds_sum": null,
+      "resumed_folds": []
+    }
+  ],
+  "seed_replicates": [],
+  "dispersion": {
+    "mean_pooled_macro_f1": 0.4933921472590972,
+    "seed_sd_macro_f1": 0.0,
+    "fold_sd_macro_f1_primary": 0.02650414635354689,
+    "per_seed_pooled_macro_f1": [
+      0.4933921472590972
+    ],
+    "replicate_fold_macro_f1": [],
+    "replicate_sd_macro_f1": 0.0
+  },
+  "runtime_seconds": 65.93233394622803,
+  "resumed": false,
+  "selection_diagnosis": {
+    "flags": [
+      "single_cell_grid"
+    ],
+    "notes": [
+      "the grid has no axis with more than one value -- nothing was selected, so no edge check is possible."
+    ],
+    "axes": {},
+    "n_distinct_winners": 1,
+    "n_fits": 3,
+    "margin": null,
+    "ok": true
+  },
+  "stopping_evidence": null
+}

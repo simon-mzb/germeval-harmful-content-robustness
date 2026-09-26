@@ -1,0 +1,1371 @@
+{
+  "experiment": "E2",
+  "package": "B3",
+  "subtask": "dbo",
+  "edition": "2025",
+  "component": "tml_xgboost",
+  "meta": {
+    "design_lock": "notes/e2_design_lock.md",
+    "matrix_version": "1.4",
+    "primary_metric": "macro_f1",
+    "aggregation": "pooled_out_of_fold",
+    "imbalance_condition": "none (D4 reference condition; E4a varies this)",
+    "data_rules": {
+      "within_edition_dedup": true,
+      "drop_train_test_overlap": false,
+      "note": "the overlap rule protects evaluation on the official test set, which E2 does not use; leaving it off keeps the pool identical to the E1 baseline pool and preserves thin-class instances"
+    },
+    "pool_n": 7210,
+    "classes": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "n_splits": 5,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "primary_seed": 42,
+    "family": "tml",
+    "feature_spec": {
+      "word_ngram_range": [
+        1,
+        2
+      ],
+      "char_ngram_range": [
+        3,
+        5
+      ],
+      "char_analyzer": "char_wb",
+      "lowercase": true,
+      "min_df": 2,
+      "sublinear_tf": true
+    },
+    "inner_split": {
+      "fit": 0.8,
+      "select": 0.1,
+      "calibrate": 0.1
+    },
+    "grid": [
+      {
+        "max_depth": 4,
+        "learning_rate": 0.05
+      },
+      {
+        "max_depth": 4,
+        "learning_rate": 0.1
+      },
+      {
+        "max_depth": 8,
+        "learning_rate": 0.05
+      },
+      {
+        "max_depth": 8,
+        "learning_rate": 0.1
+      }
+    ],
+    "grid_deviation": "n_estimators replaced by early stopping on the selection slice (cap 1000, patience 30); see THESIS_LOG session B3",
+    "seed_semantics": "the seed varies the CV partition",
+    "bootstrap_n": 1000,
+    "ci_level": 0.95,
+    "env_pin": {
+      "python": "3.13.15",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1",
+      "cuda_available": false,
+      "cuda_device": null,
+      "platform": "Darwin/arm64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-08-18T19:07:57+00:00",
+    "data_rules_id": "7e9082557061"
+  },
+  "primary": {
+    "macro_f1": 0.40430312837898996,
+    "weighted_f1": 0.8460145355675455,
+    "per_class": {
+      "agitation": {
+        "f1": 0.06639004149377593,
+        "support": 224,
+        "tier": "interpret",
+        "ci_lower": 0.02541838769406068,
+        "ci_upper": 0.11382732078271351
+      },
+      "criticism": {
+        "f1": 0.4339152119700748,
+        "support": 803,
+        "tier": "interpret",
+        "ci_lower": 0.3989642379799877,
+        "ci_upper": 0.46783831644839796
+      },
+      "nothing": {
+        "f1": 0.9350890782339272,
+        "support": 6123,
+        "tier": "interpret",
+        "ci_lower": 0.9306642384855738,
+        "ci_upper": 0.9391513490894513
+      },
+      "subversive": {
+        "f1": 0.18181818181818182,
+        "support": 60,
+        "tier": "ci_gated",
+        "ci_lower": 0.06554732945531468,
+        "ci_upper": 0.31708284939992254
+      }
+    },
+    "labels": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "confusion_matrix": [
+      [
+        8,
+        40,
+        176,
+        0
+      ],
+      [
+        3,
+        261,
+        539,
+        0
+      ],
+      [
+        5,
+        82,
+        6036,
+        0
+      ],
+      [
+        1,
+        17,
+        36,
+        6
+      ]
+    ],
+    "n_samples": 7210,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.022388221030901295,
+      "brier": 0.19629693850719832,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.3333333333333333,
+          "bin_upper": 0.4,
+          "n": 4,
+          "mean_confidence": 0.380722682926168,
+          "accuracy": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.4666666666666667,
+          "n": 41,
+          "mean_confidence": 0.4409865438413459,
+          "accuracy": 0.5121951219512195
+        },
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 182,
+          "mean_confidence": 0.5051284717362252,
+          "accuracy": 0.5604395604395604
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 216,
+          "mean_confidence": 0.5672754126263416,
+          "accuracy": 0.5787037037037037
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 223,
+          "mean_confidence": 0.6345514774645182,
+          "accuracy": 0.6188340807174888
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 294,
+          "mean_confidence": 0.7021664090897283,
+          "accuracy": 0.6428571428571429
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 452,
+          "mean_confidence": 0.7696237988378989,
+          "accuracy": 0.6836283185840708
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 762,
+          "mean_confidence": 0.8357494650084931,
+          "accuracy": 0.8202099737532809
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 1630,
+          "mean_confidence": 0.9067497753433362,
+          "accuracy": 0.9030674846625767
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 3406,
+          "mean_confidence": 0.9571837355615169,
+          "accuracy": 0.9770992366412213
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 7210
+    },
+    "macro_f1_ci_lower": 0.37108160888301206,
+    "macro_f1_ci_upper": 0.44231605454128625,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "repeats": [
+    {
+      "seed": 42,
+      "pooled_macro_f1": 0.40430312837898996,
+      "pooled_weighted_f1": 0.8460145355675455,
+      "per_fold_macro_f1": [
+        0.41799710990583727,
+        0.344764264836701,
+        0.35090801196864085,
+        0.4531858956874868,
+        0.43395038191233526
+      ],
+      "fold_sd_macro_f1": 0.04941190090945006,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "agitation": 0.06639004149377593,
+        "criticism": 0.4339152119700748,
+        "nothing": 0.9350890782339272,
+        "subversive": 0.18181818181818182
+      },
+      "ece": 0.022388221030901295,
+      "brier": 0.19629693850719832,
+      "selected_params_per_fold": [
+        {
+          "max_depth": 8,
+          "learning_rate": 0.05
+        },
+        {
+          "max_depth": 4,
+          "learning_rate": 0.1
+        },
+        {
+          "max_depth": 8,
+          "learning_rate": 0.1
+        },
+        {
+          "max_depth": 4,
+          "learning_rate": 0.1
+        },
+        {
+          "max_depth": 8,
+          "learning_rate": 0.05
+        }
+      ],
+      "temperature_per_fold": [
+        1.1518694988180391,
+        1.1335810213127995,
+        1.057521725668626,
+        1.0453970481672628,
+        1.2026622416183137
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 8,
+            "learning_rate": 0.05
+          },
+          "selection_macro_f1": 0.43048903243439623,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.42300046232085065,
+              "best_iteration": 223
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.4285879400303811,
+              "best_iteration": 117
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.43048903243439623,
+              "best_iteration": 116
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.42719468739876904,
+              "best_iteration": 71
+            }
+          ],
+          "temperature": {
+            "temperature": 1.1518694988180391,
+            "nll_before": 0.40981961157523183,
+            "nll_after": 0.4032858821288646,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 62162,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 4,
+            "learning_rate": 0.1
+          },
+          "selection_macro_f1": 0.4203476781827825,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4170170112835787,
+              "best_iteration": 242
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.4203476781827825,
+              "best_iteration": 151
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.3836919603612243,
+              "best_iteration": 88
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.3785767586318167,
+              "best_iteration": 60
+            }
+          ],
+          "temperature": {
+            "temperature": 1.1335810213127995,
+            "nll_before": 0.3992852599708077,
+            "nll_after": 0.39442770499014923,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63185,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 8,
+            "learning_rate": 0.1
+          },
+          "selection_macro_f1": 0.3350338548957394,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.3201236263736264,
+              "best_iteration": 105
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.32482633803406286,
+              "best_iteration": 59
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.3160610599314717,
+              "best_iteration": 61
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.3350338548957394,
+              "best_iteration": 32
+            }
+          ],
+          "temperature": {
+            "temperature": 1.057521725668626,
+            "nll_before": 0.3867725038001643,
+            "nll_after": 0.3857595388301023,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63934,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 4,
+            "learning_rate": 0.1
+          },
+          "selection_macro_f1": 0.4928294573643411,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4624846772554752,
+              "best_iteration": 233
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.4928294573643411,
+              "best_iteration": 118
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.46628906524714503,
+              "best_iteration": 120
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.47542827353762457,
+              "best_iteration": 67
+            }
+          ],
+          "temperature": {
+            "temperature": 1.0453970481672628,
+            "nll_before": 0.37338985539789277,
+            "nll_after": 0.37279716196166396,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 62998,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 3
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 8,
+            "learning_rate": 0.05
+          },
+          "selection_macro_f1": 0.4300743553235247,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.41841678531877863,
+              "best_iteration": 259
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.41841678531877863,
+              "best_iteration": 121
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4300743553235247,
+              "best_iteration": 123
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.3460299899243337,
+              "best_iteration": 45
+            }
+          ],
+          "temperature": {
+            "temperature": 1.2026622416183137,
+            "nll_before": 0.42728415074937826,
+            "nll_after": 0.41603045764436614,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 64693,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 4
+        }
+      ],
+      "component_store_key": "dbo_2025/tml_xgboost__seed42",
+      "runtime_seconds": 888.7422561645508
+    },
+    {
+      "seed": 43,
+      "pooled_macro_f1": 0.4235264591682008,
+      "pooled_weighted_f1": 0.8470792999317468,
+      "per_fold_macro_f1": [
+        0.40892409075543545,
+        0.4479469733554228,
+        0.3666692011785415,
+        0.39222291549093957,
+        0.49426990133546567
+      ],
+      "fold_sd_macro_f1": 0.05003832358580824,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "agitation": 0.104,
+        "criticism": 0.42965459140690815,
+        "nothing": 0.9350991325898389,
+        "subversive": 0.22535211267605634
+      },
+      "ece": 0.02372064295591557,
+      "brier": 0.19184759820941807,
+      "selected_params_per_fold": [
+        {
+          "max_depth": 4,
+          "learning_rate": 0.1
+        },
+        {
+          "max_depth": 4,
+          "learning_rate": 0.05
+        },
+        {
+          "max_depth": 4,
+          "learning_rate": 0.1
+        },
+        {
+          "max_depth": 8,
+          "learning_rate": 0.05
+        },
+        {
+          "max_depth": 4,
+          "learning_rate": 0.05
+        }
+      ],
+      "temperature_per_fold": [
+        0.9987131029758078,
+        1.0508931254622618,
+        1.1080034778314845,
+        1.0595549702499247,
+        1.0787028396194982
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 4,
+            "learning_rate": 0.1
+          },
+          "selection_macro_f1": 0.41622400628871303,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.35136605335908255,
+              "best_iteration": 137
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.41622400628871303,
+              "best_iteration": 106
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.38391407133312777,
+              "best_iteration": 99
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.368633792321971,
+              "best_iteration": 48
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9987131029758078,
+            "nll_before": 0.3544899321443988,
+            "nll_after": 0.35448945189205056,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 64470,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 4,
+            "learning_rate": 0.05
+          },
+          "selection_macro_f1": 0.4599191589816749,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4599191589816749,
+              "best_iteration": 204
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.45346414728682166,
+              "best_iteration": 109
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.33743346763960946,
+              "best_iteration": 100
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.333748972267791,
+              "best_iteration": 46
+            }
+          ],
+          "temperature": {
+            "temperature": 1.0508931254622618,
+            "nll_before": 0.37677162244296997,
+            "nll_after": 0.37601659421917627,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 64413,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 4,
+            "learning_rate": 0.1
+          },
+          "selection_macro_f1": 0.4389120770979673,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.42981806968855996,
+              "best_iteration": 385
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.4389120770979673,
+              "best_iteration": 150
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4326698128428525,
+              "best_iteration": 162
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.41798789671130093,
+              "best_iteration": 106
+            }
+          ],
+          "temperature": {
+            "temperature": 1.1080034778314845,
+            "nll_before": 0.38517103635451966,
+            "nll_after": 0.3820517366091532,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63584,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 8,
+            "learning_rate": 0.05
+          },
+          "selection_macro_f1": 0.40066948655349266,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.3995450281425891,
+              "best_iteration": 168
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.38814866895249833,
+              "best_iteration": 79
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.40066948655349266,
+              "best_iteration": 92
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.3770838328138736,
+              "best_iteration": 37
+            }
+          ],
+          "temperature": {
+            "temperature": 1.0595549702499247,
+            "nll_before": 0.36024056141195737,
+            "nll_after": 0.359210580307761,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63168,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 3
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 4,
+            "learning_rate": 0.05
+          },
+          "selection_macro_f1": 0.43908585829658053,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.43908585829658053,
+              "best_iteration": 263
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.4341754177399115,
+              "best_iteration": 87
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4354171661472069,
+              "best_iteration": 124
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.42977803084791816,
+              "best_iteration": 62
+            }
+          ],
+          "temperature": {
+            "temperature": 1.0787028396194982,
+            "nll_before": 0.3868280884640664,
+            "nll_after": 0.3851062218077306,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 62704,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 4
+        }
+      ],
+      "component_store_key": "dbo_2025/tml_xgboost__seed43",
+      "runtime_seconds": 896.0520691871643
+    },
+    {
+      "seed": 44,
+      "pooled_macro_f1": 0.4319250341006787,
+      "pooled_weighted_f1": 0.8448233867820928,
+      "per_fold_macro_f1": [
+        0.4004511519123941,
+        0.4477759511454015,
+        0.438816423536581,
+        0.41881483801371855,
+        0.44989088599019045
+      ],
+      "fold_sd_macro_f1": 0.021100904033063504,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "agitation": 0.10833333333333334,
+        "criticism": 0.42609413707679605,
+        "nothing": 0.9324031007751938,
+        "subversive": 0.2608695652173913
+      },
+      "ece": 0.020969863514606696,
+      "brier": 0.19339564977963788,
+      "selected_params_per_fold": [
+        {
+          "max_depth": 4,
+          "learning_rate": 0.05
+        },
+        {
+          "max_depth": 4,
+          "learning_rate": 0.1
+        },
+        {
+          "max_depth": 8,
+          "learning_rate": 0.05
+        },
+        {
+          "max_depth": 4,
+          "learning_rate": 0.05
+        },
+        {
+          "max_depth": 8,
+          "learning_rate": 0.05
+        }
+      ],
+      "temperature_per_fold": [
+        1.0798134700871358,
+        1.0827605268921898,
+        1.1279730596732345,
+        1.1231957693565398,
+        1.2016286466255173
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 4,
+            "learning_rate": 0.05
+          },
+          "selection_macro_f1": 0.4781665046971169,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4781665046971169,
+              "best_iteration": 284
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.4615572635980799,
+              "best_iteration": 132
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4744567730004623,
+              "best_iteration": 108
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.468383858397728,
+              "best_iteration": 54
+            }
+          ],
+          "temperature": {
+            "temperature": 1.0798134700871358,
+            "nll_before": 0.355617937800913,
+            "nll_after": 0.35380107547515754,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63895,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 4,
+            "learning_rate": 0.1
+          },
+          "selection_macro_f1": 0.4366129347091781,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4154544252322544,
+              "best_iteration": 273
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.4366129347091781,
+              "best_iteration": 200
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.33910092355624794,
+              "best_iteration": 135
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.33764367816091956,
+              "best_iteration": 77
+            }
+          ],
+          "temperature": {
+            "temperature": 1.0827605268921898,
+            "nll_before": 0.35934948468416245,
+            "nll_after": 0.35763025121781344,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63974,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 8,
+            "learning_rate": 0.05
+          },
+          "selection_macro_f1": 0.3950286030998238,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.37111882696775156,
+              "best_iteration": 279
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.3949748935601505,
+              "best_iteration": 137
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.3950286030998238,
+              "best_iteration": 138
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.3769395019937117,
+              "best_iteration": 67
+            }
+          ],
+          "temperature": {
+            "temperature": 1.1279730596732345,
+            "nll_before": 0.36389744664485785,
+            "nll_after": 0.3594654212649986,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63047,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 4,
+            "learning_rate": 0.05
+          },
+          "selection_macro_f1": 0.4752481071560019,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.4752481071560019,
+              "best_iteration": 226
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.4327098401795327,
+              "best_iteration": 84
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.423546868576154,
+              "best_iteration": 85
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.42118304997495043,
+              "best_iteration": 46
+            }
+          ],
+          "temperature": {
+            "temperature": 1.1231957693565398,
+            "nll_before": 0.40717116568993644,
+            "nll_after": 0.40284334482317574,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 63002,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 3
+        },
+        {
+          "component": "tml_xgboost",
+          "selected_params": {
+            "max_depth": 8,
+            "learning_rate": 0.05
+          },
+          "selection_macro_f1": 0.5176413332705463,
+          "selection_grid": [
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.43174167511428185,
+              "best_iteration": 205
+            },
+            {
+              "params": {
+                "max_depth": 4,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.46423544480965684,
+              "best_iteration": 129
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.05
+              },
+              "selection_macro_f1": 0.5176413332705463,
+              "best_iteration": 151
+            },
+            {
+              "params": {
+                "max_depth": 8,
+                "learning_rate": 0.1
+              },
+              "selection_macro_f1": 0.43079346607543756,
+              "best_iteration": 69
+            }
+          ],
+          "temperature": {
+            "temperature": 1.2016286466255173,
+            "nll_before": 0.4025462500207875,
+            "nll_after": 0.39191351142954006,
+            "n_calibration_items": 577,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "n_fit": 4614,
+          "n_select": 577,
+          "n_calibrate": 577,
+          "n_features": 64449,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 4
+        }
+      ],
+      "component_store_key": "dbo_2025/tml_xgboost__seed44",
+      "runtime_seconds": 1042.5030159950256
+    }
+  ],
+  "seed_replicates": [],
+  "dispersion": {
+    "mean_pooled_macro_f1": 0.41991820721595646,
+    "seed_sd_macro_f1": 0.014160050513243982,
+    "fold_sd_macro_f1_primary": 0.04941190090945006,
+    "per_seed_pooled_macro_f1": [
+      0.40430312837898996,
+      0.4235264591682008,
+      0.4319250341006787
+    ],
+    "replicate_fold_macro_f1": [],
+    "replicate_sd_macro_f1": 0.0
+  },
+  "runtime_seconds": 2831.710768699646
+}

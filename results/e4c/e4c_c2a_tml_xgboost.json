@@ -1,0 +1,197 @@
+{
+  "experiment": "E4c",
+  "package": "B10",
+  "git_commit": "be114154dcf1e188f31c26130f5b5abf51936d7d",
+  "subtask": "c2a",
+  "component": "tml_xgboost",
+  "meta": {
+    "config_id": "ecf6590ebd6e",
+    "e4": {
+      "experiment": "E4C",
+      "condition": "none",
+      "fixed_params": {
+        "learning_rate": 0.05,
+        "max_depth": 4
+      }
+    },
+    "family": "tml",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "train_edition": "2025",
+    "eval_edition": "2026",
+    "n_train": 6773,
+    "n_eval": 9068,
+    "eval_pool_sha256": "f08a18d9f1805fd38b4f538f8f00148324b455d5df76a27a4637b4613fd20c91",
+    "label_mapping": null,
+    "classes": [
+      "False",
+      "True"
+    ],
+    "bootstrap_n": 1000,
+    "env_pin": {
+      "python": "3.13.15",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1",
+      "cuda_available": false,
+      "cuda_device": null,
+      "mps_available": true,
+      "torch_auto_device": "mps",
+      "platform": "Darwin/arm64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-14T14:12:39+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.5384353471582083,
+    "weighted_f1": 0.8858754636887576,
+    "per_class": {
+      "False": {
+        "f1": 0.9573963812937164,
+        "support": 8294,
+        "tier": "interpret",
+        "ci_lower": 0.9543836264706411,
+        "ci_upper": 0.9603746805028853
+      },
+      "True": {
+        "f1": 0.11947431302270012,
+        "support": 774,
+        "tier": "interpret",
+        "ci_lower": 0.09058380977529057,
+        "ci_upper": 0.1515340909090909
+      }
+    },
+    "labels": [
+      "False",
+      "True"
+    ],
+    "confusion_matrix": [
+      [
+        8281,
+        13
+      ],
+      [
+        724,
+        50
+      ]
+    ],
+    "n_samples": 9068,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.01588550839227429,
+      "brier": 0.13227416746034937,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 45,
+          "mean_confidence": 0.5162318854262445,
+          "accuracy": 0.4666666666666667
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 76,
+          "mean_confidence": 0.5674976403060398,
+          "accuracy": 0.5657894736842105
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 89,
+          "mean_confidence": 0.6348700937641094,
+          "accuracy": 0.550561797752809
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 165,
+          "mean_confidence": 0.7025655768019496,
+          "accuracy": 0.6424242424242425
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 314,
+          "mean_confidence": 0.7696624994894918,
+          "accuracy": 0.7261146496815286
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 623,
+          "mean_confidence": 0.8390112986364273,
+          "accuracy": 0.8089887640449438
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 2264,
+          "mean_confidence": 0.9074934972363994,
+          "accuracy": 0.9001766784452296
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 5492,
+          "mean_confidence": 0.9589731546899175,
+          "accuracy": 0.9726875455207574
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 9068
+    },
+    "macro_f1_ci_lower": 0.5230662470046161,
+    "macro_f1_ci_upper": 0.5546948596844208,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "source_class_detection": null,
+  "fit_record": {
+    "component": "tml_xgboost",
+    "selected_params": {
+      "learning_rate": 0.05,
+      "max_depth": 4
+    },
+    "selection_macro_f1": 0.5452634772057549,
+    "selection_grid": [
+      {
+        "params": {
+          "learning_rate": 0.05,
+          "max_depth": 4
+        },
+        "selection_macro_f1": 0.5452634772057549,
+        "best_iteration": 168
+      }
+    ],
+    "temperature": {
+      "temperature": 0.9652976700094958,
+      "nll_before": 0.25331898077840126,
+      "nll_after": 0.25308642641332985,
+      "n_calibration_items": 678,
+      "fitted": true
+    },
+    "platt_fallback_classes": [],
+    "grid_overridden": true,
+    "imbalance_condition": "none",
+    "n_fit": 5418,
+    "n_fit_trained": 5418,
+    "n_select": 677,
+    "n_calibrate": 678,
+    "n_features": 71952,
+    "classes_present_in_fit": [
+      "False",
+      "True"
+    ],
+    "inner_split_stratified": true
+  },
+  "adapter": null,
+  "component_store_key": "c2a_2026/tml_xgboost__e4c__seed42",
+  "fit_seconds": 48.3071072101593,
+  "score_seconds": 0.9918398857116699
+}

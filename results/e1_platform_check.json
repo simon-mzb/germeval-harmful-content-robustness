@@ -1,0 +1,154 @@
+{
+  "experiment": "E1 platform check",
+  "anchor": "THESIS_LOG Next Steps #53, restructured under #65",
+  "created": "2026-08-26T11:38:23+00:00",
+  "protocol": "notebooks/01_baseline_repro.ipynb mirrored exactly: within-edition dedup, no overlap drop, stratified 80/20 holdout, seed 42",
+  "machine": {
+    "platform": "Linux-6.8.0-49-generic-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "python": "3.13.8"
+  },
+  "env_pin": {
+    "python": "3.13.8",
+    "requires_python_floor": ">=3.12",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.17.1",
+    "numpy": "2.4.6",
+    "xgboost": "3.3.0",
+    "lightgbm": "4.6.0",
+    "torch": "2.12.1+cu126",
+    "cuda_available": true,
+    "cuda_device": "NVIDIA A40",
+    "mps_available": false,
+    "torch_auto_device": "cuda",
+    "platform": "Linux/x86_64",
+    "nltk_punkt_tab": true
+  },
+  "platform_effect": {
+    "generation": "pre-2026-08-18: within-edition dedup, no contradicting-label drop",
+    "data_rules_commit": "6512394",
+    "machines": {
+      "this_machine": "Linux/x86_64",
+      "desktop": "Windows/AMD64"
+    },
+    "measured": "2026-08-20",
+    "recipe": "git worktree add --detach <dir> 6512394; link experiments/data/codabench; run src/e1_platform_check.run() there with the current venv",
+    "runs": [
+      {
+        "subtask": "dbo",
+        "this_machine": 51.4021261849572,
+        "desktop": 48.4109,
+        "delta_pp": 2.991226184957199,
+        "reproduces_desktop": false
+      },
+      {
+        "subtask": "c2a",
+        "this_machine": 56.4560563780586,
+        "desktop": 56.4561,
+        "delta_pp": -4.362194140128395e-05,
+        "reproduces_desktop": true
+      }
+    ]
+  },
+  "current_generation": {
+    "generation": "current: within-edition dedup after contradicting-label drop",
+    "data_rules_id": "7e9082557061",
+    "machine": "Linux/x86_64",
+    "desktop_counterpart": null,
+    "desktop_counterpart_note": "not measured; the desktop has not run these rules. Any delta against the 2026-08-07 pin would span a machine and a rule generation at once.",
+    "runs": [
+      {
+        "subtask": "dbo",
+        "macro_f1_this_machine": 48.900224351200585,
+        "n_train": 5768,
+        "n_val": 1442,
+        "metrics": {
+          "macro_f1": 0.48900224351200583,
+          "weighted_f1": 0.8401244767773759,
+          "per_class_f1": {
+            "agitation": 0.21428571428571427,
+            "criticism": 0.4473684210526316,
+            "nothing": 0.9193548387096774,
+            "subversive": 0.375
+          },
+          "per_class_support": {
+            "agitation": 45,
+            "criticism": 161,
+            "nothing": 1224,
+            "subversive": 12
+          },
+          "zero_support_classes": [],
+          "report": "              precision    recall  f1-score   support\n\n   agitation       0.23      0.20      0.21        45\n   criticism       0.48      0.42      0.45       161\n     nothing       0.91      0.93      0.92      1224\n  subversive       0.75      0.25      0.38        12\n\n    accuracy                           0.85      1442\n   macro avg       0.59      0.45      0.49      1442\nweighted avg       0.84      0.85      0.84      1442\n",
+          "confusion_matrix": [
+            [
+              9,
+              14,
+              22,
+              0
+            ],
+            [
+              5,
+              68,
+              88,
+              0
+            ],
+            [
+              24,
+              59,
+              1140,
+              1
+            ],
+            [
+              1,
+              2,
+              6,
+              3
+            ]
+          ],
+          "labels": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "n_samples": 1442
+        }
+      },
+      {
+        "subtask": "c2a",
+        "macro_f1_this_machine": 57.400045475850604,
+        "n_train": 5418,
+        "n_val": 1355,
+        "metrics": {
+          "macro_f1": 0.574000454758506,
+          "weighted_f1": 0.7729659841128216,
+          "per_class_f1": {
+            "False": 0.8211116300794021,
+            "True": 0.3268892794376098
+          },
+          "per_class_support": {
+            "False": 1223,
+            "True": 132
+          },
+          "zero_support_classes": [],
+          "report": "              precision    recall  f1-score   support\n\n       False       0.96      0.72      0.82      1223\n        True       0.21      0.70      0.33       132\n\n    accuracy                           0.72      1355\n   macro avg       0.59      0.71      0.57      1355\nweighted avg       0.88      0.72      0.77      1355\n",
+          "confusion_matrix": [
+            [
+              879,
+              344
+            ],
+            [
+              39,
+              93
+            ]
+          ],
+          "labels": [
+            "False",
+            "True"
+          ],
+          "n_samples": 1355
+        }
+      }
+    ]
+  }
+}

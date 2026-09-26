@@ -1,0 +1,2862 @@
+{
+ "experiment": "B7/E3 combination layer",
+ "created": "2026-09-16T04:08:42+00:00",
+ "git_commit": "9b9ad1d88c2eb06fa531c0b82fde159fa6cb8051",
+ "protocol": {
+  "package": "B7/E3",
+  "input": "E2 component store, edition 2025, seed 42, condition none, calibrated OOF probabilities",
+  "primary_set_rule": "best component per family (tml / encoder / llm) by mean rank of pooled E2 macro-F1 across c2a, dbo, vio; ties by lower inference cost",
+  "secondary_set": "all six E2 components, soft voting only",
+  "soft_voting": "equal-weight mean of calibrated distributions, argmax; ties to the first class in the stored class order",
+  "cascade": {
+   "order": [
+    "tml",
+    "encoder",
+    "llm"
+   ],
+   "confidence": "max calibrated probability of the stage",
+   "accept_if": "confidence >= threshold",
+   "threshold_grid": "0.00..1.00 step 0.01, plus 1.01 = never accept",
+   "fitting": "cross-fitted: thresholds for fold k chosen on the other folds' OOF items by pooled macro-F1, applied to fold k only",
+   "tie_break": "lowest LLM escalation share, then lowest encoder escalation share, then lowest thresholds"
+  },
+  "judge": {
+   "invoked_on": "items whose primary-set argmax labels are not unanimous",
+   "backend": "gwdg",
+   "model_primary": "mistral-medium-3.5-128b",
+   "shown": "component instruction, label block, text, every member's label with calibrated confidence (2 decimals); no component names; order permuted per item by numpy default_rng([42, item_id])",
+   "answer_space": "any label of the subtask's label set",
+   "decoding": "temperature 0, max_tokens 8, top_logprobs 5",
+   "failure": "transport errors (rate limit, timeout, 5xx) are retried with exponential backoff until the call is answered -- infrastructure, not a judge decision; an answer outside the label set is retried once, then the item falls back to the soft vote over the primary set and is counted",
+   "drift_probe": "the first 20 items per subtask (by id) that the judge ANSWERED, re-called after the campaign; only answered pairs are compared"
+  },
+  "g3": {
+   "comparison": "each strategy vs the best single component, significance.compare on identical items",
+   "family": "every strategy-vs-best comparison in the artefact, Holm on the bootstrap p-value",
+   "helps_if": "primary strategy macro-F1 above best single AND survives Holm (bootstrap)",
+   "wording": "#58(b): where the test is negative the text says indistinguishable"
+  }
+ },
+ "protocol_digest": "f3916558e400",
+ "primary_set": {
+  "tml": "tml_svm",
+  "encoder": "encoder_1b",
+  "llm": "llm_llammlein"
+ },
+ "judge": {
+  "model": "mistral-medium-3.5-128b",
+  "served_models_at_start": [
+   "apertus-70b-instruct-2509",
+   "deepseek-v4-flash-0731",
+   "devstral-2-123b-instruct-2512",
+   "gemma-4-31b-it",
+   "glm-4.7",
+   "glm-5.3-flash",
+   "meta-llama-3.1-8b-instruct",
+   "mistral-medium-3.5-128b",
+   "openai-gpt-oss-120b",
+   "qwen3-30b-a3b-instruct-2507",
+   "qwen3-coder-next",
+   "qwen3-omni-30b-a3b-instruct",
+   "qwen3.5-122b-a10b",
+   "qwen3.5-397b-a17b",
+   "qwen3.6-35b-a3b",
+   "qwen3.8-27b"
+  ],
+  "version_handle": "none exposed by the API (THESIS_LOG #44); one campaign, drift probe below"
+ },
+ "cells": {
+  "c2a": {
+   "n_items": 6773,
+   "classes": [
+    "False",
+    "True"
+   ],
+   "members": [
+    "tml_svm",
+    "encoder_1b",
+    "llm_llammlein"
+   ],
+   "mixes_machines": true,
+   "member_machines": {
+    "tml_svm": "Darwin/arm64",
+    "encoder_1b": "Linux/x86_64",
+    "llm_llammlein": "Linux/x86_64"
+   },
+   "per_component_macro_f1": {
+    "encoder_1b": 0.8340967334383045,
+    "llm_llammlein": 0.8595243771218439,
+    "llm_qwen_fewshot": 0.7021903650869686,
+    "tml_lightgbm": 0.5083712813181188,
+    "tml_svm": 0.6207075613380731,
+    "tml_xgboost": 0.5240357602774841
+   },
+   "best_single": "llm_llammlein",
+   "best_single_macro_f1": 0.8595243771218439,
+   "strategies": {
+    "soft_voting": {
+     "macro_f1": 0.8406659075597032,
+     "per_class_f1": {
+      "False": 0.9727111254642338,
+      "True": 0.7086206896551724
+     },
+     "delta_vs_best_pp": -1.89,
+     "calibration": {
+      "ece": 0.030473261676011658,
+      "brier": 0.07744698787274588,
+      "n_bins": 15,
+      "reliability_bins": [
+       {
+        "bin_lower": 0.4666666666666667,
+        "bin_upper": 0.5333333333333333,
+        "n": 60,
+        "mean_confidence": 0.5156834957797052,
+        "accuracy": 0.4666666666666667
+       },
+       {
+        "bin_lower": 0.5333333333333333,
+        "bin_upper": 0.6,
+        "n": 147,
+        "mean_confidence": 0.56719286908524,
+        "accuracy": 0.5510204081632653
+       },
+       {
+        "bin_lower": 0.6,
+        "bin_upper": 0.6666666666666666,
+        "n": 182,
+        "mean_confidence": 0.6318518976103241,
+        "accuracy": 0.6703296703296703
+       },
+       {
+        "bin_lower": 0.6666666666666666,
+        "bin_upper": 0.7333333333333333,
+        "n": 230,
+        "mean_confidence": 0.7005881904739174,
+        "accuracy": 0.8347826086956521
+       },
+       {
+        "bin_lower": 0.7333333333333333,
+        "bin_upper": 0.8,
+        "n": 231,
+        "mean_confidence": 0.7658244069300146,
+        "accuracy": 0.8311688311688312
+       },
+       {
+        "bin_lower": 0.8,
+        "bin_upper": 0.8666666666666667,
+        "n": 322,
+        "mean_confidence": 0.8372692172975628,
+        "accuracy": 0.8726708074534162
+       },
+       {
+        "bin_lower": 0.8666666666666667,
+        "bin_upper": 0.9333333333333333,
+        "n": 849,
+        "mean_confidence": 0.9061273178431223,
+        "accuracy": 0.9693757361601885
+       },
+       {
+        "bin_lower": 0.9333333333333333,
+        "bin_upper": 1.0,
+        "n": 4752,
+        "mean_confidence": 0.9749542113167395,
+        "accuracy": 0.9924242424242424
+       }
+      ],
+      "uncalibrated": false,
+      "n_items": 6773
+     },
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "soft_voting",
+      "n_items": 6773,
+      "classes": [
+       "False",
+       "True"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 100,
+       "c": 94,
+       "n_discordant": 194,
+       "method": "chi2_continuity",
+       "statistic": 0.12886597938144329,
+       "p_value": 0.7196107398947735,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": false,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.8595243771218439,
+       "macro_f1_b": 0.8406659075597032,
+       "ci_a": [
+        0.8449265081223913,
+        0.8735033126679617
+       ],
+       "ci_b": [
+        0.8243356645887983,
+        0.8561110693606425
+       ],
+       "difference": 0.018858469562140767,
+       "ci_difference": [
+        0.006594409976285094,
+        0.03132312982302067
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": true,
+       "p_value": 0.0022,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "False": {
+         "support": 6114,
+         "tier": "interpret",
+         "f1_a": 0.9728713842131067,
+         "f1_b": 0.9727111254642338,
+         "ci_a": [
+          0.9698656047184847,
+          0.9756933185914963
+         ],
+         "ci_b": [
+          0.9697213123690803,
+          0.9755274872390259
+         ],
+         "difference": 0.00016025874887293234,
+         "ci_difference": [
+          -0.00203075093814655,
+          0.0023633945852559175
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "True": {
+         "support": 659,
+         "tier": "interpret",
+         "f1_a": 0.746177370030581,
+         "f1_b": 0.7086206896551724,
+         "ci_a": [
+          0.7192429022082019,
+          0.772133746589919
+         ],
+         "ci_b": [
+          0.6781693557047477,
+          0.7374898030450193
+         ],
+         "difference": 0.0375566803754086,
+         "ci_difference": [
+          0.014986597063855406,
+          0.06045053831235369
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": true
+        }
+       }
+      },
+      "accuracy_a": 0.9509818396574634,
+      "accuracy_b": 0.9500959692898272,
+      "accuracy_difference": 0.0008858703676362101,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "indistinguishable",
+      "carried_by": "neither",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 659,
+       "tier": "interpret",
+       "f1_a": 0.746177370030581,
+       "f1_b": 0.7086206896551724,
+       "ci_a": [
+        0.7192429022082019,
+        0.772133746589919
+       ],
+       "ci_b": [
+        0.6781693557047477,
+        0.7374898030450193
+       ],
+       "difference": 0.0375566803754086,
+       "ci_difference": [
+        0.014986597063855406,
+        0.06045053831235369
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": true,
+       "class": "True",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": true,
+       "gate": "D1 interpret (n >= 100): #58(b) at class level -- the paired bootstrap interval of the difference must exclude zero",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "distinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "soft_voting",
+      "primary": true,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.0022,
+       "holm_bootstrap": 0.0176,
+       "by_bootstrap": 0.01638495238095238,
+       "p_mcnemar": 0.7196107398947735,
+       "holm_mcnemar": 1.0,
+       "by_mcnemar": 1.0,
+       "survives_holm_bootstrap": true,
+       "survives_by_bootstrap": true,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    },
+    "cascade": {
+     "macro_f1": 0.8563355784083508,
+     "per_class_f1": {
+      "False": 0.972213141549526,
+      "True": 0.7404580152671756
+     },
+     "delta_vs_best_pp": -0.32,
+     "thresholds_per_fold": [
+      {
+       "t1": 0.99,
+       "t2": 0.98,
+       "fit_macro_f1": 0.861033300275,
+       "fold": 0,
+       "n_heldout": 1355
+      },
+      {
+       "t1": 0.99,
+       "t2": 0.89,
+       "fit_macro_f1": 0.865055079559,
+       "fold": 1,
+       "n_heldout": 1355
+      },
+      {
+       "t1": 0.99,
+       "t2": 0.98,
+       "fit_macro_f1": 0.862081200024,
+       "fold": 2,
+       "n_heldout": 1355
+      },
+      {
+       "t1": 0.99,
+       "t2": 0.9,
+       "fit_macro_f1": 0.855167764773,
+       "fold": 3,
+       "n_heldout": 1354
+      },
+      {
+       "t1": 0.98,
+       "t2": 1.0,
+       "fit_macro_f1": 0.860878950033,
+       "fold": 4,
+       "n_heldout": 1354
+      }
+     ],
+     "share_decided_by": {
+      "tml": 0.11472021260888823,
+      "encoder": 0.505684334858999,
+      "llm": 0.3795954525321128
+     },
+     "escalation_rate": {
+      "to_encoder": 0.8852797873911118,
+      "to_llm": 0.3795954525321128
+     },
+     "inference_calls_per_1000_items": {
+      "tml": 1000.0,
+      "encoder": 885.3,
+      "llm": 379.6
+     },
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "cascade",
+      "n_items": 6773,
+      "classes": [
+       "False",
+       "True"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 27,
+       "c": 19,
+       "n_discordant": 46,
+       "method": "chi2_continuity",
+       "statistic": 1.065217391304348,
+       "p_value": 0.3020282281097738,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": false,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.8595243771218439,
+       "macro_f1_b": 0.8563355784083508,
+       "ci_a": [
+        0.8449265081223913,
+        0.8735033126679617
+       ],
+       "ci_b": [
+        0.8414380672693675,
+        0.8706049057372681
+       ],
+       "difference": 0.0031887987134930906,
+       "ci_difference": [
+        -0.0021466353376775583,
+        0.00855837798580428
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "p_value": 0.2346,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "False": {
+         "support": 6114,
+         "tier": "interpret",
+         "f1_a": 0.9728713842131067,
+         "f1_b": 0.972213141549526,
+         "ci_a": [
+          0.9698656047184847,
+          0.9756933185914963
+         ],
+         "ci_b": [
+          0.9691853098906271,
+          0.9751203605514316
+         ],
+         "difference": 0.0006582426635807215,
+         "ci_difference": [
+          -0.00042421227033481165,
+          0.0017441691654814045
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "True": {
+         "support": 659,
+         "tier": "interpret",
+         "f1_a": 0.746177370030581,
+         "f1_b": 0.7404580152671756,
+         "ci_a": [
+          0.7192429022082019,
+          0.772133746589919
+         ],
+         "ci_b": [
+          0.7129481488407802,
+          0.7668725867881708
+         ],
+         "difference": 0.00571935476340546,
+         "ci_difference": [
+          -0.0038943473679462883,
+          0.015385187950519009
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        }
+       }
+      },
+      "accuracy_a": 0.9509818396574634,
+      "accuracy_b": 0.9498006791672818,
+      "accuracy_difference": 0.0011811604901815764,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "indistinguishable",
+      "carried_by": "neither",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 659,
+       "tier": "interpret",
+       "f1_a": 0.746177370030581,
+       "f1_b": 0.7404580152671756,
+       "ci_a": [
+        0.7192429022082019,
+        0.772133746589919
+       ],
+       "ci_b": [
+        0.7129481488407802,
+        0.7668725867881708
+       ],
+       "difference": 0.00571935476340546,
+       "ci_difference": [
+        -0.0038943473679462883,
+        0.015385187950519009
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "class": "True",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": false,
+       "gate": "D1 interpret (n >= 100): #58(b) at class level -- the paired bootstrap interval of the difference must exclude zero",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "indistinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "cascade",
+      "primary": true,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.2346,
+       "holm_bootstrap": 0.9384,
+       "by_bootstrap": 0.9706843001443,
+       "p_mcnemar": 0.3020282281097738,
+       "holm_mcnemar": 1.0,
+       "by_mcnemar": 1.0,
+       "survives_holm_bootstrap": false,
+       "survives_by_bootstrap": false,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    },
+    "llm_as_judge": {
+     "macro_f1": 0.8548699825529076,
+     "per_class_f1": {
+      "False": 0.9730653429896655,
+      "True": 0.7366746221161495
+     },
+     "delta_vs_best_pp": -0.47,
+     "judge_model": "mistral-medium-3.5-128b",
+     "invoked": 707,
+     "invocation_rate": 0.1043850583197992,
+     "fallback_to_soft_vote": 0,
+     "answer_outside_candidates": 0,
+     "inference_calls_per_1000_items": {
+      "tml": 1000.0,
+      "encoder": 1000.0,
+      "llm": 1000.0,
+      "judge": 104.4
+     },
+     "drift_probe": {
+      "n_probed": 20,
+      "n_answered_again": 20,
+      "same_label": 20
+     },
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "llm_as_judge",
+      "n_items": 6773,
+      "classes": [
+       "False",
+       "True"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 92,
+       "c": 93,
+       "n_discordant": 185,
+       "method": "chi2_continuity",
+       "statistic": 0.0,
+       "p_value": 1.0,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": false,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.8595243771218439,
+       "macro_f1_b": 0.8548699825529076,
+       "ci_a": [
+        0.8449265081223913,
+        0.8735033126679617
+       ],
+       "ci_b": [
+        0.8394716288740823,
+        0.8693899970200605
+       ],
+       "difference": 0.004654394568936349,
+       "ci_difference": [
+        -0.006810793369017226,
+        0.01609263927811994
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "p_value": 0.4166,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "False": {
+         "support": 6114,
+         "tier": "interpret",
+         "f1_a": 0.9728713842131067,
+         "f1_b": 0.9730653429896655,
+         "ci_a": [
+          0.9698656047184847,
+          0.9756933185914963
+         ],
+         "ci_b": [
+          0.9700833223682899,
+          0.9759662227996103
+         ],
+         "difference": -0.00019395877655881133,
+         "ci_difference": [
+          -0.002394829845293876,
+          0.002004300723177418
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "True": {
+         "support": 659,
+         "tier": "interpret",
+         "f1_a": 0.746177370030581,
+         "f1_b": 0.7366746221161495,
+         "ci_a": [
+          0.7192429022082019,
+          0.772133746589919
+         ],
+         "ci_b": [
+          0.7081960834343305,
+          0.7635304967605453
+         ],
+         "difference": 0.009502747914431509,
+         "ci_difference": [
+          -0.01125312249413137,
+          0.030190491043874536
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        }
+       }
+      },
+      "accuracy_a": 0.9509818396574634,
+      "accuracy_b": 0.9511294847187362,
+      "accuracy_difference": -0.0001476450612727387,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "indistinguishable",
+      "carried_by": "neither",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 659,
+       "tier": "interpret",
+       "f1_a": 0.746177370030581,
+       "f1_b": 0.7366746221161495,
+       "ci_a": [
+        0.7192429022082019,
+        0.772133746589919
+       ],
+       "ci_b": [
+        0.7081960834343305,
+        0.7635304967605453
+       ],
+       "difference": 0.009502747914431509,
+       "ci_difference": [
+        -0.01125312249413137,
+        0.030190491043874536
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "class": "True",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": false,
+       "gate": "D1 interpret (n >= 100): #58(b) at class level -- the paired bootstrap interval of the difference must exclude zero",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "indistinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "llm_as_judge",
+      "primary": true,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.4166,
+       "holm_bootstrap": 1.0,
+       "by_bootstrap": 1.0,
+       "p_mcnemar": 1.0,
+       "holm_mcnemar": 1.0,
+       "by_mcnemar": 1.0,
+       "survives_holm_bootstrap": false,
+       "survives_by_bootstrap": false,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    },
+    "soft_voting_all_six": {
+     "macro_f1": 0.7631110322853504,
+     "per_class_f1": {
+      "False": 0.966388557806913,
+      "True": 0.5598335067637877
+     },
+     "delta_vs_best_pp": -9.64,
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "soft_voting_all_six",
+      "n_items": 6773,
+      "classes": [
+       "False",
+       "True"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 227,
+       "c": 136,
+       "n_discordant": 363,
+       "method": "chi2_continuity",
+       "statistic": 22.31404958677686,
+       "p_value": 2.3150662379093164e-06,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": true,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.8595243771218439,
+       "macro_f1_b": 0.7631110322853504,
+       "ci_a": [
+        0.8449265081223913,
+        0.8735033126679617
+       ],
+       "ci_b": [
+        0.7427341958424344,
+        0.7821434550870776
+       ],
+       "difference": 0.09641334483649355,
+       "ci_difference": [
+        0.07755168086029346,
+        0.11573942961112682
+       ],
+       "intervals_overlap": false,
+       "difference_ci_excludes_zero": true,
+       "p_value": 0.0001,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "False": {
+         "support": 6114,
+         "tier": "interpret",
+         "f1_a": 0.9728713842131067,
+         "f1_b": 0.966388557806913,
+         "ci_a": [
+          0.9698656047184847,
+          0.9756933185914963
+         ],
+         "ci_b": [
+          0.9630924599584637,
+          0.9695435487698758
+         ],
+         "difference": 0.006482826406193687,
+         "ci_difference": [
+          0.003548373819309734,
+          0.009452666592856995
+         ],
+         "intervals_overlap": false,
+         "difference_ci_excludes_zero": true
+        },
+        "True": {
+         "support": 659,
+         "tier": "interpret",
+         "f1_a": 0.746177370030581,
+         "f1_b": 0.5598335067637877,
+         "ci_a": [
+          0.7192429022082019,
+          0.772133746589919
+         ],
+         "ci_b": [
+          0.5210624518173943,
+          0.5957458589571405
+         ],
+         "difference": 0.1863438632667933,
+         "ci_difference": [
+          0.15119474269638844,
+          0.22254365037466253
+         ],
+         "intervals_overlap": false,
+         "difference_ci_excludes_zero": true
+        }
+       }
+      },
+      "accuracy_a": 0.9509818396574634,
+      "accuracy_b": 0.9375461390816477,
+      "accuracy_difference": 0.013435700575815668,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "distinguishable",
+      "carried_by": "both",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 659,
+       "tier": "interpret",
+       "f1_a": 0.746177370030581,
+       "f1_b": 0.5598335067637877,
+       "ci_a": [
+        0.7192429022082019,
+        0.772133746589919
+       ],
+       "ci_b": [
+        0.5210624518173943,
+        0.5957458589571405
+       ],
+       "difference": 0.1863438632667933,
+       "ci_difference": [
+        0.15119474269638844,
+        0.22254365037466253
+       ],
+       "intervals_overlap": false,
+       "difference_ci_excludes_zero": true,
+       "class": "True",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": true,
+       "gate": "D1 interpret (n >= 100): #58(b) at class level -- the paired bootstrap interval of the difference must exclude zero",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "distinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "soft_voting_all_six",
+      "primary": false,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.0001,
+       "holm_bootstrap": 0.0012000000000000001,
+       "by_bootstrap": 0.0012412842712842714,
+       "p_mcnemar": 2.3150662379093164e-06,
+       "holm_mcnemar": 2.546572861700248e-05,
+       "by_mcnemar": 4.310482962147128e-05,
+       "survives_holm_bootstrap": true,
+       "survives_by_bootstrap": true,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    }
+   },
+   "disagreement_subset": {
+    "n": 707,
+    "judge_accuracy": 0.7284299858557284,
+    "soft_vote_accuracy": 0.7185289957567186,
+    "best_single_accuracy": 0.727015558698727,
+    "any_member_correct": 1.0
+   }
+  },
+  "dbo": {
+   "n_items": 7210,
+   "classes": [
+    "agitation",
+    "criticism",
+    "nothing",
+    "subversive"
+   ],
+   "members": [
+    "tml_svm",
+    "encoder_1b",
+    "llm_llammlein"
+   ],
+   "mixes_machines": true,
+   "member_machines": {
+    "tml_svm": "Darwin/arm64",
+    "encoder_1b": "Linux/x86_64",
+    "llm_llammlein": "Linux/x86_64"
+   },
+   "per_component_macro_f1": {
+    "encoder_1b": 0.5697654712043855,
+    "llm_llammlein": 0.58290032708798,
+    "llm_qwen_fewshot": 0.35637997409855293,
+    "tml_lightgbm": 0.3730948624356854,
+    "tml_svm": 0.4615686207161518,
+    "tml_xgboost": 0.40430312837898996
+   },
+   "best_single": "llm_llammlein",
+   "best_single_macro_f1": 0.58290032708798,
+   "strategies": {
+    "soft_voting": {
+     "macro_f1": 0.5687590835669875,
+     "per_class_f1": {
+      "agitation": 0.3261538461538461,
+      "criticism": 0.6201438848920864,
+      "nothing": 0.9503602248436387,
+      "subversive": 0.3783783783783784
+     },
+     "delta_vs_best_pp": -1.41,
+     "calibration": {
+      "ece": 0.037862437371421996,
+      "brier": 0.15319486147333872,
+      "n_bins": 15,
+      "reliability_bins": [
+       {
+        "bin_lower": 0.26666666666666666,
+        "bin_upper": 0.3333333333333333,
+        "n": 5,
+        "mean_confidence": 0.32163309064690876,
+        "accuracy": 0.2
+       },
+       {
+        "bin_lower": 0.3333333333333333,
+        "bin_upper": 0.4,
+        "n": 47,
+        "mean_confidence": 0.3727709548118872,
+        "accuracy": 0.46808510638297873
+       },
+       {
+        "bin_lower": 0.4,
+        "bin_upper": 0.4666666666666667,
+        "n": 119,
+        "mean_confidence": 0.4388087527149802,
+        "accuracy": 0.5546218487394958
+       },
+       {
+        "bin_lower": 0.4666666666666667,
+        "bin_upper": 0.5333333333333333,
+        "n": 223,
+        "mean_confidence": 0.5024811349320529,
+        "accuracy": 0.5022421524663677
+       },
+       {
+        "bin_lower": 0.5333333333333333,
+        "bin_upper": 0.6,
+        "n": 259,
+        "mean_confidence": 0.5674462716220914,
+        "accuracy": 0.6254826254826255
+       },
+       {
+        "bin_lower": 0.6,
+        "bin_upper": 0.6666666666666666,
+        "n": 302,
+        "mean_confidence": 0.633152821685969,
+        "accuracy": 0.7119205298013245
+       },
+       {
+        "bin_lower": 0.6666666666666666,
+        "bin_upper": 0.7333333333333333,
+        "n": 290,
+        "mean_confidence": 0.7007529548084058,
+        "accuracy": 0.7586206896551724
+       },
+       {
+        "bin_lower": 0.7333333333333333,
+        "bin_upper": 0.8,
+        "n": 426,
+        "mean_confidence": 0.771029412693267,
+        "accuracy": 0.8262910798122066
+       },
+       {
+        "bin_lower": 0.8,
+        "bin_upper": 0.8666666666666667,
+        "n": 601,
+        "mean_confidence": 0.835975792347832,
+        "accuracy": 0.8618968386023295
+       },
+       {
+        "bin_lower": 0.8666666666666667,
+        "bin_upper": 0.9333333333333333,
+        "n": 1472,
+        "mean_confidence": 0.9058901166058113,
+        "accuracy": 0.953125
+       },
+       {
+        "bin_lower": 0.9333333333333333,
+        "bin_upper": 1.0,
+        "n": 3466,
+        "mean_confidence": 0.9634118530294383,
+        "accuracy": 0.9893248701673398
+       }
+      ],
+      "uncalibrated": false,
+      "n_items": 7210
+     },
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "soft_voting",
+      "n_items": 7210,
+      "classes": [
+       "agitation",
+       "criticism",
+       "nothing",
+       "subversive"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 104,
+       "c": 170,
+       "n_discordant": 274,
+       "method": "chi2_continuity",
+       "statistic": 15.41970802919708,
+       "p_value": 8.608579074450346e-05,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": true,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.58290032708798,
+       "macro_f1_b": 0.5687590835669875,
+       "ci_a": [
+        0.5434309943527955,
+        0.6191970289049936
+       ],
+       "ci_b": [
+        0.5263446761702881,
+        0.6078459149552443
+       ],
+       "difference": 0.014141243520992552,
+       "ci_difference": [
+        -0.02544580656904607,
+        0.05446117191746349
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "p_value": 0.4758,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "agitation": {
+         "support": 224,
+         "tier": "interpret",
+         "f1_a": 0.36792452830188677,
+         "f1_b": 0.3261538461538461,
+         "ci_a": [
+          0.3084826510122907,
+          0.4260109183076623
+         ],
+         "ci_b": [
+          0.2590327328732406,
+          0.3913100989187945
+         ],
+         "difference": 0.04177068214804064,
+         "ci_difference": [
+          -0.005111301986209202,
+          0.09124940047364655
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "criticism": {
+         "support": 803,
+         "tier": "interpret",
+         "f1_a": 0.6118598382749326,
+         "f1_b": 0.6201438848920864,
+         "ci_a": [
+          0.5825381618217952,
+          0.6405559948579531
+         ],
+         "ci_b": [
+          0.5897058823529412,
+          0.6494252873563219
+         ],
+         "difference": -0.008284046617153762,
+         "ci_difference": [
+          -0.02905255586446011,
+          0.012983707974060546
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "nothing": {
+         "support": 6123,
+         "tier": "interpret",
+         "f1_a": 0.947055037013196,
+         "f1_b": 0.9503602248436387,
+         "ci_a": [
+          0.9430933518894773,
+          0.9510904758622896
+         ],
+         "ci_b": [
+          0.9464640497804212,
+          0.9542248208843919
+         ],
+         "difference": -0.0033051878304426463,
+         "ci_difference": [
+          -0.005868892643734716,
+          -0.000683280159521141
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": true
+        },
+        "subversive": {
+         "support": 60,
+         "tier": "ci_gated",
+         "f1_a": 0.40476190476190477,
+         "f1_b": 0.3783783783783784,
+         "ci_a": [
+          0.26229508196721313,
+          0.53062818877551
+         ],
+         "ci_b": [
+          0.22950819672131148,
+          0.5135328185328182
+         ],
+         "difference": 0.026383526383526368,
+         "ci_difference": [
+          -0.11786025230987918,
+          0.17206027893084944
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        }
+       }
+      },
+      "accuracy_a": 0.892371705963939,
+      "accuracy_b": 0.9015256588072122,
+      "accuracy_difference": -0.00915395284327325,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "distinguishable",
+      "carried_by": "mcnemar",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 60,
+       "tier": "ci_gated",
+       "f1_a": 0.40476190476190477,
+       "f1_b": 0.3783783783783784,
+       "ci_a": [
+        0.26229508196721313,
+        0.53062818877551
+       ],
+       "ci_b": [
+        0.22950819672131148,
+        0.5135328185328182
+       ],
+       "difference": 0.026383526383526368,
+       "ci_difference": [
+        -0.11786025230987918,
+        0.17206027893084944
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "class": "subversive",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": false,
+       "gate": "D1 ci_gated (30 <= n <= 99), applied as pre-registered: a directional claim is permitted only where the two components' bootstrap intervals for this class do not overlap",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "distinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "soft_voting",
+      "primary": true,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.4758,
+       "holm_bootstrap": 1.0,
+       "by_bootstrap": 1.0,
+       "p_mcnemar": 8.608579074450346e-05,
+       "holm_mcnemar": 0.0008608579074450346,
+       "by_mcnemar": 0.0010685693803222124,
+       "survives_holm_bootstrap": false,
+       "survives_by_bootstrap": false,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    },
+    "cascade": {
+     "macro_f1": 0.565158295083095,
+     "per_class_f1": {
+      "agitation": 0.3523573200992556,
+      "criticism": 0.6044678055190539,
+      "nothing": 0.9448336957397117,
+      "subversive": 0.358974358974359
+     },
+     "delta_vs_best_pp": -1.77,
+     "thresholds_per_fold": [
+      {
+       "t1": 0.99,
+       "t2": 0.81,
+       "fit_macro_f1": 0.596647697273,
+       "fold": 0,
+       "n_heldout": 1442
+      },
+      {
+       "t1": 0.99,
+       "t2": 0.81,
+       "fit_macro_f1": 0.610540501935,
+       "fold": 1,
+       "n_heldout": 1442
+      },
+      {
+       "t1": 0.99,
+       "t2": 0.81,
+       "fit_macro_f1": 0.579097011982,
+       "fold": 2,
+       "n_heldout": 1442
+      },
+      {
+       "t1": 0.97,
+       "t2": 0.81,
+       "fit_macro_f1": 0.58667188533,
+       "fold": 3,
+       "n_heldout": 1442
+      },
+      {
+       "t1": 0.92,
+       "t2": 0.3,
+       "fit_macro_f1": 0.580400307543,
+       "fold": 4,
+       "n_heldout": 1442
+      }
+     ],
+     "share_decided_by": {
+      "tml": 0.12565880721220526,
+      "encoder": 0.7208044382801664,
+      "llm": 0.1535367545076283
+     },
+     "escalation_rate": {
+      "to_encoder": 0.8743411927877948,
+      "to_llm": 0.1535367545076283
+     },
+     "inference_calls_per_1000_items": {
+      "tml": 1000.0,
+      "encoder": 874.3,
+      "llm": 153.5
+     },
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "cascade",
+      "n_items": 7210,
+      "classes": [
+       "agitation",
+       "criticism",
+       "nothing",
+       "subversive"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 120,
+       "c": 97,
+       "n_discordant": 217,
+       "method": "chi2_continuity",
+       "statistic": 2.230414746543779,
+       "p_value": 0.13531752008080952,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": false,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.58290032708798,
+       "macro_f1_b": 0.565158295083095,
+       "ci_a": [
+        0.5434309943527955,
+        0.6191970289049936
+       ],
+       "ci_b": [
+        0.5242617756690918,
+        0.6021959223224193
+       ],
+       "difference": 0.017742032004885,
+       "ci_difference": [
+        -0.006164831642171469,
+        0.0429322284019635
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "p_value": 0.1434,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "agitation": {
+         "support": 224,
+         "tier": "interpret",
+         "f1_a": 0.36792452830188677,
+         "f1_b": 0.3523573200992556,
+         "ci_a": [
+          0.3084826510122907,
+          0.4260109183076623
+         ],
+         "ci_b": [
+          0.29110512129380056,
+          0.41203761864879956
+         ],
+         "difference": 0.015567208202631189,
+         "ci_difference": [
+          -0.010801291896866589,
+          0.04315752299122753
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "criticism": {
+         "support": 803,
+         "tier": "interpret",
+         "f1_a": 0.6118598382749326,
+         "f1_b": 0.6044678055190539,
+         "ci_a": [
+          0.5825381618217952,
+          0.6405559948579531
+         ],
+         "ci_b": [
+          0.5741239892183289,
+          0.6329630549788133
+         ],
+         "difference": 0.007392032755878741,
+         "ci_difference": [
+          -0.008999410659864829,
+          0.023768130442589335
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "nothing": {
+         "support": 6123,
+         "tier": "interpret",
+         "f1_a": 0.947055037013196,
+         "f1_b": 0.9448336957397117,
+         "ci_a": [
+          0.9430933518894773,
+          0.9510904758622896
+         ],
+         "ci_b": [
+          0.9406923096874078,
+          0.9489714742262852
+         ],
+         "difference": 0.0022213412734843896,
+         "ci_difference": [
+          -8.486989498284996e-05,
+          0.004585899753050068
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "subversive": {
+         "support": 60,
+         "tier": "ci_gated",
+         "f1_a": 0.40476190476190477,
+         "f1_b": 0.358974358974359,
+         "ci_a": [
+          0.26229508196721313,
+          0.53062818877551
+         ],
+         "ci_b": [
+          0.21274983881366874,
+          0.4931506849315068
+         ],
+         "difference": 0.04578754578754579,
+         "ci_difference": [
+          -0.041873408608305934,
+          0.13928756389561467
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        }
+       }
+      },
+      "accuracy_a": 0.892371705963939,
+      "accuracy_b": 0.8891816920943134,
+      "accuracy_difference": 0.0031900138696255853,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "indistinguishable",
+      "carried_by": "neither",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 60,
+       "tier": "ci_gated",
+       "f1_a": 0.40476190476190477,
+       "f1_b": 0.358974358974359,
+       "ci_a": [
+        0.26229508196721313,
+        0.53062818877551
+       ],
+       "ci_b": [
+        0.21274983881366874,
+        0.4931506849315068
+       ],
+       "difference": 0.04578754578754579,
+       "ci_difference": [
+        -0.041873408608305934,
+        0.13928756389561467
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "class": "subversive",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": false,
+       "gate": "D1 ci_gated (30 <= n <= 99), applied as pre-registered: a directional claim is permitted only where the two components' bootstrap intervals for this class do not overlap",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "indistinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "cascade",
+      "primary": true,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.1434,
+       "holm_bootstrap": 0.8604,
+       "by_bootstrap": 0.7019462554112553,
+       "p_mcnemar": 0.13531752008080952,
+       "holm_mcnemar": 0.9472226405656666,
+       "by_mcnemar": 0.839837546527512,
+       "survives_holm_bootstrap": false,
+       "survives_by_bootstrap": false,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    },
+    "llm_as_judge": {
+     "macro_f1": 0.5069729388891043,
+     "per_class_f1": {
+      "agitation": 0.28532235939643347,
+      "criticism": 0.5459770114942529,
+      "nothing": 0.9412732357295608,
+      "subversive": 0.2553191489361702
+     },
+     "delta_vs_best_pp": -7.59,
+     "judge_model": "mistral-medium-3.5-128b",
+     "invoked": 985,
+     "invocation_rate": 0.13661581137309292,
+     "fallback_to_soft_vote": 0,
+     "answer_outside_candidates": 369,
+     "inference_calls_per_1000_items": {
+      "tml": 1000.0,
+      "encoder": 1000.0,
+      "llm": 1000.0,
+      "judge": 136.6
+     },
+     "drift_probe": {
+      "n_probed": 20,
+      "n_answered_again": 20,
+      "same_label": 20
+     },
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "llm_as_judge",
+      "n_items": 7210,
+      "classes": [
+       "agitation",
+       "criticism",
+       "nothing",
+       "subversive"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 308,
+       "c": 98,
+       "n_discordant": 406,
+       "method": "chi2_continuity",
+       "statistic": 107.58866995073892,
+       "p_value": 3.3077074838893217e-25,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": true,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.58290032708798,
+       "macro_f1_b": 0.5069729388891043,
+       "ci_a": [
+        0.5434309943527955,
+        0.6191970289049936
+       ],
+       "ci_b": [
+        0.4783643589046455,
+        0.5348839377812223
+       ],
+       "difference": 0.07592738819887568,
+       "ci_difference": [
+        0.0402013690853745,
+        0.11013045754533025
+       ],
+       "intervals_overlap": false,
+       "difference_ci_excludes_zero": true,
+       "p_value": 0.0001,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "agitation": {
+         "support": 224,
+         "tier": "interpret",
+         "f1_a": 0.36792452830188677,
+         "f1_b": 0.28532235939643347,
+         "ci_a": [
+          0.3084826510122907,
+          0.4260109183076623
+         ],
+         "ci_b": [
+          0.24242424242424243,
+          0.32737276478679506
+         ],
+         "difference": 0.0826021689054533,
+         "ci_difference": [
+          0.037929510265006565,
+          0.12683037003070302
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": true
+        },
+        "criticism": {
+         "support": 803,
+         "tier": "interpret",
+         "f1_a": 0.6118598382749326,
+         "f1_b": 0.5459770114942529,
+         "ci_a": [
+          0.5825381618217952,
+          0.6405559948579531
+         ],
+         "ci_b": [
+          0.5135542168674698,
+          0.5771907932895415
+         ],
+         "difference": 0.06588282678067969,
+         "ci_difference": [
+          0.038922241465799666,
+          0.09304293828702982
+         ],
+         "intervals_overlap": false,
+         "difference_ci_excludes_zero": true
+        },
+        "nothing": {
+         "support": 6123,
+         "tier": "interpret",
+         "f1_a": 0.947055037013196,
+         "f1_b": 0.9412732357295608,
+         "ci_a": [
+          0.9430933518894773,
+          0.9510904758622896
+         ],
+         "ci_b": [
+          0.9368770489983193,
+          0.945598486600485
+         ],
+         "difference": 0.005781801283635257,
+         "ci_difference": [
+          0.0029341119247426662,
+          0.008644063343071488
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": true
+        },
+        "subversive": {
+         "support": 60,
+         "tier": "ci_gated",
+         "f1_a": 0.40476190476190477,
+         "f1_b": 0.2553191489361702,
+         "ci_a": [
+          0.26229508196721313,
+          0.53062818877551
+         ],
+         "ci_b": [
+          0.15998550724637695,
+          0.34940390934366833
+         ],
+         "difference": 0.14944275582573457,
+         "ci_difference": [
+          0.022402918719117936,
+          0.2689218036669311
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": true
+        }
+       }
+      },
+      "accuracy_a": 0.892371705963939,
+      "accuracy_b": 0.863245492371706,
+      "accuracy_difference": 0.029126213592232997,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "distinguishable",
+      "carried_by": "both",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 60,
+       "tier": "ci_gated",
+       "f1_a": 0.40476190476190477,
+       "f1_b": 0.2553191489361702,
+       "ci_a": [
+        0.26229508196721313,
+        0.53062818877551
+       ],
+       "ci_b": [
+        0.15998550724637695,
+        0.34940390934366833
+       ],
+       "difference": 0.14944275582573457,
+       "ci_difference": [
+        0.022402918719117936,
+        0.2689218036669311
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": true,
+       "class": "subversive",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": false,
+       "gate": "D1 ci_gated (30 <= n <= 99), applied as pre-registered: a directional claim is permitted only where the two components' bootstrap intervals for this class do not overlap",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "distinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "llm_as_judge",
+      "primary": true,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.0001,
+       "holm_bootstrap": 0.0012000000000000001,
+       "by_bootstrap": 0.0012412842712842714,
+       "p_mcnemar": 3.3077074838893217e-25,
+       "holm_mcnemar": 3.9692489806671864e-24,
+       "by_mcnemar": 1.2317415821283262e-23,
+       "survives_holm_bootstrap": true,
+       "survives_by_bootstrap": true,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    },
+    "soft_voting_all_six": {
+     "macro_f1": 0.5003806176717892,
+     "per_class_f1": {
+      "agitation": 0.2,
+      "criticism": 0.5473186119873817,
+      "nothing": 0.9443447037701975,
+      "subversive": 0.30985915492957744
+     },
+     "delta_vs_best_pp": -8.25,
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "soft_voting_all_six",
+      "n_items": 7210,
+      "classes": [
+       "agitation",
+       "criticism",
+       "nothing",
+       "subversive"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 210,
+       "c": 210,
+       "n_discordant": 420,
+       "method": "chi2_continuity",
+       "statistic": 0.002380952380952381,
+       "p_value": 0.9610826639451728,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": false,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.58290032708798,
+       "macro_f1_b": 0.5003806176717892,
+       "ci_a": [
+        0.5434309943527955,
+        0.6191970289049936
+       ],
+       "ci_b": [
+        0.45880608760402897,
+        0.5393142825656074
+       ],
+       "difference": 0.0825197094161908,
+       "ci_difference": [
+        0.041527515389317836,
+        0.12342000874070538
+       ],
+       "intervals_overlap": false,
+       "difference_ci_excludes_zero": true,
+       "p_value": 0.0002,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "agitation": {
+         "support": 224,
+         "tier": "interpret",
+         "f1_a": 0.36792452830188677,
+         "f1_b": 0.2,
+         "ci_a": [
+          0.3084826510122907,
+          0.4260109183076623
+         ],
+         "ci_b": [
+          0.13688212927756654,
+          0.26506024096385544
+         ],
+         "difference": 0.16792452830188676,
+         "ci_difference": [
+          0.1036243502336068,
+          0.23281665748230893
+         ],
+         "intervals_overlap": false,
+         "difference_ci_excludes_zero": true
+        },
+        "criticism": {
+         "support": 803,
+         "tier": "interpret",
+         "f1_a": 0.6118598382749326,
+         "f1_b": 0.5473186119873817,
+         "ci_a": [
+          0.5825381618217952,
+          0.6405559948579531
+         ],
+         "ci_b": [
+          0.5142845840867992,
+          0.580247368133966
+         ],
+         "difference": 0.06454122628755088,
+         "ci_difference": [
+          0.0361178511660143,
+          0.09380876808097133
+         ],
+         "intervals_overlap": false,
+         "difference_ci_excludes_zero": true
+        },
+        "nothing": {
+         "support": 6123,
+         "tier": "interpret",
+         "f1_a": 0.947055037013196,
+         "f1_b": 0.9443447037701975,
+         "ci_a": [
+          0.9430933518894773,
+          0.9510904758622896
+         ],
+         "ci_b": [
+          0.9403194012988507,
+          0.9484616788022706
+         ],
+         "difference": 0.0027103332429985194,
+         "ci_difference": [
+          -0.0005749351167901785,
+          0.005940001130445822
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "subversive": {
+         "support": 60,
+         "tier": "ci_gated",
+         "f1_a": 0.40476190476190477,
+         "f1_b": 0.30985915492957744,
+         "ci_a": [
+          0.26229508196721313,
+          0.53062818877551
+         ],
+         "ci_b": [
+          0.1643835616438356,
+          0.44776119402985076
+         ],
+         "difference": 0.09490274983232733,
+         "ci_difference": [
+          -0.048821030228352866,
+          0.23778966461931283
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        }
+       }
+      },
+      "accuracy_a": 0.892371705963939,
+      "accuracy_b": 0.892371705963939,
+      "accuracy_difference": 0.0,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "distinguishable",
+      "carried_by": "intervals",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 60,
+       "tier": "ci_gated",
+       "f1_a": 0.40476190476190477,
+       "f1_b": 0.30985915492957744,
+       "ci_a": [
+        0.26229508196721313,
+        0.53062818877551
+       ],
+       "ci_b": [
+        0.1643835616438356,
+        0.44776119402985076
+       ],
+       "difference": 0.09490274983232733,
+       "ci_difference": [
+        -0.048821030228352866,
+        0.23778966461931283
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "class": "subversive",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": false,
+       "gate": "D1 ci_gated (30 <= n <= 99), applied as pre-registered: a directional claim is permitted only where the two components' bootstrap intervals for this class do not overlap",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "distinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "soft_voting_all_six",
+      "primary": false,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.0002,
+       "holm_bootstrap": 0.0018000000000000002,
+       "by_bootstrap": 0.001861926406926407,
+       "p_mcnemar": 0.9610826639451728,
+       "holm_mcnemar": 1.0,
+       "by_mcnemar": 1.0,
+       "survives_holm_bootstrap": true,
+       "survives_by_bootstrap": true,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    }
+   },
+   "disagreement_subset": {
+    "n": 985,
+    "judge_accuracy": 0.3634517766497462,
+    "soft_vote_accuracy": 0.6436548223350254,
+    "best_single_accuracy": 0.5766497461928934,
+    "any_member_correct": 0.9208121827411168
+   }
+  },
+  "vio": {
+   "n_items": 7720,
+   "classes": [
+    "False",
+    "True"
+   ],
+   "members": [
+    "tml_svm",
+    "encoder_1b",
+    "llm_llammlein"
+   ],
+   "mixes_machines": true,
+   "member_machines": {
+    "tml_svm": "Darwin/arm64",
+    "encoder_1b": "Linux/x86_64",
+    "llm_llammlein": "Linux/x86_64"
+   },
+   "per_component_macro_f1": {
+    "encoder_1b": 0.8348946967447026,
+    "llm_llammlein": 0.851098223423518,
+    "llm_qwen_fewshot": 0.784369588291157,
+    "tml_lightgbm": 0.5594217339734979,
+    "tml_svm": 0.6217352903662097,
+    "tml_xgboost": 0.5459978112598521
+   },
+   "best_single": "llm_llammlein",
+   "best_single_macro_f1": 0.851098223423518,
+   "strategies": {
+    "soft_voting": {
+     "macro_f1": 0.841629753737377,
+     "per_class_f1": {
+      "False": 0.9806140048292514,
+      "True": 0.7026455026455026
+     },
+     "delta_vs_best_pp": -0.95,
+     "calibration": {
+      "ece": 0.024591528899146568,
+      "brier": 0.05979818441952875,
+      "n_bins": 15,
+      "reliability_bins": [
+       {
+        "bin_lower": 0.4666666666666667,
+        "bin_upper": 0.5333333333333333,
+        "n": 42,
+        "mean_confidence": 0.5179276743126359,
+        "accuracy": 0.6428571428571429
+       },
+       {
+        "bin_lower": 0.5333333333333333,
+        "bin_upper": 0.6,
+        "n": 99,
+        "mean_confidence": 0.568844653144064,
+        "accuracy": 0.5858585858585859
+       },
+       {
+        "bin_lower": 0.6,
+        "bin_upper": 0.6666666666666666,
+        "n": 135,
+        "mean_confidence": 0.6357569690171506,
+        "accuracy": 0.6370370370370371
+       },
+       {
+        "bin_lower": 0.6666666666666666,
+        "bin_upper": 0.7333333333333333,
+        "n": 182,
+        "mean_confidence": 0.6957428644434474,
+        "accuracy": 0.8021978021978022
+       },
+       {
+        "bin_lower": 0.7333333333333333,
+        "bin_upper": 0.8,
+        "n": 179,
+        "mean_confidence": 0.766545341833255,
+        "accuracy": 0.8212290502793296
+       },
+       {
+        "bin_lower": 0.8,
+        "bin_upper": 0.8666666666666667,
+        "n": 239,
+        "mean_confidence": 0.8352208330553161,
+        "accuracy": 0.9079497907949791
+       },
+       {
+        "bin_lower": 0.8666666666666667,
+        "bin_upper": 0.9333333333333333,
+        "n": 833,
+        "mean_confidence": 0.9094215582949309,
+        "accuracy": 0.9495798319327731
+       },
+       {
+        "bin_lower": 0.9333333333333333,
+        "bin_upper": 1.0,
+        "n": 6011,
+        "mean_confidence": 0.9755872348065416,
+        "accuracy": 0.9926800865080685
+       }
+      ],
+      "uncalibrated": false,
+      "n_items": 7720
+     },
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "soft_voting",
+      "n_items": 7720,
+      "classes": [
+       "False",
+       "True"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 64,
+       "c": 77,
+       "n_discordant": 141,
+       "method": "chi2_continuity",
+       "statistic": 1.0212765957446808,
+       "p_value": 0.31221638834331633,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": false,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.851098223423518,
+       "macro_f1_b": 0.841629753737377,
+       "ci_a": [
+        0.8345733499986379,
+        0.867125626725265
+       ],
+       "ci_b": [
+        0.8236748976733197,
+        0.8588422241312927
+       ],
+       "difference": 0.009468469686141012,
+       "ci_difference": [
+        -0.0033959175507206367,
+        0.022978676472035435
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "p_value": 0.1508,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "False": {
+         "support": 7156,
+         "tier": "interpret",
+         "f1_a": 0.9795549374130738,
+         "f1_b": 0.9806140048292514,
+         "ci_a": [
+          0.9771771491112965,
+          0.9819194052137862
+         ],
+         "ci_b": [
+          0.9783225985179029,
+          0.9828807150223444
+         ],
+         "difference": -0.0010590674161776725,
+         "ci_difference": [
+          -0.0026520246630511056,
+          0.000548407463825969
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "True": {
+         "support": 564,
+         "tier": "interpret",
+         "f1_a": 0.7226415094339622,
+         "f1_b": 0.7026455026455026,
+         "ci_a": [
+          0.6914056164562095,
+          0.7526270576457967
+         ],
+         "ci_b": [
+          0.668769716088328,
+          0.7352343128697507
+         ],
+         "difference": 0.019996006788459586,
+         "ci_difference": [
+          -0.004149361624598194,
+          0.045630650893617224
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        }
+       }
+      },
+      "accuracy_a": 0.9619170984455958,
+      "accuracy_b": 0.9636010362694301,
+      "accuracy_difference": -0.0016839378238342473,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "indistinguishable",
+      "carried_by": "neither",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 564,
+       "tier": "interpret",
+       "f1_a": 0.7226415094339622,
+       "f1_b": 0.7026455026455026,
+       "ci_a": [
+        0.6914056164562095,
+        0.7526270576457967
+       ],
+       "ci_b": [
+        0.668769716088328,
+        0.7352343128697507
+       ],
+       "difference": 0.019996006788459586,
+       "ci_difference": [
+        -0.004149361624598194,
+        0.045630650893617224
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "class": "True",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": false,
+       "gate": "D1 interpret (n >= 100): #58(b) at class level -- the paired bootstrap interval of the difference must exclude zero",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "indistinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "soft_voting",
+      "primary": true,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.1508,
+       "holm_bootstrap": 0.8604,
+       "by_bootstrap": 0.7019462554112553,
+       "p_mcnemar": 0.31221638834331633,
+       "holm_mcnemar": 1.0,
+       "by_mcnemar": 1.0,
+       "survives_holm_bootstrap": false,
+       "survives_by_bootstrap": false,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    },
+    "cascade": {
+     "macro_f1": 0.8520661869676442,
+     "per_class_f1": {
+      "False": 0.9799944429008057,
+      "True": 0.7241379310344828
+     },
+     "delta_vs_best_pp": 0.1,
+     "thresholds_per_fold": [
+      {
+       "t1": 1.0,
+       "t2": 0.83,
+       "fit_macro_f1": 0.85952857906,
+       "fold": 0,
+       "n_heldout": 1544
+      },
+      {
+       "t1": 1.0,
+       "t2": 0.94,
+       "fit_macro_f1": 0.862288093119,
+       "fold": 1,
+       "n_heldout": 1544
+      },
+      {
+       "t1": 1.0,
+       "t2": 0.86,
+       "fit_macro_f1": 0.860056003314,
+       "fold": 2,
+       "n_heldout": 1544
+      },
+      {
+       "t1": 1.0,
+       "t2": 0.94,
+       "fit_macro_f1": 0.856294487906,
+       "fold": 3,
+       "n_heldout": 1544
+      },
+      {
+       "t1": 1.0,
+       "t2": 0.8,
+       "fit_macro_f1": 0.86198050083,
+       "fold": 4,
+       "n_heldout": 1544
+      }
+     ],
+     "share_decided_by": {
+      "tml": 0.0,
+      "encoder": 0.8882124352331606,
+      "llm": 0.11178756476683938
+     },
+     "escalation_rate": {
+      "to_encoder": 1.0,
+      "to_llm": 0.11178756476683938
+     },
+     "inference_calls_per_1000_items": {
+      "tml": 1000.0,
+      "encoder": 1000.0,
+      "llm": 111.8
+     },
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "cascade",
+      "n_items": 7720,
+      "classes": [
+       "False",
+       "True"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 39,
+       "c": 45,
+       "n_discordant": 84,
+       "method": "chi2_continuity",
+       "statistic": 0.2976190476190476,
+       "p_value": 0.5853789284609614,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": false,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.851098223423518,
+       "macro_f1_b": 0.8520661869676442,
+       "ci_a": [
+        0.8345733499986379,
+        0.867125626725265
+       ],
+       "ci_b": [
+        0.8355618111046508,
+        0.868066013907068
+       ],
+       "difference": -0.0009679635441262047,
+       "ci_difference": [
+        -0.010495542649392781,
+        0.008401514086383632
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "p_value": 0.8564,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "False": {
+         "support": 7156,
+         "tier": "interpret",
+         "f1_a": 0.9795549374130738,
+         "f1_b": 0.9799944429008057,
+         "ci_a": [
+          0.9771771491112965,
+          0.9819194052137862
+         ],
+         "ci_b": [
+          0.9776601630493804,
+          0.9823517198422036
+         ],
+         "difference": -0.0004395054877319726,
+         "ci_difference": [
+          -0.0016885493799228212,
+          0.0007554333950600279
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        },
+        "True": {
+         "support": 564,
+         "tier": "interpret",
+         "f1_a": 0.7226415094339622,
+         "f1_b": 0.7241379310344828,
+         "ci_a": [
+          0.6914056164562095,
+          0.7526270576457967
+         ],
+         "ci_b": [
+          0.6927831946342069,
+          0.7544359418273424
+         ],
+         "difference": -0.0014964216005205477,
+         "ci_difference": [
+          -0.01936374763664949,
+          0.01611497064441371
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": false
+        }
+       }
+      },
+      "accuracy_a": 0.9619170984455958,
+      "accuracy_b": 0.9626943005181348,
+      "accuracy_difference": -0.0007772020725389517,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "indistinguishable",
+      "carried_by": "neither",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 564,
+       "tier": "interpret",
+       "f1_a": 0.7226415094339622,
+       "f1_b": 0.7241379310344828,
+       "ci_a": [
+        0.6914056164562095,
+        0.7526270576457967
+       ],
+       "ci_b": [
+        0.6927831946342069,
+        0.7544359418273424
+       ],
+       "difference": -0.0014964216005205477,
+       "ci_difference": [
+        -0.01936374763664949,
+        0.01611497064441371
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": false,
+       "class": "True",
+       "higher": "cascade",
+       "directional_claim_permitted": false,
+       "gate": "D1 interpret (n >= 100): #58(b) at class level -- the paired bootstrap interval of the difference must exclude zero",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "indistinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "cascade",
+      "primary": true,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.8564,
+       "holm_bootstrap": 1.0,
+       "by_bootstrap": 1.0,
+       "p_mcnemar": 0.5853789284609614,
+       "holm_mcnemar": 1.0,
+       "by_mcnemar": 1.0,
+       "survives_holm_bootstrap": false,
+       "survives_by_bootstrap": false,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    },
+    "llm_as_judge": {
+     "macro_f1": 0.8626792231273506,
+     "per_class_f1": {
+      "False": 0.9813051636666899,
+      "True": 0.7440532825880114
+     },
+     "delta_vs_best_pp": 1.16,
+     "judge_model": "mistral-medium-3.5-128b",
+     "invoked": 569,
+     "invocation_rate": 0.07370466321243524,
+     "fallback_to_soft_vote": 0,
+     "answer_outside_candidates": 0,
+     "inference_calls_per_1000_items": {
+      "tml": 1000.0,
+      "encoder": 1000.0,
+      "llm": 1000.0,
+      "judge": 73.7
+     },
+     "drift_probe": {
+      "n_probed": 20,
+      "n_answered_again": 20,
+      "same_label": 20
+     },
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "llm_as_judge",
+      "n_items": 7720,
+      "classes": [
+       "False",
+       "True"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 50,
+       "c": 75,
+       "n_discordant": 125,
+       "method": "chi2_continuity",
+       "statistic": 4.608,
+       "p_value": 0.0318231273864902,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": true,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.851098223423518,
+       "macro_f1_b": 0.8626792231273506,
+       "ci_a": [
+        0.8345733499986379,
+        0.867125626725265
+       ],
+       "ci_b": [
+        0.8463871335158464,
+        0.8780782500652214
+       ],
+       "difference": -0.011580999703832529,
+       "ci_difference": [
+        -0.022751424951297207,
+        -0.0004143740868087817
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": true,
+       "p_value": 0.042,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "False": {
+         "support": 7156,
+         "tier": "interpret",
+         "f1_a": 0.9795549374130738,
+         "f1_b": 0.9813051636666899,
+         "ci_a": [
+          0.9771771491112965,
+          0.9819194052137862
+         ],
+         "ci_b": [
+          0.9790404567927025,
+          0.98349982619279
+         ],
+         "difference": -0.001750226253616094,
+         "ci_difference": [
+          -0.0032623049530707067,
+          -0.00023934906152230117
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": true
+        },
+        "True": {
+         "support": 564,
+         "tier": "interpret",
+         "f1_a": 0.7226415094339622,
+         "f1_b": 0.7440532825880114,
+         "ci_a": [
+          0.6914056164562095,
+          0.7526270576457967
+         ],
+         "ci_b": [
+          0.7132208893683839,
+          0.7730294396961064
+         ],
+         "difference": -0.021411773154049185,
+         "ci_difference": [
+          -0.042335425855358266,
+          -0.0004348996007321332
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": true
+        }
+       }
+      },
+      "accuracy_a": 0.9619170984455958,
+      "accuracy_b": 0.9651554404145077,
+      "accuracy_difference": -0.0032383419689119286,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "distinguishable",
+      "carried_by": "mcnemar",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 564,
+       "tier": "interpret",
+       "f1_a": 0.7226415094339622,
+       "f1_b": 0.7440532825880114,
+       "ci_a": [
+        0.6914056164562095,
+        0.7526270576457967
+       ],
+       "ci_b": [
+        0.7132208893683839,
+        0.7730294396961064
+       ],
+       "difference": -0.021411773154049185,
+       "ci_difference": [
+        -0.042335425855358266,
+        -0.0004348996007321332
+       ],
+       "intervals_overlap": true,
+       "difference_ci_excludes_zero": true,
+       "class": "True",
+       "higher": "llm_as_judge",
+       "directional_claim_permitted": true,
+       "gate": "D1 interpret (n >= 100): #58(b) at class level -- the paired bootstrap interval of the difference must exclude zero",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "distinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "llm_as_judge",
+      "primary": true,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.042,
+       "holm_bootstrap": 0.29400000000000004,
+       "by_bootstrap": 0.260669696969697,
+       "p_mcnemar": 0.0318231273864902,
+       "holm_mcnemar": 0.2545850190919216,
+       "by_mcnemar": 0.23700928492755613,
+       "survives_holm_bootstrap": false,
+       "survives_by_bootstrap": false,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    },
+    "soft_voting_all_six": {
+     "macro_f1": 0.7751191789549969,
+     "per_class_f1": {
+      "False": 0.9763467322942302,
+      "True": 0.5738916256157636
+     },
+     "delta_vs_best_pp": -7.6,
+     "significance": {
+      "a": "llm_llammlein",
+      "b": "soft_voting_all_six",
+      "n_items": 7720,
+      "classes": [
+       "False",
+       "True"
+      ],
+      "alpha": 0.05,
+      "mcnemar": {
+       "b": 155,
+       "c": 103,
+       "n_discordant": 258,
+       "method": "chi2_continuity",
+       "statistic": 10.081395348837209,
+       "p_value": 0.0014977387133508087,
+       "note": "chi-square with Yates continuity correction, 1 df"
+      },
+      "mcnemar_significant": true,
+      "bootstrap": {
+       "n_bootstrap": 10000,
+       "ci_level": 0.95,
+       "macro_f1_a": 0.851098223423518,
+       "macro_f1_b": 0.7751191789549969,
+       "ci_a": [
+        0.8345733499986379,
+        0.867125626725265
+       ],
+       "ci_b": [
+        0.7533230112693097,
+        0.7957915063021598
+       ],
+       "difference": 0.0759790444685211,
+       "ci_difference": [
+        0.056755131795202654,
+        0.09569521638562825
+       ],
+       "intervals_overlap": false,
+       "difference_ci_excludes_zero": true,
+       "p_value": 0.0001,
+       "p_resolution_floor": 0.0001,
+       "p_value_note": "the percentile interval inverted, on macro-F1 -- the PRIMARY metric, and therefore the quantity a multiplicity correction has to be applied to. McNemar's p beside it is about accuracy.",
+       "per_class": {
+        "False": {
+         "support": 7156,
+         "tier": "interpret",
+         "f1_a": 0.9795549374130738,
+         "f1_b": 0.9763467322942302,
+         "ci_a": [
+          0.9771771491112965,
+          0.9819194052137862
+         ],
+         "ci_b": [
+          0.9738190005773546,
+          0.9788244956666887
+         ],
+         "difference": 0.0032082051188435656,
+         "ci_difference": [
+          0.0010374405208038871,
+          0.005364690654520024
+         ],
+         "intervals_overlap": true,
+         "difference_ci_excludes_zero": true
+        },
+        "True": {
+         "support": 564,
+         "tier": "interpret",
+         "f1_a": 0.7226415094339622,
+         "f1_b": 0.5738916256157636,
+         "ci_a": [
+          0.6914056164562095,
+          0.7526270576457967
+         ],
+         "ci_b": [
+          0.5319947699496005,
+          0.6139088729016786
+         ],
+         "difference": 0.14874988381819865,
+         "ci_difference": [
+          0.11231276888580181,
+          0.18612610061833315
+         ],
+         "intervals_overlap": false,
+         "difference_ci_excludes_zero": true
+        }
+       }
+      },
+      "accuracy_a": 0.9619170984455958,
+      "accuracy_b": 0.955181347150259,
+      "accuracy_difference": 0.006735751295336767,
+      "metric_scope_note": "McNemar's p-value above is about ACCURACY -- which system got which item right. The primary metric is macro-F1, which weights the classes equally. On an imbalanced pool the two come apart, measured and documented in this module's docstring; read the two together.",
+      "verdict": "distinguishable",
+      "carried_by": "both",
+      "verdict_rule": "PRE-REGISTERED (#58 b): McNemar at alpha, OR the two components' own bootstrap intervals do not overlap. `carried_by` says which half decided, because an OR whose halves disagree is not self-explanatory",
+      "minority_class": {
+       "support": 564,
+       "tier": "interpret",
+       "f1_a": 0.7226415094339622,
+       "f1_b": 0.5738916256157636,
+       "ci_a": [
+        0.6914056164562095,
+        0.7526270576457967
+       ],
+       "ci_b": [
+        0.5319947699496005,
+        0.6139088729016786
+       ],
+       "difference": 0.14874988381819865,
+       "ci_difference": [
+        0.11231276888580181,
+        0.18612610061833315
+       ],
+       "intervals_overlap": false,
+       "difference_ci_excludes_zero": true,
+       "class": "True",
+       "higher": "llm_llammlein",
+       "directional_claim_permitted": true,
+       "gate": "D1 interpret (n >= 100): #58(b) at class level -- the paired bootstrap interval of the difference must exclude zero",
+       "wording_rule": "where `directional_claim_permitted` is false the text must not say one component is better than the other ON THIS CLASS, and must not crown the maximum -- #58(b)'s rule, at the level SQ1 actually argues. A rank is not a win here either."
+      },
+      "verdict_paired": "distinguishable",
+      "verdict_paired_rule": "the stronger form: McNemar at alpha, OR the paired bootstrap interval of the DIFFERENCE excludes zero. Reported beside the pre-registered verdict, never in place of it",
+      "wording_rule": "where the verdict is `indistinguishable`, the text says so and does not crown the maximum (#58 b). A larger macro-F1 that this test cannot separate is not a finding.",
+      "machine_a": "Linux/x86_64",
+      "machine_b": "Linux/x86_64",
+      "machine_mismatch": false,
+      "machine_note": null,
+      "config_id_a": "43e4808c6a7c",
+      "config_id_b": "43e4808c6a7c",
+      "data_rules_id": "7e9082557061",
+      "seed_a": 42,
+      "seed_b": 42,
+      "strategy": "soft_voting_all_six",
+      "primary": false,
+      "multiplicity": {
+       "family": "all cross-component pairs at the primary seed, every subtask",
+       "m": 12,
+       "alpha": 0.05,
+       "p_bootstrap": 0.0001,
+       "holm_bootstrap": 0.0012000000000000001,
+       "by_bootstrap": 0.0012412842712842714,
+       "p_mcnemar": 0.0014977387133508087,
+       "holm_mcnemar": 0.013479648420157279,
+       "by_mcnemar": 0.013943396305319253,
+       "survives_holm_bootstrap": true,
+       "survives_by_bootstrap": true,
+       "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+      }
+     }
+    }
+   },
+   "disagreement_subset": {
+    "n": 569,
+    "judge_accuracy": 0.7574692442882249,
+    "soft_vote_accuracy": 0.7363796133567663,
+    "best_single_accuracy": 0.7135325131810193,
+    "any_member_correct": 1.0
+   }
+  }
+ },
+ "multiplicity": {
+  "family": "every strategy-vs-best-single comparison in this artefact, every subtask",
+  "m": 12,
+  "alpha": 0.05,
+  "methods": [
+   "holm",
+   "benjamini_yekutieli"
+  ],
+  "method_not_used": {
+   "benjamini_hochberg": "NOT used and deliberately absent: BH controls FDR under independence or PRDS, and these are round-robin comparisons of six components on the same items, whose dependence includes negative parts. BY is the FDR procedure valid under arbitrary dependence and is reported instead.",
+   "bonferroni": "superseded by Holm, which is uniformly more powerful at the identical FWER guarantee"
+  },
+  "by_factor_sum_1_over_i": 3.103210678210678,
+  "family_choice_note": "the LARGEST family, chosen before the p-values were read. Per-subtask (15) and the three confirmatory SQ1 comparisons are both defensible and both less strict, i.e. both would favour this thesis -- which is why neither was taken. A claim surviving m=12 satisfies any smaller family a fortiori.",
+  "multiplicity_does_not_cover": [
+   "TRAINING-SEED VARIANCE. Both tests condition on ONE trained model. The D3 replicates spread 2.36 pp on c2a against a 2.54 pp margin, so a corrected p says 'this model beat that model on these items', not 'this method beats that method'.",
+   "THE PAIRS ARE NOT A RANDOM SAMPLE. They are a complete round-robin, and most are uninteresting (TML against the LLM at 30 pp). That most survive Holm is not a quality signal; large differences stay large."
+  ]
+ },
+ "g3": {
+  "c2a": {
+   "combination_helps": false,
+   "strategies_that_help": []
+  },
+  "dbo": {
+   "combination_helps": false,
+   "strategies_that_help": []
+  },
+  "vio": {
+   "combination_helps": false,
+   "strategies_that_help": []
+  }
+ },
+ "day_probes": {
+  "c2a": [
+   {
+    "id": 854995784538846,
+    "label": "True",
+    "created": "2026-09-14T13:00:42+00:00"
+   },
+   {
+    "id": 854995914538833,
+    "label": "False",
+    "created": "2026-09-14T13:02:02+00:00"
+   },
+   {
+    "id": 854996447872113,
+    "label": "True",
+    "created": "2026-09-14T13:02:03+00:00"
+   },
+   {
+    "id": 854996877872070,
+    "label": "False",
+    "created": "2026-09-14T13:03:24+00:00"
+   },
+   {
+    "id": 854997344538690,
+    "label": "False",
+    "created": "2026-09-14T13:03:24+00:00"
+   },
+   {
+    "id": 854997541205337,
+    "label": "True",
+    "created": "2026-09-14T13:05:45+00:00"
+   },
+   {
+    "id": 854998144538610,
+    "label": "True",
+    "created": "2026-09-14T13:05:47+00:00"
+   },
+   {
+    "id": 854998711205220,
+    "label": "True",
+    "created": "2026-09-14T13:06:05+00:00"
+   },
+   {
+    "id": 854999087871849,
+    "label": "True",
+    "created": "2026-09-14T13:07:24+00:00"
+   },
+   {
+    "id": 855000187871739,
+    "label": "True",
+    "created": "2026-09-14T13:08:25+00:00"
+   },
+   {
+    "id": 854995784538846,
+    "label": "True",
+    "created": "2026-09-15T00:05:58+00:00"
+   },
+   {
+    "id": 854995914538833,
+    "label": "False",
+    "created": "2026-09-15T00:06:17+00:00"
+   },
+   {
+    "id": 854996447872113,
+    "label": "True",
+    "created": "2026-09-15T00:06:37+00:00"
+   },
+   {
+    "id": 854996877872070,
+    "label": "False",
+    "created": "2026-09-15T00:06:55+00:00"
+   },
+   {
+    "id": 854997344538690,
+    "label": "False",
+    "created": "2026-09-15T00:07:14+00:00"
+   },
+   {
+    "id": 854997541205337,
+    "label": "True",
+    "created": "2026-09-15T00:07:34+00:00"
+   },
+   {
+    "id": 854998144538610,
+    "label": "True",
+    "created": "2026-09-15T00:07:52+00:00"
+   },
+   {
+    "id": 854998711205220,
+    "label": "True",
+    "created": "2026-09-15T00:08:11+00:00"
+   },
+   {
+    "id": 854999087871849,
+    "label": "True",
+    "created": "2026-09-15T00:08:30+00:00"
+   },
+   {
+    "id": 855000187871739,
+    "label": "True",
+    "created": "2026-09-15T00:08:49+00:00"
+   },
+   {
+    "id": 854995784538846,
+    "label": "True",
+    "created": "2026-09-16T00:05:33+00:00"
+   },
+   {
+    "id": 854995914538833,
+    "label": "False",
+    "created": "2026-09-16T00:05:52+00:00"
+   },
+   {
+    "id": 854996447872113,
+    "label": "True",
+    "created": "2026-09-16T00:06:10+00:00"
+   },
+   {
+    "id": 854996877872070,
+    "label": "False",
+    "created": "2026-09-16T00:06:29+00:00"
+   },
+   {
+    "id": 854997344538690,
+    "label": "False",
+    "created": "2026-09-16T00:06:48+00:00"
+   },
+   {
+    "id": 854997541205337,
+    "label": "False",
+    "created": "2026-09-16T00:07:07+00:00"
+   },
+   {
+    "id": 854998144538610,
+    "label": "True",
+    "created": "2026-09-16T00:07:27+00:00"
+   },
+   {
+    "id": 854998711205220,
+    "label": "True",
+    "created": "2026-09-16T00:07:45+00:00"
+   },
+   {
+    "id": 854999087871849,
+    "label": "True",
+    "created": "2026-09-16T00:08:04+00:00"
+   },
+   {
+    "id": 855000187871739,
+    "label": "True",
+    "created": "2026-09-16T00:08:23+00:00"
+   }
+  ],
+  "dbo": [],
+  "vio": []
+ },
+ "g3_decision": "no -- no primary strategy is distinguishably above the best single component",
+ "claims_not_made": [
+  "one seed per component: a corrected p is about these trained models on these items, not the method",
+  "the TML member ran on Darwin/arm64, the neural members on Linux/x86_64"
+ ]
+}

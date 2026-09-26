@@ -1,0 +1,789 @@
+{
+  "experiment": "E4a",
+  "package": "B8",
+  "git_commit": "1e8aa8f6c1b22cb3d5608b33f8b72040c69a351c",
+  "subtask": "vio",
+  "edition": "2025",
+  "component": "encoder_1b",
+  "meta": {
+    "design_lock": "notes/e2_design_lock.md",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "primary_metric": "macro_f1",
+    "aggregation": "pooled_out_of_fold",
+    "imbalance_condition": "none",
+    "data_rules": {
+      "within_edition_dedup": true,
+      "drop_train_test_overlap": false,
+      "note": "the overlap rule protects evaluation on the official test set, which E2 does not use; leaving it off keeps the pool identical to the E1 baseline pool and preserves thin-class instances"
+    },
+    "pool_n": 7720,
+    "classes": [
+      "False",
+      "True"
+    ],
+    "n_splits": 3,
+    "config_id": "1f07bcfc5680",
+    "seeds": [
+      42
+    ],
+    "primary_seed": 42,
+    "family": "encoder",
+    "model_id": "LSX-UniWue/ModernGBERT_1B",
+    "inner_split": {
+      "fit": 0.8,
+      "select": 0.1,
+      "calibrate": 0.1
+    },
+    "grid": [
+      {
+        "lora_r": 16,
+        "lr": 0.0002
+      }
+    ],
+    "tied": {
+      "lora_alpha": "2 * lora_r"
+    },
+    "fixed_hyperparameters": {
+      "effective_batch_size": 32,
+      "per_device_batch_size": 16,
+      "eval_batch_size": 64,
+      "warmup_ratio": 0.1,
+      "weight_decay": 0.01,
+      "max_grad_norm": 1.0,
+      "lora_dropout": 0.05,
+      "lora_target_modules": [
+        "attn.Wqkv",
+        "attn.Wo"
+      ],
+      "adam_betas": [
+        0.9,
+        0.999
+      ],
+      "adam_eps": 1e-08
+    },
+    "max_seq_len": 256,
+    "max_epochs": 8,
+    "grid_deviation": "no search: the configuration frozen in results/e4_fixed_configurations.json under e4_protocol.e4a.configuration",
+    "seed_semantics": "the partition is fixed at the primary seed; the seed varies training, and replicates run on one fold only (D3)",
+    "e4": {
+      "experiment": "E4A",
+      "condition": "none",
+      "fixed_params": {
+        "lora_r": 16,
+        "lr": 0.0002
+      }
+    },
+    "replicate_seeds_skipped": "E4 has no D3 replicates (D5)",
+    "bootstrap_n": 1000,
+    "ci_level": 0.95,
+    "env_pin": {
+      "python": "3.13.8",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1+cu126",
+      "cuda_available": true,
+      "cuda_device": "NVIDIA A40",
+      "mps_available": false,
+      "torch_auto_device": "cuda",
+      "platform": "Linux/x86_64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-13T15:32:09+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.810384227587635,
+    "weighted_f1": 0.9513006791523847,
+    "per_class": {
+      "False": {
+        "f1": 0.9754138098206246,
+        "support": 7156,
+        "tier": "interpret",
+        "ci_lower": 0.9729120061031744,
+        "ci_upper": 0.9779413008914914
+      },
+      "True": {
+        "f1": 0.6453546453546454,
+        "support": 564,
+        "tier": "interpret",
+        "ci_lower": 0.6109921653953355,
+        "ci_upper": 0.6806461007945199
+      }
+    },
+    "labels": [
+      "False",
+      "True"
+    ],
+    "confusion_matrix": [
+      [
+        7042,
+        114
+      ],
+      [
+        241,
+        323
+      ]
+    ],
+    "n_samples": 7720,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.004866621683356877,
+      "brier": 0.07275325976140286,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 45,
+          "mean_confidence": 0.5156583593653519,
+          "accuracy": 0.4444444444444444
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 74,
+          "mean_confidence": 0.567253980041978,
+          "accuracy": 0.5540540540540541
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 90,
+          "mean_confidence": 0.6310407553118321,
+          "accuracy": 0.6222222222222222
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 101,
+          "mean_confidence": 0.7026798749404093,
+          "accuracy": 0.7128712871287128
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 120,
+          "mean_confidence": 0.7689464987190263,
+          "accuracy": 0.75
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 244,
+          "mean_confidence": 0.8353876958607704,
+          "accuracy": 0.819672131147541
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 530,
+          "mean_confidence": 0.8995471880606192,
+          "accuracy": 0.879245283018868
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 6516,
+          "mean_confidence": 0.9875226689354581,
+          "accuracy": 0.9852670349907919
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 7720
+    },
+    "macro_f1_ci_lower": 0.7925855019706932,
+    "macro_f1_ci_upper": 0.8291248998403314,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "repeats": [
+    {
+      "seed": 42,
+      "pooled_macro_f1": 0.810384227587635,
+      "pooled_weighted_f1": 0.9513006791523847,
+      "per_fold_macro_f1": [
+        0.8154975651250549,
+        0.7826865334162407,
+        0.8295760524677332
+      ],
+      "fold_sd_macro_f1": 0.024060322124939238,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "False": 0.9754138098206246,
+        "True": 0.6453546453546454
+      },
+      "ece": 0.004866621683356877,
+      "brier": 0.07275325976140286,
+      "selected_params_per_fold": [
+        {
+          "lora_r": 16,
+          "lr": 0.0002
+        },
+        {
+          "lora_r": 16,
+          "lr": 0.0002
+        },
+        {
+          "lora_r": 16,
+          "lr": 0.0002
+        }
+      ],
+      "temperature_per_fold": [
+        2.2835992682618804,
+        1.229784938177812,
+        2.9207895600723774
+      ],
+      "folds_detail": [
+        {
+          "component": "encoder_1b",
+          "grid_overridden": true,
+          "model_id": "LSX-UniWue/ModernGBERT_1B",
+          "selected_params": {
+            "lora_r": 16,
+            "lr": 0.0002
+          },
+          "selection_macro_f1": 0.8411637709468489,
+          "selected_epoch": 3,
+          "fit_diagnosis": {
+            "flags": [],
+            "notes": [],
+            "epoch_scores": [
+              0.7775731951263867,
+              0.8058332956310605,
+              0.8411637709468489,
+              0.8102631578947368,
+              0.832380155298275
+            ],
+            "selected_epoch": 3,
+            "max_epochs": 8,
+            "ok": true
+          },
+          "selection_grid": [
+            {
+              "params": {
+                "lora_r": 16,
+                "lr": 0.0002
+              },
+              "selection_macro_f1": 0.8411637709468489,
+              "best_epoch": 3,
+              "epoch_trace": [
+                {
+                  "epoch": 1,
+                  "selection_macro_f1": 0.7775731951263867,
+                  "train_loss": 0.600607,
+                  "grad_norm": 22.1125,
+                  "pred_class_counts": [
+                    459,
+                    56
+                  ],
+                  "lr": 0.000194403,
+                  "seconds": 75.1
+                },
+                {
+                  "epoch": 2,
+                  "selection_macro_f1": 0.8058332956310605,
+                  "train_loss": 0.130953,
+                  "grad_norm": 5.0263,
+                  "pred_class_counts": [
+                    484,
+                    31
+                  ],
+                  "lr": 0.000166631,
+                  "seconds": 76.1
+                },
+                {
+                  "epoch": 3,
+                  "selection_macro_f1": 0.8411637709468489,
+                  "train_loss": 0.055797,
+                  "grad_norm": 2.8977,
+                  "pred_class_counts": [
+                    482,
+                    33
+                  ],
+                  "lr": 0.000138859,
+                  "seconds": 75.9
+                },
+                {
+                  "epoch": 4,
+                  "selection_macro_f1": 0.8102631578947368,
+                  "train_loss": 0.02071,
+                  "grad_norm": 1.3789,
+                  "pred_class_counts": [
+                    473,
+                    42
+                  ],
+                  "lr": 0.000111087,
+                  "seconds": 77.9
+                },
+                {
+                  "epoch": 5,
+                  "selection_macro_f1": 0.832380155298275,
+                  "train_loss": 0.004215,
+                  "grad_norm": 0.4367,
+                  "pred_class_counts": [
+                    486,
+                    29
+                  ],
+                  "lr": 8.3315e-05,
+                  "seconds": 76.3
+                }
+              ],
+              "stopping": {
+                "epochs_run": 5,
+                "peak_gpu_gb": 13.73,
+                "peak_gpu_reserved_gb": 19.02,
+                "stopped_early": true,
+                "patience": 2,
+                "ceiling": 8,
+                "ceiling_bound": false
+              }
+            }
+          ],
+          "temperature": {
+            "temperature": 2.2835992682618804,
+            "nll_before": 0.14611928849428435,
+            "nll_after": 0.0948623619648731,
+            "n_calibration_items": 515,
+            "fitted": true
+          },
+          "imbalance_condition": "none",
+          "class_weights": null,
+          "focal_gamma": null,
+          "n_fit": 4116,
+          "n_fit_trained": 4116,
+          "n_select": 515,
+          "n_calibrate": 515,
+          "classes_present_in_fit": [
+            "False",
+            "True"
+          ],
+          "inner_split_stratified": true,
+          "device": "cuda",
+          "precision": "bf16",
+          "max_seq_len": 256,
+          "max_epochs": 8,
+          "patience": 2,
+          "stopping": {
+            "epochs_run": 5,
+            "peak_gpu_gb": 13.73,
+            "peak_gpu_reserved_gb": 19.02,
+            "stopped_early": true,
+            "patience": 2,
+            "ceiling": 8,
+            "ceiling_bound": false
+          },
+          "epochs_run_per_cell": [
+            5
+          ],
+          "effective_batch_size": 32,
+          "per_device_batch_size": 16,
+          "gradient_accumulation_steps": 2,
+          "lora": {
+            "r": 16,
+            "alpha": 32,
+            "dropout": 0.05,
+            "target_modules": [
+              "attn.Wqkv",
+              "attn.Wo"
+            ]
+          },
+          "tokenisation": {
+            "truncation_rate": 0.00923226433430515,
+            "token_len_mean": 37.98445092322643,
+            "token_len_p95": 113.0,
+            "token_len_max": 2109
+          },
+          "runtime_seconds": 389.48042821884155,
+          "started_utc": "2026-09-13T15:12:44+00:00",
+          "finished_utc": "2026-09-13T15:19:13+00:00",
+          "trainable_params": 5509122,
+          "total_params": 1071902724,
+          "adapted_modules": 56,
+          "fold": 0
+        },
+        {
+          "component": "encoder_1b",
+          "grid_overridden": true,
+          "model_id": "LSX-UniWue/ModernGBERT_1B",
+          "selected_params": {
+            "lora_r": 16,
+            "lr": 0.0002
+          },
+          "selection_macro_f1": 0.8208072372999304,
+          "selected_epoch": 1,
+          "fit_diagnosis": {
+            "flags": [
+              "collapsed_early"
+            ],
+            "notes": [
+              "peaked at epoch 1 then fell (0.8208 -> 0.7308): overfits within one pass. lr or lora_r is too high."
+            ],
+            "epoch_scores": [
+              0.8208072372999304,
+              0.7513566752283656,
+              0.7308149204086481
+            ],
+            "selected_epoch": 1,
+            "max_epochs": 8,
+            "ok": false
+          },
+          "selection_grid": [
+            {
+              "params": {
+                "lora_r": 16,
+                "lr": 0.0002
+              },
+              "selection_macro_f1": 0.8208072372999304,
+              "best_epoch": 1,
+              "epoch_trace": [
+                {
+                  "epoch": 1,
+                  "selection_macro_f1": 0.8208072372999304,
+                  "train_loss": 0.615803,
+                  "grad_norm": 23.7778,
+                  "pred_class_counts": [
+                    481,
+                    34
+                  ],
+                  "lr": 0.000194403,
+                  "seconds": 74.6
+                },
+                {
+                  "epoch": 2,
+                  "selection_macro_f1": 0.7513566752283656,
+                  "train_loss": 0.126981,
+                  "grad_norm": 5.1725,
+                  "pred_class_counts": [
+                    500,
+                    15
+                  ],
+                  "lr": 0.000166631,
+                  "seconds": 74.4
+                },
+                {
+                  "epoch": 3,
+                  "selection_macro_f1": 0.7308149204086481,
+                  "train_loss": 0.049541,
+                  "grad_norm": 2.7608,
+                  "pred_class_counts": [
+                    438,
+                    77
+                  ],
+                  "lr": 0.000138859,
+                  "seconds": 76.6
+                }
+              ],
+              "stopping": {
+                "epochs_run": 3,
+                "peak_gpu_gb": 17.72,
+                "peak_gpu_reserved_gb": 20.84,
+                "stopped_early": true,
+                "patience": 2,
+                "ceiling": 8,
+                "ceiling_bound": false
+              }
+            }
+          ],
+          "temperature": {
+            "temperature": 1.229784938177812,
+            "nll_before": 0.13743672132836338,
+            "nll_after": 0.1327624369906392,
+            "n_calibration_items": 515,
+            "fitted": true
+          },
+          "imbalance_condition": "none",
+          "class_weights": null,
+          "focal_gamma": null,
+          "n_fit": 4117,
+          "n_fit_trained": 4117,
+          "n_select": 515,
+          "n_calibrate": 515,
+          "classes_present_in_fit": [
+            "False",
+            "True"
+          ],
+          "inner_split_stratified": true,
+          "device": "cuda",
+          "precision": "bf16",
+          "max_seq_len": 256,
+          "max_epochs": 8,
+          "patience": 2,
+          "stopping": {
+            "epochs_run": 3,
+            "peak_gpu_gb": 17.72,
+            "peak_gpu_reserved_gb": 20.84,
+            "stopped_early": true,
+            "patience": 2,
+            "ceiling": 8,
+            "ceiling_bound": false
+          },
+          "epochs_run_per_cell": [
+            3
+          ],
+          "effective_batch_size": 32,
+          "per_device_batch_size": 16,
+          "gradient_accumulation_steps": 2,
+          "lora": {
+            "r": 16,
+            "alpha": 32,
+            "dropout": 0.05,
+            "target_modules": [
+              "attn.Wqkv",
+              "attn.Wo"
+            ]
+          },
+          "tokenisation": {
+            "truncation_rate": 0.01044449842118047,
+            "token_len_mean": 37.67063395676463,
+            "token_len_p95": 113.19999999999982,
+            "token_len_max": 1714
+          },
+          "runtime_seconds": 232.66252446174622,
+          "started_utc": "2026-09-13T15:19:39+00:00",
+          "finished_utc": "2026-09-13T15:23:31+00:00",
+          "trainable_params": 5509122,
+          "total_params": 1071902724,
+          "adapted_modules": 56,
+          "fold": 1
+        },
+        {
+          "component": "encoder_1b",
+          "grid_overridden": true,
+          "model_id": "LSX-UniWue/ModernGBERT_1B",
+          "selected_params": {
+            "lora_r": 16,
+            "lr": 0.0002
+          },
+          "selection_macro_f1": 0.8543002640513013,
+          "selected_epoch": 4,
+          "fit_diagnosis": {
+            "flags": [],
+            "notes": [],
+            "epoch_scores": [
+              0.7752622667527798,
+              0.8004525658312798,
+              0.7752622667527798,
+              0.8543002640513013,
+              0.8112203040723349,
+              0.811217008797654
+            ],
+            "selected_epoch": 4,
+            "max_epochs": 8,
+            "ok": true
+          },
+          "selection_grid": [
+            {
+              "params": {
+                "lora_r": 16,
+                "lr": 0.0002
+              },
+              "selection_macro_f1": 0.8543002640513013,
+              "best_epoch": 4,
+              "epoch_trace": [
+                {
+                  "epoch": 1,
+                  "selection_macro_f1": 0.7752622667527798,
+                  "train_loss": 0.574269,
+                  "grad_norm": 21.6552,
+                  "pred_class_counts": [
+                    494,
+                    21
+                  ],
+                  "lr": 0.000194403,
+                  "seconds": 75.4
+                },
+                {
+                  "epoch": 2,
+                  "selection_macro_f1": 0.8004525658312798,
+                  "train_loss": 0.124651,
+                  "grad_norm": 4.8286,
+                  "pred_class_counts": [
+                    486,
+                    29
+                  ],
+                  "lr": 0.000166631,
+                  "seconds": 77.0
+                },
+                {
+                  "epoch": 3,
+                  "selection_macro_f1": 0.7752622667527798,
+                  "train_loss": 0.054364,
+                  "grad_norm": 2.952,
+                  "pred_class_counts": [
+                    494,
+                    21
+                  ],
+                  "lr": 0.000138859,
+                  "seconds": 75.7
+                },
+                {
+                  "epoch": 4,
+                  "selection_macro_f1": 0.8543002640513013,
+                  "train_loss": 0.013096,
+                  "grad_norm": 0.977,
+                  "pred_class_counts": [
+                    487,
+                    28
+                  ],
+                  "lr": 0.000111087,
+                  "seconds": 76.5
+                },
+                {
+                  "epoch": 5,
+                  "selection_macro_f1": 0.8112203040723349,
+                  "train_loss": 0.00863,
+                  "grad_norm": 0.6928,
+                  "pred_class_counts": [
+                    494,
+                    21
+                  ],
+                  "lr": 8.3315e-05,
+                  "seconds": 76.6
+                },
+                {
+                  "epoch": 6,
+                  "selection_macro_f1": 0.811217008797654,
+                  "train_loss": 0.003537,
+                  "grad_norm": 0.1264,
+                  "pred_class_counts": [
+                    491,
+                    24
+                  ],
+                  "lr": 5.5544e-05,
+                  "seconds": 74.2
+                }
+              ],
+              "stopping": {
+                "epochs_run": 6,
+                "peak_gpu_gb": 17.72,
+                "peak_gpu_reserved_gb": 20.84,
+                "stopped_early": true,
+                "patience": 2,
+                "ceiling": 8,
+                "ceiling_bound": false
+              }
+            }
+          ],
+          "temperature": {
+            "temperature": 2.9207895600723774,
+            "nll_before": 0.24683324291572178,
+            "nll_after": 0.13178276218822557,
+            "n_calibration_items": 515,
+            "fitted": true
+          },
+          "imbalance_condition": "none",
+          "class_weights": null,
+          "focal_gamma": null,
+          "n_fit": 4117,
+          "n_fit_trained": 4117,
+          "n_select": 515,
+          "n_calibrate": 515,
+          "classes_present_in_fit": [
+            "False",
+            "True"
+          ],
+          "inner_split_stratified": true,
+          "device": "cuda",
+          "precision": "bf16",
+          "max_seq_len": 256,
+          "max_epochs": 8,
+          "patience": 2,
+          "stopping": {
+            "epochs_run": 6,
+            "peak_gpu_gb": 17.72,
+            "peak_gpu_reserved_gb": 20.84,
+            "stopped_early": true,
+            "patience": 2,
+            "ceiling": 8,
+            "ceiling_bound": false
+          },
+          "epochs_run_per_cell": [
+            6
+          ],
+          "effective_batch_size": 32,
+          "per_device_batch_size": 16,
+          "gradient_accumulation_steps": 2,
+          "lora": {
+            "r": 16,
+            "alpha": 32,
+            "dropout": 0.05,
+            "target_modules": [
+              "attn.Wqkv",
+              "attn.Wo"
+            ]
+          },
+          "tokenisation": {
+            "truncation_rate": 0.009472917172698566,
+            "token_len_mean": 38.899684236094245,
+            "token_len_p95": 119.0,
+            "token_len_max": 2109
+          },
+          "runtime_seconds": 463.22177743911743,
+          "started_utc": "2026-09-13T15:23:58+00:00",
+          "finished_utc": "2026-09-13T15:31:41+00:00",
+          "trainable_params": 5509122,
+          "total_params": 1071902724,
+          "adapted_modules": 56,
+          "fold": 2
+        }
+      ],
+      "component_store_key": "vio_2025/encoder_1b__e4a-none__seed42",
+      "runtime_seconds": 1164.5430693626404,
+      "fold_runtime_seconds_sum": 1085.3647301197052,
+      "resumed_folds": []
+    }
+  ],
+  "seed_replicates": [],
+  "dispersion": {
+    "mean_pooled_macro_f1": 0.810384227587635,
+    "seed_sd_macro_f1": 0.0,
+    "fold_sd_macro_f1_primary": 0.024060322124939238,
+    "per_seed_pooled_macro_f1": [
+      0.810384227587635
+    ],
+    "replicate_fold_macro_f1": [],
+    "replicate_sd_macro_f1": 0.0
+  },
+  "runtime_seconds": 1164.9941852092743,
+  "resumed": false,
+  "selection_diagnosis": {
+    "flags": [
+      "single_cell_grid"
+    ],
+    "notes": [
+      "the grid has no axis with more than one value -- nothing was selected, so no edge check is possible."
+    ],
+    "axes": {},
+    "n_distinct_winners": 1,
+    "n_fits": 3,
+    "margin": null,
+    "ok": true
+  },
+  "stopping_evidence": {
+    "n_fits": 3,
+    "ceiling": 8,
+    "patience": 2,
+    "n_stopped_early": 3,
+    "n_ceiling_bound": 0,
+    "best_epoch_counts": {
+      "1": 1,
+      "3": 1,
+      "4": 1
+    },
+    "mean_epochs_run": 4.666666666666667,
+    "overrun_ratio": 1.75,
+    "mean_tail_gap": 0.047286395931167825,
+    "rising_at_stop": 1,
+    "rising_at_stop_share": 0.3333333333333333,
+    "near_miss_within_1pct": 0,
+    "verdict": "3 of 3 fits stopped early, 1 on a rising trace, 0 were still improving at the ceiling"
+  }
+}

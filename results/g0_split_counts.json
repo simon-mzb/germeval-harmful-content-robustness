@@ -1,0 +1,30 @@
+{
+  "c2a": {
+    "train_expected": 6840,
+    "train_actual": 6840,
+    "train_ok": true,
+    "test_expected": 2982,
+    "test_actual": 2982,
+    "test_ok": true,
+    "pass": true
+  },
+  "dbo": {
+    "train_expected": 7454,
+    "train_actual": 7454,
+    "train_ok": true,
+    "test_expected": 3194,
+    "test_actual": 3194,
+    "test_ok": true,
+    "pass": true
+  },
+  "vio": {
+    "train_expected": 7783,
+    "train_actual": 7783,
+    "train_ok": true,
+    "test_expected": 3335,
+    "test_actual": 3335,
+    "test_ok": true,
+    "pass": true
+  },
+  "_all_pass": true
+}

@@ -1,0 +1,421 @@
+{
+  "experiment": "E4a",
+  "package": "B8",
+  "git_commit": "be114154dcf1e188f31c26130f5b5abf51936d7d",
+  "subtask": "dbo",
+  "edition": "2026",
+  "component": "tml_svm",
+  "meta": {
+    "design_lock": "notes/e2_design_lock.md",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "primary_metric": "macro_f1",
+    "aggregation": "pooled_out_of_fold",
+    "imbalance_condition": "random_oversampling",
+    "data_rules": {
+      "within_edition_dedup": true,
+      "drop_train_test_overlap": false,
+      "note": "the overlap rule protects evaluation on the official test set, which E2 does not use; leaving it off keeps the pool identical to the E1 baseline pool and preserves thin-class instances"
+    },
+    "pool_n": 15847,
+    "classes": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "n_splits": 3,
+    "config_id": "a7351313a239",
+    "seeds": [
+      42
+    ],
+    "primary_seed": 42,
+    "family": "tml",
+    "feature_spec": {
+      "word_ngram_range": [
+        1,
+        2
+      ],
+      "char_ngram_range": [
+        3,
+        5
+      ],
+      "char_analyzer": "char_wb",
+      "lowercase": true,
+      "min_df": 2,
+      "sublinear_tf": true
+    },
+    "inner_split": {
+      "fit": 0.8,
+      "select": 0.1,
+      "calibrate": 0.1
+    },
+    "grid": [
+      {
+        "C": 10.0
+      }
+    ],
+    "grid_deviation": "no search: the configuration frozen in results/e4_fixed_configurations.json under e4_protocol.e4a.configuration",
+    "seed_semantics": "the seed varies the CV partition",
+    "e4": {
+      "experiment": "E4A",
+      "condition": "random_oversampling",
+      "fixed_params": {
+        "C": 10.0
+      }
+    },
+    "replicate_seeds_skipped": "E4 has no D3 replicates (D5)",
+    "bootstrap_n": 1000,
+    "ci_level": 0.95,
+    "env_pin": {
+      "python": "3.13.15",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1",
+      "cuda_available": false,
+      "cuda_device": null,
+      "mps_available": true,
+      "torch_auto_device": "mps",
+      "platform": "Darwin/arm64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-14T12:55:53+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.4196314747797653,
+    "weighted_f1": 0.8762156167820618,
+    "per_class": {
+      "agitation": {
+        "f1": 0.26900584795321636,
+        "support": 143,
+        "tier": "interpret",
+        "ci_lower": 0.18089803857999676,
+        "ci_upper": 0.35220575022461814
+      },
+      "criticism": {
+        "f1": 0.42846212700841624,
+        "support": 1839,
+        "tier": "interpret",
+        "ci_lower": 0.4039974698669723,
+        "ci_upper": 0.45136607909599386
+      },
+      "nothing": {
+        "f1": 0.9453436384431428,
+        "support": 13812,
+        "tier": "interpret",
+        "ci_lower": 0.9426438652014514,
+        "ci_upper": 0.9482330772728749
+      },
+      "subversive": {
+        "f1": 0.03571428571428571,
+        "support": 53,
+        "tier": "ci_gated",
+        "ci_lower": 0.0,
+        "ci_upper": 0.12
+      }
+    },
+    "labels": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "confusion_matrix": [
+      [
+        23,
+        24,
+        96,
+        0
+      ],
+      [
+        0,
+        560,
+        1278,
+        1
+      ],
+      [
+        4,
+        169,
+        13638,
+        1
+      ],
+      [
+        1,
+        22,
+        29,
+        1
+      ]
+    ],
+    "n_samples": 15847,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.013632208498731929,
+      "brier": 0.1611778640300113,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.4666666666666667,
+          "n": 6,
+          "mean_confidence": 0.4435728800547624,
+          "accuracy": 0.5
+        },
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 199,
+          "mean_confidence": 0.5115179356937158,
+          "accuracy": 0.47738693467336685
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 359,
+          "mean_confidence": 0.568401175349597,
+          "accuracy": 0.5459610027855153
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 424,
+          "mean_confidence": 0.6346183143296129,
+          "accuracy": 0.6226415094339622
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 597,
+          "mean_confidence": 0.7020993066661904,
+          "accuracy": 0.6817420435510888
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 820,
+          "mean_confidence": 0.7695420739555986,
+          "accuracy": 0.7390243902439024
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 1528,
+          "mean_confidence": 0.837790569098339,
+          "accuracy": 0.8285340314136126
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 4247,
+          "mean_confidence": 0.9062712311186565,
+          "accuracy": 0.9255945373204615
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 7667,
+          "mean_confidence": 0.9640828314613553,
+          "accuracy": 0.9722185991913395
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 15847
+    },
+    "macro_f1_ci_lower": 0.3928875730164757,
+    "macro_f1_ci_upper": 0.4489296750486515,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "repeats": [
+    {
+      "seed": 42,
+      "pooled_macro_f1": 0.4196314747797653,
+      "pooled_weighted_f1": 0.8762156167820618,
+      "per_fold_macro_f1": [
+        0.44791262813326527,
+        0.3971524224618921,
+        0.4102085253968194
+      ],
+      "fold_sd_macro_f1": 0.02635861550109688,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "agitation": 0.26900584795321636,
+        "criticism": 0.42846212700841624,
+        "nothing": 0.9453436384431428,
+        "subversive": 0.03571428571428571
+      },
+      "ece": 0.013632208498731929,
+      "brier": 0.1611778640300113,
+      "selected_params_per_fold": [
+        {
+          "C": 10.0
+        },
+        {
+          "C": 10.0
+        },
+        {
+          "C": 10.0
+        }
+      ],
+      "temperature_per_fold": [
+        0.9828727838511887,
+        0.9860550995460973,
+        0.9905831137289661
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 10.0
+          },
+          "selection_macro_f1": 0.5026994789377864,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.5026994789377864
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9828727838511887,
+            "nll_before": 0.32206941999689787,
+            "nll_after": 0.32199371950314415,
+            "n_calibration_items": 1057,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "random_oversampling",
+          "n_fit": 8451,
+          "n_fit_trained": 29464,
+          "n_select": 1056,
+          "n_calibrate": 1057,
+          "n_features": 92211,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 10.0
+          },
+          "selection_macro_f1": 0.4708785510574466,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.4708785510574466
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9860550995460973,
+            "nll_before": 0.2980801666729109,
+            "nll_after": 0.29803065377039933,
+            "n_calibration_items": 1057,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "random_oversampling",
+          "n_fit": 8452,
+          "n_fit_trained": 29464,
+          "n_select": 1056,
+          "n_calibrate": 1057,
+          "n_features": 91902,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_svm",
+          "selected_params": {
+            "C": 10.0
+          },
+          "selection_macro_f1": 0.3333685322069694,
+          "selection_grid": [
+            {
+              "params": {
+                "C": 10.0
+              },
+              "selection_macro_f1": 0.3333685322069694
+            }
+          ],
+          "temperature": {
+            "temperature": 0.9905831137289661,
+            "nll_before": 0.3276359436133775,
+            "nll_after": 0.327612253274253,
+            "n_calibration_items": 1057,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "random_oversampling",
+          "n_fit": 8452,
+          "n_fit_trained": 29464,
+          "n_select": 1056,
+          "n_calibrate": 1057,
+          "n_features": 92324,
+          "classes_present_in_fit": [
+            "agitation",
+            "criticism",
+            "nothing",
+            "subversive"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        }
+      ],
+      "component_store_key": "dbo_2026/tml_svm__e4a-random_oversampling__seed42",
+      "runtime_seconds": 198.26771712303162,
+      "fold_runtime_seconds_sum": null,
+      "resumed_folds": []
+    }
+  ],
+  "seed_replicates": [],
+  "dispersion": {
+    "mean_pooled_macro_f1": 0.4196314747797653,
+    "seed_sd_macro_f1": 0.0,
+    "fold_sd_macro_f1_primary": 0.02635861550109688,
+    "per_seed_pooled_macro_f1": [
+      0.4196314747797653
+    ],
+    "replicate_fold_macro_f1": [],
+    "replicate_sd_macro_f1": 0.0
+  },
+  "runtime_seconds": 198.70764589309692,
+  "resumed": false,
+  "selection_diagnosis": {
+    "flags": [
+      "single_cell_grid"
+    ],
+    "notes": [
+      "the grid has no axis with more than one value -- nothing was selected, so no edge check is possible."
+    ],
+    "axes": {},
+    "n_distinct_winners": 1,
+    "n_fits": 3,
+    "margin": null,
+    "ok": true
+  },
+  "stopping_evidence": null
+}

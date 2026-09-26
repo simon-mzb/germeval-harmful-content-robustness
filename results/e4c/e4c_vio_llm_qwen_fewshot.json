@@ -1,0 +1,287 @@
+{
+  "experiment": "E4c",
+  "package": "B10",
+  "git_commit": "6b03e443d5b7152ff560a18bfc47835f77940543",
+  "subtask": "vio",
+  "component": "llm_qwen_fewshot",
+  "meta": {
+    "config_id": "9b878aa38b4e",
+    "e4": {
+      "experiment": "E4C",
+      "condition": "none",
+      "fixed_params": null
+    },
+    "family": "llm_fewshot",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "train_edition": "2025",
+    "eval_edition": "2026",
+    "n_train": 7720,
+    "n_eval": 10476,
+    "eval_pool_sha256": "bc4d566ecdc6c3f4122c85a968cff9aa6a6679b51b723e3258f0a1339633e631",
+    "label_mapping": {
+      "nothing": false,
+      "call2violence": true,
+      "glorification": true,
+      "other": true,
+      "propensity": true,
+      "support": true
+    },
+    "classes": [
+      "False",
+      "True"
+    ],
+    "bootstrap_n": 1000,
+    "env_pin": {
+      "python": "3.13.8",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1+cu126",
+      "cuda_available": true,
+      "cuda_device": "NVIDIA A40",
+      "mps_available": false,
+      "torch_auto_device": "cuda",
+      "platform": "Linux/x86_64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-15T02:56:08+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.7524972222738133,
+    "weighted_f1": 0.9693033757278122,
+    "per_class": {
+      "False": {
+        "f1": 0.9828949970338146,
+        "support": 10167,
+        "tier": "interpret",
+        "ci_lower": 0.9810308397780385,
+        "ci_upper": 0.9846177369793186
+      },
+      "True": {
+        "f1": 0.5220994475138122,
+        "support": 309,
+        "tier": "interpret",
+        "ci_lower": 0.4777966470475432,
+        "ci_upper": 0.562590196106065
+      }
+    },
+    "labels": [
+      "False",
+      "True"
+    ],
+    "confusion_matrix": [
+      [
+        9941,
+        226
+      ],
+      [
+        120,
+        189
+      ]
+    ],
+    "n_samples": 10476,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.012570468154506995,
+      "brier": 0.052605603070282024,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 47,
+          "mean_confidence": 0.5206615013894945,
+          "accuracy": 0.5106382978723404
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 93,
+          "mean_confidence": 0.5640623262657766,
+          "accuracy": 0.5161290322580645
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 128,
+          "mean_confidence": 0.6344699739652035,
+          "accuracy": 0.7109375
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 134,
+          "mean_confidence": 0.6994674445811073,
+          "accuracy": 0.6940298507462687
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 239,
+          "mean_confidence": 0.7674100902724724,
+          "accuracy": 0.7949790794979079
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 366,
+          "mean_confidence": 0.8387324513844275,
+          "accuracy": 0.8852459016393442
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 771,
+          "mean_confidence": 0.9067543666428104,
+          "accuracy": 0.9468223086900129
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 8698,
+          "mean_confidence": 0.9850842076298347,
+          "accuracy": 0.9921821108300759
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 10476
+    },
+    "macro_f1_ci_lower": 0.7295509600059713,
+    "macro_f1_ci_upper": 0.7731441145238589,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "source_class_detection": {
+    "call2violence": {
+      "n": 107,
+      "tier": "interpret",
+      "share_flagged_positive": 0.794392523364486
+    },
+    "glorification": {
+      "n": 12,
+      "tier": "report_only",
+      "share_flagged_positive": 0.6666666666666666
+    },
+    "nothing": {
+      "n": 10167,
+      "tier": "interpret",
+      "share_flagged_positive": 0.02222877938428248
+    },
+    "other": {
+      "n": 91,
+      "tier": "ci_gated",
+      "share_flagged_positive": 0.2857142857142857
+    },
+    "propensity": {
+      "n": 42,
+      "tier": "ci_gated",
+      "share_flagged_positive": 0.8571428571428571
+    },
+    "support": {
+      "n": 57,
+      "tier": "ci_gated",
+      "share_flagged_positive": 0.5964912280701754
+    }
+  },
+  "fit_record": {
+    "component": "llm_qwen_fewshot",
+    "model_id": "Qwen/Qwen2.5-14B-Instruct",
+    "subtask": "vio",
+    "training": "none",
+    "selected_params": null,
+    "selected_epoch": null,
+    "selection_grid": [],
+    "example_selection": "none",
+    "n_examples": 12,
+    "example_class_counts": {
+      "False": 11,
+      "True": 1
+    },
+    "example_ids": [
+      "935419529829804",
+      "1013560268682396",
+      "855032844535140",
+      "1012276525477437",
+      "1096085947096494",
+      "982639361774487",
+      "1035134646524958",
+      "1011545028883920",
+      "855015617870196",
+      "1064357680269321",
+      "888043851234039",
+      "985403694831387"
+    ],
+    "example_source": "the fit part of this fold's training portion only",
+    "rare_class_definitions_in_prompt": false,
+    "prompt_skeleton_tokens": 904,
+    "temperature": {
+      "temperature": 2.028582104124399,
+      "nll_before": 0.2116159331013293,
+      "nll_after": 0.15578394566062237,
+      "n_calibration_items": 772,
+      "fitted": true
+    },
+    "n_fit": 6176,
+    "n_unused_selection": 772,
+    "n_calibrate": 772,
+    "inner_split_stratified": true,
+    "selection_slice_note": "kept and left unused: nothing is selected for this component, and an identical calibration slice is what makes its ECE comparable with the other three families' (llm_fewshot module docstring)",
+    "classes_present_in_examples": [
+      "False",
+      "True"
+    ],
+    "device": "cuda",
+    "precision": "bf16",
+    "max_prompt_tokens": 2048,
+    "tokenisation": {
+      "slice": "calibrate",
+      "n_items": 772,
+      "text_truncated": 2,
+      "text_truncated_share": 0.0026,
+      "text_token_budget": 1142,
+      "template_overhead_tokens": 904,
+      "prompt_tokens_max": 2047,
+      "prompt_tokens_mean": 946.5
+    },
+    "verbalisers": {
+      "True": "Ja",
+      "False": "Nein"
+    },
+    "verbaliser_token_lengths": [
+      2,
+      1
+    ],
+    "probability_interface": "verbaliser_sequence_score",
+    "trainable_params": 0,
+    "adapted_modules": 0,
+    "runtime_seconds": 701.9733617305756,
+    "started_utc": "2026-09-15T00:33:47+00:00",
+    "finished_utc": "2026-09-15T00:45:29+00:00",
+    "tokenisation_predict": {
+      "slice": "validation",
+      "n_items": 10476,
+      "text_truncated": 8,
+      "text_truncated_share": 0.0008,
+      "text_token_budget": 1142,
+      "template_overhead_tokens": 904,
+      "prompt_tokens_max": 2046,
+      "prompt_tokens_mean": 946.9
+    }
+  },
+  "adapter": {
+    "path": "results/component_store/models/e4c/vio_llm_qwen_fewshot",
+    "sha256": {
+      "config.json": "83cd574a406a94ea55026f1de5129365090b8d9da3801d067b9e9be2c1ba2a17",
+      "e4c_calibration.json": "f2315c92259e3396b8ebd2cf21ce59dad0010bf3075592a3b8be8064f0750ecd",
+      "generation_config.json": "d2cb4681e3fb111d75f0aec7f3367c78d3a936888e5bdc497e45dbd2e757660f",
+      "model.safetensors": "858a718e530631fe329ebec29075cf7a4f5bb23190f0a2441e488724f4d02f61"
+    }
+  },
+  "component_store_key": "vio_2026/llm_qwen_fewshot__e4c__seed42",
+  "fit_seconds": 701.9838709831238,
+  "score_seconds": 7629.918258905411
+}

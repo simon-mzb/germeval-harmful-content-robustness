@@ -1,0 +1,81 @@
+{
+  "experiment": "E5 example items, Section 4.5",
+  "created": "2026-09-20T18:17:42+00:00",
+  "rule": "first row in coding-file order among first occurrences that meets the condition; fixed before any row was read (THESIS_LOG NS 124 z24)",
+  "components_in_order": [
+    "encoder_1b",
+    "llm_llammlein",
+    "llm_qwen_fewshot",
+    "tml_lightgbm",
+    "tml_svm",
+    "tml_xgboost"
+  ],
+  "cases": [
+    {
+      "case": "i",
+      "description": "irreducible item, the coder's class equals the gold class: a real model error",
+      "file": "set_b",
+      "stratum": "IRR",
+      "row": "r012",
+      "id": "1003",
+      "gold": "subversive",
+      "coder": "subversive",
+      "predictions": {
+        "encoder_1b": "nothing",
+        "llm_llammlein": "nothing",
+        "llm_qwen_fewshot": "agitation",
+        "tml_lightgbm": "nothing",
+        "tml_svm": "nothing",
+        "tml_xgboost": "nothing"
+      },
+      "k_wrong": 6,
+      "k_wrong_in_sidecar": 6,
+      "text_sha256": "5dbad51c39187f2bd3f56f4f7ac44e92d7e184663e1dd091ce7320e86e864361",
+      "text_chars": 71
+    },
+    {
+      "case": "ii",
+      "description": "irreducible item, the coder's class differs from the gold class: a disputed label",
+      "file": "set_b",
+      "stratum": "IRR",
+      "row": "r001",
+      "id": "1057332107638545",
+      "gold": "criticism",
+      "coder": "nothing",
+      "predictions": {
+        "encoder_1b": "nothing",
+        "llm_llammlein": "nothing",
+        "llm_qwen_fewshot": "nothing",
+        "tml_lightgbm": "nothing",
+        "tml_svm": "nothing",
+        "tml_xgboost": "nothing"
+      },
+      "k_wrong": 6,
+      "k_wrong_in_sidecar": 6,
+      "text_sha256": "87341b3cfeb0e640b60db23bb5df2fa4f9bacd89cbd16f58c95bedfc23f00b13",
+      "text_chars": 44
+    },
+    {
+      "case": "iii",
+      "description": "control item, the coder's class differs from the gold class: the contrast to (ii)",
+      "file": "set_a",
+      "stratum": "CTL",
+      "row": "r004",
+      "id": "1389092789917523968",
+      "gold": "agitation",
+      "coder": "criticism",
+      "predictions": {
+        "encoder_1b": "nothing",
+        "llm_llammlein": "agitation",
+        "llm_qwen_fewshot": "criticism",
+        "tml_lightgbm": "nothing",
+        "tml_svm": "nothing",
+        "tml_xgboost": "nothing"
+      },
+      "k_wrong": 5,
+      "k_wrong_in_sidecar": 5,
+      "text_sha256": "7fe75eb1804721a59582631b5b074acd28d69868555f790033bf6df4fc9de11e",
+      "text_chars": 212
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "experiment": "E4c",
+  "package": "B10",
+  "git_commit": "be114154dcf1e188f31c26130f5b5abf51936d7d",
+  "subtask": "dbo",
+  "component": "tml_xgboost",
+  "meta": {
+    "config_id": "930af817a94a",
+    "e4": {
+      "experiment": "E4C",
+      "condition": "none",
+      "fixed_params": {
+        "learning_rate": 0.1,
+        "max_depth": 4
+      }
+    },
+    "family": "tml",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "train_edition": "2025",
+    "eval_edition": "2026",
+    "n_train": 7210,
+    "n_eval": 8826,
+    "eval_pool_sha256": "971e2ce3f57995796e9530389edbdca0295298f1ab2781c39ab2fe92e296f1ab",
+    "label_mapping": null,
+    "classes": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "bootstrap_n": 1000,
+    "env_pin": {
+      "python": "3.13.15",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1",
+      "cuda_available": false,
+      "cuda_device": null,
+      "mps_available": true,
+      "torch_auto_device": "mps",
+      "platform": "Darwin/arm64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-14T14:13:36+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.3883243655556896,
+    "weighted_f1": 0.8815357538463804,
+    "per_class": {
+      "agitation": {
+        "f1": 0.14893617021276595,
+        "support": 82,
+        "tier": "ci_gated",
+        "ci_lower": 0.05551801801801805,
+        "ci_upper": 0.24489795918367346
+      },
+      "criticism": {
+        "f1": 0.4573002754820937,
+        "support": 1024,
+        "tier": "interpret",
+        "ci_lower": 0.42768908850554466,
+        "ci_upper": 0.49203131703131703
+      },
+      "nothing": {
+        "f1": 0.9470610165278986,
+        "support": 7708,
+        "tier": "interpret",
+        "ci_lower": 0.9435620094955003,
+        "ci_upper": 0.9506021698448902
+      },
+      "subversive": {
+        "f1": 0.0,
+        "support": 12,
+        "tier": "report_only",
+        "ci_lower": 0.0,
+        "ci_upper": 0.0
+      }
+    },
+    "labels": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "confusion_matrix": [
+      [
+        7,
+        9,
+        66,
+        0
+      ],
+      [
+        1,
+        332,
+        691,
+        0
+      ],
+      [
+        4,
+        83,
+        7621,
+        0
+      ],
+      [
+        0,
+        4,
+        8,
+        0
+      ]
+    ],
+    "n_samples": 8826,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.012940965551934218,
+      "brier": 0.15202254041440644,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.3333333333333333,
+          "bin_upper": 0.4,
+          "n": 4,
+          "mean_confidence": 0.3902105173108039,
+          "accuracy": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.4666666666666667,
+          "n": 22,
+          "mean_confidence": 0.44228453847520427,
+          "accuracy": 0.6363636363636364
+        },
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 147,
+          "mean_confidence": 0.5075678637371845,
+          "accuracy": 0.5238095238095238
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 214,
+          "mean_confidence": 0.5679205694400803,
+          "accuracy": 0.5514018691588785
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 230,
+          "mean_confidence": 0.6337851352714121,
+          "accuracy": 0.6260869565217392
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 274,
+          "mean_confidence": 0.7012503627345291,
+          "accuracy": 0.6496350364963503
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 382,
+          "mean_confidence": 0.76791856016288,
+          "accuracy": 0.7643979057591623
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 732,
+          "mean_confidence": 0.836723446405765,
+          "accuracy": 0.8114754098360656
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 1625,
+          "mean_confidence": 0.9064440744455163,
+          "accuracy": 0.9015384615384615
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 5196,
+          "mean_confidence": 0.9653821624789515,
+          "accuracy": 0.976905311778291
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 8826
+    },
+    "macro_f1_ci_lower": 0.36416327060354714,
+    "macro_f1_ci_upper": 0.4131640280089054,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "source_class_detection": null,
+  "fit_record": {
+    "component": "tml_xgboost",
+    "selected_params": {
+      "learning_rate": 0.1,
+      "max_depth": 4
+    },
+    "selection_macro_f1": 0.36084928708110053,
+    "selection_grid": [
+      {
+        "params": {
+          "learning_rate": 0.1,
+          "max_depth": 4
+        },
+        "selection_macro_f1": 0.36084928708110053,
+        "best_iteration": 138
+      }
+    ],
+    "temperature": {
+      "temperature": 0.9841588142465763,
+      "nll_before": 0.3354789996297017,
+      "nll_after": 0.3354093252154578,
+      "n_calibration_items": 721,
+      "fitted": true
+    },
+    "platt_fallback_classes": [],
+    "grid_overridden": true,
+    "imbalance_condition": "none",
+    "n_fit": 5768,
+    "n_fit_trained": 5768,
+    "n_select": 721,
+    "n_calibrate": 721,
+    "n_features": 73350,
+    "classes_present_in_fit": [
+      "agitation",
+      "criticism",
+      "nothing",
+      "subversive"
+    ],
+    "inner_split_stratified": true
+  },
+  "adapter": null,
+  "component_store_key": "dbo_2026/tml_xgboost__e4c__seed42",
+  "fit_seconds": 51.78413701057434,
+  "score_seconds": 0.8765170574188232
+}

@@ -1,0 +1,32 @@
+{
+  "subtask": "c2a",
+  "edition": "2025",
+  "component": "tml_xgboost",
+  "seed": 42,
+  "n_splits": 5,
+  "aggregation": "pooled_out_of_fold",
+  "uncalibrated": false,
+  "pooled_macro_f1": 0.5198025134551544,
+  "matrix_version": "1.12",
+  "config_id": "83e45a2b1b9c",
+  "data_rules_id": "7e9082557061",
+  "created": "2026-09-14T13:51:24+00:00",
+  "experiment": "E4b",
+  "e4": {
+    "experiment": "E4B",
+    "condition": "none",
+    "fixed_params": {
+      "learning_rate": 0.05,
+      "max_depth": 4
+    }
+  },
+  "key": "c2a_2025/tml_xgboost__e4b__seed42",
+  "n_items": 6773,
+  "n_classes": 2,
+  "classes": [
+    "False",
+    "True"
+  ],
+  "npz": "tml_xgboost__e4b__seed42.npz",
+  "machine": "Darwin/arm64"
+}

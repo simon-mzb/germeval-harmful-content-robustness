@@ -14,8 +14,7 @@ data/codabench/
 
 # Outputs a re-run writes but this repository does not ship (README, "Results")
 logs/
-results/component_store/
+results/component_store/models/
 results/e2/.checkpoints/
-results/e3_judge/
-results/e5_sample/
-results/*_predictions.npz
+results/e5_sample/*
+!results/e5_sample/dbo_sample_key.json

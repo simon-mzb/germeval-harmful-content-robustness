@@ -1,0 +1,57 @@
+{
+  "probe": "lr",
+  "subtask": "vio",
+  "edition": "2025",
+  "component": "encoder_1b",
+  "fold": 0,
+  "n_splits": 5,
+  "seed": 42,
+  "lora_r": 16,
+  "max_epochs": 5,
+  "rows": [
+    {
+      "lr": 0.0003,
+      "selection_macro_f1": 0.8256408112937439,
+      "selected_epoch": 5,
+      "fit_diagnosis": {
+        "flags": [
+          "budget_binding"
+        ],
+        "notes": [
+          "best epoch = 5 = max_epochs: still improving when the cap hit. Underfitting; raise max_epochs deliberately, for ALL folds."
+        ],
+        "epoch_scores": [
+          0.7956349206349207,
+          0.7853277007720494,
+          0.8157767261616424,
+          0.774343631844898,
+          0.8256408112937439
+        ],
+        "selected_epoch": 5,
+        "max_epochs": 5,
+        "ok": false
+      },
+      "seconds": 511.8
+    }
+  ],
+  "best_lr": 0.0003,
+  "optimum_is_interior": false,
+  "env_pin": {
+    "python": "3.13.8",
+    "requires_python_floor": ">=3.12",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.17.1",
+    "numpy": "2.4.6",
+    "xgboost": "3.3.0",
+    "lightgbm": "4.6.0",
+    "torch": "2.12.1+cu126",
+    "cuda_available": true,
+    "cuda_device": "NVIDIA A40",
+    "mps_available": false,
+    "torch_auto_device": "cuda",
+    "platform": "Linux/x86_64",
+    "nltk_punkt_tab": true
+  },
+  "created": "2026-08-27T16:29:09+00:00",
+  "note": "one fold, one seed: enough to see whether the peak is inside the window, not enough to pin a value. Not a thesis number."
+}

@@ -1,0 +1,225 @@
+{
+  "decision": "D8",
+  "created": "2026-09-07T13:46:04+00:00",
+  "anchor": "notes/e2_design_lock.md D8; gate G2 (closed 2026-09-07)",
+  "rule": "the configuration with the best mean rank across the three subtasks in the E2 results, decided at gate G2, before any Dimension 2 run; ties broken by the lower inference cost (D9)",
+  "fixed_configuration": "llm_llammlein",
+  "mean_rank": 1.0,
+  "ranks": [
+    1,
+    1,
+    1
+  ],
+  "tie": false,
+  "tie_break_used": null,
+  "runner_up": "encoder_1b",
+  "runner_up_mean_rank": 2.0,
+  "mean_ranks": [
+    {
+      "component": "llm_llammlein",
+      "mean_rank": 1.0,
+      "ranks": [
+        1,
+        1,
+        1
+      ],
+      "machine": "Linux/x86_64",
+      "rank_stable": true
+    },
+    {
+      "component": "encoder_1b",
+      "mean_rank": 2.0,
+      "ranks": [
+        2,
+        2,
+        2
+      ],
+      "machine": "Linux/x86_64",
+      "rank_stable": true
+    },
+    {
+      "component": "tml_svm",
+      "mean_rank": 3.6666666666666665,
+      "ranks": [
+        4,
+        3,
+        4
+      ],
+      "machine": "Darwin/arm64",
+      "rank_stable": false
+    },
+    {
+      "component": "llm_qwen_fewshot",
+      "mean_rank": 4.0,
+      "ranks": [
+        3,
+        6,
+        3
+      ],
+      "machine": "Linux/x86_64",
+      "rank_stable": false
+    },
+    {
+      "component": "tml_xgboost",
+      "mean_rank": 5.0,
+      "ranks": [
+        5,
+        4,
+        6
+      ],
+      "machine": "Darwin/arm64",
+      "rank_stable": false
+    },
+    {
+      "component": "tml_lightgbm",
+      "mean_rank": 5.333333333333333,
+      "ranks": [
+        6,
+        5,
+        5
+      ],
+      "machine": "Darwin/arm64",
+      "rank_stable": false
+    }
+  ],
+  "per_subtask": {
+    "c2a": [
+      {
+        "rank": 1,
+        "component": "llm_llammlein",
+        "macro_f1": 0.8595243771218439
+      },
+      {
+        "rank": 2,
+        "component": "encoder_1b",
+        "macro_f1": 0.8340967334383045
+      },
+      {
+        "rank": 3,
+        "component": "llm_qwen_fewshot",
+        "macro_f1": 0.7021903650869686
+      },
+      {
+        "rank": 4,
+        "component": "tml_svm",
+        "macro_f1": 0.6207075613380731
+      },
+      {
+        "rank": 5,
+        "component": "tml_xgboost",
+        "macro_f1": 0.5240357602774841
+      },
+      {
+        "rank": 6,
+        "component": "tml_lightgbm",
+        "macro_f1": 0.5083712813181188
+      }
+    ],
+    "dbo": [
+      {
+        "rank": 1,
+        "component": "llm_llammlein",
+        "macro_f1": 0.58290032708798
+      },
+      {
+        "rank": 2,
+        "component": "encoder_1b",
+        "macro_f1": 0.5697654712043855
+      },
+      {
+        "rank": 3,
+        "component": "tml_svm",
+        "macro_f1": 0.4615686207161518
+      },
+      {
+        "rank": 4,
+        "component": "tml_xgboost",
+        "macro_f1": 0.40430312837898996
+      },
+      {
+        "rank": 5,
+        "component": "tml_lightgbm",
+        "macro_f1": 0.3730948624356854
+      },
+      {
+        "rank": 6,
+        "component": "llm_qwen_fewshot",
+        "macro_f1": 0.35637997409855293
+      }
+    ],
+    "vio": [
+      {
+        "rank": 1,
+        "component": "llm_llammlein",
+        "macro_f1": 0.851098223423518
+      },
+      {
+        "rank": 2,
+        "component": "encoder_1b",
+        "macro_f1": 0.8348946967447026
+      },
+      {
+        "rank": 3,
+        "component": "llm_qwen_fewshot",
+        "macro_f1": 0.784369588291157
+      },
+      {
+        "rank": 4,
+        "component": "tml_svm",
+        "macro_f1": 0.6217352903662097
+      },
+      {
+        "rank": 5,
+        "component": "tml_lightgbm",
+        "macro_f1": 0.5594217339734979
+      },
+      {
+        "rank": 6,
+        "component": "tml_xgboost",
+        "macro_f1": 0.5459978112598521
+      }
+    ]
+  },
+  "decisive_margins": [
+    {
+      "subtask": "c2a",
+      "winner": "llm_llammlein",
+      "winner_macro_f1": 0.8595243771218439,
+      "runner_up": "encoder_1b",
+      "runner_up_macro_f1": 0.8340967334383045,
+      "margin_pp": 2.54,
+      "same_machine": true,
+      "verdict": "distinguishable",
+      "verdict_paired": "distinguishable",
+      "mcnemar_p": 0.0017907819653104307
+    },
+    {
+      "subtask": "dbo",
+      "winner": "llm_llammlein",
+      "winner_macro_f1": 0.58290032708798,
+      "runner_up": "encoder_1b",
+      "runner_up_macro_f1": 0.5697654712043855,
+      "margin_pp": 1.31,
+      "same_machine": true,
+      "verdict": "indistinguishable",
+      "verdict_paired": "indistinguishable",
+      "mcnemar_p": 0.06627904761374734
+    },
+    {
+      "subtask": "vio",
+      "winner": "llm_llammlein",
+      "winner_macro_f1": 0.851098223423518,
+      "runner_up": "encoder_1b",
+      "runner_up_macro_f1": 0.8348946967447026,
+      "margin_pp": 1.62,
+      "same_machine": true,
+      "verdict": "indistinguishable",
+      "verdict_paired": "indistinguishable",
+      "mcnemar_p": 0.15216744627590106
+    }
+  ],
+  "machine_caveat": "E2 spans Darwin/arm64 (TML) and Linux/x86_64 (encoder, LLM), and this project refuses cross-machine deltas (#53/#65). The caveat does not threaten this selection: the top two components share a machine, so the decisive comparison is within-platform, and every cross-machine pair in the ranking is separated by a margin far larger than the only platform effect ever measured here (c2a reproduced bit-identically across the two; the divergence found was confined to DBOBaseline's borrowed max_features). decisive_margins carries the numbers.",
+  "note_for_dimension_2": "This fixes WHICH configuration B9/E4b holds constant across the three subtasks. It does not fix the hyperparameter value inside it -- and for this arm that matters, because selection came back UNRESOLVED on dbo while resolving on vio and c2a, so the per-task-tuned side of the dbo comparison is itself noisy. B9 must state which lr it holds fixed and why.",
+  "rank_is_not_a_win": "A mean rank of 1.000 says this configuration placed first on every subtask. It does NOT say it beat the runner-up on every subtask, and on this data it did not: see decisive_margins, where only one of the three margins is distinguishable. #58(b)'s wording rule therefore binds wherever these are quoted -- 'indistinguishable' where the test is negative, and the maximum is not crowned. D8's rule is mean rank and it is applied exactly as pre-registered; this field exists so the rank cannot be read as more than it is.",
+  "rank_stability_observation": "Rank stability across subtasks is itself a configuration-stability signal and it separates the arms sharply: the two arms trained on the target task hold identical ranks on all three subtasks (1,1,1 and 2,2,2), while the few-shot arm moves between 3rd and last -- the in-context collapse on the four-class thin-minority path, visible as instability rather than as a mean."
+}

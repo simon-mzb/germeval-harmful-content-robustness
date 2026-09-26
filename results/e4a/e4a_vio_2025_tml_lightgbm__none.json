@@ -1,0 +1,386 @@
+{
+  "experiment": "E4a",
+  "package": "B8",
+  "git_commit": "be114154dcf1e188f31c26130f5b5abf51936d7d",
+  "subtask": "vio",
+  "edition": "2025",
+  "component": "tml_lightgbm",
+  "meta": {
+    "design_lock": "notes/e2_design_lock.md",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "primary_metric": "macro_f1",
+    "aggregation": "pooled_out_of_fold",
+    "imbalance_condition": "none",
+    "data_rules": {
+      "within_edition_dedup": true,
+      "drop_train_test_overlap": false,
+      "note": "the overlap rule protects evaluation on the official test set, which E2 does not use; leaving it off keeps the pool identical to the E1 baseline pool and preserves thin-class instances"
+    },
+    "pool_n": 7720,
+    "classes": [
+      "False",
+      "True"
+    ],
+    "n_splits": 3,
+    "config_id": "25604b17dce3",
+    "seeds": [
+      42
+    ],
+    "primary_seed": 42,
+    "family": "tml",
+    "feature_spec": {
+      "word_ngram_range": [
+        1,
+        2
+      ],
+      "char_ngram_range": [
+        3,
+        5
+      ],
+      "char_analyzer": "char_wb",
+      "lowercase": true,
+      "min_df": 2,
+      "sublinear_tf": true
+    },
+    "inner_split": {
+      "fit": 0.8,
+      "select": 0.1,
+      "calibrate": 0.1
+    },
+    "grid": [
+      {
+        "learning_rate": 0.05,
+        "num_leaves": 31
+      }
+    ],
+    "grid_deviation": "no search: the configuration frozen in results/e4_fixed_configurations.json under e4_protocol.e4a.configuration",
+    "seed_semantics": "the seed varies the CV partition",
+    "e4": {
+      "experiment": "E4A",
+      "condition": "none",
+      "fixed_params": {
+        "learning_rate": 0.05,
+        "num_leaves": 31
+      }
+    },
+    "replicate_seeds_skipped": "E4 has no D3 replicates (D5)",
+    "bootstrap_n": 1000,
+    "ci_level": 0.95,
+    "env_pin": {
+      "python": "3.13.15",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1",
+      "cuda_available": false,
+      "cuda_device": null,
+      "mps_available": true,
+      "torch_auto_device": "mps",
+      "platform": "Darwin/arm64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-14T12:49:34+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.5183193806188386,
+    "weighted_f1": 0.8978664841057011,
+    "per_class": {
+      "False": {
+        "f1": 0.9628132578819725,
+        "support": 7156,
+        "tier": "interpret",
+        "ci_lower": 0.9597351709228482,
+        "ci_upper": 0.9658229845314615
+      },
+      "True": {
+        "f1": 0.0738255033557047,
+        "support": 564,
+        "tier": "interpret",
+        "ci_lower": 0.04590048284037355,
+        "ci_upper": 0.1030679060039178
+      }
+    },
+    "labels": [
+      "False",
+      "True"
+    ],
+    "confusion_matrix": [
+      [
+        7146,
+        10
+      ],
+      [
+        542,
+        22
+      ]
+    ],
+    "n_samples": 7720,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.009264815515968406,
+      "brier": 0.11902805955819246,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 18,
+          "mean_confidence": 0.5190650468668531,
+          "accuracy": 0.5
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 42,
+          "mean_confidence": 0.5720504328523803,
+          "accuracy": 0.38095238095238093
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 40,
+          "mean_confidence": 0.6389389792308261,
+          "accuracy": 0.45
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 104,
+          "mean_confidence": 0.701490467944127,
+          "accuracy": 0.6153846153846154
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 140,
+          "mean_confidence": 0.7696361154922483,
+          "accuracy": 0.6928571428571428
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 386,
+          "mean_confidence": 0.8411206401136747,
+          "accuracy": 0.8186528497409327
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 1403,
+          "mean_confidence": 0.9084736194261833,
+          "accuracy": 0.9052031361368497
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 5587,
+          "mean_confidence": 0.9666426360509616,
+          "accuracy": 0.9625917308036513
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 7720
+    },
+    "macro_f1_ci_lower": 0.504353015742331,
+    "macro_f1_ci_upper": 0.5329392173724478,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "repeats": [
+    {
+      "seed": 42,
+      "pooled_macro_f1": 0.5183193806188386,
+      "pooled_weighted_f1": 0.8978664841057011,
+      "per_fold_macro_f1": [
+        0.5217124214728929,
+        0.5014182642754071,
+        0.531449929322045
+      ],
+      "fold_sd_macro_f1": 0.015321949293644149,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "False": 0.9628132578819725,
+        "True": 0.0738255033557047
+      },
+      "ece": 0.009264815515968406,
+      "brier": 0.11902805955819246,
+      "selected_params_per_fold": [
+        {
+          "learning_rate": 0.05,
+          "num_leaves": 31
+        },
+        {
+          "learning_rate": 0.05,
+          "num_leaves": 31
+        },
+        {
+          "learning_rate": 0.05,
+          "num_leaves": 31
+        }
+      ],
+      "temperature_per_fold": [
+        1.1449122230735163,
+        1.0181316396586098,
+        1.1057177792738353
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_lightgbm",
+          "selected_params": {
+            "learning_rate": 0.05,
+            "num_leaves": 31
+          },
+          "selection_macro_f1": 0.5318181818181819,
+          "selection_grid": [
+            {
+              "params": {
+                "learning_rate": 0.05,
+                "num_leaves": 31
+              },
+              "selection_macro_f1": 0.5318181818181819,
+              "best_iteration": 66
+            }
+          ],
+          "temperature": {
+            "temperature": 1.1449122230735163,
+            "nll_before": 0.21872826849882132,
+            "nll_after": 0.21534783046826003,
+            "n_calibration_items": 515,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "none",
+          "n_fit": 4116,
+          "n_fit_trained": 4116,
+          "n_select": 515,
+          "n_calibrate": 515,
+          "n_features": 61262,
+          "classes_present_in_fit": [
+            "False",
+            "True"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_lightgbm",
+          "selected_params": {
+            "learning_rate": 0.05,
+            "num_leaves": 31
+          },
+          "selection_macro_f1": 0.55320994794679,
+          "selection_grid": [
+            {
+              "params": {
+                "learning_rate": 0.05,
+                "num_leaves": 31
+              },
+              "selection_macro_f1": 0.55320994794679,
+              "best_iteration": 52
+            }
+          ],
+          "temperature": {
+            "temperature": 1.0181316396586098,
+            "nll_before": 0.19304543612161118,
+            "nll_after": 0.19298925217131774,
+            "n_calibration_items": 515,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "none",
+          "n_fit": 4117,
+          "n_fit_trained": 4117,
+          "n_select": 515,
+          "n_calibrate": 515,
+          "n_features": 60581,
+          "classes_present_in_fit": [
+            "False",
+            "True"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_lightgbm",
+          "selected_params": {
+            "learning_rate": 0.05,
+            "num_leaves": 31
+          },
+          "selection_macro_f1": 0.5318181818181819,
+          "selection_grid": [
+            {
+              "params": {
+                "learning_rate": 0.05,
+                "num_leaves": 31
+              },
+              "selection_macro_f1": 0.5318181818181819,
+              "best_iteration": 62
+            }
+          ],
+          "temperature": {
+            "temperature": 1.1057177792738353,
+            "nll_before": 0.21154543593133482,
+            "nll_after": 0.20969994864981523,
+            "n_calibration_items": 515,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "none",
+          "n_fit": 4117,
+          "n_fit_trained": 4117,
+          "n_select": 515,
+          "n_calibrate": 515,
+          "n_features": 62314,
+          "classes_present_in_fit": [
+            "False",
+            "True"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        }
+      ],
+      "component_store_key": "vio_2025/tml_lightgbm__e4a-none__seed42",
+      "runtime_seconds": 16.102668046951294,
+      "fold_runtime_seconds_sum": null,
+      "resumed_folds": []
+    }
+  ],
+  "seed_replicates": [],
+  "dispersion": {
+    "mean_pooled_macro_f1": 0.5183193806188386,
+    "seed_sd_macro_f1": 0.0,
+    "fold_sd_macro_f1_primary": 0.015321949293644149,
+    "per_seed_pooled_macro_f1": [
+      0.5183193806188386
+    ],
+    "replicate_fold_macro_f1": [],
+    "replicate_sd_macro_f1": 0.0
+  },
+  "runtime_seconds": 16.31162691116333,
+  "resumed": false,
+  "selection_diagnosis": {
+    "flags": [
+      "single_cell_grid"
+    ],
+    "notes": [
+      "the grid has no axis with more than one value -- nothing was selected, so no edge check is possible."
+    ],
+    "axes": {},
+    "n_distinct_winners": 1,
+    "n_fits": 3,
+    "margin": null,
+    "ok": true
+  },
+  "stopping_evidence": null
+}

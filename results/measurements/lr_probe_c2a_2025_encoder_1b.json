@@ -1,0 +1,121 @@
+{
+  "probe": "lr",
+  "subtask": "c2a",
+  "edition": "2025",
+  "component": "encoder_1b",
+  "fold": 0,
+  "n_splits": 5,
+  "seed": 42,
+  "lora_r": 16,
+  "max_epochs": 5,
+  "rows": [
+    {
+      "lr": 0.0001,
+      "selection_macro_f1": 0.8673194614443085,
+      "selected_epoch": 5,
+      "fit_diagnosis": {
+        "flags": [
+          "budget_binding"
+        ],
+        "notes": [
+          "best epoch = 5 = max_epochs: still improving when the cap hit. Underfitting; raise max_epochs deliberately, for ALL folds."
+        ],
+        "epoch_scores": [
+          0.8165820642978003,
+          0.8021315433080138,
+          0.8506393298059964,
+          0.8424770847306059,
+          0.8673194614443085
+        ],
+        "selected_epoch": 5,
+        "max_epochs": 5,
+        "ok": false
+      },
+      "seconds": 504.6
+    },
+    {
+      "lr": 0.0002,
+      "selection_macro_f1": 0.8514254385964912,
+      "selected_epoch": 2,
+      "fit_diagnosis": {
+        "flags": [],
+        "notes": [],
+        "epoch_scores": [
+          0.8059307965235507,
+          0.8514254385964912,
+          0.8245117753314475,
+          0.8326966855731759,
+          0.8358244811414366
+        ],
+        "selected_epoch": 2,
+        "max_epochs": 5,
+        "ok": true
+      },
+      "seconds": 400.1
+    },
+    {
+      "lr": 0.0003,
+      "selection_macro_f1": 0.8765072045058921,
+      "selected_epoch": 3,
+      "fit_diagnosis": {
+        "flags": [],
+        "notes": [],
+        "epoch_scores": [
+          0.8020650044819229,
+          0.8610470184074246,
+          0.8765072045058921,
+          0.861734693877551,
+          0.8610470184074246
+        ],
+        "selected_epoch": 3,
+        "max_epochs": 5,
+        "ok": true
+      },
+      "seconds": 400.9
+    },
+    {
+      "lr": 0.0005,
+      "selection_macro_f1": 0.865898676800966,
+      "selected_epoch": 5,
+      "fit_diagnosis": {
+        "flags": [
+          "budget_binding"
+        ],
+        "notes": [
+          "best epoch = 5 = max_epochs: still improving when the cap hit. Underfitting; raise max_epochs deliberately, for ALL folds."
+        ],
+        "epoch_scores": [
+          0.5463195476519926,
+          0.8148972501913678,
+          0.8451948924731183,
+          0.818242790073776,
+          0.865898676800966
+        ],
+        "selected_epoch": 5,
+        "max_epochs": 5,
+        "ok": false
+      },
+      "seconds": 400.8
+    }
+  ],
+  "best_lr": 0.0003,
+  "optimum_is_interior": true,
+  "env_pin": {
+    "python": "3.13.8",
+    "requires_python_floor": ">=3.12",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.17.1",
+    "numpy": "2.4.6",
+    "xgboost": "3.3.0",
+    "lightgbm": "4.6.0",
+    "torch": "2.12.1+cu126",
+    "cuda_available": true,
+    "cuda_device": "NVIDIA A40",
+    "mps_available": false,
+    "torch_auto_device": "cuda",
+    "platform": "Linux/x86_64",
+    "nltk_punkt_tab": true
+  },
+  "created": "2026-08-26T23:49:13+00:00",
+  "note": "one fold, one seed: enough to see whether the peak is inside the window, not enough to pin a value. Not a thesis number."
+}

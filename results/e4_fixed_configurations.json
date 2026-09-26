@@ -1,0 +1,408 @@
+{
+  "what": "the fixed configuration of every E4a and E4b cell, frozen before any E4 run",
+  "rule": {
+    "e4a": "the modal selected configuration over the E2 primary-seed folds of the same subtask; a count tie is broken first towards the smaller capacity (lower lora_r, THESIS_LOG #82) where the grid has that axis, then by the higher mean selection-slice macro_f1 across those folds; a tie surviving both is refused; dbo/2026 has no E2 selection and takes dbo/2025's",
+    "e4b": "the modal selected configuration over all fifteen E2 primary-seed folds (5 folds x 3 subtasks); a count tie is broken first towards the smaller capacity (lower lora_r, THESIS_LOG #82) where the grid has that axis, then by the higher mean selection-slice macro_f1 across those folds; a tie surviving both is refused"
+  },
+  "rule_first_proposed": "THESIS_LOG #82, 2026-08-26 (E4b)",
+  "protocol_digest": "e0ece06cb272",
+  "source": "results/e2/e2_<subtask>_2025_<component>.json, seed 42 folds_detail",
+  "e4a": {
+    "tml_svm": {
+      "c2a_2025": {
+        "params": {
+          "C": 10.0
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"C\": 10.0}": 5
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2025": {
+        "params": {
+          "C": 10.0
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"C\": 1.0}": 2,
+          "{\"C\": 10.0}": 2,
+          "{\"C\": 30.0}": 1
+        },
+        "count_tie": true,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": {
+          "{\"C\": 1.0}": 0.45556904599242365,
+          "{\"C\": 10.0}": 0.45611702599730963
+        }
+      },
+      "vio_2025": {
+        "params": {
+          "C": 10.0
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"C\": 10.0}": 4,
+          "{\"C\": 30.0}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2026": {
+        "params": {
+          "C": 10.0
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"C\": 1.0}": 2,
+          "{\"C\": 10.0}": 2,
+          "{\"C\": 30.0}": 1
+        },
+        "count_tie": true,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": {
+          "{\"C\": 1.0}": 0.45556904599242365,
+          "{\"C\": 10.0}": 0.45611702599730963
+        },
+        "borrowed_from": "dbo_2025 (no E2 selection on 2026)"
+      }
+    },
+    "tml_xgboost": {
+      "c2a_2025": {
+        "params": {
+          "learning_rate": 0.05,
+          "max_depth": 4
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"learning_rate\": 0.05, \"max_depth\": 4}": 3,
+          "{\"learning_rate\": 0.1, \"max_depth\": 4}": 2
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2025": {
+        "params": {
+          "learning_rate": 0.1,
+          "max_depth": 4
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"learning_rate\": 0.05, \"max_depth\": 8}": 2,
+          "{\"learning_rate\": 0.1, \"max_depth\": 4}": 2,
+          "{\"learning_rate\": 0.1, \"max_depth\": 8}": 1
+        },
+        "count_tie": true,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": {
+          "{\"learning_rate\": 0.05, \"max_depth\": 8}": 0.40532109465955235,
+          "{\"learning_rate\": 0.1, \"max_depth\": 4}": 0.41700163978606924
+        }
+      },
+      "vio_2025": {
+        "params": {
+          "learning_rate": 0.05,
+          "max_depth": 4
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"learning_rate\": 0.05, \"max_depth\": 4}": 3,
+          "{\"learning_rate\": 0.05, \"max_depth\": 8}": 1,
+          "{\"learning_rate\": 0.1, \"max_depth\": 4}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2026": {
+        "params": {
+          "learning_rate": 0.1,
+          "max_depth": 4
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"learning_rate\": 0.05, \"max_depth\": 8}": 2,
+          "{\"learning_rate\": 0.1, \"max_depth\": 4}": 2,
+          "{\"learning_rate\": 0.1, \"max_depth\": 8}": 1
+        },
+        "count_tie": true,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": {
+          "{\"learning_rate\": 0.05, \"max_depth\": 8}": 0.40532109465955235,
+          "{\"learning_rate\": 0.1, \"max_depth\": 4}": 0.41700163978606924
+        },
+        "borrowed_from": "dbo_2025 (no E2 selection on 2026)"
+      }
+    },
+    "tml_lightgbm": {
+      "c2a_2025": {
+        "params": {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"learning_rate\": 0.1, \"num_leaves\": 31}": 4,
+          "{\"learning_rate\": 0.1, \"num_leaves\": 127}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2025": {
+        "params": {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"learning_rate\": 0.05, \"num_leaves\": 31}": 2,
+          "{\"learning_rate\": 0.1, \"num_leaves\": 31}": 2,
+          "{\"learning_rate\": 0.1, \"num_leaves\": 127}": 1
+        },
+        "count_tie": true,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": {
+          "{\"learning_rate\": 0.05, \"num_leaves\": 31}": 0.36388778183693227,
+          "{\"learning_rate\": 0.1, \"num_leaves\": 31}": 0.37608997335095695
+        }
+      },
+      "vio_2025": {
+        "params": {
+          "learning_rate": 0.05,
+          "num_leaves": 31
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"learning_rate\": 0.05, \"num_leaves\": 31}": 3,
+          "{\"learning_rate\": 0.1, \"num_leaves\": 31}": 2
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2026": {
+        "params": {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"learning_rate\": 0.05, \"num_leaves\": 31}": 2,
+          "{\"learning_rate\": 0.1, \"num_leaves\": 31}": 2,
+          "{\"learning_rate\": 0.1, \"num_leaves\": 127}": 1
+        },
+        "count_tie": true,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": {
+          "{\"learning_rate\": 0.05, \"num_leaves\": 31}": 0.36388778183693227,
+          "{\"learning_rate\": 0.1, \"num_leaves\": 31}": 0.37608997335095695
+        },
+        "borrowed_from": "dbo_2025 (no E2 selection on 2026)"
+      }
+    },
+    "encoder_1b": {
+      "c2a_2025": {
+        "params": {
+          "lora_r": 16,
+          "lr": 0.0003
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"lora_r\": 16, \"lr\": 0.0003}": 3,
+          "{\"lora_r\": 16, \"lr\": 0.0002}": 1,
+          "{\"lora_r\": 8, \"lr\": 0.0002}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2025": {
+        "params": {
+          "lora_r": 8,
+          "lr": 0.0002
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"lora_r\": 8, \"lr\": 0.0002}": 2,
+          "{\"lora_r\": 16, \"lr\": 0.0002}": 1,
+          "{\"lora_r\": 16, \"lr\": 0.0003}": 1,
+          "{\"lora_r\": 8, \"lr\": 0.0005}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "vio_2025": {
+        "params": {
+          "lora_r": 16,
+          "lr": 0.0002
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"lora_r\": 16, \"lr\": 0.0002}": 2,
+          "{\"lora_r\": 16, \"lr\": 0.0003}": 1,
+          "{\"lora_r\": 8, \"lr\": 0.0003}": 1,
+          "{\"lora_r\": 8, \"lr\": 0.0005}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2026": {
+        "params": {
+          "lora_r": 8,
+          "lr": 0.0002
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"lora_r\": 8, \"lr\": 0.0002}": 2,
+          "{\"lora_r\": 16, \"lr\": 0.0002}": 1,
+          "{\"lora_r\": 16, \"lr\": 0.0003}": 1,
+          "{\"lora_r\": 8, \"lr\": 0.0005}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null,
+        "borrowed_from": "dbo_2025 (no E2 selection on 2026)"
+      }
+    },
+    "llm_llammlein": {
+      "c2a_2025": {
+        "params": {
+          "lr": 0.0001
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"lr\": 0.0001}": 3,
+          "{\"lr\": 0.0002}": 2
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2025": {
+        "params": {
+          "lr": 0.0001
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"lr\": 0.0001}": 4,
+          "{\"lr\": 0.0002}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "vio_2025": {
+        "params": {
+          "lr": 0.0001
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"lr\": 0.0001}": 4,
+          "{\"lr\": 0.0002}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null
+      },
+      "dbo_2026": {
+        "params": {
+          "lr": 0.0001
+        },
+        "n_selections": 5,
+        "tally": {
+          "{\"lr\": 0.0001}": 4,
+          "{\"lr\": 0.0002}": 1
+        },
+        "count_tie": false,
+        "tie_broken_by_capacity": false,
+        "tie_break_mean_selection_macro_f1": null,
+        "borrowed_from": "dbo_2025 (no E2 selection on 2026)"
+      }
+    }
+  },
+  "e4b": {
+    "tml_svm": {
+      "params": {
+        "C": 10.0
+      },
+      "n_selections": 15,
+      "tally": {
+        "{\"C\": 10.0}": 11,
+        "{\"C\": 1.0}": 2,
+        "{\"C\": 30.0}": 2
+      },
+      "count_tie": false,
+      "tie_broken_by_capacity": false,
+      "tie_break_mean_selection_macro_f1": null
+    },
+    "tml_xgboost": {
+      "params": {
+        "learning_rate": 0.05,
+        "max_depth": 4
+      },
+      "n_selections": 15,
+      "tally": {
+        "{\"learning_rate\": 0.05, \"max_depth\": 4}": 6,
+        "{\"learning_rate\": 0.1, \"max_depth\": 4}": 5,
+        "{\"learning_rate\": 0.05, \"max_depth\": 8}": 3,
+        "{\"learning_rate\": 0.1, \"max_depth\": 8}": 1
+      },
+      "count_tie": false,
+      "tie_broken_by_capacity": false,
+      "tie_break_mean_selection_macro_f1": null
+    },
+    "tml_lightgbm": {
+      "params": {
+        "learning_rate": 0.1,
+        "num_leaves": 31
+      },
+      "n_selections": 15,
+      "tally": {
+        "{\"learning_rate\": 0.1, \"num_leaves\": 31}": 8,
+        "{\"learning_rate\": 0.05, \"num_leaves\": 31}": 5,
+        "{\"learning_rate\": 0.1, \"num_leaves\": 127}": 2
+      },
+      "count_tie": false,
+      "tie_broken_by_capacity": false,
+      "tie_break_mean_selection_macro_f1": null
+    },
+    "encoder_1b": {
+      "params": {
+        "lora_r": 16,
+        "lr": 0.0003
+      },
+      "n_selections": 15,
+      "tally": {
+        "{\"lora_r\": 16, \"lr\": 0.0003}": 5,
+        "{\"lora_r\": 16, \"lr\": 0.0002}": 4,
+        "{\"lora_r\": 8, \"lr\": 0.0002}": 3,
+        "{\"lora_r\": 8, \"lr\": 0.0005}": 2,
+        "{\"lora_r\": 8, \"lr\": 0.0003}": 1
+      },
+      "count_tie": false,
+      "tie_broken_by_capacity": false,
+      "tie_break_mean_selection_macro_f1": null
+    },
+    "llm_llammlein": {
+      "params": {
+        "lr": 0.0001
+      },
+      "n_selections": 15,
+      "tally": {
+        "{\"lr\": 0.0001}": 11,
+        "{\"lr\": 0.0002}": 4
+      },
+      "count_tie": false,
+      "tie_broken_by_capacity": false,
+      "tie_break_mean_selection_macro_f1": null
+    }
+  },
+  "created": "2026-09-12T19:05:21+00:00"
+}

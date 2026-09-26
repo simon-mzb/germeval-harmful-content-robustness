@@ -1,0 +1,27 @@
+{
+  "gate": "G1",
+  "eval_note": "own_holdout_vs_organizer_gold_test_different_sets",
+  "c2a_our_holdout": 57.400045475850604,
+  "c2a_organizer_ref": 59.13,
+  "c2a_delta": -1.7299545241493988,
+  "dbo_our_holdout": 47.89535855862626,
+  "dbo_organizer_ref": 47.44,
+  "dbo_delta": 0.4553585586262656,
+  "vio_status": "option_c_reference_only",
+  "decision": "go",
+  "decision_note": "G1 PASSED 2026-08-07 (session B2). Regenerated in the environment pinned on 2026-08-07 (Python 3.13.3, scikit-learn 1.9.0, scipy 1.17.1, xgboost 3.3.0, and torch 2.12.1+cpu at that time; the CUDA build landed later the same day and left C2A and DBO bit-identical, so env_pin below shows cu130 while this note describes the state when the gate was closed) after the 2026-06-27 harness fixes (deduplication before split, LinearSVC, labels-union). The previous JSONs predated those fixes, so DBO 52.22 (committed) and the 52.01 / 50.70 figures recorded in THESIS_LOG.md are obsolete; 48.41 is canonical. G0 split counts reproduce bit-identically. Deltas are measured against organizer references on our own stratified 80/20 holdout, not on the organizers gold test set. Caveat for section 3.3: the corrected DBO baseline is weak on the minority classes (agitation F1 0.21, subversive F1 0.38).",
+  "env_pin": {
+    "python": "3.13.15",
+    "requires_python_floor": ">=3.12",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.17.1",
+    "numpy": "2.4.6",
+    "xgboost": "3.3.0",
+    "lightgbm": "4.6.0",
+    "torch": "2.12.1",
+    "cuda_available": false,
+    "cuda_device": null,
+    "platform": "Darwin/arm64",
+    "nltk_punkt_tab": true
+  }
+}

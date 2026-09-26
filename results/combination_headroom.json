@@ -1,0 +1,209 @@
+{
+  "experiment": "B7/E3 pre-flight: the ceiling of any combination, and what soft voting reaches of it",
+  "created": "2026-09-07T02:17:17+00:00",
+  "anchor": "SQ2; scope_confirmation ('a well-argued no is a valid answer'); design lock D7 (the probability interface that makes this free)",
+  "primary_seed": 42,
+  "cells": [
+    {
+      "subtask": "c2a",
+      "n_items": 6773,
+      "n_components": 6,
+      "components": [
+        "encoder_1b",
+        "llm_llammlein",
+        "llm_qwen_fewshot",
+        "tml_lightgbm",
+        "tml_svm",
+        "tml_xgboost"
+      ],
+      "seed": 42,
+      "best_single": "llm_llammlein",
+      "best_single_macro_f1": 0.8595243771218439,
+      "per_component_macro_f1": {
+        "encoder_1b": 0.8340967334383045,
+        "llm_llammlein": 0.8595243771218439,
+        "llm_qwen_fewshot": 0.7021903650869686,
+        "tml_lightgbm": 0.5083712813181188,
+        "tml_svm": 0.6207075613380731,
+        "tml_xgboost": 0.5240357602774841
+      },
+      "sets": {
+        "all": {
+          "members": [
+            "encoder_1b",
+            "llm_llammlein",
+            "llm_qwen_fewshot",
+            "tml_lightgbm",
+            "tml_svm",
+            "tml_xgboost"
+          ],
+          "soft_vote_macro_f1": 0.7631110322853504,
+          "soft_vote_delta_pp": -9.64,
+          "oracle_macro_f1": 0.9649098956327997,
+          "oracle_headroom_pp": 10.54,
+          "mixes_machines": true
+        },
+        "top3": {
+          "members": [
+            "llm_llammlein",
+            "encoder_1b",
+            "llm_qwen_fewshot"
+          ],
+          "soft_vote_macro_f1": 0.8588457322815197,
+          "soft_vote_delta_pp": -0.07,
+          "oracle_macro_f1": 0.9476922087123847,
+          "oracle_headroom_pp": 8.82,
+          "mixes_machines": false
+        },
+        "top2": {
+          "members": [
+            "llm_llammlein",
+            "encoder_1b"
+          ],
+          "soft_vote_macro_f1": 0.8543945573869922,
+          "soft_vote_delta_pp": -0.51,
+          "oracle_macro_f1": 0.9088981617839211,
+          "oracle_headroom_pp": 4.94,
+          "mixes_machines": false
+        }
+      },
+      "share_nobody_correct": 0.011663959840543334,
+      "share_exactly_one_correct": 0.015207441311088143
+    },
+    {
+      "subtask": "dbo",
+      "n_items": 7210,
+      "n_components": 6,
+      "components": [
+        "encoder_1b",
+        "llm_llammlein",
+        "llm_qwen_fewshot",
+        "tml_lightgbm",
+        "tml_svm",
+        "tml_xgboost"
+      ],
+      "seed": 42,
+      "best_single": "llm_llammlein",
+      "best_single_macro_f1": 0.58290032708798,
+      "per_component_macro_f1": {
+        "encoder_1b": 0.5697654712043855,
+        "llm_llammlein": 0.58290032708798,
+        "llm_qwen_fewshot": 0.35637997409855293,
+        "tml_lightgbm": 0.3730948624356854,
+        "tml_svm": 0.4615686207161518,
+        "tml_xgboost": 0.40430312837898996
+      },
+      "sets": {
+        "all": {
+          "members": [
+            "encoder_1b",
+            "llm_llammlein",
+            "llm_qwen_fewshot",
+            "tml_lightgbm",
+            "tml_svm",
+            "tml_xgboost"
+          ],
+          "soft_vote_macro_f1": 0.5003806176717892,
+          "soft_vote_delta_pp": -8.25,
+          "oracle_macro_f1": 0.8338231561385858,
+          "oracle_headroom_pp": 25.09,
+          "mixes_machines": true
+        },
+        "top3": {
+          "members": [
+            "llm_llammlein",
+            "encoder_1b",
+            "tml_svm"
+          ],
+          "soft_vote_macro_f1": 0.5687590835669875,
+          "soft_vote_delta_pp": -1.41,
+          "oracle_macro_f1": 0.7140330230404994,
+          "oracle_headroom_pp": 13.11,
+          "mixes_machines": true
+        },
+        "top2": {
+          "members": [
+            "llm_llammlein",
+            "encoder_1b"
+          ],
+          "soft_vote_macro_f1": 0.5800265970289166,
+          "soft_vote_delta_pp": -0.29,
+          "oracle_macro_f1": 0.6846897601346719,
+          "oracle_headroom_pp": 10.18,
+          "mixes_machines": false
+        }
+      },
+      "share_nobody_correct": 0.03855755894590846,
+      "share_exactly_one_correct": 0.03467406380027739
+    },
+    {
+      "subtask": "vio",
+      "n_items": 7720,
+      "n_components": 6,
+      "components": [
+        "encoder_1b",
+        "llm_llammlein",
+        "llm_qwen_fewshot",
+        "tml_lightgbm",
+        "tml_svm",
+        "tml_xgboost"
+      ],
+      "seed": 42,
+      "best_single": "llm_llammlein",
+      "best_single_macro_f1": 0.851098223423518,
+      "per_component_macro_f1": {
+        "encoder_1b": 0.8348946967447026,
+        "llm_llammlein": 0.851098223423518,
+        "llm_qwen_fewshot": 0.784369588291157,
+        "tml_lightgbm": 0.5594217339734979,
+        "tml_svm": 0.6217352903662097,
+        "tml_xgboost": 0.5459978112598521
+      },
+      "sets": {
+        "all": {
+          "members": [
+            "encoder_1b",
+            "llm_llammlein",
+            "llm_qwen_fewshot",
+            "tml_lightgbm",
+            "tml_svm",
+            "tml_xgboost"
+          ],
+          "soft_vote_macro_f1": 0.7751191789549969,
+          "soft_vote_delta_pp": -7.6,
+          "oracle_macro_f1": 0.9563001533490352,
+          "oracle_headroom_pp": 10.52,
+          "mixes_machines": true
+        },
+        "top3": {
+          "members": [
+            "llm_llammlein",
+            "encoder_1b",
+            "llm_qwen_fewshot"
+          ],
+          "soft_vote_macro_f1": 0.8683602442674461,
+          "soft_vote_delta_pp": 1.73,
+          "oracle_macro_f1": 0.9442884509407721,
+          "oracle_headroom_pp": 9.32,
+          "mixes_machines": false
+        },
+        "top2": {
+          "members": [
+            "llm_llammlein",
+            "encoder_1b"
+          ],
+          "soft_vote_macro_f1": 0.8612490213338616,
+          "soft_vote_delta_pp": 1.02,
+          "oracle_macro_f1": 0.9090014957974026,
+          "oracle_headroom_pp": 5.79,
+          "mixes_machines": false
+        }
+      },
+      "share_nobody_correct": 0.011010362694300517,
+      "share_exactly_one_correct": 0.01049222797927461
+    }
+  ],
+  "finding": "The components are NOT making the same errors: the oracle ceiling sits +10.5/+25.1/+10.5 pp above the best single component across the three subtasks, and it is highest exactly where the task is hardest (dbo). So the correlated-error worry SQ2 was hedged against is not what this data shows. But naive soft voting reaches almost none of it and mostly costs: over all six components it loses 7.6-9.6 pp, because averaging in four components that are 20+ pp behind swamps the two that are not. Restricted to the top two it is roughly neutral (helps only on vio). The gap between a large ceiling and a voting result that cannot reach it is an argument for a SELECTIVE combiner -- a cascade or the LLM-as-judge deciding per item which component to trust -- and against uniform weighting.",
+  "how_to_read_the_oracle": "The oracle uses the GOLD label to choose which component to believe. It is therefore an upper bound that no realisable combiner can reach, not a target and not a result. Its only job is to say whether the headroom a combiner could compete for exists at all. Quoting it as an achievable number would be a serious misstatement.",
+  "machine_caveat": "TML ran on Darwin/arm64, the encoder and LLM arms on Linux/x86_64. Any set flagged mixes_machines combines across platforms; the top-two set does not, on any subtask (#53/#65)."
+}

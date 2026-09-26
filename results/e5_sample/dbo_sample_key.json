@@ -1,0 +1,1543 @@
+{
+  "experiment": "E5 manual label inspection sample (Section 4.5)",
+  "created": "2026-09-17T01:23:47+00:00",
+  "git_commit": "0930ca67fa2c069ce1c6a01eaf52b023448c0524",
+  "pre_registration": "THESIS_LOG NS 124 (z14), control stratum and power figures (z16)",
+  "subtask": "dbo",
+  "edition": "2025",
+  "strata": {
+    "IRR": "all six components wrong (the irreducible set)",
+    "CTL": "at least one but not all six components wrong"
+  },
+  "population_sizes": {
+    "IRR": 278,
+    "CTL": 2440,
+    "all_six_right": 4492
+  },
+  "allocation_per_class": {
+    "agitation": 19,
+    "criticism": 43,
+    "nothing": 3,
+    "subversive": 7
+  },
+  "n_per_stratum": 72,
+  "n_repeats_per_file": 20,
+  "min_pair_distance": 25,
+  "seeds": {
+    "draw": 42,
+    "order": 43,
+    "repeats": 44,
+    "assign": 45
+  },
+  "assignment": {
+    "set_a": "CTL",
+    "set_b": "IRR"
+  },
+  "control_k_wrong_distribution": {
+    "1": 9,
+    "2": 15,
+    "3": 9,
+    "4": 18,
+    "5": 21
+  },
+  "newline_replacement": " ⏎ ",
+  "ids_sha256": {
+    "IRR": "e2e5eb02bc41acb5ea072d7109b7dfd9e37ba02025277d93bcbff0514431972e",
+    "CTL": "9c575fe6b066dda8e17d6ccd59f551113ef856321244f112546f4fcdacd060c2"
+  },
+  "analysis_fixed_before_coding": [
+    "agreement with gold per file, 95 % Wilson interval",
+    "the complement as the contested share; `unclear` stays in the denominator",
+    "descriptive confusion of assigned against gold class, no per-class claim",
+    "stability: share of the 20 repeat pairs coded identically, with its interval",
+    "if both files are coded: the difference of the two contested shares with a 95 % interval; the interval half-width is at most 16.3 pp and a difference of about 22 pp is what 80 % power detects -- these are different quantities"
+  ],
+  "key": {
+    "set_a": {
+      "file": "dbo_sample_set_a.csv",
+      "stratum": "CTL",
+      "order_retries": 0,
+      "rows": [
+        {
+          "row": "r001",
+          "id": "1152529371452151",
+          "gold": "criticism",
+          "k_wrong": 1,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r002",
+          "id": "1095977753773980",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r003",
+          "id": "1184",
+          "gold": "agitation",
+          "k_wrong": 3,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r004",
+          "id": "1389092789917523968",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r005",
+          "id": "1760",
+          "gold": "subversive",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r006",
+          "id": "1387120338828500992",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r007",
+          "id": "1043674929004263",
+          "gold": "agitation",
+          "k_wrong": 3,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r008",
+          "id": "1152548361450252",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r009",
+          "id": "1012408332130923",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r010",
+          "id": "1064434893594933",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r011",
+          "id": "1035355633169526",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r012",
+          "id": "1152504144788007",
+          "gold": "criticism",
+          "k_wrong": 3,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r013",
+          "id": "1145",
+          "gold": "agitation",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r014",
+          "id": "1111369242234831",
+          "gold": "criticism",
+          "k_wrong": 1,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r015",
+          "id": "882689431769481",
+          "gold": "criticism",
+          "k_wrong": 3,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r016",
+          "id": "1088436224528133",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r017",
+          "id": "1211",
+          "gold": "agitation",
+          "k_wrong": 3,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r018",
+          "id": "1391723749645377536",
+          "gold": "agitation",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r019",
+          "id": "1095900977114991",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r020",
+          "id": "1134071536631268",
+          "gold": "criticism",
+          "k_wrong": 3,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r021",
+          "id": "1397951210259419136",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r022",
+          "id": "1069110199794069",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r023",
+          "id": "982644851773938",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r024",
+          "id": "1065841533454269",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r025",
+          "id": "1134287413276347",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r026",
+          "id": "876267342411690",
+          "gold": "criticism",
+          "k_wrong": 1,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r027",
+          "id": "876920495679708",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r028",
+          "id": "960861953952228",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r029",
+          "id": "1096019733769782",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r030",
+          "id": "1394338735144280064",
+          "gold": "nothing",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r031",
+          "id": "982714085100348",
+          "gold": "criticism",
+          "k_wrong": 1,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r032",
+          "id": "1395063554613649408",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r033",
+          "id": "1105402342831521",
+          "gold": "subversive",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r034",
+          "id": "1390731789380030464",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r035",
+          "id": "1056942687677487",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r036",
+          "id": "1387120338828500992",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 2,
+          "pair_of": "r006"
+        },
+        {
+          "row": "r037",
+          "id": "1010217752349981",
+          "gold": "criticism",
+          "k_wrong": 1,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r038",
+          "id": "945871375451286",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r039",
+          "id": "982643985107358",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r040",
+          "id": "1743",
+          "gold": "subversive",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r041",
+          "id": "1393596887773630464",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r042",
+          "id": "1384061387073232896",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r043",
+          "id": "876298015741956",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r044",
+          "id": "982693501769073",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r045",
+          "id": "1201",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r046",
+          "id": "1152504144788007",
+          "gold": "criticism",
+          "k_wrong": 3,
+          "occurrence": 2,
+          "pair_of": "r012"
+        },
+        {
+          "row": "r047",
+          "id": "1005",
+          "gold": "subversive",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r048",
+          "id": "1394019963506155520",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r049",
+          "id": "1394330749088698368",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r050",
+          "id": "982670358438054",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r051",
+          "id": "1152539311451157",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r052",
+          "id": "876258559079235",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r053",
+          "id": "1152534384784983",
+          "gold": "nothing",
+          "k_wrong": 1,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r054",
+          "id": "1087",
+          "gold": "agitation",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r055",
+          "id": "1390694546984607744",
+          "gold": "agitation",
+          "k_wrong": 3,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r056",
+          "id": "1134287413276347",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 2,
+          "pair_of": "r025"
+        },
+        {
+          "row": "r057",
+          "id": "882681431770281",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r058",
+          "id": "876267342411690",
+          "gold": "criticism",
+          "k_wrong": 1,
+          "occurrence": 2,
+          "pair_of": "r026"
+        },
+        {
+          "row": "r059",
+          "id": "1035135013191588",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r060",
+          "id": "1012895538748869",
+          "gold": "criticism",
+          "k_wrong": 3,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r061",
+          "id": "1124",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r062",
+          "id": "1134077609963994",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r063",
+          "id": "1030",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r064",
+          "id": "945871375451286",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 2,
+          "pair_of": "r038"
+        },
+        {
+          "row": "r065",
+          "id": "957683437603413",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r066",
+          "id": "888397217865369",
+          "gold": "nothing",
+          "k_wrong": 1,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r067",
+          "id": "961081237263633",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r068",
+          "id": "1043674929004263",
+          "gold": "agitation",
+          "k_wrong": 3,
+          "occurrence": 2,
+          "pair_of": "r007"
+        },
+        {
+          "row": "r069",
+          "id": "1739",
+          "gold": "subversive",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r070",
+          "id": "1385258636470063104",
+          "gold": "agitation",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r071",
+          "id": "1095977753773980",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 2,
+          "pair_of": "r002"
+        },
+        {
+          "row": "r072",
+          "id": "960883817283375",
+          "gold": "criticism",
+          "k_wrong": 1,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r073",
+          "id": "1393596887773630464",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 2,
+          "pair_of": "r041"
+        },
+        {
+          "row": "r074",
+          "id": "1105402342831521",
+          "gold": "subversive",
+          "k_wrong": 5,
+          "occurrence": 2,
+          "pair_of": "r033"
+        },
+        {
+          "row": "r075",
+          "id": "1743",
+          "gold": "subversive",
+          "k_wrong": 2,
+          "occurrence": 2,
+          "pair_of": "r040"
+        },
+        {
+          "row": "r076",
+          "id": "1055114801193609",
+          "gold": "subversive",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r077",
+          "id": "1057122657659490",
+          "gold": "criticism",
+          "k_wrong": 4,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r078",
+          "id": "1211",
+          "gold": "agitation",
+          "k_wrong": 3,
+          "occurrence": 2,
+          "pair_of": "r017"
+        },
+        {
+          "row": "r079",
+          "id": "1096019733769782",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 2,
+          "pair_of": "r029"
+        },
+        {
+          "row": "r080",
+          "id": "960861953952228",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 2,
+          "pair_of": "r028"
+        },
+        {
+          "row": "r081",
+          "id": "1065792403459182",
+          "gold": "criticism",
+          "k_wrong": 1,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r082",
+          "id": "876920495679708",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 2,
+          "pair_of": "r027"
+        },
+        {
+          "row": "r083",
+          "id": "1019",
+          "gold": "agitation",
+          "k_wrong": 5,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r084",
+          "id": "876329625738795",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r085",
+          "id": "1152534384784983",
+          "gold": "nothing",
+          "k_wrong": 1,
+          "occurrence": 2,
+          "pair_of": "r053"
+        },
+        {
+          "row": "r086",
+          "id": "1145",
+          "gold": "agitation",
+          "k_wrong": 4,
+          "occurrence": 2,
+          "pair_of": "r013"
+        },
+        {
+          "row": "r087",
+          "id": "1152548361450252",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 2,
+          "pair_of": "r008"
+        },
+        {
+          "row": "r088",
+          "id": "982693501769073",
+          "gold": "criticism",
+          "k_wrong": 5,
+          "occurrence": 2,
+          "pair_of": "r044"
+        },
+        {
+          "row": "r089",
+          "id": "1385154851559063552",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r090",
+          "id": "1134077609963994",
+          "gold": "criticism",
+          "k_wrong": 2,
+          "occurrence": 2,
+          "pair_of": "r062"
+        },
+        {
+          "row": "r091",
+          "id": "1087",
+          "gold": "agitation",
+          "k_wrong": 4,
+          "occurrence": 2,
+          "pair_of": "r054"
+        },
+        {
+          "row": "r092",
+          "id": "1744",
+          "gold": "subversive",
+          "k_wrong": 3,
+          "occurrence": 1,
+          "pair_of": null
+        }
+      ]
+    },
+    "set_b": {
+      "file": "dbo_sample_set_b.csv",
+      "stratum": "IRR",
+      "order_retries": 0,
+      "rows": [
+        {
+          "row": "r001",
+          "id": "1057332107638545",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r002",
+          "id": "1056907327681023",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r003",
+          "id": "1392864268782120960",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r004",
+          "id": "1214",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r005",
+          "id": "1391656863943512064",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r006",
+          "id": "1173",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r007",
+          "id": "883010978403993",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r008",
+          "id": "1063247420380347",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r009",
+          "id": "1391700822715768832",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r010",
+          "id": "1386974362180407296",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r011",
+          "id": "855663564472068",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r012",
+          "id": "1003",
+          "gold": "subversive",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r013",
+          "id": "1066619740043115",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r014",
+          "id": "1764",
+          "gold": "subversive",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r015",
+          "id": "960882120616878",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r016",
+          "id": "1389637534569930752",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r017",
+          "id": "1056952767676479",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r018",
+          "id": "1395022131726102528",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r019",
+          "id": "876440385727719",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r020",
+          "id": "1066215373416885",
+          "gold": "nothing",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r021",
+          "id": "1095965297108559",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r022",
+          "id": "1384068008570605568",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r023",
+          "id": "1057023347669421",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r024",
+          "id": "1393991678139244544",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r025",
+          "id": "1056493904389032",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r026",
+          "id": "1095899267115162",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r027",
+          "id": "1406676631620669440",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r028",
+          "id": "1751",
+          "gold": "subversive",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r029",
+          "id": "1385150288689045504",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r030",
+          "id": "1056907007681055",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r031",
+          "id": "1056907327681023",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r002"
+        },
+        {
+          "row": "r032",
+          "id": "1753",
+          "gold": "subversive",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r033",
+          "id": "1757",
+          "gold": "subversive",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r034",
+          "id": "1392864268782120960",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r003"
+        },
+        {
+          "row": "r035",
+          "id": "1055082804530142",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r036",
+          "id": "883010978403993",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r007"
+        },
+        {
+          "row": "r037",
+          "id": "1391656863943512064",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r005"
+        },
+        {
+          "row": "r038",
+          "id": "1007134465991643",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r039",
+          "id": "1401584106845126656",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r040",
+          "id": "1055240207847735",
+          "gold": "subversive",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r041",
+          "id": "1095982907106798",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r042",
+          "id": "1012905015414588",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r043",
+          "id": "1386974362180407296",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r010"
+        },
+        {
+          "row": "r044",
+          "id": "982653711773052",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r045",
+          "id": "1396482569252790272",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r046",
+          "id": "1066619740043115",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r013"
+        },
+        {
+          "row": "r047",
+          "id": "1063240250381064",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r048",
+          "id": "1214",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r004"
+        },
+        {
+          "row": "r049",
+          "id": "960882120616878",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r015"
+        },
+        {
+          "row": "r050",
+          "id": "983429358362154",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r051",
+          "id": "946638805374543",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r052",
+          "id": "1063227970382292",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r053",
+          "id": "1003",
+          "gold": "subversive",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r012"
+        },
+        {
+          "row": "r054",
+          "id": "1105826459455776",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r055",
+          "id": "961254503912973",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r056",
+          "id": "960852300619860",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r057",
+          "id": "1065797996791956",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r058",
+          "id": "1056747427697013",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r059",
+          "id": "1391738732219445248",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r060",
+          "id": "1391700822715768832",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r009"
+        },
+        {
+          "row": "r061",
+          "id": "1056907007681055",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r030"
+        },
+        {
+          "row": "r062",
+          "id": "1035125859859170",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r063",
+          "id": "1038675042837585",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r064",
+          "id": "876440385727719",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r019"
+        },
+        {
+          "row": "r065",
+          "id": "1080352885336467",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r066",
+          "id": "1076",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r067",
+          "id": "1401449196406939648",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r068",
+          "id": "966653666706390",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r069",
+          "id": "985376754834081",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r070",
+          "id": "882696761768748",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r071",
+          "id": "1063247420380347",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r008"
+        },
+        {
+          "row": "r072",
+          "id": "1007134465991643",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r038"
+        },
+        {
+          "row": "r073",
+          "id": "1055103211194768",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r074",
+          "id": "1389721415176294400",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r075",
+          "id": "983007638404326",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r076",
+          "id": "982651445106612",
+          "gold": "nothing",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r077",
+          "id": "1175",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r078",
+          "id": "1056969124341510",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r079",
+          "id": "1385150288689045504",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r029"
+        },
+        {
+          "row": "r080",
+          "id": "951534708218286",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r081",
+          "id": "1111388835566205",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r082",
+          "id": "1057332107638545",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r001"
+        },
+        {
+          "row": "r083",
+          "id": "1007228672648889",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r084",
+          "id": "1389214938900668416",
+          "gold": "nothing",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r085",
+          "id": "1063781233660299",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r086",
+          "id": "1754",
+          "gold": "subversive",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r087",
+          "id": "1065797996791956",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r057"
+        },
+        {
+          "row": "r088",
+          "id": "983429358362154",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r050"
+        },
+        {
+          "row": "r089",
+          "id": "1052430494795373",
+          "gold": "agitation",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r090",
+          "id": "982653711773052",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r044"
+        },
+        {
+          "row": "r091",
+          "id": "1105451149493307",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 1,
+          "pair_of": null
+        },
+        {
+          "row": "r092",
+          "id": "1095982907106798",
+          "gold": "criticism",
+          "k_wrong": 6,
+          "occurrence": 2,
+          "pair_of": "r041"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "subtask": "dbo",
+  "edition": "2026",
+  "component": "llm_llammlein",
+  "seed": 42,
+  "n_splits": 3,
+  "aggregation": "pooled_out_of_fold",
+  "uncalibrated": false,
+  "pooled_macro_f1": 0.6040748279650959,
+  "matrix_version": "1.12",
+  "config_id": "a8473bac61b6",
+  "data_rules_id": "7e9082557061",
+  "created": "2026-09-14T02:00:44+00:00",
+  "experiment": "E4a",
+  "e4": {
+    "experiment": "E4A",
+    "condition": "class_weighting",
+    "fixed_params": {
+      "lr": 0.0001
+    }
+  },
+  "key": "dbo_2026/llm_llammlein__e4a-class_weighting__seed42",
+  "n_items": 15847,
+  "n_classes": 4,
+  "classes": [
+    "agitation",
+    "criticism",
+    "nothing",
+    "subversive"
+  ],
+  "npz": "llm_llammlein__e4a-class_weighting__seed42.npz",
+  "machine": "Linux/x86_64"
+}

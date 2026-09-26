@@ -1,0 +1,84 @@
+{
+  "subtask": "dbo",
+  "baseline": "DBO-TF-IDF-SVC",
+  "edition": "2025",
+  "eval_set": "own_stratified_holdout_80_20",
+  "holdout_frac": 0.2,
+  "seed": 42,
+  "organizer_target_macro_f1": 47.44,
+  "organizer_eval_set": "official_test_gold_unavailable",
+  "delta_pp_vs_organizer": 1.460224351200587,
+  "macro_f1": 0.48900224351200583,
+  "weighted_f1": 0.8401244767773759,
+  "per_class_f1": {
+    "agitation": 0.21428571428571427,
+    "criticism": 0.4473684210526316,
+    "nothing": 0.9193548387096774,
+    "subversive": 0.375
+  },
+  "per_class_support": {
+    "agitation": 45,
+    "criticism": 161,
+    "nothing": 1224,
+    "subversive": 12
+  },
+  "zero_support_classes": [],
+  "report": "              precision    recall  f1-score   support\n\n   agitation       0.23      0.20      0.21        45\n   criticism       0.48      0.42      0.45       161\n     nothing       0.91      0.93      0.92      1224\n  subversive       0.75      0.25      0.38        12\n\n    accuracy                           0.85      1442\n   macro avg       0.59      0.45      0.49      1442\nweighted avg       0.84      0.85      0.84      1442\n",
+  "confusion_matrix": [
+    [
+      9,
+      14,
+      22,
+      0
+    ],
+    [
+      5,
+      68,
+      88,
+      0
+    ],
+    [
+      24,
+      59,
+      1140,
+      1
+    ],
+    [
+      1,
+      2,
+      6,
+      3
+    ]
+  ],
+  "labels": [
+    "agitation",
+    "criticism",
+    "nothing",
+    "subversive"
+  ],
+  "n_samples": 1442,
+  "macro_f1_ci_lower": 0.38742383297019295,
+  "macro_f1_ci_upper": 0.5664428449469655,
+  "ci_level": 0.95,
+  "env_pin": {
+    "python": "3.13.8",
+    "requires_python_floor": ">=3.12",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.17.1",
+    "numpy": "2.4.6",
+    "xgboost": "3.3.0",
+    "lightgbm": "4.6.0",
+    "torch": "2.12.1+cu126",
+    "cuda_available": true,
+    "cuda_device": "NVIDIA A40",
+    "mps_available": false,
+    "torch_auto_device": "cuda",
+    "platform": "Linux/x86_64",
+    "nltk_punkt_tab": true
+  },
+  "data_rules_id": "7e9082557061",
+  "produced_by": "src/e1_machine_baseline.py",
+  "protocol_source": "src/e1_platform_check.run (mirrors notebooks/01_baseline_repro.ipynb)",
+  "anchor": "THESIS_LOG Next Steps #67: E1 references are keyed by machine",
+  "created": "2026-08-27T16:10:31+00:00"
+}

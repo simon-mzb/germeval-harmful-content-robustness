@@ -1,0 +1,60 @@
+{
+  "gate": "D6a",
+  "model_requested": "gemma-4-31b-it",
+  "model_reported": "gemma-4-31b-it",
+  "created": "2026-08-11T01:18:01+00:00",
+  "endpoint": "GWDG ChatAI / SAIA (OpenAI-compatible)",
+  "criterion_2_logprobs": {
+    "criterion": "2 - token log-probabilities available",
+    "passed": true,
+    "n_tokens_with_logprobs": 2,
+    "top_alternatives_on_first_token": 5,
+    "first_token": "TRUE",
+    "error": null,
+    "consequence_if_failed": "the judge returns a label only; narrow the calibration claim in 3.2 to the components and record the deviation in 3.3"
+  },
+  "criterion_1_parseable": {
+    "criterion": "1 - output restricted to the label set",
+    "passed": true,
+    "n_clean": 3,
+    "n_calls": 3,
+    "calls": [
+      {
+        "raw_output": "TRUE",
+        "parseable": true,
+        "latency_s": 0.12488304199996492,
+        "error": null
+      },
+      {
+        "raw_output": "FALSE",
+        "parseable": true,
+        "latency_s": 0.18196437500000684,
+        "error": null
+      },
+      {
+        "raw_output": "TRUE",
+        "parseable": true,
+        "latency_s": 0.3991407920000256,
+        "error": null
+      }
+    ]
+  },
+  "criterion_3_limits": {
+    "n_requested": 12,
+    "n_succeeded": 12,
+    "n_errors": 0,
+    "throttled_within_burst": false,
+    "elapsed_s": 49.66652754100005,
+    "achieved_requests_per_minute": 14.496684903240622,
+    "latency_mean_s": 4.138800590416698,
+    "latency_min_s": 0.1604346250001072,
+    "latency_max_s": 47.30396504200007,
+    "note": "sequential burst, not a saturation test; the per-day quota is taken from headers or service documentation, not probed",
+    "criterion": "3 - measured throughput and latency",
+    "passed": true
+  },
+  "all_passed": true,
+  "decision": "viable fallback, not selected",
+  "decision_note": "NOT SELECTED (Simon, 2026-09-02), and not a failure: all three D6a criteria pass. It is the fallback if mistral-medium-3.5-128b becomes unavailable. Not chosen because it sustained 14.5 req/min under burst against mistral's 367.5, and the judge is invoked per component disagreement, so throughput is the binding property.",
+  "note": "Credentials are read from .env and are neither printed nor stored here. Per-day quota is not probed by exhaustion; take it from the service documentation."
+}

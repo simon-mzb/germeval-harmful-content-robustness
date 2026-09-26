@@ -1,0 +1,386 @@
+{
+  "experiment": "E4a",
+  "package": "B8",
+  "git_commit": "be114154dcf1e188f31c26130f5b5abf51936d7d",
+  "subtask": "c2a",
+  "edition": "2025",
+  "component": "tml_lightgbm",
+  "meta": {
+    "design_lock": "notes/e2_design_lock.md",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "primary_metric": "macro_f1",
+    "aggregation": "pooled_out_of_fold",
+    "imbalance_condition": "random_oversampling",
+    "data_rules": {
+      "within_edition_dedup": true,
+      "drop_train_test_overlap": false,
+      "note": "the overlap rule protects evaluation on the official test set, which E2 does not use; leaving it off keeps the pool identical to the E1 baseline pool and preserves thin-class instances"
+    },
+    "pool_n": 6773,
+    "classes": [
+      "False",
+      "True"
+    ],
+    "n_splits": 3,
+    "config_id": "890aa3964a21",
+    "seeds": [
+      42
+    ],
+    "primary_seed": 42,
+    "family": "tml",
+    "feature_spec": {
+      "word_ngram_range": [
+        1,
+        2
+      ],
+      "char_ngram_range": [
+        3,
+        5
+      ],
+      "char_analyzer": "char_wb",
+      "lowercase": true,
+      "min_df": 2,
+      "sublinear_tf": true
+    },
+    "inner_split": {
+      "fit": 0.8,
+      "select": 0.1,
+      "calibrate": 0.1
+    },
+    "grid": [
+      {
+        "learning_rate": 0.1,
+        "num_leaves": 31
+      }
+    ],
+    "grid_deviation": "no search: the configuration frozen in results/e4_fixed_configurations.json under e4_protocol.e4a.configuration",
+    "seed_semantics": "the seed varies the CV partition",
+    "e4": {
+      "experiment": "E4A",
+      "condition": "random_oversampling",
+      "fixed_params": {
+        "learning_rate": 0.1,
+        "num_leaves": 31
+      }
+    },
+    "replicate_seeds_skipped": "E4 has no D3 replicates (D5)",
+    "bootstrap_n": 1000,
+    "ci_level": 0.95,
+    "env_pin": {
+      "python": "3.13.15",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1",
+      "cuda_available": false,
+      "cuda_device": null,
+      "mps_available": true,
+      "torch_auto_device": "mps",
+      "platform": "Darwin/arm64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-14T12:11:14+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.6293140959634985,
+    "weighted_f1": 0.8851527013656892,
+    "per_class": {
+      "False": {
+        "f1": 0.9469666852190507,
+        "support": 6114,
+        "tier": "interpret",
+        "ci_lower": 0.9425865460097824,
+        "ci_upper": 0.9507012307160095
+      },
+      "True": {
+        "f1": 0.31166150670794635,
+        "support": 659,
+        "tier": "interpret",
+        "ci_lower": 0.27497032685464656,
+        "ci_upper": 0.3516288218863784
+      }
+    },
+    "labels": [
+      "False",
+      "True"
+    ],
+    "confusion_matrix": [
+      [
+        5955,
+        159
+      ],
+      [
+        508,
+        151
+      ]
+    ],
+    "n_samples": 6773,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.012162005837523972,
+      "brier": 0.15709441520339154,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 103,
+          "mean_confidence": 0.5160535285843245,
+          "accuracy": 0.5242718446601942
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 183,
+          "mean_confidence": 0.5669643332117013,
+          "accuracy": 0.6174863387978142
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 272,
+          "mean_confidence": 0.6357872278033275,
+          "accuracy": 0.7022058823529411
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 272,
+          "mean_confidence": 0.7010735346094372,
+          "accuracy": 0.7720588235294118
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 367,
+          "mean_confidence": 0.7694712233454829,
+          "accuracy": 0.7574931880108992
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 612,
+          "mean_confidence": 0.8348791453162839,
+          "accuracy": 0.8496732026143791
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 1266,
+          "mean_confidence": 0.9056863913182479,
+          "accuracy": 0.9139020537124802
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 3698,
+          "mean_confidence": 0.9718919547621482,
+          "accuracy": 0.9689021092482423
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 6773
+    },
+    "macro_f1_ci_lower": 0.6096853705884423,
+    "macro_f1_ci_upper": 0.6506522911801463,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "repeats": [
+    {
+      "seed": 42,
+      "pooled_macro_f1": 0.6293140959634985,
+      "pooled_weighted_f1": 0.8851527013656892,
+      "per_fold_macro_f1": [
+        0.638210226538555,
+        0.619944590085796,
+        0.6296986423377339
+      ],
+      "fold_sd_macro_f1": 0.009139858459567411,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "False": 0.9469666852190507,
+        "True": 0.31166150670794635
+      },
+      "ece": 0.012162005837523972,
+      "brier": 0.15709441520339154,
+      "selected_params_per_fold": [
+        {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        },
+        {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        },
+        {
+          "learning_rate": 0.1,
+          "num_leaves": 31
+        }
+      ],
+      "temperature_per_fold": [
+        1.2288854770036317,
+        1.437667767109389,
+        1.0014502806958132
+      ],
+      "folds_detail": [
+        {
+          "component": "tml_lightgbm",
+          "selected_params": {
+            "learning_rate": 0.1,
+            "num_leaves": 31
+          },
+          "selection_macro_f1": 0.6469022391565322,
+          "selection_grid": [
+            {
+              "params": {
+                "learning_rate": 0.1,
+                "num_leaves": 31
+              },
+              "selection_macro_f1": 0.6469022391565322,
+              "best_iteration": 83
+            }
+          ],
+          "temperature": {
+            "temperature": 1.2288854770036317,
+            "nll_before": 0.2993906884297788,
+            "nll_after": 0.2924212010530626,
+            "n_calibration_items": 452,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "random_oversampling",
+          "n_fit": 3612,
+          "n_fit_trained": 6522,
+          "n_select": 451,
+          "n_calibrate": 452,
+          "n_features": 55926,
+          "classes_present_in_fit": [
+            "False",
+            "True"
+          ],
+          "inner_split_stratified": true,
+          "fold": 0
+        },
+        {
+          "component": "tml_lightgbm",
+          "selected_params": {
+            "learning_rate": 0.1,
+            "num_leaves": 31
+          },
+          "selection_macro_f1": 0.6782887067870627,
+          "selection_grid": [
+            {
+              "params": {
+                "learning_rate": 0.1,
+                "num_leaves": 31
+              },
+              "selection_macro_f1": 0.6782887067870627,
+              "best_iteration": 95
+            }
+          ],
+          "temperature": {
+            "temperature": 1.437667767109389,
+            "nll_before": 0.3115617098917085,
+            "nll_after": 0.28851650611603424,
+            "n_calibration_items": 452,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "random_oversampling",
+          "n_fit": 3612,
+          "n_fit_trained": 6522,
+          "n_select": 451,
+          "n_calibrate": 452,
+          "n_features": 56066,
+          "classes_present_in_fit": [
+            "False",
+            "True"
+          ],
+          "inner_split_stratified": true,
+          "fold": 1
+        },
+        {
+          "component": "tml_lightgbm",
+          "selected_params": {
+            "learning_rate": 0.1,
+            "num_leaves": 31
+          },
+          "selection_macro_f1": 0.6601815347941689,
+          "selection_grid": [
+            {
+              "params": {
+                "learning_rate": 0.1,
+                "num_leaves": 31
+              },
+              "selection_macro_f1": 0.6601815347941689,
+              "best_iteration": 74
+            }
+          ],
+          "temperature": {
+            "temperature": 1.0014502806958132,
+            "nll_before": 0.25517500632323653,
+            "nll_after": 0.2551746973834966,
+            "n_calibration_items": 452,
+            "fitted": true
+          },
+          "platt_fallback_classes": [],
+          "grid_overridden": true,
+          "imbalance_condition": "random_oversampling",
+          "n_fit": 3612,
+          "n_fit_trained": 6520,
+          "n_select": 452,
+          "n_calibrate": 452,
+          "n_features": 55267,
+          "classes_present_in_fit": [
+            "False",
+            "True"
+          ],
+          "inner_split_stratified": true,
+          "fold": 2
+        }
+      ],
+      "component_store_key": "c2a_2025/tml_lightgbm__e4a-random_oversampling__seed42",
+      "runtime_seconds": 18.74634027481079,
+      "fold_runtime_seconds_sum": null,
+      "resumed_folds": []
+    }
+  ],
+  "seed_replicates": [],
+  "dispersion": {
+    "mean_pooled_macro_f1": 0.6293140959634985,
+    "seed_sd_macro_f1": 0.0,
+    "fold_sd_macro_f1_primary": 0.009139858459567411,
+    "per_seed_pooled_macro_f1": [
+      0.6293140959634985
+    ],
+    "replicate_fold_macro_f1": [],
+    "replicate_sd_macro_f1": 0.0
+  },
+  "runtime_seconds": 18.914227962493896,
+  "resumed": false,
+  "selection_diagnosis": {
+    "flags": [
+      "single_cell_grid"
+    ],
+    "notes": [
+      "the grid has no axis with more than one value -- nothing was selected, so no edge check is possible."
+    ],
+    "axes": {},
+    "n_distinct_winners": 1,
+    "n_fits": 3,
+    "margin": null,
+    "ok": true
+  },
+  "stopping_evidence": null
+}

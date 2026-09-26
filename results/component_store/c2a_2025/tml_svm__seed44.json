@@ -1,0 +1,24 @@
+{
+  "subtask": "c2a",
+  "edition": "2025",
+  "component": "tml_svm",
+  "seed": 44,
+  "n_splits": 5,
+  "aggregation": "pooled_out_of_fold",
+  "uncalibrated": false,
+  "pooled_macro_f1": 0.6303273968631096,
+  "matrix_version": "1.4",
+  "config_id": "acbf778cf50a",
+  "data_rules_id": "7e9082557061",
+  "created": "2026-08-18T17:39:30+00:00",
+  "key": "c2a_2025/tml_svm__seed44",
+  "n_items": 6773,
+  "n_classes": 2,
+  "classes": [
+    "False",
+    "True"
+  ],
+  "npz": "tml_svm__seed44.npz",
+  "machine": "Darwin/arm64",
+  "machine_backfilled_from": "e2_c2a_2025_tml_svm.json"
+}

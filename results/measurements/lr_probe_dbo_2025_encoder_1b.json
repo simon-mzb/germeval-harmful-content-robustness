@@ -1,0 +1,53 @@
+{
+  "probe": "lr",
+  "subtask": "dbo",
+  "edition": "2025",
+  "component": "encoder_1b",
+  "fold": 0,
+  "n_splits": 5,
+  "seed": 42,
+  "lora_r": 16,
+  "max_epochs": 5,
+  "rows": [
+    {
+      "lr": 0.0003,
+      "selection_macro_f1": 0.6551084033277565,
+      "selected_epoch": 4,
+      "fit_diagnosis": {
+        "flags": [],
+        "notes": [],
+        "epoch_scores": [
+          0.413036963036963,
+          0.5156338041620109,
+          0.6228180044629392,
+          0.6551084033277565,
+          0.646960724252944
+        ],
+        "selected_epoch": 4,
+        "max_epochs": 5,
+        "ok": true
+      },
+      "seconds": 434.5
+    }
+  ],
+  "best_lr": 0.0003,
+  "optimum_is_interior": false,
+  "env_pin": {
+    "python": "3.13.8",
+    "requires_python_floor": ">=3.12",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.17.1",
+    "numpy": "2.4.6",
+    "xgboost": "3.3.0",
+    "lightgbm": "4.6.0",
+    "torch": "2.12.1+cu126",
+    "cuda_available": true,
+    "cuda_device": "NVIDIA A40",
+    "mps_available": false,
+    "torch_auto_device": "cuda",
+    "platform": "Linux/x86_64",
+    "nltk_punkt_tab": true
+  },
+  "created": "2026-08-27T16:20:03+00:00",
+  "note": "one fold, one seed: enough to see whether the peak is inside the window, not enough to pin a value. Not a thesis number."
+}

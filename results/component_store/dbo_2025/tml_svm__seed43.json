@@ -1,0 +1,26 @@
+{
+  "subtask": "dbo",
+  "edition": "2025",
+  "component": "tml_svm",
+  "seed": 43,
+  "n_splits": 5,
+  "aggregation": "pooled_out_of_fold",
+  "uncalibrated": false,
+  "pooled_macro_f1": 0.4834317167049054,
+  "matrix_version": "1.4",
+  "config_id": "acbf778cf50a",
+  "data_rules_id": "7e9082557061",
+  "created": "2026-08-18T18:20:18+00:00",
+  "key": "dbo_2025/tml_svm__seed43",
+  "n_items": 7210,
+  "n_classes": 4,
+  "classes": [
+    "agitation",
+    "criticism",
+    "nothing",
+    "subversive"
+  ],
+  "npz": "tml_svm__seed43.npz",
+  "machine": "Darwin/arm64",
+  "machine_backfilled_from": "e2_dbo_2025_tml_svm.json"
+}

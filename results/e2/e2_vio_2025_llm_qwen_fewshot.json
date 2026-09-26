@@ -1,0 +1,758 @@
+{
+  "experiment": "E2",
+  "package": "B6",
+  "git_commit": "ab750f21b1b6e39117a02f3180062b45c0e9e66c",
+  "subtask": "vio",
+  "edition": "2025",
+  "component": "llm_qwen_fewshot",
+  "meta": {
+    "design_lock": "notes/e2_design_lock.md",
+    "matrix_version": "1.12",
+    "data_rules_id": "7e9082557061",
+    "primary_metric": "macro_f1",
+    "aggregation": "pooled_out_of_fold",
+    "imbalance_condition": "none (D4 reference condition; E4a varies this)",
+    "data_rules": {
+      "within_edition_dedup": true,
+      "drop_train_test_overlap": false,
+      "note": "the overlap rule protects evaluation on the official test set, which E2 does not use; leaving it off keeps the pool identical to the E1 baseline pool and preserves thin-class instances"
+    },
+    "pool_n": 7720,
+    "classes": [
+      "False",
+      "True"
+    ],
+    "n_splits": 5,
+    "config_id": "a93c86a93477",
+    "seeds": [
+      42
+    ],
+    "primary_seed": 42,
+    "family": "llm_fewshot",
+    "model_id": "Qwen/Qwen2.5-14B-Instruct",
+    "inner_split": {
+      "fit": 0.8,
+      "select": 0.1,
+      "calibrate": 0.1
+    },
+    "grid": null,
+    "grid_deviation": "no grid: nothing is tuned. The configuration is the draw, and `draws: 3` replaces D3's seed replicates",
+    "training": "none",
+    "n_examples": 12,
+    "example_selection": "none (D4 reference; prompt_coverage is the E4a cell)",
+    "max_prompt_tokens": 2048,
+    "verbalisers": {
+      "True": "Ja",
+      "False": "Nein"
+    },
+    "probability_interface": "verbaliser_sequence_score",
+    "seed_semantics": "the partition is fixed at the primary seed; the seed varies the EXAMPLE DRAW, and replicates run on one fold only (D3)",
+    "bootstrap_n": 1000,
+    "ci_level": 0.95,
+    "env_pin": {
+      "python": "3.13.8",
+      "requires_python_floor": ">=3.12",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.17.1",
+      "numpy": "2.4.6",
+      "xgboost": "3.3.0",
+      "lightgbm": "4.6.0",
+      "torch": "2.12.1+cu126",
+      "cuda_available": true,
+      "cuda_device": "NVIDIA A40",
+      "mps_available": false,
+      "torch_auto_device": "cuda",
+      "platform": "Linux/x86_64",
+      "nltk_punkt_tab": true
+    },
+    "created": "2026-09-05T00:24:01+00:00"
+  },
+  "primary": {
+    "macro_f1": 0.784369588291157,
+    "weighted_f1": 0.9375834794304773,
+    "per_class": {
+      "False": {
+        "f1": 0.9638009049773756,
+        "support": 7156,
+        "tier": "interpret",
+        "ci_lower": 0.9607353070144827,
+        "ci_upper": 0.9670485079903832
+      },
+      "True": {
+        "f1": 0.6049382716049383,
+        "support": 564,
+        "tier": "interpret",
+        "ci_lower": 0.5727852425210362,
+        "ci_upper": 0.6388681059040817
+      }
+    },
+    "labels": [
+      "False",
+      "True"
+    ],
+    "confusion_matrix": [
+      [
+        6816,
+        340
+      ],
+      [
+        172,
+        392
+      ]
+    ],
+    "n_samples": 7720,
+    "aggregation": "pooled_out_of_fold",
+    "calibration": {
+      "ece": 0.00662332729543901,
+      "brier": 0.0949066489615715,
+      "n_bins": 15,
+      "reliability_bins": [
+        {
+          "bin_lower": 0.4666666666666667,
+          "bin_upper": 0.5333333333333333,
+          "n": 94,
+          "mean_confidence": 0.5181526335219827,
+          "accuracy": 0.4787234042553192
+        },
+        {
+          "bin_lower": 0.5333333333333333,
+          "bin_upper": 0.6,
+          "n": 183,
+          "mean_confidence": 0.5668421934776441,
+          "accuracy": 0.4972677595628415
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.6666666666666666,
+          "n": 197,
+          "mean_confidence": 0.6341029294729552,
+          "accuracy": 0.6192893401015228
+        },
+        {
+          "bin_lower": 0.6666666666666666,
+          "bin_upper": 0.7333333333333333,
+          "n": 262,
+          "mean_confidence": 0.7015745443556592,
+          "accuracy": 0.7213740458015268
+        },
+        {
+          "bin_lower": 0.7333333333333333,
+          "bin_upper": 0.8,
+          "n": 274,
+          "mean_confidence": 0.7684773570518069,
+          "accuracy": 0.7773722627737226
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.8666666666666667,
+          "n": 359,
+          "mean_confidence": 0.8367519460297366,
+          "accuracy": 0.8551532033426184
+        },
+        {
+          "bin_lower": 0.8666666666666667,
+          "bin_upper": 0.9333333333333333,
+          "n": 623,
+          "mean_confidence": 0.9059696079598716,
+          "accuracy": 0.9229534510433387
+        },
+        {
+          "bin_lower": 0.9333333333333333,
+          "bin_upper": 1.0,
+          "n": 5728,
+          "mean_confidence": 0.98796025113579,
+          "accuracy": 0.9891759776536313
+        }
+      ],
+      "uncalibrated": false,
+      "n_items": 7720
+    },
+    "macro_f1_ci_lower": 0.7670828637358941,
+    "macro_f1_ci_upper": 0.8026725014476744,
+    "ci_level": 0.95,
+    "bootstrap_n": 1000
+  },
+  "repeats": [
+    {
+      "seed": 42,
+      "pooled_macro_f1": 0.784369588291157,
+      "pooled_weighted_f1": 0.9375834794304773,
+      "per_fold_macro_f1": [
+        0.757675980048768,
+        0.8011978919233314,
+        0.7875304329416746,
+        0.7560751697688854,
+        0.8298226413629837
+      ],
+      "fold_sd_macro_f1": 0.03102590716978395,
+      "zero_support_classes_per_fold": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "per_class_f1": {
+        "False": 0.9638009049773756,
+        "True": 0.6049382716049383
+      },
+      "ece": 0.00662332729543901,
+      "brier": 0.0949066489615715,
+      "selected_params_per_fold": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "temperature_per_fold": [
+        1.501010824697981,
+        2.98356507290911,
+        2.2329360967204086,
+        2.08614196236021,
+        1.6892342364012263
+      ],
+      "folds_detail": [
+        {
+          "component": "llm_qwen_fewshot",
+          "model_id": "Qwen/Qwen2.5-14B-Instruct",
+          "subtask": "vio",
+          "training": "none",
+          "selected_params": null,
+          "selected_epoch": null,
+          "selection_grid": [],
+          "example_selection": "none",
+          "n_examples": 12,
+          "example_class_counts": {
+            "False": 9,
+            "True": 3
+          },
+          "example_ids": [
+            "855483097823448",
+            "855015404536884",
+            "2055",
+            "874456529259438",
+            "1055399494498473",
+            "1134201909951564",
+            "982766721761751",
+            "1038651359506620",
+            "1039102956128127",
+            "1080684628636626",
+            "1056936024344820",
+            "855178161187275"
+          ],
+          "example_source": "the fit part of this fold's training portion only",
+          "rare_class_definitions_in_prompt": false,
+          "prompt_skeleton_tokens": 1118,
+          "temperature": {
+            "temperature": 1.501010824697981,
+            "nll_before": 0.1869054574731843,
+            "nll_after": 0.171835783744653,
+            "n_calibration_items": 618,
+            "fitted": true
+          },
+          "n_fit": 4940,
+          "n_unused_selection": 618,
+          "n_calibrate": 618,
+          "inner_split_stratified": true,
+          "selection_slice_note": "kept and left unused: nothing is selected for this component, and an identical calibration slice is what makes its ECE comparable with the other three families' (llm_fewshot module docstring)",
+          "classes_present_in_examples": [
+            "False",
+            "True"
+          ],
+          "device": "cuda",
+          "precision": "bf16",
+          "max_prompt_tokens": 2048,
+          "tokenisation": {
+            "slice": "calibrate",
+            "n_items": 618,
+            "text_truncated": 0,
+            "text_truncated_share": 0.0,
+            "text_token_budget": 928,
+            "template_overhead_tokens": 1118,
+            "prompt_tokens_max": 1569,
+            "prompt_tokens_mean": 1155.5
+          },
+          "verbalisers": {
+            "True": "Ja",
+            "False": "Nein"
+          },
+          "verbaliser_token_lengths": [
+            2,
+            1
+          ],
+          "probability_interface": "verbaliser_sequence_score",
+          "trainable_params": 0,
+          "adapted_modules": 0,
+          "runtime_seconds": 729.5595638751984,
+          "started_utc": "2026-09-04T21:49:04+00:00",
+          "finished_utc": "2026-09-04T22:01:14+00:00",
+          "tokenisation_predict": {
+            "slice": "validation",
+            "n_items": 1544,
+            "text_truncated": 1,
+            "text_truncated_share": 0.0006,
+            "text_token_budget": 928,
+            "template_overhead_tokens": 1118,
+            "prompt_tokens_max": 2044,
+            "prompt_tokens_mean": 1160.4
+          },
+          "fold": 0
+        },
+        {
+          "component": "llm_qwen_fewshot",
+          "model_id": "Qwen/Qwen2.5-14B-Instruct",
+          "subtask": "vio",
+          "training": "none",
+          "selected_params": null,
+          "selected_epoch": null,
+          "selection_grid": [],
+          "example_selection": "none",
+          "n_examples": 12,
+          "example_class_counts": {
+            "False": 9,
+            "True": 3
+          },
+          "example_ids": [
+            "855120341193057",
+            "962237647147992",
+            "982727455099011",
+            "1063809053657517",
+            "1010208832350873",
+            "1010235899014833",
+            "991644260873997",
+            "982723345099422",
+            "1107477809290641",
+            "1011544105550679",
+            "1095900207115068",
+            "982670491771374"
+          ],
+          "example_source": "the fit part of this fold's training portion only",
+          "rare_class_definitions_in_prompt": false,
+          "prompt_skeleton_tokens": 617,
+          "temperature": {
+            "temperature": 2.98356507290911,
+            "nll_before": 0.2974643125064137,
+            "nll_after": 0.1638459309944528,
+            "n_calibration_items": 618,
+            "fitted": true
+          },
+          "n_fit": 4940,
+          "n_unused_selection": 618,
+          "n_calibrate": 618,
+          "inner_split_stratified": true,
+          "selection_slice_note": "kept and left unused: nothing is selected for this component, and an identical calibration slice is what makes its ECE comparable with the other three families' (llm_fewshot module docstring)",
+          "classes_present_in_examples": [
+            "False",
+            "True"
+          ],
+          "device": "cuda",
+          "precision": "bf16",
+          "max_prompt_tokens": 2048,
+          "tokenisation": {
+            "slice": "calibrate",
+            "n_items": 618,
+            "text_truncated": 0,
+            "text_truncated_share": 0.0,
+            "text_token_budget": 1429,
+            "template_overhead_tokens": 617,
+            "prompt_tokens_max": 1283,
+            "prompt_tokens_mean": 659.5
+          },
+          "verbalisers": {
+            "True": "Ja",
+            "False": "Nein"
+          },
+          "verbaliser_token_lengths": [
+            2,
+            1
+          ],
+          "probability_interface": "verbaliser_sequence_score",
+          "trainable_params": 0,
+          "adapted_modules": 0,
+          "runtime_seconds": 314.8721022605896,
+          "started_utc": "2026-09-04T22:23:34+00:00",
+          "finished_utc": "2026-09-04T22:28:49+00:00",
+          "tokenisation_predict": {
+            "slice": "validation",
+            "n_items": 1544,
+            "text_truncated": 0,
+            "text_truncated_share": 0.0,
+            "text_token_budget": 1429,
+            "template_overhead_tokens": 617,
+            "prompt_tokens_max": 1250,
+            "prompt_tokens_mean": 655.5
+          },
+          "fold": 1
+        },
+        {
+          "component": "llm_qwen_fewshot",
+          "model_id": "Qwen/Qwen2.5-14B-Instruct",
+          "subtask": "vio",
+          "training": "none",
+          "selected_params": null,
+          "selected_epoch": null,
+          "selection_grid": [],
+          "example_selection": "none",
+          "n_examples": 12,
+          "example_class_counts": {
+            "False": 9,
+            "True": 3
+          },
+          "example_ids": [
+            "1057207837650972",
+            "1077858312252591",
+            "1052433518128404",
+            "1063298467041909",
+            "985433518161738",
+            "876294655742292",
+            "1010343862337370",
+            "945835032121587",
+            "887993701239054",
+            "1043675839004172",
+            "946369072068183",
+            "1096274960410926"
+          ],
+          "example_source": "the fit part of this fold's training portion only",
+          "rare_class_definitions_in_prompt": false,
+          "prompt_skeleton_tokens": 846,
+          "temperature": {
+            "temperature": 2.2329360967204086,
+            "nll_before": 0.2575850416299861,
+            "nll_after": 0.18941918394425855,
+            "n_calibration_items": 618,
+            "fitted": true
+          },
+          "n_fit": 4940,
+          "n_unused_selection": 618,
+          "n_calibrate": 618,
+          "inner_split_stratified": true,
+          "selection_slice_note": "kept and left unused: nothing is selected for this component, and an identical calibration slice is what makes its ECE comparable with the other three families' (llm_fewshot module docstring)",
+          "classes_present_in_examples": [
+            "False",
+            "True"
+          ],
+          "device": "cuda",
+          "precision": "bf16",
+          "max_prompt_tokens": 2048,
+          "tokenisation": {
+            "slice": "calibrate",
+            "n_items": 618,
+            "text_truncated": 1,
+            "text_truncated_share": 0.0016,
+            "text_token_budget": 1200,
+            "template_overhead_tokens": 846,
+            "prompt_tokens_max": 2045,
+            "prompt_tokens_mean": 889.3
+          },
+          "verbalisers": {
+            "True": "Ja",
+            "False": "Nein"
+          },
+          "verbaliser_token_lengths": [
+            2,
+            1
+          ],
+          "probability_interface": "verbaliser_sequence_score",
+          "trainable_params": 0,
+          "adapted_modules": 0,
+          "runtime_seconds": 418.9250741004944,
+          "started_utc": "2026-09-04T22:41:25+00:00",
+          "finished_utc": "2026-09-04T22:48:24+00:00",
+          "tokenisation_predict": {
+            "slice": "validation",
+            "n_items": 1544,
+            "text_truncated": 2,
+            "text_truncated_share": 0.0013,
+            "text_token_budget": 1200,
+            "template_overhead_tokens": 846,
+            "prompt_tokens_max": 2047,
+            "prompt_tokens_mean": 891.2
+          },
+          "fold": 2
+        },
+        {
+          "component": "llm_qwen_fewshot",
+          "model_id": "Qwen/Qwen2.5-14B-Instruct",
+          "subtask": "vio",
+          "training": "none",
+          "selected_params": null,
+          "selected_epoch": null,
+          "selection_grid": [],
+          "example_selection": "none",
+          "n_examples": 12,
+          "example_class_counts": {
+            "False": 9,
+            "True": 3
+          },
+          "example_ids": [
+            "1088556174516138",
+            "985352358169854",
+            "1065812563457166",
+            "1057636954274727",
+            "861979730507118",
+            "1053593904679032",
+            "991644260873997",
+            "1012431662128590",
+            "1038652389506517",
+            "962718183766605",
+            "982643701774053",
+            "882959255075832"
+          ],
+          "example_source": "the fit part of this fold's training portion only",
+          "rare_class_definitions_in_prompt": false,
+          "prompt_skeleton_tokens": 686,
+          "temperature": {
+            "temperature": 2.08614196236021,
+            "nll_before": 0.2452328196288784,
+            "nll_after": 0.18993172908454103,
+            "n_calibration_items": 618,
+            "fitted": true
+          },
+          "n_fit": 4940,
+          "n_unused_selection": 618,
+          "n_calibrate": 618,
+          "inner_split_stratified": true,
+          "selection_slice_note": "kept and left unused: nothing is selected for this component, and an identical calibration slice is what makes its ECE comparable with the other three families' (llm_fewshot module docstring)",
+          "classes_present_in_examples": [
+            "False",
+            "True"
+          ],
+          "device": "cuda",
+          "precision": "bf16",
+          "max_prompt_tokens": 2048,
+          "tokenisation": {
+            "slice": "calibrate",
+            "n_items": 618,
+            "text_truncated": 0,
+            "text_truncated_share": 0.0,
+            "text_token_budget": 1360,
+            "template_overhead_tokens": 686,
+            "prompt_tokens_max": 1725,
+            "prompt_tokens_mean": 731.7
+          },
+          "verbalisers": {
+            "True": "Ja",
+            "False": "Nein"
+          },
+          "verbaliser_token_lengths": [
+            2,
+            1
+          ],
+          "probability_interface": "verbaliser_sequence_score",
+          "trainable_params": 0,
+          "adapted_modules": 0,
+          "runtime_seconds": 349.5998089313507,
+          "started_utc": "2026-09-04T23:06:11+00:00",
+          "finished_utc": "2026-09-04T23:12:00+00:00",
+          "tokenisation_predict": {
+            "slice": "validation",
+            "n_items": 1544,
+            "text_truncated": 0,
+            "text_truncated_share": 0.0,
+            "text_token_budget": 1360,
+            "template_overhead_tokens": 686,
+            "prompt_tokens_max": 1560,
+            "prompt_tokens_mean": 726.9
+          },
+          "fold": 3
+        },
+        {
+          "component": "llm_qwen_fewshot",
+          "model_id": "Qwen/Qwen2.5-14B-Instruct",
+          "subtask": "vio",
+          "training": "none",
+          "selected_params": null,
+          "selected_epoch": null,
+          "selection_grid": [],
+          "example_selection": "none",
+          "n_examples": 12,
+          "example_class_counts": {
+            "False": 9,
+            "True": 3
+          },
+          "example_ids": [
+            "1057020791003010",
+            "1112029988835423",
+            "1052433518128404",
+            "862069937164764",
+            "945393715499052",
+            "855054754532949",
+            "861954883842936",
+            "1063253910379698",
+            "1052408591464230",
+            "1152523294786092",
+            "982639011774522",
+            "1007225742649182"
+          ],
+          "example_source": "the fit part of this fold's training portion only",
+          "rare_class_definitions_in_prompt": false,
+          "prompt_skeleton_tokens": 707,
+          "temperature": {
+            "temperature": 1.6892342364012263,
+            "nll_before": 0.15689390043489868,
+            "nll_after": 0.13519396138939394,
+            "n_calibration_items": 618,
+            "fitted": true
+          },
+          "n_fit": 4940,
+          "n_unused_selection": 618,
+          "n_calibrate": 618,
+          "inner_split_stratified": true,
+          "selection_slice_note": "kept and left unused: nothing is selected for this component, and an identical calibration slice is what makes its ECE comparable with the other three families' (llm_fewshot module docstring)",
+          "classes_present_in_examples": [
+            "False",
+            "True"
+          ],
+          "device": "cuda",
+          "precision": "bf16",
+          "max_prompt_tokens": 2048,
+          "tokenisation": {
+            "slice": "calibrate",
+            "n_items": 618,
+            "text_truncated": 0,
+            "text_truncated_share": 0.0,
+            "text_token_budget": 1339,
+            "template_overhead_tokens": 707,
+            "prompt_tokens_max": 1373,
+            "prompt_tokens_mean": 748.9
+          },
+          "verbalisers": {
+            "True": "Ja",
+            "False": "Nein"
+          },
+          "verbaliser_token_lengths": [
+            2,
+            1
+          ],
+          "probability_interface": "verbaliser_sequence_score",
+          "trainable_params": 0,
+          "adapted_modules": 0,
+          "runtime_seconds": 352.09535694122314,
+          "started_utc": "2026-09-04T23:26:14+00:00",
+          "finished_utc": "2026-09-04T23:32:06+00:00",
+          "tokenisation_predict": {
+            "slice": "validation",
+            "n_items": 1544,
+            "text_truncated": 1,
+            "text_truncated_share": 0.0006,
+            "text_token_budget": 1339,
+            "template_overhead_tokens": 707,
+            "prompt_tokens_max": 2047,
+            "prompt_tokens_mean": 748.0
+          },
+          "fold": 4
+        }
+      ],
+      "component_store_key": "vio_2025/llm_qwen_fewshot__seed42",
+      "runtime_seconds": 7064.975184679031,
+      "fold_runtime_seconds_sum": 2165.051906108856,
+      "resumed_folds": []
+    }
+  ],
+  "seed_replicates": [
+    {
+      "model_seed": 43,
+      "partition_seed": 42,
+      "fold": 0,
+      "macro_f1": 0.752980228390746,
+      "selected_params": null,
+      "selected_epoch": null,
+      "fit_diagnosis": null,
+      "tokenisation": {
+        "slice": "calibrate",
+        "n_items": 618,
+        "text_truncated": 0,
+        "text_truncated_share": 0.0,
+        "text_token_budget": 1406,
+        "template_overhead_tokens": 640,
+        "prompt_tokens_max": 1311,
+        "prompt_tokens_mean": 677.6
+      },
+      "tokenisation_predict": {
+        "slice": "validation",
+        "n_items": 1544,
+        "text_truncated": 1,
+        "text_truncated_share": 0.0006,
+        "text_token_budget": 1406,
+        "template_overhead_tokens": 640,
+        "prompt_tokens_max": 2045,
+        "prompt_tokens_mean": 682.7
+      },
+      "prompt_skeleton_tokens": 640,
+      "max_prompt_tokens": 2048,
+      "verbaliser_token_lengths": [
+        2,
+        1
+      ],
+      "runtime_seconds": 1126.72305560112,
+      "resumed": false
+    },
+    {
+      "model_seed": 44,
+      "partition_seed": 42,
+      "fold": 0,
+      "macro_f1": 0.7828231887637829,
+      "selected_params": null,
+      "selected_epoch": null,
+      "fit_diagnosis": null,
+      "tokenisation": {
+        "slice": "calibrate",
+        "n_items": 618,
+        "text_truncated": 0,
+        "text_truncated_share": 0.0,
+        "text_token_budget": 1430,
+        "template_overhead_tokens": 616,
+        "prompt_tokens_max": 1490,
+        "prompt_tokens_mean": 657.3
+      },
+      "tokenisation_predict": {
+        "slice": "validation",
+        "n_items": 1544,
+        "text_truncated": 1,
+        "text_truncated_share": 0.0006,
+        "text_token_budget": 1430,
+        "template_overhead_tokens": 616,
+        "prompt_tokens_max": 2045,
+        "prompt_tokens_mean": 658.7
+      },
+      "prompt_skeleton_tokens": 616,
+      "max_prompt_tokens": 2048,
+      "verbaliser_token_lengths": [
+        2,
+        1
+      ],
+      "runtime_seconds": 1100.740338087082,
+      "resumed": false
+    }
+  ],
+  "dispersion": {
+    "mean_pooled_macro_f1": 0.784369588291157,
+    "seed_sd_macro_f1": 0.0,
+    "fold_sd_macro_f1_primary": 0.03102590716978395,
+    "per_seed_pooled_macro_f1": [
+      0.784369588291157
+    ],
+    "replicate_fold_macro_f1": [
+      0.752980228390746,
+      0.7828231887637829
+    ],
+    "replicate_sd_macro_f1": 0.0160469855612458
+  },
+  "runtime_seconds": 9297.162199497223,
+  "resumed": false,
+  "selection_diagnosis": {
+    "flags": [
+      "single_cell_grid"
+    ],
+    "notes": [
+      "the grid has no axis with more than one value -- nothing was selected, so no edge check is possible."
+    ],
+    "axes": {},
+    "n_distinct_winners": 0,
+    "n_fits": 0,
+    "margin": null,
+    "ok": true
+  },
+  "stopping_evidence": null
+}

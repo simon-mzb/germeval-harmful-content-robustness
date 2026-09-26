@@ -1,0 +1,3608 @@
+{
+ "experiment": "E4 significance, one Holm family per experiment (primary)",
+ "created": "2026-09-15T13:25:59+00:00",
+ "anchor": "THESIS_LOG NS 123 h24 (Simon, 2026-09-15); NS 124 l",
+ "source": "significance_e4.json",
+ "source_created": "2026-09-15T12:28:39+00:00",
+ "source_family_m": 108,
+ "rule": "the family follows the claim (the experiment, or for B12 the parent experiment), not the edition or the subtask; Holm on the paired bootstrap p-value is primary, BY beside it",
+ "disclosure": "the source artefact was corrected as one family of m = 108 before this rule was decided; it stays unchanged. `verdicts_differing_from_original` is reported, not argued",
+ "families": {
+  "e4a": {
+   "m": 48,
+   "survive_holm": 20,
+   "survive_by": 21,
+   "rows": [
+    {
+     "reference": "c2a_2025/encoder_1b__e4a-none__seed42",
+     "treatment": "c2a_2025/encoder_1b__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.879,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.017926339076638684,
+      "holm_mcnemar": 0.5377901722991605,
+      "by_mcnemar": 0.20192819377050467,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.11,
+     "treatment_minus_reference_ci_pp": [
+      -1.43,
+      1.26
+     ]
+    },
+    {
+     "reference": "c2a_2025/encoder_1b__e4a-none__seed42",
+     "treatment": "c2a_2025/encoder_1b__e4a-focal_loss__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.1628,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.48769605697597984,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -1.02,
+     "treatment_minus_reference_ci_pp": [
+      -2.48,
+      0.42
+     ]
+    },
+    {
+     "reference": "c2a_2025/encoder_1b__e4a-none__seed42",
+     "treatment": "c2a_2025/encoder_1b__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.9152,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.2694402276588404,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.09,
+     "treatment_minus_reference_ci_pp": [
+      -1.39,
+      1.24
+     ]
+    },
+    {
+     "reference": "c2a_2025/llm_llammlein__e4a-none__seed42",
+     "treatment": "c2a_2025/llm_llammlein__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0064,
+      "holm_bootstrap": 0.16640000000000002,
+      "by_bootstrap": 0.059554021399117286,
+      "p_mcnemar": 0.14785513784216733,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.9888841063940575,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.3264,
+      "by_bootstrap": 0.06273199368170572,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 1.72,
+     "treatment_minus_reference_ci_pp": [
+      0.51,
+      2.93
+     ]
+    },
+    {
+     "reference": "c2a_2025/llm_llammlein__e4a-none__seed42",
+     "treatment": "c2a_2025/llm_llammlein__e4a-focal_loss__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.1406,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.24715997321190383,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.93,
+     "treatment_minus_reference_ci_pp": [
+      -0.3,
+      2.14
+     ]
+    },
+    {
+     "reference": "c2a_2025/llm_llammlein__e4a-none__seed42",
+     "treatment": "c2a_2025/llm_llammlein__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.6328,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.3185419110445018,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.33,
+     "treatment_minus_reference_ci_pp": [
+      -0.98,
+      1.6
+     ]
+    },
+    {
+     "reference": "c2a_2025/tml_lightgbm__e4a-none__seed42",
+     "treatment": "c2a_2025/tml_lightgbm__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.030538844199610324,
+      "holm_mcnemar": 0.763471104990258,
+      "by_mcnemar": 0.2723330244938916,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 8.83,
+     "treatment_minus_reference_ci_pp": [
+      6.82,
+      10.88
+     ]
+    },
+    {
+     "reference": "c2a_2025/tml_lightgbm__e4a-none__seed42",
+     "treatment": "c2a_2025/tml_lightgbm__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.07952856571717799,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.6546493738276697,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 8.65,
+     "treatment_minus_reference_ci_pp": [
+      6.68,
+      10.65
+     ]
+    },
+    {
+     "reference": "c2a_2025/tml_svm__e4a-none__seed42",
+     "treatment": "c2a_2025/tml_svm__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0056,
+      "holm_bootstrap": 0.1512,
+      "by_bootstrap": 0.054478394575328874,
+      "p_mcnemar": 0.6072387695312499,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.2968,
+      "by_bootstrap": 0.05585348560257131,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -0.69,
+     "treatment_minus_reference_ci_pp": [
+      -1.31,
+      -0.17
+     ]
+    },
+    {
+     "reference": "c2a_2025/tml_svm__e4a-none__seed42",
+     "treatment": "c2a_2025/tml_svm__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0148,
+      "holm_bootstrap": 0.3408,
+      "by_bootstrap": 0.12182805819867502,
+      "p_mcnemar": 0.5078125,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.6364000000000001,
+      "by_bootstrap": 0.1274837674630118,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -0.51,
+     "treatment_minus_reference_ci_pp": [
+      -1.05,
+      -0.08
+     ]
+    },
+    {
+     "reference": "c2a_2025/tml_xgboost__e4a-none__seed42",
+     "treatment": "c2a_2025/tml_xgboost__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.0004352088212897492,
+      "holm_mcnemar": 0.01566751756643097,
+      "by_mcnemar": 0.007164952109278961,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 10.09,
+     "treatment_minus_reference_ci_pp": [
+      8.15,
+      12.04
+     ]
+    },
+    {
+     "reference": "c2a_2025/tml_xgboost__e4a-none__seed42",
+     "treatment": "c2a_2025/tml_xgboost__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.00042020665757010943,
+      "holm_mcnemar": 0.01554764633009405,
+      "by_mcnemar": 0.007164952109278961,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 9.3,
+     "treatment_minus_reference_ci_pp": [
+      7.38,
+      11.23
+     ]
+    },
+    {
+     "reference": "dbo_2025/encoder_1b__e4a-none__seed42",
+     "treatment": "dbo_2025/encoder_1b__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0006,
+      "holm_bootstrap": 0.0174,
+      "by_bootstrap": 0.006420667932092331,
+      "p_mcnemar": 0.022340467793224038,
+      "holm_mcnemar": 0.6031926304170491,
+      "by_mcnemar": 0.2173344320422653,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.034199999999999994,
+      "by_bootstrap": 0.006435947464986317,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 5.25,
+     "treatment_minus_reference_ci_pp": [
+      2.16,
+      8.61
+     ]
+    },
+    {
+     "reference": "dbo_2025/encoder_1b__e4a-none__seed42",
+     "treatment": "dbo_2025/encoder_1b__e4a-focal_loss__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.2714,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.15634515837133436,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -1.64,
+     "treatment_minus_reference_ci_pp": [
+      -4.56,
+      1.36
+     ]
+    },
+    {
+     "reference": "dbo_2025/encoder_1b__e4a-none__seed42",
+     "treatment": "dbo_2025/encoder_1b__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.4756,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 4.642799107052509e-19,
+      "holm_mcnemar": 2.1821155803146792e-17,
+      "by_mcnemar": 4.9683118902998266e-17,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 1.2,
+     "treatment_minus_reference_ci_pp": [
+      -2.07,
+      4.63
+     ]
+    },
+    {
+     "reference": "dbo_2025/llm_llammlein__e4a-none__seed42",
+     "treatment": "dbo_2025/llm_llammlein__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.319,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.010831507317956186,
+      "holm_mcnemar": 0.3421143904822449,
+      "by_mcnemar": 0.12878798461597168,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 1.97,
+     "treatment_minus_reference_ci_pp": [
+      -1.91,
+      5.91
+     ]
+    },
+    {
+     "reference": "dbo_2025/llm_llammlein__e4a-none__seed42",
+     "treatment": "dbo_2025/llm_llammlein__e4a-focal_loss__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.4702,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.06966629530834646,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.5964055309786328,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -1.43,
+     "treatment_minus_reference_ci_pp": [
+      -5.36,
+      2.55
+     ]
+    },
+    {
+     "reference": "dbo_2025/llm_llammlein__e4a-none__seed42",
+     "treatment": "dbo_2025/llm_llammlein__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.9518,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 3.667695840632493e-08,
+      "holm_mcnemar": 1.577109211471972e-06,
+      "by_mcnemar": 1.3082809482565264e-06,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.09,
+     "treatment_minus_reference_ci_pp": [
+      -3.92,
+      4.23
+     ]
+    },
+    {
+     "reference": "dbo_2025/tml_lightgbm__e4a-none__seed42",
+     "treatment": "dbo_2025/tml_lightgbm__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.00026843522210921316,
+      "holm_mcnemar": 0.010468973662259313,
+      "by_mcnemar": 0.005745111408135692,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 11.99,
+     "treatment_minus_reference_ci_pp": [
+      8.3,
+      15.62
+     ]
+    },
+    {
+     "reference": "dbo_2025/tml_lightgbm__e4a-none__seed42",
+     "treatment": "dbo_2025/tml_lightgbm__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.0037338886339012356,
+      "holm_mcnemar": 0.12695221355264202,
+      "by_mcnemar": 0.05327568669709713,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 12.22,
+     "treatment_minus_reference_ci_pp": [
+      8.55,
+      15.8
+     ]
+    },
+    {
+     "reference": "dbo_2025/tml_svm__e4a-none__seed42",
+     "treatment": "dbo_2025/tml_svm__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.5396,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.6476058959960938,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.38,
+     "treatment_minus_reference_ci_pp": [
+      -1.65,
+      0.47
+     ]
+    },
+    {
+     "reference": "dbo_2025/tml_svm__e4a-none__seed42",
+     "treatment": "dbo_2025/tml_svm__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.4228,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.11161176829829215,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.8166473465689391,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.57,
+     "treatment_minus_reference_ci_pp": [
+      -2.07,
+      0.87
+     ]
+    },
+    {
+     "reference": "dbo_2025/tml_xgboost__e4a-none__seed42",
+     "treatment": "dbo_2025/tml_xgboost__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 4.7025108891819225e-05,
+      "holm_mcnemar": 0.0019280294645645881,
+      "by_mcnemar": 0.001258052536103557,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 8.29,
+     "treatment_minus_reference_ci_pp": [
+      5.23,
+      11.6
+     ]
+    },
+    {
+     "reference": "dbo_2025/tml_xgboost__e4a-none__seed42",
+     "treatment": "dbo_2025/tml_xgboost__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.0006470942870005037,
+      "holm_mcnemar": 0.02264830004501763,
+      "by_mcnemar": 0.009892327470438778,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 8.15,
+     "treatment_minus_reference_ci_pp": [
+      4.94,
+      11.56
+     ]
+    },
+    {
+     "reference": "dbo_2026/encoder_1b__e4a-none__seed42",
+     "treatment": "dbo_2026/encoder_1b__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0932,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 0.7387731497172905,
+      "p_mcnemar": 1.393772686989081e-13,
+      "holm_mcnemar": 6.411354360149772e-12,
+      "by_mcnemar": 9.943279551085505e-12,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 0.7064668021788091,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 2.4,
+     "treatment_minus_reference_ci_pp": [
+      -0.34,
+      5.46
+     ]
+    },
+    {
+     "reference": "dbo_2026/encoder_1b__e4a-none__seed42",
+     "treatment": "dbo_2026/encoder_1b__e4a-focal_loss__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.5096,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.23730177864999652,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.96,
+     "treatment_minus_reference_ci_pp": [
+      -1.94,
+      3.9
+     ]
+    },
+    {
+     "reference": "dbo_2026/encoder_1b__e4a-none__seed42",
+     "treatment": "dbo_2026/encoder_1b__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.49,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 3.4112132382289628e-28,
+      "holm_mcnemar": 1.637382354349902e-26,
+      "by_mcnemar": 7.30075581607518e-26,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -1.18,
+     "treatment_minus_reference_ci_pp": [
+      -4.62,
+      2.25
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_llammlein__e4a-none__seed42",
+     "treatment": "dbo_2026/llm_llammlein__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0004,
+      "holm_bootstrap": 0.012,
+      "by_bootstrap": 0.004505731882170058,
+      "p_mcnemar": 0.7441771086186976,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0236,
+      "by_bootstrap": 0.004458891707768298,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 5.5,
+     "treatment_minus_reference_ci_pp": [
+      2.36,
+      8.74
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_llammlein__e4a-none__seed42",
+     "treatment": "dbo_2026/llm_llammlein__e4a-focal_loss__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.5508,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.0200215032164548,
+      "holm_mcnemar": 0.5731825312756671,
+      "by_mcnemar": 0.20404987881615053,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 1.15,
+     "treatment_minus_reference_ci_pp": [
+      -2.5,
+      4.77
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_llammlein__e4a-none__seed42",
+     "treatment": "dbo_2026/llm_llammlein__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.1348,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.44172264802076433,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 0.9952593737845941,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 3.01,
+     "treatment_minus_reference_ci_pp": [
+      -0.93,
+      6.82
+     ]
+    },
+    {
+     "reference": "dbo_2026/tml_lightgbm__e4a-none__seed42",
+     "treatment": "dbo_2026/tml_lightgbm__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0002,
+      "holm_bootstrap": 0.0066,
+      "by_bootstrap": 0.002378025160034197,
+      "p_mcnemar": 6.346550259757162e-12,
+      "holm_mcnemar": 2.855947616890723e-10,
+      "by_mcnemar": 3.395757644352922e-10,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.012400000000000001,
+      "by_bootstrap": 0.002320443643838604,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 4.09,
+     "treatment_minus_reference_ci_pp": [
+      1.82,
+      6.74
+     ]
+    },
+    {
+     "reference": "dbo_2026/tml_lightgbm__e4a-none__seed42",
+     "treatment": "dbo_2026/tml_lightgbm__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0002,
+      "holm_bootstrap": 0.0066,
+      "by_bootstrap": 0.002378025160034197,
+      "p_mcnemar": 8.790428465993929e-09,
+      "holm_mcnemar": 3.8677885250373287e-07,
+      "by_mcnemar": 3.762694810730587e-07,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.012400000000000001,
+      "by_bootstrap": 0.002320443643838604,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 3.6,
+     "treatment_minus_reference_ci_pp": [
+      1.79,
+      5.44
+     ]
+    },
+    {
+     "reference": "dbo_2026/tml_svm__e4a-none__seed42",
+     "treatment": "dbo_2026/tml_svm__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.3482,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.1144713633667912,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.8166473465689391,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.26,
+     "treatment_minus_reference_ci_pp": [
+      -0.7,
+      0.38
+     ]
+    },
+    {
+     "reference": "dbo_2026/tml_svm__e4a-none__seed42",
+     "treatment": "dbo_2026/tml_svm__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.0003421570184669141,
+      "holm_mcnemar": 0.013001966701742735,
+      "by_mcnemar": 0.0066572018066995125,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -1.23,
+     "treatment_minus_reference_ci_pp": [
+      -1.89,
+      -0.74
+     ]
+    },
+    {
+     "reference": "dbo_2026/tml_xgboost__e4a-none__seed42",
+     "treatment": "dbo_2026/tml_xgboost__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 8.946475705911444e-05,
+      "holm_mcnemar": 0.0035785902823645774,
+      "by_mcnemar": 0.002127494432229212,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 3.88,
+     "treatment_minus_reference_ci_pp": [
+      2.17,
+      5.66
+     ]
+    },
+    {
+     "reference": "dbo_2026/tml_xgboost__e4a-none__seed42",
+     "treatment": "dbo_2026/tml_xgboost__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 1.911834717180459e-06,
+      "holm_mcnemar": 8.029705812157928e-05,
+      "by_mcnemar": 5.845359933362565e-05,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 3.22,
+     "treatment_minus_reference_ci_pp": [
+      1.62,
+      4.91
+     ]
+    },
+    {
+     "reference": "vio_2025/encoder_1b__e4a-none__seed42",
+     "treatment": "vio_2025/encoder_1b__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.858,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.024456232858432767,
+      "holm_mcnemar": 0.6358620543192519,
+      "by_mcnemar": 0.22757297109264066,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.16,
+     "treatment_minus_reference_ci_pp": [
+      -1.73,
+      1.4
+     ]
+    },
+    {
+     "reference": "vio_2025/encoder_1b__e4a-none__seed42",
+     "treatment": "vio_2025/encoder_1b__e4a-focal_loss__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.317,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.9418598349236534,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.71,
+     "treatment_minus_reference_ci_pp": [
+      -0.64,
+      2.1
+     ]
+    },
+    {
+     "reference": "vio_2025/encoder_1b__e4a-none__seed42",
+     "treatment": "vio_2025/encoder_1b__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.531,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.010691074702570153,
+      "holm_mcnemar": 0.3421143904822449,
+      "by_mcnemar": 0.12878798461597168,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.51,
+     "treatment_minus_reference_ci_pp": [
+      -1.08,
+      2.11
+     ]
+    },
+    {
+     "reference": "vio_2025/llm_llammlein__e4a-none__seed42",
+     "treatment": "vio_2025/llm_llammlein__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.4344,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.1108364940628355,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.8166473465689391,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.49,
+     "treatment_minus_reference_ci_pp": [
+      -0.71,
+      1.69
+     ]
+    },
+    {
+     "reference": "vio_2025/llm_llammlein__e4a-none__seed42",
+     "treatment": "vio_2025/llm_llammlein__e4a-focal_loss__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0034,
+      "holm_bootstrap": 0.09519999999999999,
+      "by_bootstrap": 0.0346512237604983,
+      "p_mcnemar": 0.005361850543020822,
+      "holm_mcnemar": 0.17694106791968714,
+      "by_mcnemar": 0.07172221216301176,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.187,
+      "by_bootstrap": 0.03579499176513994,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -1.75,
+     "treatment_minus_reference_ci_pp": [
+      -2.99,
+      -0.55
+     ]
+    },
+    {
+     "reference": "vio_2025/llm_llammlein__e4a-none__seed42",
+     "treatment": "vio_2025/llm_llammlein__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0068,
+      "holm_bootstrap": 0.16999999999999998,
+      "by_bootstrap": 0.06063964158087202,
+      "p_mcnemar": 0.14268048429721875,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.9850580753360816,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.33999999999999997,
+      "by_bootstrap": 0.06552303577347651,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -1.85,
+     "treatment_minus_reference_ci_pp": [
+      -3.16,
+      -0.52
+     ]
+    },
+    {
+     "reference": "vio_2025/tml_lightgbm__e4a-none__seed42",
+     "treatment": "vio_2025/tml_lightgbm__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.31587447983048655,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 8.81,
+     "treatment_minus_reference_ci_pp": [
+      6.71,
+      10.87
+     ]
+    },
+    {
+     "reference": "vio_2025/tml_lightgbm__e4a-none__seed42",
+     "treatment": "vio_2025/tml_lightgbm__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.5160029354435862,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 10.13,
+     "treatment_minus_reference_ci_pp": [
+      8.0,
+      12.26
+     ]
+    },
+    {
+     "reference": "vio_2025/tml_svm__e4a-none__seed42",
+     "treatment": "vio_2025/tml_svm__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0142,
+      "holm_bootstrap": 0.3408,
+      "by_bootstrap": 0.12156464618094814,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.6248,
+      "by_bootstrap": 0.12419728364483852,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -0.98,
+     "treatment_minus_reference_ci_pp": [
+      -1.85,
+      -0.18
+     ]
+    },
+    {
+     "reference": "vio_2025/tml_svm__e4a-none__seed42",
+     "treatment": "vio_2025/tml_svm__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0002,
+      "holm_bootstrap": 0.0066,
+      "by_bootstrap": 0.002378025160034197,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.012400000000000001,
+      "by_bootstrap": 0.002320443643838604,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -1.32,
+     "treatment_minus_reference_ci_pp": [
+      -2.2,
+      -0.51
+     ]
+    },
+    {
+     "reference": "vio_2025/tml_xgboost__e4a-none__seed42",
+     "treatment": "vio_2025/tml_xgboost__e4a-class_weighting__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.019764914871574727,
+      "holm_mcnemar": 0.5731825312756671,
+      "by_mcnemar": 0.20404987881615053,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 10.73,
+     "treatment_minus_reference_ci_pp": [
+      8.55,
+      12.84
+     ]
+    },
+    {
+     "reference": "vio_2025/tml_xgboost__e4a-none__seed42",
+     "treatment": "vio_2025/tml_xgboost__e4a-random_oversampling__seed42",
+     "multiplicity": {
+      "family": "e4a",
+      "m": 48,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0048000000000000004,
+      "by_bootstrap": 0.0014268150960205183,
+      "p_mcnemar": 0.10485266670935155,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 0.8166473465689391,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4a",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 10.11,
+     "treatment_minus_reference_ci_pp": [
+      7.99,
+      12.24
+     ]
+    }
+   ]
+  },
+  "e4b": {
+   "m": 15,
+   "survive_holm": 1,
+   "survive_by": 1,
+   "rows": [
+    {
+     "reference": "c2a_2025/encoder_1b__seed42",
+     "treatment": "c2a_2025/encoder_1b__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.2608,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.4317818766335849,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.74,
+     "treatment_minus_reference_ci_pp": [
+      -1.98,
+      0.55
+     ]
+    },
+    {
+     "reference": "c2a_2025/llm_llammlein__seed42",
+     "treatment": "c2a_2025/llm_llammlein__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.1172,
+      "holm_bootstrap": 0.8204,
+      "by_bootstrap": 0.64816073001073,
+      "p_mcnemar": 0.07299804543011544,
+      "holm_mcnemar": 0.9489745905915007,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 0.8767002472260748,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.56,
+     "treatment_minus_reference_ci_pp": [
+      -1.26,
+      0.13
+     ]
+    },
+    {
+     "reference": "c2a_2025/tml_lightgbm__seed42",
+     "treatment": "c2a_2025/tml_lightgbm__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0366,
+      "holm_bootstrap": 0.2928,
+      "by_bootstrap": 0.22771346466033968,
+      "p_mcnemar": 0.375,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 0.2889919188097328,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 0.55,
+     "treatment_minus_reference_ci_pp": [
+      0.12,
+      1.14
+     ]
+    },
+    {
+     "reference": "c2a_2025/tml_svm__seed42",
+     "treatment": "c2a_2025/tml_svm__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 1.0,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.0,
+     "treatment_minus_reference_ci_pp": [
+      -0.0,
+      -0.0
+     ]
+    },
+    {
+     "reference": "c2a_2025/tml_xgboost__seed42",
+     "treatment": "c2a_2025/tml_xgboost__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.2422,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.3876953125,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "c2a_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.42,
+     "treatment_minus_reference_ci_pp": [
+      -1.16,
+      0.27
+     ]
+    },
+    {
+     "reference": "dbo_2025/encoder_1b__seed42",
+     "treatment": "dbo_2025/encoder_1b__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0056,
+      "holm_bootstrap": 0.0728,
+      "by_bootstrap": 0.0929104118104118,
+      "p_mcnemar": 0.3012997367891099,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.2968,
+      "by_bootstrap": 0.05585348560257131,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -5.67,
+     "treatment_minus_reference_ci_pp": [
+      -9.69,
+      -1.66
+     ]
+    },
+    {
+     "reference": "dbo_2025/llm_llammlein__seed42",
+     "treatment": "dbo_2025/llm_llammlein__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0254,
+      "holm_bootstrap": 0.2286,
+      "by_bootstrap": 0.18060646377432094,
+      "p_mcnemar": 0.14610046596341814,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.9652,
+      "by_bootstrap": 0.20338198303672722,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -2.31,
+     "treatment_minus_reference_ci_pp": [
+      -4.75,
+      -0.23
+     ]
+    },
+    {
+     "reference": "dbo_2025/tml_lightgbm__seed42",
+     "treatment": "dbo_2025/tml_lightgbm__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0126,
+      "holm_bootstrap": 0.1386,
+      "by_bootstrap": 0.12542905594405596,
+      "p_mcnemar": 0.087825095630195,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.5922000000000001,
+      "by_bootstrap": 0.11553563755693178,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 0.91,
+     "treatment_minus_reference_ci_pp": [
+      0.19,
+      1.74
+     ]
+    },
+    {
+     "reference": "dbo_2025/tml_svm__seed42",
+     "treatment": "dbo_2025/tml_svm__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0006,
+      "holm_bootstrap": 0.009,
+      "by_bootstrap": 0.029864060939060938,
+      "p_mcnemar": 0.008009942329880037,
+      "holm_mcnemar": 0.11213919261832052,
+      "by_mcnemar": 0.199341171548251,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.034199999999999994,
+      "by_bootstrap": 0.006435947464986317,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4b",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -0.71,
+     "treatment_minus_reference_ci_pp": [
+      -1.24,
+      -0.29
+     ]
+    },
+    {
+     "reference": "dbo_2025/tml_xgboost__seed42",
+     "treatment": "dbo_2025/tml_xgboost__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0166,
+      "holm_bootstrap": 0.166,
+      "by_bootstrap": 0.1377065032190032,
+      "p_mcnemar": 0.6366016325636008,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.6636000000000001,
+      "by_bootstrap": 0.13481777570702289,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "dbo_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 1.48,
+     "treatment_minus_reference_ci_pp": [
+      0.17,
+      3.28
+     ]
+    },
+    {
+     "reference": "vio_2025/encoder_1b__seed42",
+     "treatment": "vio_2025/encoder_1b__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0078,
+      "holm_bootstrap": 0.09359999999999999,
+      "by_bootstrap": 0.09705819805194804,
+      "p_mcnemar": 0.0028180840782303348,
+      "holm_mcnemar": 0.04227126117345502,
+      "by_mcnemar": 0.14026572440611348,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.37439999999999996,
+      "by_bootstrap": 0.0726945541536979,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -1.99,
+     "treatment_minus_reference_ci_pp": [
+      -3.46,
+      -0.57
+     ]
+    },
+    {
+     "reference": "vio_2025/llm_llammlein__seed42",
+     "treatment": "vio_2025/llm_llammlein__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.9724,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.01,
+     "treatment_minus_reference_ci_pp": [
+      -0.46,
+      0.48
+     ]
+    },
+    {
+     "reference": "vio_2025/tml_lightgbm__seed42",
+     "treatment": "vio_2025/tml_lightgbm__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.6338,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.25,
+     "treatment_minus_reference_ci_pp": [
+      -0.74,
+      1.29
+     ]
+    },
+    {
+     "reference": "vio_2025/tml_svm__seed42",
+     "treatment": "vio_2025/tml_svm__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.739,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.0,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.13,
+     "treatment_minus_reference_ci_pp": [
+      -0.0,
+      0.4
+     ]
+    },
+    {
+     "reference": "vio_2025/tml_xgboost__seed42",
+     "treatment": "vio_2025/tml_xgboost__e4b__seed42",
+     "multiplicity": {
+      "family": "e4b",
+      "m": 15,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0052,
+      "holm_bootstrap": 0.0728,
+      "by_bootstrap": 0.0929104118104118,
+      "p_mcnemar": 0.7744140625,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.2808,
+      "by_bootstrap": 0.05374991276818875,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4b",
+     "cell": "vio_2025",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 0.87,
+     "treatment_minus_reference_ci_pp": [
+      0.22,
+      1.65
+     ]
+    }
+   ]
+  },
+  "e4c": {
+   "m": 45,
+   "survive_holm": 32,
+   "survive_by": 33,
+   "rows": [
+    {
+     "reference": "c2a_2026/encoder_1b__e4c__seed42",
+     "treatment": "c2a_2026/llm_llammlein__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0754,
+      "holm_bootstrap": 0.48860000000000003,
+      "by_bootstrap": 0.37280147390164087,
+      "p_mcnemar": 0.10715550703227236,
+      "holm_mcnemar": 0.8572440562581789,
+      "by_mcnemar": 0.5576955320160377,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 0.5792642626031153,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 1.3,
+     "treatment_minus_reference_ci_pp": [
+      -0.1,
+      2.75
+     ]
+    },
+    {
+     "reference": "c2a_2026/encoder_1b__e4c__seed42",
+     "treatment": "c2a_2026/llm_qwen_fewshot__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 1.1689517487157616e-33,
+      "holm_mcnemar": 4.55891181999147e-32,
+      "by_mcnemar": 3.3026671833356307e-32,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -11.44,
+     "treatment_minus_reference_ci_pp": [
+      -13.35,
+      -9.53
+     ]
+    },
+    {
+     "reference": "c2a_2026/encoder_1b__e4c__seed42",
+     "treatment": "c2a_2026/tml_lightgbm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 4.016063333198739e-23,
+      "holm_mcnemar": 1.3654615332875712e-21,
+      "by_mcnemar": 6.61889624181621e-22,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -25.99,
+     "treatment_minus_reference_ci_pp": [
+      -28.02,
+      -23.83
+     ]
+    },
+    {
+     "reference": "c2a_2026/encoder_1b__e4c__seed42",
+     "treatment": "c2a_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 1.197562706489915e-21,
+      "holm_mcnemar": 3.95195693141672e-20,
+      "by_mcnemar": 1.821885909280059e-20,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -18.73,
+     "treatment_minus_reference_ci_pp": [
+      -20.77,
+      -16.64
+     ]
+    },
+    {
+     "reference": "c2a_2026/encoder_1b__e4c__seed42",
+     "treatment": "c2a_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 1.5189741978107098e-23,
+      "holm_mcnemar": 5.316409692337484e-22,
+      "by_mcnemar": 2.731014322461515e-22,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -27.54,
+     "treatment_minus_reference_ci_pp": [
+      -29.55,
+      -25.43
+     ]
+    },
+    {
+     "reference": "c2a_2026/llm_llammlein__e4c__seed42",
+     "treatment": "c2a_2026/llm_qwen_fewshot__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 4.429337287884288e-41,
+      "holm_mcnemar": 1.7717349151537152e-39,
+      "by_mcnemar": 1.460003067489619e-39,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -12.74,
+     "treatment_minus_reference_ci_pp": [
+      -14.6,
+      -10.9
+     ]
+    },
+    {
+     "reference": "c2a_2026/llm_llammlein__e4c__seed42",
+     "treatment": "c2a_2026/tml_lightgbm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 4.394674921258051e-28,
+      "holm_mcnemar": 1.626029720865479e-26,
+      "by_mcnemar": 9.657184131821862e-27,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -27.3,
+     "treatment_minus_reference_ci_pp": [
+      -29.35,
+      -25.18
+     ]
+    },
+    {
+     "reference": "c2a_2026/llm_llammlein__e4c__seed42",
+     "treatment": "c2a_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 4.603883725670679e-26,
+      "holm_mcnemar": 1.6573981412414445e-24,
+      "by_mcnemar": 9.105223546959187e-25,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -20.03,
+     "treatment_minus_reference_ci_pp": [
+      -22.14,
+      -17.92
+     ]
+    },
+    {
+     "reference": "c2a_2026/llm_llammlein__e4c__seed42",
+     "treatment": "c2a_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 1.2232420377009275e-28,
+      "holm_mcnemar": 4.648319743263525e-27,
+      "by_mcnemar": 3.0240479747569785e-27,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -28.84,
+     "treatment_minus_reference_ci_pp": [
+      -30.89,
+      -26.72
+     ]
+    },
+    {
+     "reference": "c2a_2026/llm_qwen_fewshot__e4c__seed42",
+     "treatment": "c2a_2026/tml_lightgbm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.006463527198201922,
+      "holm_mcnemar": 0.10341643517123075,
+      "by_mcnemar": 0.04128377900910112,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -14.56,
+     "treatment_minus_reference_ci_pp": [
+      -16.82,
+      -12.18
+     ]
+    },
+    {
+     "reference": "c2a_2026/llm_qwen_fewshot__e4c__seed42",
+     "treatment": "c2a_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.0006999567093232881,
+      "holm_mcnemar": 0.015399047605112338,
+      "by_mcnemar": 0.005768012663639793,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -7.29,
+     "treatment_minus_reference_ci_pp": [
+      -9.57,
+      -4.96
+     ]
+    },
+    {
+     "reference": "c2a_2026/llm_qwen_fewshot__e4c__seed42",
+     "treatment": "c2a_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.007746456276296214,
+      "holm_mcnemar": 0.108450387868147,
+      "by_mcnemar": 0.04787616573802793,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -16.1,
+     "treatment_minus_reference_ci_pp": [
+      -18.36,
+      -13.8
+     ]
+    },
+    {
+     "reference": "c2a_2026/tml_lightgbm__e4c__seed42",
+     "treatment": "c2a_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.27249048346994864,
+      "holm_mcnemar": 0.8741711753770159,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 7.27,
+     "treatment_minus_reference_ci_pp": [
+      5.12,
+      9.43
+     ]
+    },
+    {
+     "reference": "c2a_2026/tml_lightgbm__e4c__seed42",
+     "treatment": "c2a_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0698,
+      "holm_bootstrap": 0.48860000000000003,
+      "by_bootstrap": 0.35396235976786417,
+      "p_mcnemar": 0.9160510722818964,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 0.543587763743616,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -1.54,
+     "treatment_minus_reference_ci_pp": [
+      -3.25,
+      0.12
+     ]
+    },
+    {
+     "reference": "c2a_2026/tml_svm__e4c__seed42",
+     "treatment": "c2a_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.2161633271794692,
+      "holm_mcnemar": 0.8741711753770159,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "c2a_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -8.81,
+     "treatment_minus_reference_ci_pp": [
+      -10.95,
+      -6.69
+     ]
+    },
+    {
+     "reference": "dbo_2026/encoder_1b__e4c__seed42",
+     "treatment": "dbo_2026/llm_llammlein__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0072,
+      "holm_bootstrap": 0.0936,
+      "by_bootstrap": 0.04315039967995843,
+      "p_mcnemar": 0.1748342350754032,
+      "holm_mcnemar": 0.8741711753770159,
+      "by_mcnemar": 0.8433520155861586,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.3528,
+      "by_bootstrap": 0.06822104312885495,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 7.81,
+     "treatment_minus_reference_ci_pp": [
+      1.86,
+      13.77
+     ]
+    },
+    {
+     "reference": "dbo_2026/encoder_1b__e4c__seed42",
+     "treatment": "dbo_2026/llm_qwen_fewshot__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 1.1015561446016739e-290,
+      "holm_mcnemar": 4.846847036247365e-289,
+      "by_mcnemar": 1.089288472925499e-288,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -9.69,
+     "treatment_minus_reference_ci_pp": [
+      -15.01,
+      -4.84
+     ]
+    },
+    {
+     "reference": "dbo_2026/encoder_1b__e4c__seed42",
+     "treatment": "dbo_2026/tml_lightgbm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 4.760788902580105e-06,
+      "holm_mcnemar": 0.00012854130036966282,
+      "by_mcnemar": 4.89592534712272e-05,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -11.73,
+     "treatment_minus_reference_ci_pp": [
+      -17.37,
+      -6.6
+     ]
+    },
+    {
+     "reference": "dbo_2026/encoder_1b__e4c__seed42",
+     "treatment": "dbo_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 4.5184159830252945e-11,
+      "holm_mcnemar": 1.4007089547378412e-09,
+      "by_mcnemar": 5.957461142962197e-10,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -8.75,
+     "treatment_minus_reference_ci_pp": [
+      -14.54,
+      -3.38
+     ]
+    },
+    {
+     "reference": "dbo_2026/encoder_1b__e4c__seed42",
+     "treatment": "dbo_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0004,
+      "holm_bootstrap": 0.0056,
+      "by_bootstrap": 0.0024721583149976186,
+      "p_mcnemar": 0.0003589282734203325,
+      "holm_mcnemar": 0.008255350288667647,
+      "by_mcnemar": 0.00308635657608283,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0236,
+      "by_bootstrap": 0.004458891707768298,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -8.79,
+     "treatment_minus_reference_ci_pp": [
+      -14.55,
+      -3.55
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_llammlein__e4c__seed42",
+     "treatment": "dbo_2026/llm_qwen_fewshot__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 3.5433038937260634e-305,
+      "holm_mcnemar": 1.5944867521767285e-303,
+      "by_mcnemar": 7.00768654675066e-303,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -17.5,
+     "treatment_minus_reference_ci_pp": [
+      -22.79,
+      -11.5
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_llammlein__e4c__seed42",
+     "treatment": "dbo_2026/tml_lightgbm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 3.067472179030708e-08,
+      "holm_mcnemar": 8.895669319189053e-07,
+      "by_mcnemar": 3.568600872195119e-07,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -19.54,
+     "treatment_minus_reference_ci_pp": [
+      -25.38,
+      -12.85
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_llammlein__e4c__seed42",
+     "treatment": "dbo_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 5.2403807049610754e-14,
+      "holm_mcnemar": 1.6769218255875441e-12,
+      "by_mcnemar": 7.402886133441487e-13,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -16.56,
+     "treatment_minus_reference_ci_pp": [
+      -22.4,
+      -9.75
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_llammlein__e4c__seed42",
+     "treatment": "dbo_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 4.951063729839887e-06,
+      "holm_mcnemar": 0.00012872765697583707,
+      "by_mcnemar": 4.89592534712272e-05,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -16.6,
+     "treatment_minus_reference_ci_pp": [
+      -22.54,
+      -9.75
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_qwen_fewshot__e4c__seed42",
+     "treatment": "dbo_2026/tml_lightgbm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.199,
+      "holm_bootstrap": 0.9950000000000001,
+      "by_bootstrap": 0.9599209847502947,
+      "p_mcnemar": 6.8127000819052644e-223,
+      "holm_mcnemar": 2.861334034400211e-221,
+      "by_mcnemar": 3.3684146310134114e-221,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -2.04,
+     "treatment_minus_reference_ci_pp": [
+      -5.15,
+      1.04
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_qwen_fewshot__e4c__seed42",
+     "treatment": "dbo_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.6272,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.4511815528580136e-210,
+      "holm_mcnemar": 5.949844366717856e-209,
+      "by_mcnemar": 5.740080867950551e-209,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.94,
+     "treatment_minus_reference_ci_pp": [
+      -2.72,
+      4.54
+     ]
+    },
+    {
+     "reference": "dbo_2026/llm_qwen_fewshot__e4c__seed42",
+     "treatment": "dbo_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.613,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 1.4745725189166611e-232,
+      "holm_mcnemar": 6.340661831341643e-231,
+      "by_mcnemar": 9.721004569884818e-231,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": 0.9,
+     "treatment_minus_reference_ci_pp": [
+      -2.55,
+      4.34
+     ]
+    },
+    {
+     "reference": "dbo_2026/tml_lightgbm__e4c__seed42",
+     "treatment": "dbo_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0132,
+      "holm_bootstrap": 0.15839999999999999,
+      "by_bootstrap": 0.07678232884227897,
+      "p_mcnemar": 0.005590846448815762,
+      "holm_mcnemar": 0.09518646167704511,
+      "by_mcnemar": 0.038128158720868395,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.6072,
+      "by_bootstrap": 0.11911610705038167,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 2.98,
+     "treatment_minus_reference_ci_pp": [
+      0.6,
+      5.52
+     ]
+    },
+    {
+     "reference": "dbo_2026/tml_lightgbm__e4c__seed42",
+     "treatment": "dbo_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.05134833256326058,
+      "holm_mcnemar": 0.5018682383504685,
+      "by_mcnemar": 0.2744674752595192,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 2.94,
+     "treatment_minus_reference_ci_pp": [
+      1.08,
+      5.13
+     ]
+    },
+    {
+     "reference": "dbo_2026/tml_svm__e4c__seed42",
+     "treatment": "dbo_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.9904,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 2.169910743137685e-05,
+      "holm_mcnemar": 0.0005424776857844213,
+      "by_mcnemar": 0.00020435668138859008,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "dbo_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.04,
+     "treatment_minus_reference_ci_pp": [
+      -2.94,
+      2.89
+     ]
+    },
+    {
+     "reference": "vio_2026/encoder_1b__e4c__seed42",
+     "treatment": "vio_2026/llm_llammlein__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0158,
+      "holm_bootstrap": 0.15839999999999999,
+      "by_bootstrap": 0.08445427324748622,
+      "p_mcnemar": 0.11548362406597773,
+      "holm_mcnemar": 0.8572440562581789,
+      "by_mcnemar": 0.5709876029615318,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.6636000000000001,
+      "by_bootstrap": 0.13209466684263585,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 2.44,
+     "treatment_minus_reference_ci_pp": [
+      0.47,
+      4.44
+     ]
+    },
+    {
+     "reference": "vio_2026/encoder_1b__e4c__seed42",
+     "treatment": "vio_2026/llm_qwen_fewshot__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0158,
+      "holm_bootstrap": 0.15839999999999999,
+      "by_bootstrap": 0.08445427324748622,
+      "p_mcnemar": 1.6176749166746792e-06,
+      "holm_mcnemar": 4.529489766689102e-05,
+      "by_mcnemar": 1.7773993316535054e-05,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.6636000000000001,
+      "by_bootstrap": 0.13209466684263585,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -3.03,
+     "treatment_minus_reference_ci_pp": [
+      -5.5,
+      -0.55
+     ]
+    },
+    {
+     "reference": "vio_2026/encoder_1b__e4c__seed42",
+     "treatment": "vio_2026/tml_lightgbm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.034478785731576665,
+      "holm_mcnemar": 0.44822421451049665,
+      "by_mcnemar": 0.20110065740700706,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -20.65,
+     "treatment_minus_reference_ci_pp": [
+      -23.8,
+      -17.36
+     ]
+    },
+    {
+     "reference": "vio_2026/encoder_1b__e4c__seed42",
+     "treatment": "vio_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.05018682383504685,
+      "holm_mcnemar": 0.5018682383504685,
+      "by_mcnemar": 0.2744674752595192,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -17.04,
+     "treatment_minus_reference_ci_pp": [
+      -20.23,
+      -13.9
+     ]
+    },
+    {
+     "reference": "vio_2026/encoder_1b__e4c__seed42",
+     "treatment": "vio_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.00528813675983584,
+      "holm_mcnemar": 0.09518646167704511,
+      "by_mcnemar": 0.0373517464619221,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -20.73,
+     "treatment_minus_reference_ci_pp": [
+      -23.83,
+      -17.44
+     ]
+    },
+    {
+     "reference": "vio_2026/llm_llammlein__e4c__seed42",
+     "treatment": "vio_2026/llm_qwen_fewshot__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 6.8430208453472e-11,
+      "holm_mcnemar": 2.05290625360416e-09,
+      "by_mcnemar": 8.458515441263557e-10,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -5.47,
+     "treatment_minus_reference_ci_pp": [
+      -7.66,
+      -3.26
+     ]
+    },
+    {
+     "reference": "vio_2026/llm_llammlein__e4c__seed42",
+     "treatment": "vio_2026/tml_lightgbm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.0010381392158098975,
+      "holm_mcnemar": 0.021800923532007847,
+      "by_mcnemar": 0.008212622382366546,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -23.09,
+     "treatment_minus_reference_ci_pp": [
+      -26.41,
+      -19.65
+     ]
+    },
+    {
+     "reference": "vio_2026/llm_llammlein__e4c__seed42",
+     "treatment": "vio_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.0014349892307171997,
+      "holm_mcnemar": 0.028699784614343995,
+      "by_mcnemar": 0.01091544787276788,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -19.48,
+     "treatment_minus_reference_ci_pp": [
+      -22.79,
+      -16.21
+     ]
+    },
+    {
+     "reference": "vio_2026/llm_llammlein__e4c__seed42",
+     "treatment": "vio_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 8.894048301268372e-05,
+      "holm_mcnemar": 0.0021345715923044095,
+      "by_mcnemar": 0.00079954528952622,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -23.17,
+     "treatment_minus_reference_ci_pp": [
+      -26.43,
+      -19.85
+     ]
+    },
+    {
+     "reference": "vio_2026/llm_qwen_fewshot__e4c__seed42",
+     "treatment": "vio_2026/tml_lightgbm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.00647105174008328,
+      "holm_mcnemar": 0.10341643517123075,
+      "by_mcnemar": 0.04128377900910112,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -17.62,
+     "treatment_minus_reference_ci_pp": [
+      -20.93,
+      -14.16
+     ]
+    },
+    {
+     "reference": "vio_2026/llm_qwen_fewshot__e4c__seed42",
+     "treatment": "vio_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.0041318597054507845,
+      "holm_mcnemar": 0.0785053344035649,
+      "by_mcnemar": 0.030265515043655603,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -14.01,
+     "treatment_minus_reference_ci_pp": [
+      -17.4,
+      -10.57
+     ]
+    },
+    {
+     "reference": "vio_2026/llm_qwen_fewshot__e4c__seed42",
+     "treatment": "vio_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0001,
+      "holm_bootstrap": 0.0045000000000000005,
+      "by_bootstrap": 0.0006379763393542241,
+      "p_mcnemar": 0.034572130303904235,
+      "holm_mcnemar": 0.44822421451049665,
+      "by_mcnemar": 0.20110065740700706,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.0108,
+      "by_bootstrap": 0.0012358884624792566,
+      "survives_holm_bootstrap": true,
+      "survives_by_bootstrap": true
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -17.7,
+     "treatment_minus_reference_ci_pp": [
+      -20.98,
+      -14.25
+     ]
+    },
+    {
+     "reference": "vio_2026/tml_lightgbm__e4c__seed42",
+     "treatment": "vio_2026/tml_svm__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0164,
+      "holm_bootstrap": 0.15839999999999999,
+      "by_bootstrap": 0.08535451866518094,
+      "p_mcnemar": 0.80973205979319,
+      "holm_mcnemar": 1.0,
+      "by_mcnemar": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.6636000000000001,
+      "by_bootstrap": 0.13481777570702289,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": 3.61,
+     "treatment_minus_reference_ci_pp": [
+      0.72,
+      6.51
+     ]
+    },
+    {
+     "reference": "vio_2026/tml_lightgbm__e4c__seed42",
+     "treatment": "vio_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.8938,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "p_mcnemar": 0.03763531378731433,
+      "holm_mcnemar": 0.44822421451049665,
+      "by_mcnemar": 0.212663894667094,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 1.0,
+      "by_bootstrap": 1.0,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "indistinguishable",
+     "treatment_minus_reference_pp": -0.08,
+     "treatment_minus_reference_ci_pp": [
+      -1.63,
+      1.49
+     ]
+    },
+    {
+     "reference": "vio_2026/tml_svm__e4c__seed42",
+     "treatment": "vio_2026/tml_xgboost__e4c__seed42",
+     "multiplicity": {
+      "family": "e4c",
+      "m": 45,
+      "alpha": 0.05,
+      "p_bootstrap": 0.0136,
+      "holm_bootstrap": 0.15839999999999999,
+      "by_bootstrap": 0.07684880704906882,
+      "p_mcnemar": 0.11522804192045044,
+      "holm_mcnemar": 0.8572440562581789,
+      "by_mcnemar": 0.5709876029615318,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false,
+      "primary": "holm_bootstrap -- Holm on the paired macro-F1 p-value: the correction that matches both the decision rule and a dependence structure we cannot assume away"
+     },
+     "original_multiplicity": {
+      "m": 108,
+      "holm_bootstrap": 0.612,
+      "by_bootstrap": 0.12080809720734731,
+      "survives_holm_bootstrap": false,
+      "survives_by_bootstrap": false
+     },
+     "block": "e4c",
+     "cell": "vio_2026",
+     "decided_by_paired_ci": "distinguishable",
+     "treatment_minus_reference_pp": -3.68,
+     "treatment_minus_reference_ci_pp": [
+      -6.64,
+      -0.73
+     ]
+    }
+   ]
+  }
+ },
+ "verdicts_differing_from_original": [
+  {
+   "family": "e4c",
+   "method": "by",
+   "reference": "dbo_2026/encoder_1b__e4c__seed42",
+   "treatment": "dbo_2026/llm_llammlein__e4c__seed42",
+   "p_bootstrap": 0.0072,
+   "adjusted_original": 0.06822104312885495,
+   "adjusted_per_experiment": 0.04315039967995843
+  }
+ ]
+}
