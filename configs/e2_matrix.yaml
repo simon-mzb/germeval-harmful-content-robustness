@@ -1,0 +1,943 @@
+# E2 / E4 run matrix — machine-readable companion to the design notes (v1.0)
+# Package B1 design lock, 2026-08-06. Per-run configs are generated from this in B3.
+# Do not edit values here without recording the change in the project log.
+
+meta:
+  design_lock: "notes/e2_design_lock.md"
+  version: "1.12"
+  date: "2026-09-01"
+  changelog:
+    - "v1.12 (2026-09-01, THESIS_LOG #107, review 6): llm_protocol.truncation
+       described a quantity that is ZERO by construction -- no prompt can exceed
+       max_seq_len, because the item TEXT is what gets cut. It now describes what
+       is recorded, and the recorded figure covers the validation slice as well as
+       the fit slice, each naming itself. Only llm_llammlein moves,
+       6dbadf13e856 -> 43e4808c6a7c; nothing is invalidated, no LLM artefact
+       exists. The target-module suffix check below is DISCHARGED in the same
+       session, offline, against the real cached configs."
+    - "v1.11 (2026-08-30, THESIS_LOG #106): the few-shot component's module exists,
+       and the matrix now declares what that module SHARES with the fine-tuned arm
+       instead of leaving it to be read off the code -- inner_split, eval_batch_size,
+       the probability interface, the verbalisers and the text profile, plus the
+       reason the unused selection slice is kept. No behaviour changed and no value
+       moved; what changed is that the sharing is declared. config_ids printed and
+       compared before and after: only llm_qwen_fewshot moved, 25d2aff16968 ->
+       a93c86a93477, and NOTHING is invalidated because no few-shot artefact exists.
+       ⚠️ This edit was free exactly once. After B6 has run, the same edit -- adding
+       prose to a hashed protocol block -- would orphan that arm's stored
+       probabilities, which is #98e stated as a deadline rather than as a warning."
+    - "v1.10 (2026-08-29, pre-B6): the LLM fine-tune arm's two parked values are
+       decided against the completed encoder arm, and the arm's commentary leaves the
+       hashed block. config_ids printed and compared before and after: only
+       llm_llammlein moves (0fb2eb2abcce -> 0b3302f4f8f4), every other component is
+       byte-identical, and NOTHING is invalidated because no LLM artefact exists.
+       (a) EPOCHS. The fixed cap of 3 with no patience is replaced by a CEILING of 8
+       with patience 2, identical to encoder_protocol v1.7. The trigger v1.4
+       pre-registered has fired: over 90 B4 fits, 41 (46%) peak at epoch 4 or later
+       and the ceiling of 8 bound in only 2, so a cap of 3 would truncate nearly half
+       the fits and at patience 2 would leave early stopping barely reachable. It is
+       also the #90(a) split for the third time -- tml_protocol has stopped early
+       since v1.1 and the encoder since v1.7, and this arm was the last outlier.
+       (b) lora_r STAYS FIXED AT 16. The re-open condition (r=16 sweeping both ends,
+       or the two values separating materially) did not fire, because on the encoder
+       NOTHING separates: selection is flagged `selection_noise` on all three subtasks
+       (#97b). Per #97(e) that resolves on cost, and sweeping r would double the arm
+       to 66 fine-tunes on a ~7x more expensive backbone to re-ask a question the
+       cheap arm has shown this evaluation cannot answer.
+       (c) THE #98e TRAP IS DISARMED FOR THIS ARM. Every justification, decision
+       record and open question moved from note strings inside the block into bare
+       `#` comments, which config_id never sees. `encoder_protocol` keeps its notes
+       -- moving them would move 7fc5d606bed9 and orphan the B4 artefacts -- and is
+       protected instead by a new assertion that pins every stored sidecar's
+       config_id against the live matrix.
+       (d) Arm cost is now a RANGE, not a number: ~194 expected / 288 worst-case
+       epoch-passes against v1.4's fixed 108. The absolute figure is still owed to a
+       measured LLM unit cost before B6 (#97e)."
+    - "v1.9 (2026-08-28, review 5): meta only -- NO value outside `meta` changes, so every
+       config_id is byte-identical before and after (printed and compared). Two prose
+       corrections and one addition.
+       (a) The phrase \"max_epochs is ONLY a compute ceiling\" is wrong wherever it stands
+       unqualified, including at the head of the v1.7 entry below and in
+       encoder_components.py. v1.8 already withdrew the dominance claim for the right
+       reason -- the linear schedule is built over steps_per_epoch * max_epochs, so the
+       ceiling rescales the learning rate at every step -- and the same reason makes the
+       ceiling a PROTOCOL PARAMETER that happens also to bound compute, not a budget knob
+       outside the protocol. It must be declared in 3.3 like effective_batch_size, and a
+       future change to it invalidates comparability with these runs even for fits that
+       stop long before it.
+       (b) The stopping rule is now MEASURED rather than argued. `e2_runner.stopping_report`
+       reads every grid cell of every fold and writes `stopping_evidence` into each
+       artefact: how many fits stopped early, how many rode the ceiling, how often a stop
+       happened while the trace was climbing back (the only shape in which patience 2 can
+       have cut off a recovery), the best-epoch distribution, the tail gap, and the
+       overrun against an oracle that stopped exactly at the peak. Patience stays 2 and the
+       ceiling stays 8 -- changing either would invalidate the lr probe and the per-subtask
+       cost measurements the arm is sized on. What changes is that 3.3 can quote a number.
+       (c) `e2_runner.diagnose_selection` closes the grid-edge question the same way: it
+       reproduces #84b unaided on the 2026-08-26 measurement artefact and finds three
+       previously unreported edges in the committed B3 tree (c2a lightgbm learning_rate,
+       c2a xgboost max_depth, vio lightgbm num_leaves, each in 5 of 5 folds)."
+    - "v1.8 (2026-08-28, review 4): two corrections, neither of them a design change.
+       (a) lora_target_modules is qualified: [\"Wqkv\", \"Wo\"] -> [\"attn.Wqkv\",
+       \"attn.Wo\"]. PEFT matches target modules by NAME SUFFIX, and ModernBERT calls
+       both the attention output projection and the MLP output projection `Wo`, so the
+       bare form adapts 66 modules including the MLP against the 44 attention modules
+       the line has always been commented as meaning. The code has run the qualified
+       names since B4 preparation; only this file declared the bare ones -- so the
+       DECLARED protocol, the one 3.3 is written from and the one config_id hashes,
+       described a different model from the one that runs. #84 one field over. Every
+       encoder config_id changes; no encoder campaign artefact exists yet, and the TML
+       identities are untouched because they hash tml_protocol.
+       (b) The v1.7 entry's dominance claim is WITHDRAWN -- see the correction inside
+       it. No value changes with (b); it is a claim about the protocol that 3.3 would
+       have carried."
+    - "v1.7 (2026-08-27, Simon): the encoder epoch axis is closed by EARLY STOPPING
+       WITH PATIENCE instead of by a fixed cap, and `max_epochs` demotes from the
+       stopping criterion to a compute ceiling (5 -> 8, patience 2). Simon's
+       objection is the whole reason: a hard cut at five has to be defensible, and
+       it was not -- the vio probe of the same day peaked at 5 of 5, which is the
+       cap binding. It was also inconsistent with our own tml_protocol, which has
+       closed its length axis by early stopping since v1.1; the encoder was the
+       outlier in this project, not the field. Patience is DERIVED, not conventional:
+       across all 14 epoch traces produced so far the longest non-improving run that
+       was still followed by a new best is 1 (8 of 14 traces), never 2, so patience 2
+       clears every observed dip with a margin and patience 1 would have truncated
+       half of them. The ceiling is 5 + 2 + 1. Expected cost ~1.2x, bounded at 1.6x.
+       ⚠️ CORRECTED 2026-08-28 (v1.8): this entry claimed the change 'cannot select a
+       worse epoch than the cap-5 protocol could -- it only widens the range the choice
+       is made over'. That is FALSE, and it would have gone into 3.3. The linear
+       schedule is built over `total_steps = steps_per_epoch * max_epochs`, so raising
+       the ceiling from 5 to 8 rescales the learning rate at every step of epochs 1-5
+       as well: the ceiling-8 fits are not the ceiling-5 fits plus three more, they are
+       a different set of fits, and no dominance argument survives that. What DOES
+       survive is the reason the change was made -- the stopping point is chosen by the
+       data instead of asserted, which is the same move tml_protocol made in v1.1 --
+       and it is enough on its own. The realised learning rate is now recorded per
+       epoch in the telemetry, so the schedule is reported rather than assumed."
+    - "v1.6 (2026-08-27, #84): the encoder lr axis is re-cut from [1e-4, 2e-4] to
+       [2e-4, 3e-4, 5e-4] and the grid grows from 4 cells to 6. This is
+       encoder_protocol.open_at_measured_unit_cost item 1 being CLOSED against a
+       measurement rather than a guess, exactly as v1.2 promised: all four fits of
+       the 2026-08-26 measurement selected the TOP of the old window, which is the
+       grid-edge failure #31a already sprang on the SVM's C. A $0.15 single-fold
+       sweep put the interior optimum at 3e-4. The version bump was written into
+       this file on the day; THIS ENTRY WAS NOT, and was added in review 3 -- a
+       matrix that stamps its version on every stored run has to be able to say
+       what that version changed. Cost consequence, recorded here because the
+       encoder_protocol comment above was measured under the old grid: 6 cells x
+       5 folds x 3 subtasks + 2 extra seeds x 6 cells = 102 fine-tunes = 510
+       epoch-passes, and the arm is 16.3 h on an A40 (measured fold time scaled by
+       1.50x for cells and 1.60x for the training slice -- the measurement ran
+       n_splits: 2, i.e. half the pool per fold)."
+    - "v1.5 (2026-08-21, #68, decided by Simon): the multilingual few-shot
+       component moves from Q5_K_M via llama.cpp to bf16 via transformers. The
+       full argument sits in llm_fewshot_protocol.serving; in one line, the
+       quantisation stopped answering a capacity question on the 48 GB card and
+       would otherwise have added precision and serving stack as extra differences
+       inside the one contrast the component exists to make. 3.3 was rewritten in
+       the same move. The quantised form survives twice: as a documented fallback
+       for a machine without the card, and as an optional one-subtask control that
+       measures what it would have cost in calibration."
+    - "v1.4 (2026-08-17, package #45): the LLM arm gets a fold protocol, a grid and
+       its fixed values -- llm_protocol and llm_fewshot_protocol below. Until now
+       llm_llammlein and llm_qwen_fewshot carried a model name, an adaptation type
+       and a probability source and nothing else, which is the same gap that cost
+       the encoder a factor of 11.7 against D5's budget (#39c, #40). Two findings
+       drove the shape rather than cost. (i) MEASURED (results/verbaliser_probe.json):
+       no verbaliser set reads soundly off a single token on both tokenisers. First-
+       token distinctness holds everywhere and is the wrong criterion; what decides
+       is whether the first token is specific to its label, and on LLaeMmlein
+       Verherrlichung -> ['_Ver','herr','lichung'] and Hetze -> ['_H','etze'], while
+       the English label names split into bare letters. The arm therefore scores
+       full label sequences with length normalisation instead of reading one token,
+       which keeps D7 exactly as written and stops the design depending on a
+       tokenisation accident. (ii) The 16 GB premise under which #45 was written is
+       superseded by #51: on the 48 GB rented card LLaeMmlein 7B fine-tunes in bf16
+       under LoRA, so 4-bit quantisation is not forced and the calibration risk
+       #39(b) booked against rung 1 does not apply to this arm. The grid is 2 cells
+       (lr only); lora_r and max_epochs are FIXED here and parked on the encoder
+       arm's measurement at B4, which arrives before B6 -- the #40/#41 discipline of
+       deciding against a measurement rather than a guess. 36 fine-tunes / 108
+       epoch-passes / 0.50 M training examples. Recorded in THESIS_LOG #54."
+    - "v1.3 (2026-08-16): tml_svm gains C = 30, closing the grid-edge finding of
+       THESIS_LOG #31a. Measured, not assumed: C = 30 wins 3/5 folds on C2A, 1/5
+       on DBO and ties C = 10 on VIO, while C = 100 never wins strictly and sits
+       one step from non-convergence (4984/5000 liblinear iterations on DBO).
+       The maximum is therefore interior and the E2-TML SVM numbers are re-run.
+       Only tml_svm is affected; the tree grids are untouched."
+    - "v1.1 (2026-08-07, package B3): the TML grids lost their n_estimators axis to
+       early stopping, and the nested per-fold selection/calibration protocol was
+       written down (tml_protocol below). Both are measured consequences of B3 and
+       are recorded in THESIS_LOG; no scope or reporting rule changed."
+    - "v1.2 (2026-08-11, package B4 preparation): the encoder fold protocol is
+       written down (encoder_protocol below) and the encoder_1b grid is re-cut from
+       16 cells to 4. This is the D5 measured-unit-cost gate arriving early, as
+       THESIS_LOG Next Steps #39(c) requires: resolving the 16-cell grid inside
+       every fold costs 246 fine-tunes for the E2 encoder arm, not the 21 that D5
+       assumed. Two changes, both arguable on their own merits rather than on cost.
+       (i) `epochs` leaves the grid and becomes best-epoch selection on the fold
+       selection slice, exactly the n_estimators precedent of v1.1. (ii) lora_alpha
+       is tied to lora_r at alpha = 2r, because crossing the two axes confounds
+       adapter capacity with update scaling: r=8/alpha=16 and r=16/alpha=32 carry
+       an identical alpha/r, so the 2x2 varies one quantity twice and the other
+       inconsistently. The lr axis is deliberately left at two points and is the
+       one quantity re-decided against the FIRST measured unit cost (see
+       encoder_protocol.open_at_measured_unit_cost). No scope or reporting rule
+       changed. Recorded in THESIS_LOG."
+
+protocol:
+  home_edition: "2025"          # D2: baselines + leaderboard are 2025 quantities
+  extra_arm:
+    subtask: "dbo"              # D2: identical 4-class scheme in both editions
+    edition: "2026"
+  primary_metric: "macro_f1"    # over ALL classes, in every tier (D1)
+  aggregation: "pooled_out_of_fold"   # D1
+  cv_folds_e2: 5
+  cv_folds_e4a: 3               # D5; admissible because pooled OOF is fold-count invariant
+  bootstrap_n: 1000
+  # Reporting-side only, and deliberately separate from bootstrap_n above.
+  # bootstrap_n sizes the DESCRIPTIVE per-run intervals that run_component
+  # writes into every artefact. The number below sizes src/significance.py,
+  # where a bootstrap interval DECIDES a cross-component verdict. Measured
+  # 2026-09-07: at 1000 the vio encoder-vs-LLM verdict is Monte-Carlo noise --
+  # over 20 bootstrap seeds at B=2000 it flipped 4 times, and at B=20000 the
+  # interval is [-0.0327, +0.0003]. A verdict that moves with the resampling
+  # seed is not a verdict. Raising run_component's own bootstrap_n instead
+  # would tax every future PAID cell for intervals nobody decides from.
+  significance_bootstrap_n: 10000
+  ci_level: 0.95
+  seed_base: 42
+
+# D1 — per-class F1 reporting tiers, keyed on evaluation instances of the class
+reporting_tiers:
+  interpret_normally:   {min_n: 100}
+  ci_gated:             {min_n: 30, max_n: 99, rule: "directional claim only if CIs do not overlap"}
+  report_uninterpreted: {max_n: 29, rule: "count + score for completeness; carries no claim"}
+
+# D3 — variance protocol per family
+variance:
+  tml:          {folds: 5, seeds: 3, note: "CPU; deterministic where the model allows"}
+  encoder:      {folds: 5, seeds: 1, extra_seeds_on_fold: 2, fixed_fold: 0}
+  llm_finetune: {folds: 5, seeds: 1, extra_seeds_on_fold: 2, fixed_fold: 0}
+  llm_fewshot:  {folds: 5, seeds: 1, example_draws: 3, decoding: "greedy"}
+
+subtasks: ["c2a", "dbo", "vio"]
+
+# v1.1 — how a TML fold is run (src/tml_components.py). The fold training portion
+# is split, stratified, into three disjoint parts; the validation part of the fold
+# is touched by nothing but the final prediction, so hyperparameter selection and
+# calibration are both nested and the pooled OOF score carries no optimism from
+# either. The evaluation pool is the training split after within-edition dedup;
+# the train/test overlap rule stays OFF because E2 never evaluates on the official
+# test set and the rule would discard thin-class instances (DBO agitation 262→224).
+tml_protocol:
+  inner_split: {fit: 0.80, select: 0.10, calibrate: 0.10}
+  selection_metric: "macro_f1 on the selection slice"
+  calibration_slice: "the calibrate part; Platt for the SVM, then temperature for all"
+  early_stopping: {max_rounds: 1000, patience: 30, monitor: "the selection slice"}
+  feature_space: {min_df: 2, sublinear_tf: true, char_analyzer: "char_wb"}
+  imbalance_condition: "none"   # D4 reference cell; E4a varies this axis
+  pool_rules: {within_edition_dedup: true, drop_train_test_overlap: false}
+  repeats: "3 stratified 5-fold partitions (seeds 42/43/44); the seed varies the
+    partition, since the classical estimators are deterministic"
+  bootstrap_on: "the primary repeat (seed 42) only"
+
+# v1.2 — how an encoder fold is run (src/encoder_components.py). Deliberately the
+# same shape as tml_protocol above: the same three-way inner split, the same
+# selection metric, the same calibration slice, the same pool rules. One protocol
+# is described in 3.3 and two components obey it, rather than each component
+# bringing its own. What differs is only what a "fit" is and how the training
+# length is chosen.
+#
+# Run cost, measured in fold-fit passes rather than in wall-clock (D5 forbids a
+# model-produced time estimate; the unit cost is measured at the first fine-tune).
+# ⚠️ RESTATED FOR v1.6 (review 3): this said "4 grid cells ... = 66 fine-tunes =
+# 330 epoch-passes = 1.53 M training examples" and was left behind when the lr
+# axis was widened. At SIX cells:
+# 6 grid cells x max 5 epochs x 5 folds x 3 subtasks + 2 extra seeds on fold 0
+# [STALE SINCE v1.7, corrected 2026-08-29: the cap is a CEILING of 8 with patience 2,
+#  not a flat 5. MEASURED over the completed arm: mean 5.8/4.8/5.6 epochs run per fit
+#  (dbo/vio/c2a), the ceiling bound 2 times in 90 fits, and the arm cost $7.83 in
+#  16.35 h -- so the 16.3 h / ~$7.2 line below turned out right for the wrong reason.]
+# = 102 fine-tunes = 510 epoch-passes = 2.36 M training examples for the arm,
+# which is 16.3 h on an A40 (~$7.2). The B6 comparison below is against the
+# 4-cell figure and is left as it was written, since it dates from v1.4.
+encoder_protocol:
+  inner_split: {fit: 0.80, select: 0.10, calibrate: 0.10}
+  selection_metric: "macro_f1 on the selection slice"
+  calibration_slice: "the calibrate part; temperature scaling on log-probabilities"
+  # The epoch count is chosen per fit, not per grid point. The model is evaluated
+  # on the selection slice after every epoch and the best-scoring epoch's adapter
+  # is kept; `best_epoch` is recorded per fit so the cap can be checked for
+  # bindingness the way `best_iteration` is for the boosted trees.
+  # v1.7 (2026-08-27, Simon): the epoch axis is closed by EARLY STOPPING WITH
+  # PATIENCE, not by a fixed cap. `max_epochs` demotes to a compute ceiling.
+  #
+  # Why the fixed cap could not stand. It was set to 5 because two c2a folds
+  # peaked at 4 of 5; then the vio probe peaked at 5 of 5, which is the cap
+  # BINDING -- the model was still improving when training stopped. "We stopped
+  # at five because five looked fine twice" is not defensible in a methods
+  # chapter, and it was also inconsistent with this project's own tml_protocol,
+  # which has closed its length axis with early stopping since v1.1
+  # (max_rounds 1000, patience 30). The encoder was the outlier.
+  #
+  # Why this cannot make a result worse. The best epoch is restored either way,
+  # so the choice is only ever made over a LONGER range: any epoch the cap-5
+  # protocol could have selected is still reachable, and better ones become
+  # reachable too. The change is weakly dominant on quality and costs compute.
+  #
+  # PATIENCE = 2, derived from data rather than from convention. Every epoch
+  # trace this project has produced (14 of them: the 2026-08-26 c2a measurement
+  # at 4 grid cells x 2 folds, plus the c2a/dbo/vio lr probes) was scanned for
+  # the longest run of consecutive NON-IMPROVING epochs that was still followed
+  # by a new best. That number is **1**, in 8 of the 14 traces, and it is never
+  # 2. Simulated over all fourteen: patience 1 selects a worse epoch than the
+  # trace's own best in 8 of them; patience 2 in none. Patience 2 therefore
+  # survives every dip observed, with one epoch of margin.
+  #
+  # CEILING = 8, and each term is earned: highest observed peak (5) + patience
+  # (2) + one epoch of margin. It is a compute guard, not a modelling choice --
+  # it bounds the arm at 1.6x the cap-5 cost in the worst case. Simulated on the
+  # fourteen traces the realised mean is 4.93 epochs against the cap's flat 5.00
+  # -- cheaper, because a fit that peaks at epoch 2 now stops at 4 -- but nine of
+  # those traces ran to the end of a 5-epoch range, so their true stopping point
+  # is unknown and the honest arm estimate is a RANGE: 15.5-21.5 h, $6.81-$9.47.
+  # If it ever binds, `diagnose_fit` says so, and that
+  # is then a finding rather than a silent truncation.
+  epoch_selection:
+    max_epochs: 8               # CEILING, not the stopping criterion
+    patience: 2                 # stop after 2 consecutive epochs with no new best
+    evaluate_every: "epoch"
+    keep: "best selection macro_f1"
+    monitor: "macro_f1 on the fold selection slice"
+    restore: "the best epoch's adapter, always -- unchanged from v1.2"
+  imbalance_condition: "none"   # D4 reference cell; E4a varies this axis
+  pool_rules: {within_edition_dedup: true, drop_train_test_overlap: false}
+  repeats: "5 folds on seed 42, plus seeds 43 and 44 on fold 0 only (D3). Unlike
+    the classical estimators the fine-tune is stochastic, so here the seed varies
+    training rather than the partition -- which is what D3 means by seeds buying
+    an estimate of training variance."
+  fixed_fold_for_extra_seeds: 0
+  bootstrap_on: "the primary seed (42) only"
+  # Values that are not swept and would otherwise go unreported. Zimmerman, Fox &
+  # Kruschwitz (2018) make exactly this point about the field -- that seemingly
+  # innocuous values such as batch size can move results -- so these are fixed
+  # here and stated in 3.3 rather than left to a library default.
+  fixed_hyperparameters:
+    effective_batch_size: 32      # the scientific quantity; see the note below
+    max_seq_len: 256              # covers p95 word length (77) with margin
+    optimiser: "adamw_torch"
+    lr_schedule: "linear"
+    warmup_ratio: 0.10
+    weight_decay: 0.01
+    max_grad_norm: 1.0
+    lora_dropout: 0.05
+    # ⚠️ MODULE-SUFFIX MATCHING IS WHY THESE ARE QUALIFIED (v1.8, 2026-08-28).
+    # PEFT matches a target by name suffix, and ModernBERT names BOTH the
+    # attention output projection and the MLP output projection `Wo`
+    # (attn.Wo, mlp.Wo). A bare ["Wqkv", "Wo"] therefore adapts 66 modules
+    # including the MLP, not the 44 attention modules this line has always
+    # meant -- verified against ModernGBERT_134M. The code has run the
+    # qualified names since the beginning; the matrix declared the bare ones,
+    # so the DECLARED protocol was a different model from the one that runs.
+    # #84 one field over: a value restated beside the matrix that decides it.
+    lora_target_modules: ["attn.Wqkv", "attn.Wo"]   # attention only, closest to hu2022
+    classifier_head: "trained in full (modules_to_save), not through the adapter"
+    precision: "bf16 on CUDA; fp32 on MPS, which is smoke-test only"
+  batch_size_note: "effective_batch_size is the quantity that must not change. Its
+    split into per-device batch x gradient accumulation is a memory detail and may
+    differ per machine without changing the result; the runner records both."
+  truncation: "the share of items exceeding max_seq_len is recorded per subtask,
+    since it is a property of the protocol rather than of the data"
+  open_at_measured_unit_cost:
+    - "lr axis: two points means the selected value sits on a grid edge by
+       construction, the trap Next Steps #31a already sprang on the SVM. Widening
+       to [5e-5, 1e-4, 2e-4] costs 1.45x (96 fine-tunes, 480 epoch-passes). Decide
+       against the first measured fine-tune, not before it.
+       DECIDED 2026-08-27 (v1.6): the edge was real and it was the UPPER one --
+       all four fits of the 2026-08-26 measurement selected 2e-4, the top of
+       [1e-4, 2e-4]. So the widening went the other way than this entry guessed:
+       a single-fold sweep costing $0.15 put the interior optimum at 3e-4, and the
+       axis is now [2e-4, 3e-4, 5e-4]. Six cells, 102 fine-tunes, 510 epoch-passes.
+       The decision is closed and this text is kept for the record of how it was
+       taken -- against a measurement, which is what the entry asked for. (Marked
+       closed in review 3; the v1.6 edit had changed the grid and left the
+       question standing open beside it, which is what §3.3 would have read.)"
+    - "encoder_134m: whether the reference carries its own grid or simply reruns
+       the 1B's selected configuration (21 fine-tunes). The latter is the cleaner
+       scale comparison and the cheaper one, but it is a G2 decision."
+    - "length-bucketed batching. Batches are padded to their own longest member,
+       and the length distribution is extremely skewed: median 21-23 tokens,
+       p95 102-115, max at the 256 cap. Measured over a full epoch at batch 16,
+       shuffled order costs 3.8x (C2A), 3.9x (DBO) and 4.0x (VIO) the padded
+       tokens that length-sorted batches would, so roughly four fifths of the
+       compute is spent on padding. Grouping by length recovers nearly all of
+       it -- a larger lever than the whole grid re-cut. It is NOT free: it
+       changes batch composition and therefore the gradient sequence, which
+       makes it a protocol property that has to be declared in 3.3, exactly
+       like effective_batch_size. Decide with the lr axis against the first
+       CUDA measurement, not before it.
+       DECIDED 2026-08-27: NOT ADOPTED FOR B4. Three reasons, in order of
+       weight. (1) The 4x is a TOKEN ratio, not a wall-clock one, and nobody
+       has measured the wall clock -- at batch 16 the A40 is very likely
+       under-occupied regardless of padding, so the realised saving could be a
+       fraction of 4x. The measured unit cost (1091 s/fold) already includes
+       the padding as it actually behaves. (2) It changes the data path of the
+       training loop, and adopting it hours before a paid multi-hour campaign
+       is the exact shape of the mistake that forces a re-run -- the thing this
+       whole hardening pass existed to prevent. (3) The saving it competes with
+       is $4.41 against a $18.38 balance, which does not justify the risk.
+       A documented no costs nothing and is worth as much in 3.3 as a yes.
+       It stays a real lever and should be measured properly when it is cheap
+       to do so -- one fold with and without, about an hour -- and it is more
+       promising for B6, where sequences are longer and more uniform."
+# v1.4 -- how an LLM fold is run (fine-tuned arm; src/llm_components.py, B6).
+# Third component family, same protocol shape as tml_protocol and
+# encoder_protocol: the same three-way inner split, the same selection metric,
+# the same calibration slice, the same pool rules. 3.3 describes one protocol
+# and three families obey it. What differs is what a "fit" is, how the training
+# length is chosen, and how a probability is obtained.
+#
+# ---------------------------------------------------------------------------
+# v1.10 (2026-08-29) -- WHY EVERY JUSTIFICATION BELOW IS IN A `#` COMMENT AND
+# NOT IN THE BLOCK. `config_id` hashes the PARSED protocol block. A bare `#`
+# comment never reaches the parsed structure and moves nothing; a note STRING
+# inside the block is data and is hashed -- editing one note's prose on
+# 2026-08-29 moved llm_llammlein from f9644b4f51d0 to 0fb2eb2abcce (#98e).
+# Nothing was invalidated then, because no LLM artefact exists. Once B6 has run,
+# the same typo fix would silently invalidate the arm's stored probabilities.
+# #98e left two options: freeze the notes when the arm starts, or move the
+# commentary out before it does. The second is taken, because a freeze is a
+# discipline and this log is a record of disciplines not holding (#63, #64, #71,
+# #77, #96c). The block below therefore carries protocol VALUES only. Every
+# justification, decision record and open question is here, where editing it
+# moves no identity.
+#
+# ⚠️ THE ENCODER ARM STILL CARRIES THE TRAP, DELIBERATELY. `encoder_protocol`
+# has note lists inside its hashed block and its config_id 7fc5d606bed9 is
+# recorded in all three B4 artefacts and all three store sidecars. Moving that
+# commentary out would move the id and orphan the arm, so it stays and is
+# machine-checked instead: tests/test_data_integrity.py pins every stored
+# sidecar's config_id against the live matrix, so an edit to encoder_protocol
+# prose now FAILS the suite instead of quietly invalidating B4.
+#
+# ---------------------------------------------------------------------------
+# RUN COST in fold-fit passes (D5 forbids a model-produced wall-clock estimate;
+# the unit cost is measured at the first CUDA fine-tune):
+#   2 grid cells x 5 folds x 3 subtasks + 2 extra seeds on fold 0 = 36 fine-tunes.
+# Under the v1.10 ceiling of 8 with patience 2 the epoch count is realised, not
+# fixed, so the arm is a RANGE rather than a number:
+#   expected  ~194 epoch-passes (~0.90 M training examples) at the encoder's
+#             measured mean of 5.4 epochs per fit over 90 fits;
+#   worst case 288 epoch-passes (1.33 M examples) if nothing ever stops early.
+# The v1.4 figure was 108 passes / 0.50 M at a FIXED cap of 3, so the change is
+# ~1.8x expected and 2.67x worst case. For scale, the encoder arm is 66 fits /
+# 1.53 M examples on a 1B backbone; this is ~0.6x the examples on a ~7x larger
+# model. The two are NOT comparable per example and no projection is made from
+# one to the other -- #42's rule. The absolute figure is owed to a measurement
+# on the first campaign-sized LLM cell (`src.lr_probe`), which #97(e) already
+# requires before B6 launches.
+#
+# ---------------------------------------------------------------------------
+# DECISION 1 (v1.10, 2026-08-29) -- THE FIXED EPOCH CAP IS GONE. `max_epochs`
+# becomes a CEILING of 8 closed by early stopping with patience 2, identical to
+# encoder_protocol v1.7.
+#
+# The trigger this file pre-registered has fired, and it was pre-registered
+# precisely so the decision would not be taken by taste. v1.4 said: *"the encoder
+# records best_epoch per fit; if its distribution regularly reaches 4 or 5, raise
+# this cap before B6 rather than discovering the ceiling inside a paid campaign."*
+# Measured over the completed B4 arm, 90 fits across three subtasks (#97):
+#   best epoch >= 4 in 41 of 90 fits (46%);
+#   the ceiling of 8 bound in 2 of 90 (2.2%), both on dbo;
+#   realised mean 5.6 (c2a) / 5.8 (dbo) / 4.8 (vio) epochs, mean 5.4.
+# A cap of 3 would truncate nearly half the fits. Worse, at patience 2 a cap of
+# 3 makes early stopping barely reachable at all, so the "cap" would not be a
+# bound on a choice -- it would BE the choice, for almost every fit.
+#
+# Two further reasons, neither of them about this arm's numbers.
+# (i) ONE PRINCIPLE, TWO ARMS, ONE STANDARD. This is the #90(a) split for the
+#     third time: tml_protocol has closed its length axis with early stopping
+#     since v1.1 (max_rounds 1000, patience 30), encoder_protocol since v1.7
+#     (ceiling 8, patience 2), and this block still carried a fixed cap with no
+#     patience at all. A methods chapter that describes one protocol obeyed by
+#     three families cannot have the third family stop on a different rule.
+# (ii) THE VALUE 8 IS NOT COPIED, IT IS THE CONSERVATIVE END OF THE EVIDENCE.
+#     The encoder derived 8 as highest observed peak (5) + patience (2) + one
+#     epoch of margin, from 14 traces. Re-derived on the 90 traces that now
+#     exist, the highest observed peak is 8, which by the same rule would give
+#     11. Setting 8 therefore holds the line rather than loosening it, and the
+#     two fine-tune arms report one number in 3.3.
+#
+# WHAT THIS IS NOT. The ceiling is a protocol parameter, not a budget knob
+# (v1.9a): the linear schedule is built over steps_per_epoch * max_epochs, so it
+# rescales the learning rate at every step and a later change to it breaks
+# comparability even for fits that stop long before it. It follows that if B6's
+# measured unit cost makes the arm unaffordable, THE CEILING IS THE WRONG LEVER.
+# The levers are the grid (the lr axis below, 2 cells), the fold count, or G2's
+# pre-stated reduction ladder -- all of which buy compute without degrading the
+# fits that do run. Lowering the ceiling buys compute by truncating them.
+#
+# WHAT IS STILL OWED. This arm has no epoch distribution of its own; the
+# evidence above is the encoder's, on a different backbone with a different
+# objective. `diagnose_fit`'s ceiling-bound and rising-at-stop diagnostics are
+# therefore not optional reading on the first B6 pod: they are how this decision
+# gets checked against the model it was taken for.
+#
+# ---------------------------------------------------------------------------
+# DECISION 2 (v1.10, 2026-08-29) -- lora_r STAYS FIXED AT 16. The re-open
+# condition did not fire, and the reason it did not fire is itself the finding.
+#
+# v1.4 parked the capacity axis on B4 with an explicit condition: *"If the
+# encoder's selected r is 16 at both ends, or the two r values separate
+# materially there, re-open this to [8, 16] -- 2 cells -> 4, 36 -> 66 fine-tunes."*
+# Neither holds. Across 7 fits per subtask the selected r splits 2/5 (c2a), 3/4
+# (dbo) and 3/4 (vio), so r=16 does not sweep the axis; and the two values do not
+# separate materially because on this arm NOTHING separates -- selection is
+# flagged `selection_noise` on all three subtasks, with 4-5 distinct winners of 7
+# fits and a winner-to-runner-up margin below the fold-to-fold spread of the final
+# scores (#97b).
+#
+# So the honest reading is not "r=8 and r=16 are equivalent" but "this evaluation
+# cannot tell them apart at this size". Under #97(e) that resolves on cost, and
+# the cost argument runs the same way it did in v1.4 but now with the evidence
+# behind it: sweeping r doubles the cell count 2 -> 4 and the arm 36 -> 66
+# fine-tunes, on a ~7x more expensive backbone, to re-ask a question the cheaper
+# arm has already shown this evaluation cannot answer. Fixed at 16.
+#
+# ---------------------------------------------------------------------------
+# OPEN, decided against the first measured LLM fine-tune (B6), not before:
+#
+# (a) THE lr AXIS. Two points put the selected value on a grid edge by
+#     construction -- the #31a trap, which has now sprung twice in this project
+#     (tml_svm's C, and the encoder's lr, where all four fits of the 2026-08-26
+#     measurement selected the top of [1e-4, 2e-4] and a $0.15 single-fold sweep
+#     put the interior optimum at 3e-4). Widening to [5e-5, 1e-4, 2e-4] costs
+#     1.5x in cells. Decide it the way the encoder's was decided: with a probe,
+#     against a measurement.
+#     ⚠️ Note what #97(b) does to this item. On the encoder, widening the grid
+#     did not buy a resolved selection -- six cells produced 4-5 distinct winners
+#     of 7 fits. A wider lr axis here should therefore be justified as escaping a
+#     grid EDGE (a real, one-directional defect) and not as buying a better
+#     choice among interior points, which the evaluation has been shown unable to
+#     make.
+#
+# (b) LENGTH-BUCKETED BATCHING. #41 measured that roughly four fifths of encoder
+#     training compute goes into padding; the LLM prompts are longer and more
+#     uniform, so the ratio will differ and must be re-measured rather than
+#     carried over. NOT ADOPTED for the encoder at B4 (v1.6, three reasons, the
+#     first being that the 4x is a token ratio and nobody measured the wall
+#     clock). It changes batch composition and therefore the gradient sequence,
+#     so it is a protocol property owed to 3.3 and is decided with the lr axis.
+#     It is more promising here than it was there.
+#
+# (c) TARGET-MODULE SUFFIX CHECK -- ✅ DISCHARGED 2026-09-01 (review 6, #107 e),
+#     OFFLINE and without a pod. The real config.json of both models is cached on
+#     the laptop, and module NAMES do not depend on hidden_size or layer count, so
+#     a shrunk copy of the real config has the identical module namespace -- which
+#     is the only thing PEFT's suffix matching looks at. Measured: q/k/v/o_proj
+#     select exactly the four attention projections on LlamaForCausalLM AND on
+#     Qwen2ForCausalLM; the MLP (gate/up/down_proj) and lm_head are untouched;
+#     LLaeMmlein's 32 layers give 128 adapted modules. What B5 still owes is only
+#     that the adapter attaches to the REAL WEIGHTS. ⚠️ And the check that runs
+#     there now compares IDENTITY, not arity: num_hidden_layers x len(targets)
+#     predicts the same count for any equinumerous target list, so the old form
+#     passed a build whose adapters were on the MLP (mutated, review 6). The
+#     original reasoning, kept because it is why this exists at all:
+#     #92 cost this
+#     project a declared protocol that described a different model, because PEFT
+#     matches target modules by NAME SUFFIX and ModernBERT reuses `Wo` for both
+#     the attention and the MLP output projection. The names below are the Llama
+#     convention and should not collide (LLaeMmlein's MLP is gate/up/down_proj),
+#     but "should not" is exactly what v1.8 disproved. Count the adapted modules
+#     against the real config on the first pod that has the weights, and record
+#     the number -- it is a two-line check and it is the same check that already
+#     found one real defect.
+#
+# (d) `precision` is bf16 on CUDA, NOT 4-bit. On the 48 GB card of #51 a 7B LoRA
+#     fine-tune fits in bf16 with margin, so the "does calibration survive 4-bit
+#     quantisation" risk that #39(b) booked against G1.5 rung 1 does not arise
+#     for this arm. It was live for the few-shot component until v1.5 (#68) moved
+#     that one to bf16 as well; it now survives only in the optional quantised
+#     control.
+llm_protocol:
+  inner_split: {fit: 0.80, select: 0.10, calibrate: 0.10}
+  selection_metric: "macro_f1 on the selection slice"
+  calibration_slice: "the calibrate part; temperature scaling on log-probabilities"
+  objective: "causal LM cross-entropy on the verbaliser tokens only; the prompt
+    tokens are masked out of the loss. D4's class_weighting and focal_loss
+    conditions apply to exactly these label-token positions."
+  prompt: "zero-shot instruction template; the fine-tuned arm carries NO in-context
+    examples -- only llm_fewshot_protocol does. Template fixed per subtask and
+    reused across editions (3.2 subsec:llm), so a cross-edition difference can
+    never be an artefact of a rewritten prompt."
+  epoch_selection:
+    max_epochs: 8               # v1.10: CEILING, not the stopping criterion
+    patience: 2                 # stop after 2 consecutive epochs with no new best
+    evaluate_every: "epoch"
+    keep: "best selection macro_f1"
+    monitor: "macro_f1 on the fold selection slice"
+    restore: "the best epoch's adapter, always"
+  imbalance_condition: "none"   # D4 reference cell; E4a varies this axis
+  pool_rules: {within_edition_dedup: true, drop_train_test_overlap: false}
+  repeats: "5 folds on seed 42, plus seeds 43 and 44 on fold 0 only (D3), on the
+    selected configuration. As with the encoder the fine-tune is stochastic, so
+    the seed varies training rather than the partition."
+  fixed_fold_for_extra_seeds: 0
+  bootstrap_on: "the primary seed (42) only"
+  fixed_hyperparameters:
+    lora_r: 16                    # v1.10: NOT swept; decision 2 above
+    lora_alpha: 32                # tied at 2r, the v1.2 argument applies unchanged
+    effective_batch_size: 32      # same as the encoder, so one difference fewer
+    per_device_batch_size: 4      # memory detail; effective size is what binds
+    gradient_accumulation_steps: 8
+    max_seq_len: 512              # template + text; the encoder's 256 covers text alone
+    optimiser: "adamw_torch"
+    lr_schedule: "linear"
+    warmup_ratio: 0.10
+    weight_decay: 0.01
+    max_grad_norm: 1.0
+    lora_dropout: 0.05
+    lora_target_modules: ["q_proj", "k_proj", "v_proj", "o_proj"]   # suffix check DISCHARGED 2026-09-01, (c) above
+    eval_batch_size: 16           # scored (item, label) pairs per forward, not items
+    adam_betas: [0.9, 0.999]      # v1.10: declared, not left to a library default
+    adam_eps: 1.0e-8              # v1.10: the encoder declares both; parity, and
+                                  # the Zimmerman/Fox/Kruschwitz point about
+                                  # seemingly innocuous values applies identically
+    precision: "bf16 on CUDA"
+  truncation: "no prompt can exceed max_seq_len: the budget is spent on the ITEM
+    TEXT, and the template and the label block are never cut. So the recorded
+    quantity is the share of item TEXTS that had to be cut, not -- as this line
+    said until 2026-09-01 -- the share of prompts over the limit, which is zero
+    by construction. It is recorded per fold for the fit slice AND for the
+    validation slice that produces every reported probability; `tokenisation.slice`
+    names which. A property of the protocol, not of the data."
+
+# v1.4 -- how the few-shot component is run (src/llm_components.py, B6). No
+# training, so there is no grid; what needs fixing is everything about the prompt.
+#
+# Cost is inference only and is stated in scored continuations, because the
+# sequence-scoring interface below evaluates one continuation per candidate label
+# per item: 3 draws x (C2A 6774x2 + DBO 7298x4 + VIO 7720x2) = 174 540
+# continuations, over 65 376 prompt evaluations. The prompt prefix is shared
+# across the labels of one item and is cached, so the marginal cost of a label is
+# the continuation only.
+llm_fewshot_protocol:
+  training: none
+  # v1.11 (2026-08-30, #106): what this component SHARES with the fine-tuned arm,
+  # written down because the code shares it and the matrix did not say so. The
+  # inner split, the probability interface, the verbaliser sets, the text profile
+  # and the eval batch are read from llm_protocol / the shared helpers rather than
+  # restated here, deliberately: Dimension 2 requires that a difference between
+  # the two LLM rows of Chapter 4 be attributable to the COMPONENT, and every
+  # quantity declared twice is a quantity that can drift into a second difference.
+  # `eval_batch_size` is the one that looks like an omission and is not -- it is a
+  # memory detail with no effect on a score (right-padding under causal attention;
+  # asserted in tests/test_llm_cell.py), so it is not part of this component's
+  # identity and belongs in one place, not two.
+  inherits_from_llm_protocol: ["inner_split", "eval_batch_size",
+                               "probability interface (verbaliser_sequence_score)",
+                               "verbalisers", "text profile (clean_encoder)"]
+  example_source: "the training portion of the current fold only (3.2 subsec:llm);
+    never the validation part, and never another fold"
+  unused_selection_slice: "the three-way inner split is kept although nothing is
+    selected here, and the middle slice does no work. Comparability decides it, not
+    tidiness: the temperature is fitted on the calibrate slice and preflight_before_b6
+    reads this component's ECE off it, so a differently-built calibration slice would
+    make that ECE incomparable with the other three families' -- which is the number
+    D7's promise to the combination layer rests on. Recorded per fold as
+    n_unused_selection so 3.3 can state the cost instead of hiding it (#106 b)."
+  n_examples: 12                  # held CONSTANT across D4 conditions on purpose
+  # D4 gives the few-shot component exactly one imbalance lever, prompt_coverage.
+  # That lever only exists if the REFERENCE condition does not already guarantee
+  # rare-class presence -- otherwise both cells are the same prompt and E4a's
+  # few-shot row measures nothing. Hence:
+  example_selection:
+    none: "random draw from the fold training portion, proportional to the natural
+      class distribution. At DBO subversive = 0.8 % a 12-example draw almost never
+      contains one, which IS the reference condition rather than a defect."
+    prompt_coverage: "stratified draw, equal per class, plus explicit definitions
+      of the rare classes in the label block. The example COUNT is identical to the
+      reference cell, so the contrast varies composition alone and not budget."
+  draws: 3                        # D3: 3 independent draws in place of seeds
+  decoding: "not applicable -- see probability_interface. D3 specifies greedy
+    decoding, which assumed the label is generated and then parsed. Under sequence
+    scoring nothing is sampled, so the decoding parameter drops out and with it a
+    source of variance. This supersedes the D3 table cell."
+  prompt: "template fixed per subtask and reused across editions (3.2 subsec:llm)"
+  max_prompt_tokens: 2048
+  serving: "transformers, Qwen 2.5-14B in bf16. v1.5 (#68, decided by Simon
+    2026-08-21). Q5_K_M was chosen when 16 GB of VRAM bound; on the 48 GB card of
+    #51 the 29.5 GB of bf16 weights fit, so the quantisation no longer answers a
+    capacity question and had become a narrative one. Three reasons decided it.
+    (i) The component exists to contrast a German-only against a multilingual
+    model at comparable scale, and it already differs from LLaeMmlein on size and
+    training regime; serving it at a different precision through a different stack
+    would add precision and serving stack as a third and fourth difference inside
+    that contrast. (ii) Its confidences feed the combination layer through D7, and
+    quantisation is a plausible source of calibration error the design need not
+    accept. (iii) The Q5_K_M identity meant GGUF, which meant llama.cpp, which
+    made the whole probability interface depend on the forced-continuation
+    log-probability question below; in transformers, full-sequence teacher forcing
+    is exact and direct. Changing this identity routes through THESIS_LOG (D6)."
+  serving_fallback: "llama.cpp with the Q5_K_M GGUF stays documented as the path
+    for a machine without the rented card. It is a fallback for running the code,
+    never a source of reported numbers, and its figures are never compared with
+    pod figures (the same-machine rule of 3.3)."
+  preflight_before_b6:
+    - "v1.5 (#68): DOWNGRADED from non-negotiable to optional. It read: verify
+       that the local Q5_K_M path returns per-token log-probabilities for a FORCED
+       continuation, not merely for sampled output. Under transformers the answer
+       is structural rather than empirical, so the risk it guarded is off the
+       critical path. It survives as the gate on the OPTIONAL quantised control
+       below, and it is answerable on an 8 GB laptop with a small GGUF (#68), so
+       it never needs pod time."
+    - "measure ECE for this component specifically. Unchanged in substance: #39(b)
+       asked whether calibration survives quantisation, and with both LLM
+       components now in bf16 the question no longer applies to either arm. The
+       measurement stays because the combination layer consumes these confidences
+       regardless of what produced them."
+  optional_quantised_control:
+    scope: "one subtask, not three"
+    what: "rerun the few-shot component as Q5_K_M through llama.cpp on the same
+      eval, the same prompts and the same machine, and report the ECE difference"
+    why: "it turns the calibration cost of the sparser serving form from an
+      assumption into a measurement, and it is the honest way to keep the
+      commodity-hardware argument without letting it decide the configuration"
+    when: "only after B4 and B6 are inside the GPU-hour envelope; estimated at one
+      additional scoring pass, so it is a real cost and not a rounding error"
+    gate: "the forced-continuation log-probability check above must pass first"
+
+# v1.4 -- the verbaliser words, fixed here rather than living in code.
+#
+# MEASURED, not chosen by taste: results/verbaliser_probe.json tokenises every
+# candidate set under both tokenisers. No set reads soundly off a single token on
+# both models. The binary sets are sound on exactly one model each -- German on
+# LLaeMmlein, English on Qwen -- and every multi-class set fails on both, because
+# the first token is a generic fragment (LLaeMmlein: Verherrlichung ->
+# ['_Ver','herr','lichung'], Hetze -> ['_H','etze'], criticism -> ['_c','rit','ic','ism']).
+# Reading P('_Ver') as P(glorification) would charge the thinnest class in the
+# study (n = 27, and n = 12 in the overlap-free residual of #49) with the mass of
+# every Ver- word the model might produce, biasing it upward.
+#
+# Two consequences, and the first removes the dependence on the second:
+#   1. probability_interface below scores whole label sequences, so tokenisation
+#      stops deciding anything.
+#   2. the words are then chosen on semantic grounds. German, because the data,
+#      the task and the annotation guidelines are German and the primary model is
+#      German-only; one set for both components, because Dimension 2 requires that
+#      only the label set differ between subtasks, not between components. The
+#      organisers' English label string is printed in the prompt's definition block
+#      beside its German verbaliser, so the mapping is explicit and auditable.
+verbalisers:
+  probability_interface: "length-normalised full-sequence log-likelihood, softmax-
+    normalised over the label set. For each candidate label the model scores its
+    whole token sequence under teacher forcing, the total log-probability is
+    divided by the token count, and the label set is normalised to a distribution.
+    Independent of how any tokeniser splits a word, and it returns exactly the
+    (n_items, n_classes) row D7 specifies. Residual risk NOT removed: surface-form
+    competition (`holtzman2021`, EMNLP -- verified and imported 2026-08-17), i.e.
+    likelihood still depends on the surface string, which is why the words below
+    are single common nouns of comparable kind rather than a mix of nouns and
+    phrases. Our exposure is milder than that paper's setting, and 3.3 should say
+    so rather than borrow its severity: it studies open multiple choice where the
+    candidate strings change per question, whereas the label set here is small,
+    fixed and identical for every item of a subtask, so the competition acts as a
+    constant per-class prior rather than as per-item noise. The fine-tuned arm is
+    additionally trained to emit the verbaliser, and every component is temperature
+    scaled. The residual bites hardest on the untrained few-shot component."
+  measurement: "results/verbaliser_probe.json (python -m src.verbaliser_probe)"
+  c2a:   {"True": "Ja", "False": "Nein"}
+  dbo:   {agitation: "Hetze", criticism: "Kritik", nothing: "Nichts", subversive: "Subversion"}
+  vio25: {"True": "Ja", "False": "Nein"}
+  vio26: {call2violence: "Gewaltaufruf", glorification: "Verherrlichung",
+          nothing: "Nichts", other: "Sonstiges",
+          propensity: "Gewaltbereitschaft", support: "Unterstützung"}
+
+components:
+  tml_svm:
+    family: "tml"
+    features: {tfidf_word_ngrams: [1, 2], tfidf_char_ngrams: [3, 5], lowercase: true}
+    # v1.3: C = 30 added (#31a). The old grid put the winner on its upper edge
+    # (C = 10 won 14/15 folds on C2A and VIO), so the grid was deciding, not the
+    # data. Probed to C = 100: it never wins strictly and needs 4984 of 5000
+    # liblinear iterations on DBO, so the maximum is interior at 30 and the fits
+    # converge with margin. THESIS_LOG #31a.
+    grid: {C: [0.1, 1.0, 10.0, 30.0]}
+    probability: "platt_scaling"      # §3.2: margins are not probabilities
+  tml_xgboost:
+    family: "tml"
+    features: {tfidf_word_ngrams: [1, 2], tfidf_char_ngrams: [3, 5], lowercase: true}
+    # v1.1: n_estimators dropped from the grid; early stopping decides it per fit.
+    grid: {max_depth: [4, 8], learning_rate: [0.05, 0.1]}
+    # v1.3: the values that are set but never swept, declared here instead of
+    # living only in tml_components.py. S10 / #37c: Zimmerman, Fox & Kruschwitz
+    # attack exactly this kind of under-reporting, and colsample_bytree = 0.3 is
+    # a real modelling choice, not a default. NOTE THE ASYMMETRY: LightGBM has no
+    # feature-subsampling counterpart set, so it sees 100% of features per tree
+    # against XGBoost's 30%. Chapter 4 presents the two side by side, so §3.3
+    # must state this rather than let the comparison imply matched settings.
+    fixed: {tree_method: "hist", max_bin: 64, colsample_bytree: 0.3}
+    probability: "native"
+  tml_lightgbm:
+    family: "tml"
+    features: {tfidf_word_ngrams: [1, 2], tfidf_char_ngrams: [3, 5], lowercase: true}
+    # v1.1: n_estimators dropped from the grid; early stopping decides it per fit.
+    grid: {num_leaves: [31, 127], learning_rate: [0.05, 0.1]}
+    probability: "native"
+  encoder_1b:
+    family: "encoder"
+    model: "ModernGBERT-1B"
+    hf_id: "LSX-UniWue/ModernGBERT_1B"
+    adaptation: "lora"
+    lowercase: false                  # §3.2: German capitalises nouns
+    # v1.2: 16 cells -> 4. `epochs` is decided per fit by epoch_selection and
+    # `lora_alpha` is tied to lora_r; see the meta changelog for both arguments.
+    #
+    # v1.6 (2026-08-27): the lr WINDOW MOVED, on a measurement rather than an
+    # argument. The 2026-08-26 run selected lr = 2.0e-4 in 4 of 4 fits, and
+    # 2.0e-4 was the top of `[1.0e-4, 2.0e-4]` -- when every fit lands on a
+    # boundary the grid decided, not the data (the #31a defect, again). A probe
+    # on one fold of c2a, `src/lr_probe.py`, swept lr with lora_r fixed at 16:
+    #
+    #     1e-4  0.8673  (epoch 5/5 -- still improving at the cap)
+    #     2e-4  0.8514  (epoch 2/5)
+    #     3e-4  0.8765  (epoch 3/5)   <- best
+    #     5e-4  0.8659  (epoch 5/5 -- still improving at the cap)
+    #
+    # So the optimum is INTERIOR to [1e-4, 5e-4] and is NOT at the old grid's
+    # edge. Two honest caveats: this is ONE fold at ONE seed, and the 2.5 pp
+    # spread is comparable to the fold-to-fold spread measured the day before
+    # (1.5 pp), so the ranking is suggestive, not settled -- and the curve is
+    # non-monotone (2e-4 worst, 3e-4 best), which is itself a sign that lr is
+    # not a strongly separating axis here. What the probe DOES establish is
+    # that 2e-4 has no special status and the old window was placed wrong.
+    #
+    # The new window brackets the observed optimum on both sides. Cost, costed
+    # properly from the measured unit cost and each pool's size rather than
+    # guessed: the encoder arm goes from ~6.3 h to **10.0 h**, $2.75 -> $4.41
+    # (c2a 188 min, dbo 200 min, vio 214 min). That number matters twice over:
+    # it also forced pod_run.sh's wall clock from --hours 10 to 14, because at
+    # 10 the backstop would have fired during the final subtask. Deliberate
+    # nonetheless: an arm run on a boundary grid has to be defended or re-run,
+    # and re-running it costs the whole $4.41 again.
+    grid: {lora_r: [8, 16], lr: [2.0e-4, 3.0e-4, 5.0e-4]}
+    tied: {lora_alpha: "2 * lora_r"}
+    max_seq_len: 256                  # covers p95 word length (77) with margin
+    probability: "softmax"
+  encoder_134m:
+    family: "encoder"
+    model: "ModernGBERT-134M"
+    hf_id: "LSX-UniWue/ModernGBERT_134M"
+    optional: true                    # §3.3 subsec:programme
+    inherits: "encoder_1b"
+  llm_llammlein:
+    family: "llm_finetune"
+    model: "LLaeMmlein-7B"
+    hf_id: "LSX-UniWue/LLaMmlein_7B"  # v1.4: was missing entirely
+    adaptation: "lora"
+    lowercase: false                  # §3.2: German capitalises nouns
+    # v1.4: 2 cells. lora_r and epochs are fixed in llm_protocol, not swept, and
+    # both are parked on the encoder arm's B4 measurement rather than guessed.
+    grid: {lr: [1.0e-4, 2.0e-4]}
+    protocol: "llm_protocol"
+    probability: "verbaliser_sequence_score"   # v1.4; see `verbalisers` above
+  llm_qwen_fewshot:
+    family: "llm_fewshot"
+    model: "Qwen2.5-14B"
+    hf_id: "Qwen/Qwen2.5-14B-Instruct"  # v1.4: was missing entirely
+    precision: "bf16"                 # v1.5 (#68): was Q5_K_M; §3.3 rewritten in the same move
+    training: none
+    grid: none                        # nothing is tuned; the prompt is fixed by design
+    protocol: "llm_fewshot_protocol"
+    few_shot_source: "current fold training portion only"
+    probability: "verbaliser_sequence_score"   # v1.4; see `verbalisers` above
+
+# D4 — which imbalance strategy is defined for which family
+imbalance_applicability:
+  none:               ["tml_svm", "tml_xgboost", "tml_lightgbm", "encoder", "llm_finetune", "llm_fewshot"]
+  class_weighting:    ["tml_svm", "tml_xgboost", "tml_lightgbm", "encoder", "llm_finetune"]
+  focal_loss:         ["encoder", "llm_finetune"]     # needs a differentiable probabilistic objective
+  random_oversampling: ["tml_svm", "tml_xgboost", "tml_lightgbm", "encoder", "llm_finetune"]
+  prompt_coverage:    ["llm_fewshot"]                 # descriptive only, not a comparison cell
+  ordering_constraint: "deduplicate before any resampling"   # §3.2 subsec:imbalance
+
+combination:
+  soft_voting:  {weights: "equal"}
+  cascade:      {order: ["tml", "encoder", "llm"], threshold_source: "validation folds", post_hoc: true}
+  llm_as_judge: {invoked_on: "component disagreement", hide_component_identity: true,
+                 randomise_order: true, confidences: "calibrated", backend: "gwdg"}   # D6
+
+calibration:
+  method: "temperature_scaling"
+  fitted_on: "held-out slice of the fold training portion"   # D7: never on validation data
+  metrics: ["ece", "brier", "reliability_diagram"]
+
+# D9 — recorded per strategy; no extra runs, secondary result only
+instrumentation:
+  escalation_rate: true
+  inference_calls_per_1000_items: true
+
+# D8 — pre-stated, decided at G2 before any Dimension 2 run
+dimension2:
+  selection_rule: "best mean rank across the three subtasks in E2"
+  tie_break: "lower inference cost"
+
+dimension3:
+  train_edition: "2025"
+  eval_edition: "2026"
+  retraining_on_2026: false
+  vio_label_mapping: "applied at pipeline output, not inside a component"
+  vio_eval_source: "fresh 2026-train holdout"    # 76.98% of VIO-2025-test sits in VIO-2026-train
+  c2a_caveat: "test set identical across editions: measures data scaling, not test shift"
+
+# E4 — the imbalance arm (E4a, Dimension 1) and the cross-task arm (E4b, Dimension 2).
+# ⚠️ STATUS: PROPOSED 2026-09-12, NOT YET CONFIRMED BY SIMON. No E4 run may start
+# while this line says proposed. Until 2026-09-12 no file declared the parameters
+# of the three D4 conditions or the configuration E4a/E4b run at: 3.2 names the
+# strategies, D5 counts the runs, and neither says what "focal loss" or "the
+# selected configuration" is. This block is that declaration.
+# Identity: hashed into E4 config_ids only (compute_config_id(..., e4=...)).
+# Adding or editing it moves NO E2 identity -- verified by printing all seven
+# ids before and after. Once an E4 artefact exists, editing ANY string in here
+# orphans it (#98e), so fix the prose before the first run, not after.
+e4_protocol:
+  # Machine-read, not decoration: e2_runner refuses every E4 run and e4_config
+  # refuses to freeze while this does not start with "confirmed". It sits
+  # OUTSIDE e4a/e4b, so flipping it moves no E4 config_id either.
+  status: "confirmed 2026-09-12 by Simon, on the re-examined recommendation (THESIS_LOG #120 g)"
+  e4a:
+    folds: "protocol.cv_folds_e4a"
+    seed: 42
+    replicates: "none"
+    cells: [["c2a", "2025"], ["dbo", "2025"], ["vio", "2025"], ["dbo", "2026"]]
+    configuration: "the modal selected configuration over the E2 primary-seed folds of the same subtask; a count tie is broken first towards the smaller capacity (lower lora_r, THESIS_LOG #82) where the grid has that axis, then by the higher mean selection-slice macro_f1 across those folds; a tie surviving both is refused; dbo/2026 has no E2 selection and takes dbo/2025's"
+    conditions:
+      none: {objective: "the E2 objective, unchanged"}
+      class_weighting: {scheme: "balanced", formula: "n / (k * n_c) over the classes present in the fit slice", fitted_on: "fit slice", reduction: "mean of w_i * l_i"}
+      focal_loss: {gamma: 2.0, alpha: "none", reduction: "mean of (1 - p_i)^gamma * l_i"}
+      random_oversampling: {target: "majority class count", replacement: true, applied_to: "fit slice only", after: "within-fold deduplication"}
+  e4c:
+    # Decided 2026-09-12 (THESIS_LOG #120 g, decisions 3 and 4). Hashed into E4c
+    # identities only; adding it moves no E2, E4a or E4b id and not the
+    # e4_config protocol digest (which reads e4a/e4b configuration strings).
+    train: "the full deduplicated 2025 train pool of the subtask; one final fit per component at the frozen E4a configuration of that subtask, seed 42; epoch selection and temperature from the usual inner split"
+    evaluate: "results/e4c_eval_pool.json -- 2026 train minus every 2025 train text, frozen and hash-checked before scoring"
+    retraining_on_2026: false
+    few_shot: "examples drawn from the 2025 pool at the D4 reference condition; nothing trained"
+    vio_mapping: {nothing: false, call2violence: true, glorification: true, other: true, propensity: true, support: true}
+    adapters: "LoRA adapters of the encoder and the fine-tuned LLM are saved with their temperature"
+  e4b:
+    folds: "protocol.cv_folds_e2"
+    seed: 42
+    replicates: "none"
+    condition: "none"
+    configuration: "the modal selected configuration over all fifteen E2 primary-seed folds (5 folds x 3 subtasks); a count tie is broken first towards the smaller capacity (lower lora_r, THESIS_LOG #82) where the grid has that axis, then by the higher mean selection-slice macro_f1 across those folds; a tie surviving both is refused"
+
+# D5 — applied in order, only at a gate
+reduction_ladder:
+  - "drop E4a for the fine-tuned LLM"
+  - "Dimension 2 on the encoder only"
+  - "E4a reduced to reference condition plus winner"
+  - "drop the 134M reference"
+  - "G1.5 ladder; judge dropped only as a last resort"

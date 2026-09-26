@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-07T02:01:47Z",
+  "data_root": "data/codabench",
+  "n_files": 21,
+  "note": "Provenance guard for gitignored raw data. Regenerate only when the data deliberately changes; a changed hash invalidates every result produced before the change. n_lines counts physical file lines, NOT records: descriptions contain embedded newlines, so n_lines exceeds the row count (e.g. dbo_train.csv: 9618 lines, 7454 rows).",
+  "files": {
+    "GermEval2025/data/c2a/c2a_test.csv": {
+      "sha256": "1002421f4284d47df3b232b0bd395fbaffe284427a4cee8307c9531f9cd0e77e",
+      "size_bytes": 520155,
+      "n_lines": 3904
+    },
+    "GermEval2025/data/c2a/c2a_train.csv": {
+      "sha256": "0281cdd49a8141ab73c46f42ada839f927396faf3cc27ce92a7a2bae001495f9",
+      "size_bytes": 1260633,
+      "n_lines": 9085
+    },
+    "GermEval2025/data/c2a/c2a_trial.csv": {
+      "sha256": "f25ce4c0123855c939b399a06a988d4819fc2e4f5ad1b2b594aa430377bc3fd5",
+      "size_bytes": 186394,
+      "n_lines": 1338
+    },
+    "GermEval2025/data/dbo/dbo_test.csv": {
+      "sha256": "335a270dfa61730f4bb9a850fb3c7a24b9ef4cd7b10552deca971600a9e0a471",
+      "size_bytes": 524273,
+      "n_lines": 3929
+    },
+    "GermEval2025/data/dbo/dbo_train.csv": {
+      "sha256": "8bc02be84280b19fbf86bc0a4b5859e6730fdf2b5b9c8e502220b007f9dbdaeb",
+      "size_bytes": 1325716,
+      "n_lines": 9618
+    },
+    "GermEval2025/data/dbo/dbo_trial.csv": {
+      "sha256": "f4ea2db265441b2b09de71eb1e4dab78189ce95835593f308cd7574b6879dce5",
+      "size_bytes": 183804,
+      "n_lines": 1384
+    },
+    "GermEval2025/data/vio/vio_test.csv": {
+      "sha256": "77d58bb74a02e093c5514775b2b0b7797e23321b6433648bbbe26e1bf76355c9",
+      "size_bytes": 607166,
+      "n_lines": 4569
+    },
+    "GermEval2025/data/vio/vio_train.csv": {
+      "sha256": "3b7b9a0732ecaea67791b316398f7ed00f203506f7ed62f8acd62e34b2f9a75e",
+      "size_bytes": 1457588,
+      "n_lines": 10231
+    },
+    "GermEval2025/data/vio/vio_trial.csv": {
+      "sha256": "f15508a52d7cbf0640f09cddc6815bdfa710b4166e71f8cdf9a5c80010794596",
+      "size_bytes": 195630,
+      "n_lines": 1328
+    },
+    "GermEval2026/data/c2a/c2a_test_26.csv": {
+      "sha256": "1002421f4284d47df3b232b0bd395fbaffe284427a4cee8307c9531f9cd0e77e",
+      "size_bytes": 520155,
+      "n_lines": 3904
+    },
+    "GermEval2026/data/c2a/c2a_train_26.csv": {
+      "sha256": "2c0cd0e88a3147f5b3a37a25beb26a730ba9ef2073314c61b7c17afe2abfe289",
+      "size_bytes": 3026492,
+      "n_lines": 21007
+    },
+    "GermEval2026/data/c2a/c2a_trial.csv": {
+      "sha256": "e37a37b0f688ecf2e1964b61fc577c42c21970a16a830582a122ac47dfcff64e",
+      "size_bytes": 189713,
+      "n_lines": 1370
+    },
+    "GermEval2026/data/dbo/dbo_test_26.csv": {
+      "sha256": "e9d76cc19a7055ac37f4e944d0ad085a35b13420d5db370400ab0139f1a613ae",
+      "size_bytes": 520415,
+      "n_lines": 3912
+    },
+    "GermEval2026/data/dbo/dbo_train_26.csv": {
+      "sha256": "5b961cf593c5d699a7256d5e973d470418064318379d1f8ed7762e2585352790",
+      "size_bytes": 2854808,
+      "n_lines": 20753
+    },
+    "GermEval2026/data/dbo/dbo_trial.csv": {
+      "sha256": "0bae256ded3a17674fa452ff70a80fea750e55ab7aad34bbb3ee2b36adaad6e7",
+      "size_bytes": 167385,
+      "n_lines": 1258
+    },
+    "GermEval2026/data/def/def_test.csv": {
+      "sha256": "6b061892e7ec98bff765cb0c54317e1e34bc0f608ef06dfb0ae8471dae9fd151",
+      "size_bytes": 148626,
+      "n_lines": 692
+    },
+    "GermEval2026/data/def/def_train.csv": {
+      "sha256": "52b2bd6a79da6f2f1efea97ff567f35b20feb79e87c29f0c2f593662120b6ba0",
+      "size_bytes": 819608,
+      "n_lines": 4540
+    },
+    "GermEval2026/data/def/def_trial.csv": {
+      "sha256": "66898f79d3306f6f7855a1de46cd856b8a266158d626e243d4c8662a6c1d5df7",
+      "size_bytes": 26280,
+      "n_lines": 223
+    },
+    "GermEval2026/data/vio/vio_test_26.csv": {
+      "sha256": "15bdbbdda5022477e8fb1de7faf80887fc2cc8aff1a0f37bfee20eb04ee1b234",
+      "size_bytes": 745213,
+      "n_lines": 5647
+    },
+    "GermEval2026/data/vio/vio_train_26.csv": {
+      "sha256": "628d14a4b30a81af306e3f2101886250eac4826a3097354f3a3bf9e5e0ecfc67",
+      "size_bytes": 3176542,
+      "n_lines": 21772
+    },
+    "GermEval2026/data/vio/vio_trial.csv": {
+      "sha256": "c42f3a8c3586d9618f3720f2c9a5d09e80f4d19b04ec6b468f114235e5c367e9",
+      "size_bytes": 198620,
+      "n_lines": 1318
+    }
+  }
+}
