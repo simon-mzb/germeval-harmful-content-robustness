@@ -77,9 +77,32 @@ and `--force` (or `--out <path>`) produces a fresh one to compare against.
 | E5: error analysis | `python -m src.e5_error_analysis`, `python -m src.e5_irreducible` | stored outputs |
 | E5: manual-reading sample | `python -m src.e5_label_sample` (draw), `python -m src.e5_label_analysis`, `python -m src.e5_examples` | data; the coded files are not included |
 | Judge selection | `python -m src.gwdg_smoke --list-models`, `--model <id>` | GWDG key |
-| Reliability figure | `python -m src.reliability_figure` | stored outputs |
+| Reliability figure | `python -m src.reliability_figure --force` (a bare run keeps the committed figure) | stored outputs |
 
 Every module answers `--help`.
+
+### What the records do not cover
+
+Four statements of the thesis rest on material that is not in this repository:
+
+* **The Windows side of the platform probe.** The probe compared macOS (arm64, Python
+  3.13.15) against Windows (AMD64, Python 3.13.3) at identical versions of scikit-learn and
+  XGBoost. The figures measured on the Windows machine are recorded only in the history of
+  the development repository; `results/e1_platform_check.json` carries its baseline values
+  as constants. In that record, `platform_effect.machines.this_machine` names the machine that
+  wrote the record (Linux), while the pair it holds under the earlier data rules was
+  measured on macOS. The Linux rerun of the support vector machine is included, in
+  `results/platform_probe_svm/`.
+* **One exploratory count in 4.5** (45 of the 72 shared errors, and the coder's agreement
+  on 30 of them) was made from the coded files of the manual reading, which are not
+  included; no record carries it.
+* **The generated tables of the appendix section *Hyperparameters, Selections and
+  Prompts*** were produced by a tool of the development repository from
+  `configs/e2_matrix.yaml`, `results/e2/`, `results/e4_fixed_configurations.json` and the
+  prompt builders in `src/llm_components.py` and `src/llm_fewshot.py`. Every value in them
+  is in those files, but no command here rebuilds the tables.
+* **The data-defect record** `results/data_defects_verification.json` is not included,
+  because it quotes posts; `python -m src.verify_data_defects` regenerates it from the data.
 
 ## Thesis section to module
 
@@ -116,7 +139,10 @@ fold indices and calibrated probabilities per component; no post text), the judg
 cache, and the sidecar of the manual-reading sample. No file contains the text of a post.
 
 Not included: the data themselves, trained model weights and adapters, the coded files of
-the manual reading, and the development infrastructure (GPU rental, working notes).
+the manual reading, and the development infrastructure (GPU rental, working notes). Two
+development notebooks are not included either: they called `e2_summary` to write
+`results/e2_tml_summary.json` and `results/g2_gate_assessment.json`, which are included,
+and the thesis reads no figure from either record.
 
 Records carry provenance written at run time. Their `git_commit` fields name commits of
 the development repository, which is not published; codes such as `B4` (a work package),

@@ -113,7 +113,11 @@ records. The `PROTOCOL` block of `e3_combination` is additionally hashed into it
   The figure files in `figures/e2/` are the ones printed in the thesis. Re-running the
   generator reproduces the same curves from the same bins; in a fresh environment the
   rendering came out one pixel wider. Its input-digest sidecar is not shipped, because the
-  18 E2 records it hashes differ in the field described under *Result records*.
+  18 E2 records it hashes differ in the field described under *Result records*. Beyond the
+  paths, one code change was made: the generator now parses its arguments first, so that
+  `--help` describes it instead of running it, and a bare run refuses to overwrite the
+  committed figure and prints `SKIP`; `--force` regenerates it. The figure itself is unchanged: in
+  one environment, the guarded and the original generator write byte-identical output.
 * `configs/e2_matrix.yaml`: two header comments, `meta.design_lock` and three
   `meta.changelog` entries named paths of the development repository; they were changed.
   None of these is hashed (see the `config_id` check above). Everything else, including
@@ -152,3 +156,5 @@ All records were copied unchanged except one field: in 104 run records,
 rewritten to `notes/e2_design_lock.md`, the value `configs/e2_matrix.yaml` now carries.
 A JSON comparison confirmed that no other field of any record changed. The records keep
 their `git_commit` fields, which name commits of the development repository.
+The component store of the support vector machine's Linux rerun,
+`results/platform_probe_svm/component_store/` (18 files), is a byte-identical copy.

@@ -10,8 +10,9 @@ Colour-blind safety: Okabe-Ito colours from plotstyle (fixed per component) AND 
 so the figure survives greyscale. The classical components are drawn at the PRIMARY seed (the bins are stored for that seed only),
 so no ECE is printed in the figure: Table "calibration" reports the three-seed mean for them and the two would differ.
 
-Usage:  python -m src.reliability_figure
-Writes figures/e2/reliability_all.{pdf,png} and prints the derived figures the appendix quotes.
+Usage:  python -m src.reliability_figure [--force]
+Writes figures/e2/reliability_all.{pdf,png} and prints the derived figures the appendix quotes. The figure files are the ones
+printed in the thesis, so a bare run refuses to replace them and prints SKIP; --force regenerates them.
 """
 from __future__ import annotations
 
@@ -52,7 +53,19 @@ def top_bin_figures(bins: dict) -> dict:
     return out
 
 
-def main() -> None:
+def main(argv=None) -> int:
+    # Parse first, so that --help describes rather than executes; then refuse to replace the printed figure without --force
+    # (the pattern of harness.measuring_main_guard, without its --out: save_figure writes to a fixed place).
+    import argparse
+    ap = argparse.ArgumentParser(description=(__doc__ or "").strip(), formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--force", action="store_true", help="overwrite figures/e2/reliability_all.{pdf,png} if they exist")
+    args = ap.parse_args(argv)
+    out = ROOT / "figures" / "e2" / "reliability_all.pdf"
+    if out.exists() and not args.force:
+        print("SKIP: {} already exists and is the figure printed in the thesis.\n"
+              "      Regenerate with --force only if you mean to replace it.".format(out))
+        return 0
+
     import matplotlib.pyplot as plt
     apply_thesis_style()
     bins = load()
@@ -91,7 +104,8 @@ def main() -> None:
     (ROOT / "figures" / "e2" / "reliability_all.sources.json").write_text(json.dumps(src, indent=1, sort_keys=True) + "\n")
     for (s, c), v in top_bin_figures(bins).items():
         print(s, c, f"top bin from {v['lower']:.3f}: {v['n']} items, {v['share']:.1f}% of the pool, gap {v['gap']:.2f} pp")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
