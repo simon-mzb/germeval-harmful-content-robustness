@@ -23,7 +23,7 @@ and nothing else:
 No significance test, no per-class statement. `control_k_wrong_distribution` is copied
 from the sidecar because it is a limitation the text must carry.
 
-DECISIONS TAKEN HERE (each with its counterfactual, so the log can record them):
+DECISIONS TAKEN HERE (each with its counterfactual, so it can be checked):
   1. AGREEMENT IS SCORED ON THE FIRST OCCURRENCE of each of the 72 items. Counterfactual:
      scoring the second occurrence of the 20 repeated items would mix in the coder's
      memory of his own first answer, which is the recognition effect the pre-registration

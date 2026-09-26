@@ -10,14 +10,14 @@ Two rules govern everything in this module and must not be relaxed:
 1. Calibration is fitted inside the fold, on a held-out slice of that fold's
    training portion, never on its validation part. Fitting a temperature on
    evaluation data leaks the evaluation signal into the confidence estimates
-   that the cascade and the judge then consume (3.2, subsec:combination).
+   that the cascade and the judge then consume (Section 3.2).
 2. Calibration metrics are computed on the pooled out-of-fold probabilities
    (the protocol's aggregation rule), not per fold and averaged.
 
 Temperature scaling operates on log-probabilities rather than on raw logits,
 because the component interface is a probability matrix: a component may
 be an SVM behind Platt scaling, a gradient-boosted tree with a native
-predict_proba, or an LLM with normalised label-token probabilities, none of
+predict_proba, or an LLM with normalised label likelihoods, none of
 which expose comparable logits. Dividing log p by T and renormalising is the
 same one-parameter family as logit scaling whenever the probabilities came
 from a softmax, and it is well defined when they did not (guo2017).

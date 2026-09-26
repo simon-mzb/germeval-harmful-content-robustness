@@ -736,12 +736,12 @@ def run_component(
               "the retrained folds. Cost: read fold_runtime_seconds_sum.")
 
     # The grid-edge and selection-stability verdict travels WITH the artefact,
-    # so the notebook and Chapter 4 read a recorded judgement rather than
-    # re-deriving one -- and so a reader of the submission repository can see
-    # that the question was asked at all.
+    # so the summary and the thesis read a recorded judgement rather than
+    # re-deriving one -- and so a reader of the artefact can see that the
+    # question was asked at all.
     result["selection_diagnosis"] = selection_diagnosis_for(result)
     # Evidence for the epoch-stopping rule itself, from the traces this run
-    # produced. Written into the artefact so 3.3 argues from a measurement.
+    # produced. Written into the artefact so the rule is argued from a measurement.
     result["stopping_evidence"] = stopping_report(result)
     save_results(result, out_path)
 
@@ -773,9 +773,9 @@ def run_component(
 def build_parser() -> argparse.ArgumentParser:
     """The CLI, separable from main so a test can read its defaults.
 
-    Those defaults are not cosmetic: the runbook's campaign command passes
-    neither --folds nor --bootstrap-n, so whatever stands here IS the protocol
-    for a campaign launch. tests/test_config_matches_matrix.py checks them
+    Those defaults are not cosmetic: a campaign launch passes neither --folds
+    nor --bootstrap-n, so whatever stands here IS the protocol for a campaign
+    launch. tests/test_config_matches_matrix.py checks them
     against configs/e2_matrix.yaml for exactly that reason.
     """
     parser = argparse.ArgumentParser(description="Run the E2 component experiments.")
@@ -1151,7 +1151,7 @@ def selection_diagnosis_for(result: dict[str, Any]) -> dict[str, Any] | None:
 # is closed by early stopping with patience 2 under a ceiling of 8, and the
 # patience was chosen from the 14 epoch traces this project had produced: the
 # longest non-improving run still followed by a new best was 1, never 2. That
-# is a defensible derivation and a thin sample, and 3.3 has to argue it against
+# is a defensible derivation and a thin sample, and the protocol has to answer
 # the obvious objection -- "you stopped too early and missed the optimum".
 #
 # The campaign records every per-epoch selection score of every grid cell, so
@@ -1160,8 +1160,8 @@ def selection_diagnosis_for(result: dict[str, Any]) -> dict[str, Any] | None:
 #   * how often a fit stopped early WHILE ITS TRACE WAS STILL CLIMBING back
 #     (last epoch above the one before it, though both below the best). That is
 #     the only shape in which patience 2 can plausibly have cut off a recovery.
-#     Rare -> the rule is right. Common -> patience was too tight, and 3.3 must
-#     say so rather than assert the opposite.
+#     Rare -> the rule is right. Common -> patience was too tight, and the
+#     thesis must say so rather than assert the opposite.
 #   * how much the tail actually cost, i.e. the best score minus the last one.
 #     A large gap means the fits decay fast after their peak, which is the
 #     regime early stopping is FOR.
@@ -1259,7 +1259,7 @@ def _stopping_verdict(early, at_ceiling, rising, n) -> str:
 
 
 def _report_stopping(result):
-    """One line, always, because this is evidence for 3.3 rather than an alarm."""
+    """One line, always, because this is evidence for the stopping rule rather than an alarm."""
     rep = result.get("stopping_evidence") or stopping_report(result)
     if not rep:
         return
@@ -1280,8 +1280,8 @@ def _report_selection(result):
     pairs = list(zip(diag["flags"], diag["notes"]))
     edges = [(f, t) for f, t in pairs if f.startswith("grid_edge:")]
     # One line, always, when the selection was unresolved: it is a reporting
-    # instruction for 3.3, not an operational alarm, and it is true of most
-    # cells here (see diagnose_selection).
+    # instruction, not an operational alarm, and it is true of most cells here
+    # (see diagnose_selection).
     for f, t in pairs:
         if f == "selection_noise":
             print("  NOTE selection unresolved -- {}".format(t))

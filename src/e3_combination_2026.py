@@ -7,7 +7,8 @@ components score the 2026 evaluation pool? Pre-registered before G3 was known:
 stage 1 = soft voting + confidence cascade over the
 E4c members, weights and thresholds fitted on 2025 and applied once to 2026. It
 is the primary 2026 combination result in every G3 branch. The judge on 2026
-(stage 2) is not here -- it runs only if G3(2025) = go, on self-hosted weights.
+(stage 2) is not here -- it was to run only if G3(2025) = go, on self-hosted
+weights. G3 came back no on 2025, so stage 2 was never run.
 
 WHY A SEPARATE MODULE. `e3_combination.py` carries the judge campaign, whose
 protocol digest (`f3916558e400`) is re-checked on every campaign day. This file

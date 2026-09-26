@@ -115,7 +115,7 @@ PRIMARY_SEED = int(_MATRIX["protocol"]["seed_base"])
 
 # The resample count THIS module runs at, deliberately larger than the
 # artefact-side `bootstrap_n`. See the matrix comment beside the key: here a
-# bootstrap interval decides a verdict, and at 1000 the vio encoder-vs-LLM
+# bootstrap interval decides a verdict, and even at 2000 the vio encoder-vs-LLM
 # verdict flipped with the resampling seed (measured).
 SIG_BOOTSTRAP_N = int(_MATRIX["protocol"]["significance_bootstrap_n"])
 

@@ -39,7 +39,7 @@ RESULTS = Path(__file__).resolve().parents[1] / "results"
 # the data rules in force before 2026-08-18.
 DESKTOP = {"dbo": 48.4109, "c2a": 56.4561}
 
-# This machine under those same rules. Measured 2026-08-20 by checking out
+# The MacBook (Darwin/arm64) under those same rules. Measured 2026-08-20 by checking out
 # 6512394 of the development repository -- the last commit before
 # `_drop_contradicting_labels` entered harness.py -- into a git worktree, linking the same data/codabench tree
 # (`data_manifest --verify` clean, 21 files), and running this protocol against
@@ -49,6 +49,12 @@ DESKTOP = {"dbo": 48.4109, "c2a": 56.4561}
 # e2_summary: it cannot be recomputed from anything in this tree, because the
 # rules that produced it were replaced. What makes that acceptable is that it
 # names its generation and carries the recipe to re-derive it.
+#
+# ⚠️ The payload below labels these figures with `machines.this_machine`, which
+# is the machine that WRITES the file, not the one that measured them. The
+# committed artefact was written on the Linux GPU machine, so it labels the
+# Darwin/arm64 measurement as Linux/x86_64. The figures themselves are the
+# Darwin ones; the label is left as recorded.
 RECIPE = ("git worktree add --detach <dir> 6512394; link experiments/data/codabench; "
           "run src/e1_platform_check.run() there with the current venv")
 PRE_RULE_CHANGE = {

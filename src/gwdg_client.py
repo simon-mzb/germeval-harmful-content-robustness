@@ -132,8 +132,8 @@ class GWDGClient:
         """
         One judge-style call whose output should be a bare label.
 
-        `logprobs` is requested because D6a criterion 2 turns on whether the
-        endpoint returns them: without a usable confidence signal the judge can
+        `logprobs` is requested because criterion 2 of the judge acceptance
+        test (`src.gwdg_smoke`) turns on whether the endpoint returns them: without a usable confidence signal the judge can
         only return a label, and the calibration claim in 3.2 has to be
         narrowed to the components. The request degrades gracefully, so a
         server that rejects the parameter still yields the text.
@@ -196,7 +196,8 @@ class GWDGClient:
         """
         A **bounded** throughput probe: n short calls back to back.
 
-        D6a asks for requests per minute and per day before throttling. The
+        The acceptance test asks for requests per minute and per day before
+        throttling. The
         per-day figure is deliberately *not* found by exhaustion -- hammering a
         shared academic service until it refuses is both rude and a good way to
         lose the account. What is measured is achieved throughput over a small

@@ -8,11 +8,11 @@ the calibration slice, and the fold's validation part touched by nothing but the
 final prediction. What differs is only what a "fit" is and how a probability is
 obtained.
 
-WHAT A PROBABILITY IS HERE, AND WHY IT IS NOT WHAT 3.2 ORIGINALLY PROMISED
--------------------------------------------------------------------------
-§3.2 promised that the probabilities the model "assigns to those label tokens
-are read off and normalised". `src/verbaliser_probe.py` measured that a label is
-NOT a token: on LLaeMmlein `Verherrlichung` -> `_Ver` + `herr` + `lichung` and
+WHAT A PROBABILITY IS HERE: THE LABEL'S WHOLE TOKEN SEQUENCE
+------------------------------------------------------------
+Section 3.2 reads off and normalises the probabilities the model assigns to the
+label tokens. `src/verbaliser_probe.py` measured that a label is usually NOT a
+single token: on LLaeMmlein `Verherrlichung` -> `_Ver` + `herr` + `lichung` and
 `Hetze` -> `_H` + `etze`, and the first tokens are generic German prefixes.
 Reading P(`_Ver`) as P(glorification) charges that label with the mass of
 *Verantwortung*, *Verbot*, *Versuch* -- i.e. it inflates the estimate on the
@@ -143,7 +143,7 @@ def verbalisers_for(subtask: str, edition: str = "2025") -> dict[str, str]:
 
 def build_prompt(text: str, subtask: str, classes: list) -> str:
     """The zero-shot instruction template. Fixed per subtask, reused across
-    editions (3.2 subsec:llm), so a cross-edition difference can never be an
+    editions (Section 3.2), so a cross-edition difference can never be an
     artefact of a rewritten prompt.
 
     NO in-context examples: those belong to llm_fewshot_protocol and to a

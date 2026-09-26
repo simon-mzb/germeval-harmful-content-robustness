@@ -3,7 +3,7 @@ e5_irreducible.py -- the items no component recovers: size per class, why no str
 repair them, how confidently they are wrong, and whether the injected cohort explains them.
 
 WHY A SIBLING OF `e5_error_analysis` AND NOT AN EDIT. That artefact is committed and
-its numbers stay reproducible as they are. Section 4.5 needs five further quantities, all computed from the same stored predictions at seed 42:
+its numbers stay reproducible as they are. Section 4.5 needs six further quantities, all computed from the same stored predictions at seed 42:
 
 1. **Size per class** of the irreducible set, with Wilson intervals: macro-F1 weighs every
    class equally, so the set is sized on that scale, not as a share of the pool.
@@ -30,7 +30,7 @@ its numbers stay reproducible as they are. Section 4.5 needs five further quanti
 6. **The cascade the thesis fitted** on 2025 (E3's cross-fitted offline cascade over the
    primary set): its stage order, the thresholds chosen per fold, and the share of items
    passed beyond the first stage and on to the last. Section 4.5 reports these instead of a
-   0.9 cutoff on another component (review F8); read from `e3.offline_strategies`, the same
+   0.9 cutoff on another component; read from `e3.offline_strategies`, the same
    call the construction check already makes, so `e3_combination.py` is only imported.
 
 Usage

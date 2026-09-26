@@ -1,8 +1,8 @@
 """
 harness.py -- shared evaluation harness for all experiments (E0-E5).
 
-Implements the evaluation protocol locked in §3.3 (03c_experimental_setup.tex)
-and data-quality rules from experiment_plan.md §2b.
+Implements the evaluation protocol of the thesis (Section 3.3) and the
+data-quality rules applied to every training pool (`apply_data_quality_rules`).
 
 All experiments — baselines, components, combinations — run through this
 module with identical folds, metrics, and seed handling so that differences
@@ -64,7 +64,7 @@ BOOTSTRAP_N = 1000  # bootstrap samples for confidence intervals
 
 
 # ---------------------------------------------------------------------------
-# Data-quality rules (experiment_plan §2b)
+# Data-quality rules
 # ---------------------------------------------------------------------------
 
 def _drop_contradicting_labels(df: pd.DataFrame) -> pd.DataFrame:
@@ -126,7 +126,9 @@ def _drop_train_test_overlap(
     Drop from train_df any text that also appears in test_df (normalised).
 
     EDA found leakage in 2025: DBO 124 texts (3.9% of test), C2A 28 (0.94%),
-    VIO 38 (1.15%). 2026 is clean (<0.4%). Always applied for safety.
+    VIO 38 (1.15%). 2026 is clean (<0.4%). Applied only when a test split is
+    passed to `apply_data_quality_rules`; the E2 pool passes none, and
+    `e2_runner`'s module docstring says why the rule stays off there.
     """
     test_norm = set(test_df["description"].str.strip().str.lower())
     train_norm = train_df["description"].str.strip().str.lower()
@@ -179,7 +181,7 @@ def apply_data_quality_rules(
     drop_cross_edition: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame | None]:
     """
-    Apply all data-quality rules from experiment_plan §2b to a train split.
+    Apply the data-quality rules to a train split.
 
     Parameters
     ----------
@@ -229,6 +231,9 @@ def make_vio_fresh_holdout(
     Required because 76.98% of VIO-2025-test is inside VIO-2026-train
     (EDA finding) — using 2025-test for cross-edition VIO is contaminated.
     C2A (0.27%) and DBO (0.35%) are clean; only VIO needs this.
+
+    Not used by any experiment: Dimension 3 (E4c) evaluates on the frozen,
+    overlap-free 2026 pool of `e4c_pool` instead.
 
     Parameters
     ----------

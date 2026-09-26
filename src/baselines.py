@@ -17,21 +17,20 @@ DBO  TF-IDF (unigrams+bigrams, max 5000 features) + LinearSVC with balanced
      Target: macro-F1 = 47.44 (organizer reported).
      Source: baseline/dbo/dbo_baseline.ipynb
 
-VIO  [Option C — not reproduced identically]
-     The organizer baseline is Qwen2.5-32B few-shot via Ollama in R, which
-     requires a 32B model not available in our Python stack. Organizer-reported
-     macro-F1 = 68.97 is used as the reference figure and attributed to the
-     original implementation (felser2025). An approximate Python reimplementation
-     via a GWDG-API Qwen model is planned for E1b (post-E1 smoke test) and will
-     be reported separately with the deviation documented.
+VIO  Qwen2.5-32B few-shot via Ollama in R.
+     Target: macro-F1 = 68.97 (organizer reported).
+     Source: baseline/vio/vio_baseline.Rmd
+     `VIOBaselineOllama` (E1b) sends the organisers' requests to a local Ollama
+     server that serves `qwen2.5:32b`; it needs that server and a GPU.
+     `VIOBaselineStub` is the earlier placeholder that carries only the
+     organiser-reported figure, from before the reproduction existed.
 
 Notes
 -----
 - All randomness uses random_state=42 to match organizer notebooks.
-- Lemmatisation in C2A requires the spaCy German pipeline:
-    python -m spacy download de_core_news_md
+- Lemmatisation in C2A uses the spaCy German pipeline de_core_news_md, which
+  `uv sync` installs (it is pinned in pyproject.toml).
 - C2A also requires sentence-transformers and textblob-de.
-- Run `uv sync` in experiments/ before executing (sandbox has no network).
 """
 
 from __future__ import annotations
@@ -260,24 +259,21 @@ class C2ABaseline:
 
 
 # ---------------------------------------------------------------------------
-# VIO — Option C stub (not reproduced)
+# VIO — the reported figure only (the earlier placeholder)
 # ---------------------------------------------------------------------------
 
 class VIOBaselineStub:
     """
-    Placeholder for the VIO organizer baseline (Option C — not reproduced).
+    Placeholder for the VIO organizer baseline, from before it was reproduced.
 
     The organizer baseline (felser2025) uses Qwen2.5-32B via Ollama in R,
-    achieving macro-F1 = 68.97 on the 2025 test set. This model and runtime
-    are not available in our Python stack; the organizer-reported figure is
-    used as the reference and attributed accordingly in §3.3 and §5.
-
-    A separate approximate Python reimplementation via GWDG ChatAI API
-    (Qwen3 family) is planned as E1b for comparison, and will be reported
-    with the model difference and deviation explicitly documented.
-
-    This stub allows the E1 notebook to reference all three subtasks
+    achieving macro-F1 = 68.97 on the 2025 test set. This class carries only
+    that reported figure; it lets the E1 notebook reference all three subtasks
     without runtime errors.
+
+    The reproduction is `VIOBaselineOllama` below (E1b). `NOTE` is kept as it
+    was written, because it is the text of `results/e1_vio_reference.json`;
+    the GWDG reimplementation it announces was not pursued.
     """
 
     REPORTED_MACRO_F1 = 68.97

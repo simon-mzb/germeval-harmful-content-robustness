@@ -14,9 +14,9 @@ macro-F1 per lr and says whether the winner is interior.
 WHAT IT DOES NOT DO. It does not produce a thesis number and does not touch the
 component store or `results/e2/`. It is one fold at one seed: enough to see
 whether the peak is inside the window, not enough to pin a value. If the winner
-is interior, the existing two-point grid is defensible with the argument §3.3
-already makes for the SVM; if it is on the edge again, the window moves before
-the campaign starts.
+is interior, the existing two-point grid is defensible with the argument the
+SVM's C grid rests on (see `tml_components`); if it is on the edge again, the
+window moves before the campaign starts.
 
 Usage:
   .venv/bin/python -m src.lr_probe --subtask c2a --lrs 1e-4 2e-4 3e-4 5e-4

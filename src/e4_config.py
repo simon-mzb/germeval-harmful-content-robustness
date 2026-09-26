@@ -22,6 +22,8 @@ THE RULE (e4_protocol.e4a.configuration / e4b.configuration):
   * a remaining tie is broken by the higher MEAN selection-slice macro-F1 of
     the tied configurations across those same folds. Every fold scored every
     grid cell, so the mean is defined for each of them;
+  * a tie that survives both is REFUSED rather than broken by list order;
+  * dbo/2026 has no E2 selection of its own and takes dbo/2025's.
 
 WHAT THIS RULE CAN AND CANNOT CLAIM. "Applied unseen" would be too strong:
 parts of the E2 selections were known when the rule was confirmed (the SVM's
@@ -33,8 +35,6 @@ the configuration was tuned under `none`, so an E4a GAIN is understated and an
 absent gain holds only "at this configuration"; and the E4b mode is read off
 selection slices whose items are evaluated out-of-fold in other folds, so the
 E4b stability penalty is a LOWER BOUND.
-  * a tie that survives both is REFUSED rather than broken by list order;
-  * dbo/2026 has no E2 selection of its own and takes dbo/2025's.
 
 Usage
 -----

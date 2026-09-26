@@ -7,7 +7,7 @@ Why this exists
 The pipeline design promises that the generative component is restricted to the
 verbalised labels of the subtask, in the sense of the verbalisers of Schick &
 Schuetze (2021), and that "the probabilities it assigns to those label tokens
-are read off and normalised" (3.2, subsec:llm). The combination layer consumes
+are read off and normalised" (Section 3.2). The combination layer consumes
 that as a row of an (n_items, n_classes) probability matrix like every other component's.
 
 That sentence contains a hidden assumption: that a label *is* a token. This

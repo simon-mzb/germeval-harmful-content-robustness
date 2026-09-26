@@ -162,9 +162,9 @@ def _machine() -> str:
     covers the hardware. The encoder and LLM components were produced on a
     rented Linux GPU machine while the classical components ran on a Darwin/arm64
     laptop, so E3 would align components from two architectures with nothing
-    in the files saying so. Section 3.3 commits to naming the machine wherever a
-    figure is reported, and the sidecars are where Chapter 4's figures are read
-    from, so the field belongs at the point of writing rather than at the point
+    in the files saying so. A reported figure has to be attributable to the
+    machine that produced it, and the sidecars are where Chapter 4's figures are
+    read from, so the field belongs at the point of writing rather than at the point
     of reporting -- what is reported from it is a separate, later decision.
     """
     import platform
@@ -426,7 +426,7 @@ class ComponentStore:
             # probabilities from models trained on different amounts of data.
             # A machine difference is a PROVENANCE FACT, and the C2A baseline
             # reproduced bit-identically across Darwin, Windows and Linux.
-            # §3.3 owes the reader the machine, not a refusal;
+            # The reader is owed the machine, not a refusal;
             # `e2_summary._warn_on_mixed_folds` treats it the same way.
             machines = {k: rec["meta"].get("machine") for k, rec in recs.items()}
             distinct_m = {v for v in machines.values() if v is not None}

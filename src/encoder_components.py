@@ -135,7 +135,7 @@ _EPOCH_SELECTION = _epoch_selection_from_matrix()
 # learning rate at EVERY step, including every step of a fit that stops at
 # epoch 3. v1.8 withdrew the dominance claim for exactly this reason; the same
 # reason makes the ceiling a PROTOCOL parameter that also happens to bound
-# compute, declared in 3.3 like effective_batch_size. Changing it invalidates
+# compute, declared in the matrix like effective_batch_size. Changing it invalidates
 # comparability with existing runs even for fits that never approach it.
 MAX_EPOCHS = _EPOCH_SELECTION["max_epochs"]
 # Consecutive epochs without a new best before training stops. Derived from the
@@ -729,8 +729,8 @@ def _fit_component(component: str, train_df: pd.DataFrame, classes: list, *,
         "tokenisation": tok_stats,
         "runtime_seconds": float(time.time() - t0),
         # Absolute wall-clock bounds, not just a duration. A duration cannot be
-        # lined up against anything else that happened on the machine -- the GPU
-        # trace pod_run.sh now records, a watchdog message, a dropped ssh. If a
+        # lined up against anything else that happened on the machine -- a GPU
+        # trace, a watchdog message, a dropped ssh. If a
         # campaign has to be read back as a long test run, "which fold was
         # running at 03:12" is the question that gets asked first.
         "started_utc": datetime.fromtimestamp(t0, tz=timezone.utc).isoformat(timespec="seconds"),

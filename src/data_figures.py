@@ -6,10 +6,10 @@ Separated from `data_profile.py` on purpose: that module measures and writes
 in the chapter therefore never depends on a plotting decision, and a figure can
 be redrawn without recomputing anything.
 
-Every figure here answers a question the chapter actually asks (S11d); a plot
+Every figure here answers a question the chapter actually asks; a plot
 that merely displays a column is left out. Style comes from `plotstyle.py`,
-which fixes the chart-type policy for the whole thesis. The predecessor module
-`eda_analysis.py` predates that policy and broke three of its rules: it drew
+which fixes the chart-type policy for the whole thesis. An earlier exploratory
+version of these figures predates that policy and broke three of its rules: it drew
 label distributions as unsorted vertical bars, it gave the two editions
 separate y-axes so their bars were not comparable, and it put the 2025 binary
 and 2026 six-way VIO label spaces on one axis as if they were one scheme.

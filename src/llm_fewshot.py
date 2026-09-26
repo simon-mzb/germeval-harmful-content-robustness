@@ -35,7 +35,7 @@ component calibrated on a slice built differently from every other component's,
 its ECE would not be comparable with theirs, which is the one number the
 combination layer's probability interface rests on. The examples cost twelve rows, so the
 larger pool option buys nothing measurable. `n_unused_selection` is written into
-every fold record so §3.3 can state the cost instead of hiding it.
+every fold record so the cost is stated instead of hidden.
 
 THE DRAW IS THE VARIANCE, NOT THE TRAINING SEED
 -----------------------------------------------

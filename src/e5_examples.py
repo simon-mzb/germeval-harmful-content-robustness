@@ -16,8 +16,8 @@ row, because then only the stratum varies against (ii), not also the condition.
 WHAT THE ARTEFACT HOLDS. Row, id, file, gold class, the class of each of the six components (the argmax of
 its stored calibrated probabilities), the coder's class, the number of wrong components, and a SHA-256 of
 the item's text and its length. It does NOT hold the text: the corpus is not redistributed by this repository
-and the three texts are printed in the thesis only; the verifier reads the text from the corpus by id and
-checks it against the hash and against the printed passage.
+and the three texts are printed in the thesis only. The hash lets anyone who holds the corpus check a
+printed passage against the item it names.
 
 Usage
 -----
