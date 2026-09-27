@@ -96,10 +96,16 @@ MODEL_IDS = {name: _MATRIX["components"][name]["hf_id"] for name in FEWSHOT_COMP
 
 STRATEGIES = tuple(PROTOCOL["example_selection"])       # ("none", "prompt_coverage")
 
-# The rare-class definitions prompt_coverage adds to the label block. German,
-# and drawn from the organisers' own annotation guidance rather than invented
-# here -- an invented definition would make the E4a contrast a comparison between
-# our paraphrase and nothing, instead of between coverage and no coverage.
+# PLACEHOLDERS for the rare-class definitions prompt_coverage would add to the
+# label block. prompt_coverage was specified but never run: every reported
+# few-shot figure uses the strategy "none", which adds no definitions. These
+# entries are NOT the organisers' wording, and "extremist" and "opposing" are
+# not DBO labels (DBO has nothing, criticism, agitation, subversive; the
+# organisers define subversive as the wish to overthrow the government or state
+# order by force). Before prompt_coverage is run they must be replaced by the
+# organisers' own annotation guidance -- an invented definition would make the
+# contrast a comparison between a paraphrase and nothing, instead of between
+# coverage and no coverage.
 _CLASS_DEFINITIONS = {
     "dbo": {
         "subversive": "untergraebt die demokratische Ordnung indirekt, ohne "

@@ -169,10 +169,12 @@ def figure_length(prof: dict[str, Any]) -> Path:
         ax.set_title(SUBTASK_TITLE[st], fontsize=8)
         ax.set_xlabel("characters (log scale)")
     axes[0].set_ylabel("share of items")
-    axes[0].legend(title="edition", loc="upper left")
-    med25 = lp["overall"]["c2a"]["2025"]["char"]["median"]
-    axes[0].annotate("median", xy=(med25, 0.0), xytext=(med25 * 1.15, 0.005),
-                     fontsize=6, color="#555555")
+    # One legend above the panels: inside the C2A panel it covered the curves.
+    from matplotlib.lines import Line2D
+    handles = [Line2D([], [], color=EDITION_COLOUR[ed], linewidth=1.0, label=ed)
+               for ed in ("2025", "2026")]
+    handles.append(Line2D([], [], color="#555555", linestyle=":", linewidth=0.7, label="median"))
+    fig.legend(handles=handles, loc="upper center", ncol=3, bbox_to_anchor=(0.55, 1.08))
     fig.tight_layout(w_pad=1.2)
     return save_figure(fig, "eda", "data_length_distribution")
 

@@ -30,7 +30,7 @@ records. The `PROTOCOL` block of `e3_combination` is additionally hashed into it
 
 ## Modules
 
-**Identical up to comments and docstrings (25):** `__init__`, `b12_ablation`, `calibration`, `data_figures`, `data_loading`, `data_manifest`, `data_profile`, `e1_machine_baseline`, `e1_platform_check`, `e4c_pool`, `e4c_runner`, `e5_error_analysis`, `e5_examples`, `e5_irreducible`, `e5_label_analysis`, `e5_label_sample`, `encoder_components`, `lr_probe`, `multiplicity_by_experiment`, `plotstyle`, `preprocessing`, `significance`, `significance_e4`, `verbaliser_probe`, `verify_data_defects`.
+**Identical up to comments and docstrings (26):** `__init__`, `b12_ablation`, `calibration`, `data_figures`, `data_loading`, `data_manifest`, `data_profile`, `e1_machine_baseline`, `e1_platform_check`, `e4c_pool`, `e4c_runner`, `e5_error_analysis`, `e5_examples`, `e5_irreducible`, `e5_label_analysis`, `e5_label_sample`, `encoder_components`, `lr_probe`, `multiplicity_by_experiment`, `plotstyle`, `preprocessing`, `results_figures`, `significance`, `significance_e4`, `verbaliser_probe`, `verify_data_defects`.
 
 **Changed string literals (16 modules).** Error, help and usage messages that named a log entry, a design-note code or a development-only script. Each change, old text first:
 

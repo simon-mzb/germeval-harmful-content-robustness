@@ -78,6 +78,7 @@ and `--force` (or `--out <path>`) produces a fresh one to compare against.
 | E5: manual-reading sample | `python -m src.e5_label_sample` (draw), `python -m src.e5_label_analysis`, `python -m src.e5_examples` | data; the coded files are not included |
 | Judge selection | `python -m src.gwdg_smoke --list-models`, `--model <id>` | GWDG key |
 | Reliability figure | `python -m src.reliability_figure --force` (a bare run keeps the committed figure) | stored outputs |
+| Result figures (4.2, 4.3.3) | `python -m src.results_figures` | stored outputs |
 
 Every module answers `--help`.
 
@@ -104,6 +105,12 @@ Four statements of the thesis rest on material that is not in this repository:
 * **The data-defect record** `results/data_defects_verification.json` is not included,
   because it quotes posts; `python -m src.verify_data_defects` regenerates it from the data.
 
+One implemented option was never run. `src/llm_fewshot.py` offers a second example-selection
+strategy, `prompt_coverage` (examples drawn equally per class, plus class definitions in the
+prompt). The thesis specifies it but does not run it: every reported few-shot figure uses
+`none`. Its DBO definitions are placeholders that do not match the organisers' label set and
+must be replaced by the organisers' annotation guidance before it is run.
+
 ## Thesis section to module
 
 | Thesis | Modules |
@@ -112,8 +119,8 @@ Four statements of the thesis rest on material that is not in this repository:
 | 3.2 Pipeline Design | `tml_components`, `encoder_components`, `llm_components`, `llm_fewshot`, `calibration`, `imbalance`, `component_store`, `e3_combination` |
 | 3.3 Experimental Setup | `harness`, `e2_runner`, `configs/e2_matrix.yaml`, `e1_platform_check`, `e1_machine_baseline`, `lr_probe`, `verbaliser_probe`, `gwdg_smoke` |
 | 4.1 Individual Component Performance | `e2_runner`, `e2_summary`, `significance`, `baselines`, `notebooks/01_baseline_repro.ipynb` |
-| 4.2 Combination Layer Results | `e3_combination`, `combination_headroom` |
-| 4.3 Robustness Analysis | `e4_config`, `dimension2_selection`, `e4c_pool`, `e4c_runner`, `e3_combination_2026`, `significance_e4`, `multiplicity_by_experiment` |
+| 4.2 Combination Layer Results | `e3_combination`, `combination_headroom`, `results_figures` |
+| 4.3 Robustness Analysis | `e4_config`, `dimension2_selection`, `e4c_pool`, `e4c_runner`, `e3_combination_2026`, `significance_e4`, `multiplicity_by_experiment`, `results_figures` |
 | 4.4 Ablation Study | `b12_ablation` |
 | 4.5 Error Analysis | `e5_error_analysis`, `e5_irreducible`, `e5_label_sample`, `e5_label_analysis`, `e5_examples` |
 | Appendix: Pre-Registration of the Manual Reading | `e5_label_sample`, `results/e5_sample/dbo_sample_key.json` |

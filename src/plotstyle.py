@@ -116,6 +116,14 @@ def save_figure(fig, subdir: str, name: str) -> Path:
 #   confusion matrices             heatmap, row-normalised, raw counts printed
 #                                  in the cells
 #
+#   paired differences with        dot and interval against a zero line (forest
+#   their intervals                plot); a bar would anchor the eye at zero and
+#                                  hide which side of it the interval lies on
+#
+#   one score at two conditions    dumbbell: two dots on one row joined by a
+#   per category                   thin line along the numeric axis, never
+#                                  across categories
+#
 # Never: pie charts, 3-D anything, a second y-axis, or a line joining
 # unordered categories. Never drop or thin measured points to make a curve
 # behave -- add the panel that explains them instead.
